@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment — NEVER commit real keys
+.env
+
+# User data — curiosity maps and profiles are personal
+data/
+
+# Log files
+logs/
+*.log
+
+# uv / pyproject build artifacts
+.python-version
+uv.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# OS
+desktop.ini
+
+# IDE workspace settings
+.claude/
+
+# Generated output and render frames
+output/
+blender_scripts/frames/
