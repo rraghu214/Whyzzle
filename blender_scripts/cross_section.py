@@ -1,14 +1,9 @@
 """
-Whyzzle Blender Template — Cross-Section / Layered Structure
-Shows Earth's interior layers (or any layered structure) as nested
-translucent spheres that slowly rotate to reveal their depths.
-
-Usage:  blender --background --python cross_section.py -- --params <json>
-
-Engine: CYCLES (CPU) — reliable headless rendering.
-Frames: 120 @ 24 fps = 5 s.
+Whyzzle — Cross-Section template
+Nested concentric spheres rotating to reveal inner layers.
+Reads layer definitions from params JSON; falls back to Earth's interior.
 """
-import bpy, json, math, sys
+import bpy, json, math, sys, os
 
 params = {}
 argv = sys.argv
@@ -20,28 +15,21 @@ if "--" in argv:
             with open(extra[idx], encoding="utf-8") as f:
                 params = json.load(f)
 
-import os
 frames_dir = params.get("frames_dir", os.path.join(os.path.dirname(__file__), "frames"))
 os.makedirs(frames_dir, exist_ok=True)
-topic      = params.get("topic", "").lower()
 
-is_volcano = any(w in topic for w in ("volcano", "eruption", "lava"))
-is_atom    = any(w in topic for w in ("atom", "nucleus", "electron", "proton"))
-
-# ─── Scene ───────────────────────────────────────────────────────────────────
+# ─── Render settings ──────────────────────────────────────────────────────────
 bpy.ops.wm.read_factory_settings(use_empty=True)
 scene = bpy.context.scene
 scene.frame_start = 1
-scene.frame_end   = 120   # 5 s @ 24 fps
+scene.frame_end   = int(params.get("frames",  120))
 scene.render.fps  = 24
-
 scene.render.image_settings.file_format = "PNG"
 scene.render.filepath     = os.path.join(frames_dir, "frame_####")
-scene.render.resolution_x = 480
-scene.render.resolution_y = 270
-
+scene.render.resolution_x = int(params.get("width",   480))
+scene.render.resolution_y = int(params.get("height",  270))
 scene.render.engine  = "CYCLES"
-scene.cycles.samples = 4
+scene.cycles.samples = int(params.get("samples", 4))
 scene.cycles.device  = "CPU"
 scene.cycles.max_bounces             = 2
 scene.cycles.diffuse_bounces         = 1
@@ -50,46 +38,37 @@ scene.cycles.transmission_bounces    = 1
 scene.cycles.volume_bounces          = 0
 scene.cycles.transparent_max_bounces = 2
 
-# World background
+TOTAL_FRAMES = scene.frame_end
+topic = params.get("topic", "").lower()
+
+# ─── Scene parameters ─────────────────────────────────────────────────────────
+_bg = params.get("background_color", [0.02, 0.04, 0.1])
+
+_default_layers = [
+    {"label": "Inner Core", "radius": 0.7, "color": [1.0, 0.55, 0.1], "emit": 10.0, "alpha": 0.0},
+    {"label": "Outer Core", "radius": 1.3, "color": [0.9, 0.25, 0.0], "emit":  4.0, "alpha": 0.4},
+    {"label": "Mantle",     "radius": 2.1, "color": [0.75, 0.4, 0.1], "emit":  1.5, "alpha": 0.6},
+    {"label": "Crust",      "radius": 2.6, "color": [0.35, 0.5, 0.25],"emit":  0.6, "alpha": 0.80},
+]
+layers_raw = params.get("layers", _default_layers)
+LAYERS = [
+    (l["label"], float(l["radius"]), tuple(l["color"]),
+     float(l.get("emit", 2.0)), float(l.get("alpha", 0.5)))
+    for l in layers_raw
+]
+
+# ─── World ────────────────────────────────────────────────────────────────────
 world = bpy.data.worlds.new("W")
 scene.world = world
 world.use_nodes = True
-if is_volcano:
-    world.node_tree.nodes["Background"].inputs[0].default_value = (0.05, 0.02, 0.01, 1)
-elif is_atom:
-    world.node_tree.nodes["Background"].inputs[0].default_value = (0.01, 0.01, 0.06, 1)
-else:
-    world.node_tree.nodes["Background"].inputs[0].default_value = (0.02, 0.04, 0.1,  1)
+world.node_tree.nodes["Background"].inputs[0].default_value = (*_bg, 1)
 
-# ─── Layer definitions ───────────────────────────────────────────────────────
-if is_volcano:
-    LAYERS = [
-        ("Magma Chamber", 0.6, (1.0, 0.3, 0.0), 12.0, 0.0),
-        ("Mantle",        1.3, (0.8, 0.4, 0.1),  3.0, 0.5),
-        ("Crust",         1.9, (0.5, 0.35, 0.2), 0.8, 0.7),
-        ("Surface Rock",  2.4, (0.35, 0.3, 0.25),0.5, 0.85),
-    ]
-elif is_atom:
-    LAYERS = [
-        ("Nucleus", 0.4, (1.0, 0.6, 0.1), 8.0, 0.0),
-        ("Shell 1", 1.0, (0.2, 0.6, 1.0), 1.5, 0.75),
-        ("Shell 2", 1.7, (0.1, 0.8, 0.8), 1.0, 0.80),
-        ("Shell 3", 2.4, (0.3, 0.3, 0.9), 0.6, 0.85),
-    ]
-else:  # Earth interior
-    LAYERS = [
-        ("Inner Core", 0.7, (1.0, 0.55, 0.1), 10.0, 0.0),
-        ("Outer Core", 1.3, (0.9, 0.25, 0.0),  4.0, 0.4),
-        ("Mantle",     2.1, (0.75, 0.4, 0.1),  1.5, 0.6),
-        ("Crust",      2.6, (0.35, 0.5, 0.25), 0.6, 0.80),
-    ]
-
-# ─── Blender 4.x / 5.x fcurves compatibility ────────────────────────────────
+# ─── fcurves compatibility ────────────────────────────────────────────────────
 def _set_interp(obj, mode="LINEAR"):
     if not obj.animation_data or not obj.animation_data.action:
         return
-    action   = obj.animation_data.action
-    fcurves  = []
+    action = obj.animation_data.action
+    fcurves = []
     try:
         fcurves = list(action.fcurves)
     except AttributeError:
@@ -104,12 +83,11 @@ def _set_interp(obj, mode="LINEAR"):
         for kp in fc.keyframe_points:
             kp.interpolation = mode
 
-# ─── Build layered spheres ───────────────────────────────────────────────────
+# ─── Build layered spheres ────────────────────────────────────────────────────
 objects = []
 for (lname, radius, color, emit_str, alpha) in LAYERS:
     bpy.ops.mesh.primitive_uv_sphere_add(
-        radius=radius, location=(0, 0, 0), segments=24, ring_count=16,
-    )
+        radius=radius, location=(0, 0, 0), segments=24, ring_count=16)
     obj = bpy.context.active_object
     obj.name = lname
 
@@ -120,25 +98,54 @@ for (lname, radius, color, emit_str, alpha) in LAYERS:
     bsdf.inputs["Emission Color"].default_value    = (*color, 1)
     bsdf.inputs["Emission Strength"].default_value = emit_str * 0.1
     bsdf.inputs["Roughness"].default_value         = 0.7
-    bsdf.inputs["Alpha"].default_value             = 1.0 - alpha
-    # blend_method is an EEVEE property; CYCLES uses Alpha directly
+    bsdf.inputs["Alpha"].default_value             = max(0.0, 1.0 - alpha)
     if alpha > 0:
         try:
             m.blend_method = "BLEND"
         except AttributeError:
             pass
     obj.data.materials.append(m)
-    objects.append(obj)
+    objects.append((obj, lname, radius, color))
 
-# ─── Animation — rotation ────────────────────────────────────────────────────
-for obj in objects:
+# ─── Labels (positioned just outside each sphere, facing camera) ──────────────
+for obj, lname, radius, color in objects:
+    bpy.ops.object.text_add(location=(0, -(radius + 0.25), radius * 0.6))
+    t = bpy.context.active_object
+    t.data.body      = lname.upper()
+    t.data.size      = max(0.14, min(0.22, 0.18))
+    t.data.align_x   = "CENTER"
+    t.rotation_euler = (math.radians(68), 0, 0)
+    lbl_m = bpy.data.materials.new(f"{lname}LblMat")
+    lbl_m.use_nodes = True
+    lbl_m.node_tree.nodes.clear()
+    em  = lbl_m.node_tree.nodes.new("ShaderNodeEmission")
+    out = lbl_m.node_tree.nodes.new("ShaderNodeOutputMaterial")
+    em.inputs["Color"].default_value    = (*color, 1)
+    em.inputs["Strength"].default_value = 3.0
+    lbl_m.node_tree.links.new(em.outputs["Emission"], out.inputs["Surface"])
+    t.data.materials.append(lbl_m)
+
+# ─── Rotation animation ───────────────────────────────────────────────────────
+for obj, *_ in objects:
     obj.rotation_euler = (0, 0, 0)
     obj.keyframe_insert("rotation_euler", frame=1)
     obj.rotation_euler = (0, 0, math.tau)
-    obj.keyframe_insert("rotation_euler", frame=120)
+    obj.keyframe_insert("rotation_euler", frame=TOTAL_FRAMES)
     _set_interp(obj, "LINEAR")
 
-# ─── Camera ──────────────────────────────────────────────────────────────────
+# ─── Lights ───────────────────────────────────────────────────────────────────
+bpy.ops.object.light_add(type="AREA", location=(5, -5, 8))
+key = bpy.context.active_object
+key.data.energy = 400
+key.data.size   = 4
+key.data.color  = (1, 0.95, 0.9)
+
+bpy.ops.object.light_add(type="AREA", location=(-5, 5, 4))
+fill = bpy.context.active_object
+fill.data.energy = 100
+fill.data.color  = (0.6, 0.7, 1.0)
+
+# ─── Camera ───────────────────────────────────────────────────────────────────
 bpy.ops.object.camera_add(location=(0, -7, 3))
 cam = bpy.context.active_object
 cam.name = "Camera"
@@ -146,24 +153,12 @@ cam.data.lens = 40
 cam.rotation_euler = (math.radians(68), 0, 0)
 scene.camera = cam
 
-for frame in range(1, 122, 4):
-    t     = (frame - 1) / 120.0
+for frame in range(1, TOTAL_FRAMES + 2, 4):
+    t     = (frame - 1) / TOTAL_FRAMES
     angle = math.radians(t * 40)
     r     = 7 + t * 2
     cam.location = (-r * math.sin(angle), -r * math.cos(angle), 3 + t)
     cam.keyframe_insert("location", frame=frame)
 
-# ─── Lights ──────────────────────────────────────────────────────────────────
-bpy.ops.object.light_add(type="AREA", location=(5, -5, 8))
-key_light = bpy.context.active_object
-key_light.data.energy = 400
-key_light.data.size   = 4
-key_light.data.color  = (1, 0.95, 0.9)
-
-bpy.ops.object.light_add(type="AREA", location=(-5, 5, 4))
-fill_light = bpy.context.active_object
-fill_light.data.energy = 100
-fill_light.data.color  = (0.6, 0.7, 1.0)
-
-# ─── Render ──────────────────────────────────────────────────────────────────
+# ─── Render ───────────────────────────────────────────────────────────────────
 bpy.ops.render.render(animation=True)
