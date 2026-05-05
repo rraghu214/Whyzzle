@@ -12,6 +12,8 @@ dependencies = [
     "mcp>=1.0.0",
     "python-dotenv>=1.0.0",
     "imageio-ffmpeg>=0.6.0",
+    "prefab-ui>=0.19.1",
+    "flask-cors>=6.0.2",
 ]
 
 

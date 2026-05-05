@@ -16,6 +16,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request, send_from_directory
+from flask_cors import CORS
 
 load_dotenv()
 sys.path.insert(0, str(Path(__file__).parent))
@@ -71,6 +72,7 @@ from tools.profiles import manage_profiles
 from tools.search_and_explain import search_and_explain
 
 app = Flask(__name__, static_folder="ui")
+CORS(app, origins=["http://localhost:5175", "http://127.0.0.1:5175"])
 _wz.info("Whyzzle webapp starting up")
 
 
@@ -79,6 +81,43 @@ _wz.info("Whyzzle webapp starting up")
 @app.route("/")
 def index():
     return send_from_directory("ui", "index.html")
+
+
+# ─── Init (single call to bootstrap the Prefab UI) ───────────────────────────
+
+@app.route("/api/init", methods=["GET"])
+def init_data():
+    """Return everything the Prefab UI needs to start: profiles, topics, stats."""
+    profiles_data = manage_profiles("list")
+    active_id = profiles_data.get("active_profile_id") or ""
+    topics, stats = [], {}
+    if active_id:
+        topics = manage_curiosity_map("read", active_id).get("topics", [])
+        stats  = manage_curiosity_map("get_stats", active_id)
+    return jsonify({
+        "profiles":          profiles_data.get("profiles", []),
+        "active_profile_id": active_id,
+        "topics":            list(reversed(topics)),  # newest first
+        "stats":             stats,
+    })
+
+
+@app.route("/api/activate-profile", methods=["POST"])
+def activate_profile_body():
+    """Activate a profile by ID (body-based, easier for Prefab Fetch actions).
+    Returns fresh topics and stats for the newly activated profile.
+    """
+    data       = request.get_json(force=True) or {}
+    profile_id = data.get("profile_id", "").strip()
+    if not profile_id:
+        return jsonify({"error": "profile_id is required"}), 400
+    manage_profiles("set_active", {"profile_id": profile_id})
+    topics = manage_curiosity_map("read", profile_id).get("topics", [])
+    stats  = manage_curiosity_map("get_stats", profile_id)
+    return jsonify({
+        "topics": list(reversed(topics)),
+        "stats":  stats,
+    })
 
 
 # ─── Profiles ────────────────────────────────────────────────────────────────
