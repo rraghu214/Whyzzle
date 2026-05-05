@@ -1,0 +1,452 @@
+2026-05-02 17:47:04,122 INFO  Whyzzle webapp starting up
+2026-05-02 17:57:51,697 INFO  Whyzzle webapp starting up
+2026-05-02 18:00:30,621 INFO  --- /api/ask: "Why do we live on Earth?" (by child) ---
+2026-05-02 18:00:30,622 INFO  === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-02 18:00:30,623 INFO  Question: "Why do we live on Earth?"
+2026-05-02 18:00:30,626 INFO  Profile age: 4 — applying age-adaptive explanation depth
+2026-05-02 18:00:30,627 INFO  Web search: "Why do we live on Earth?"
+2026-05-02 18:00:31,426 INFO  DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-02 18:00:32,794 INFO  DuckDuckGo HTML snippets: 1405 chars from 5 results
+2026-05-02 18:00:32,795 INFO  Building prompt (1405 chars web context) and calling LLM...
+2026-05-02 18:00:32,797 INFO  Calling Gemini Flash (gemini-2.0-flash)...
+2026-05-02 18:00:36,918 WARNING  Gemini 429 — quota hit; waiting 30s then retrying once...
+2026-05-02 18:01:06,920 INFO  Calling Gemini Flash (gemini-2.0-flash)...
+2026-05-02 18:01:07,925 WARNING  Gemini retry failed (429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your cu) — falling through to Ollama
+2026-05-02 18:01:07,925 INFO  Calling Ollama at http://localhost:11434 (model: gemma4:e4b) — timeout 240s...
+2026-05-02 18:05:10,285 WARNING  Ollama unavailable (timed out) — falling through to Claude
+2026-05-02 18:24:55,831 INFO  Whyzzle webapp starting up
+2026-05-02 18:25:37,539 INFO  --- /api/ask: "why do we live on earth?" (by child) ---
+2026-05-02 18:25:37,540 INFO  === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-02 18:25:37,540 INFO  Question: "why do we live on earth?"
+2026-05-02 18:25:37,542 INFO  Profile age: 4 — applying age-adaptive explanation depth
+2026-05-02 18:25:37,543 INFO  Web search: "why do we live on earth?"
+2026-05-02 18:25:38,453 INFO  DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-02 18:25:39,906 INFO  DuckDuckGo HTML snippets: 1406 chars from 5 results
+2026-05-02 18:25:39,909 INFO  Building prompt (1406 chars web context) and calling LLM...
+2026-05-02 18:25:39,909 INFO  Calling Gemini Flash (gemini-2.0-flash)...
+2026-05-02 18:25:43,452 WARNING  Gemini 429 — quota hit; waiting 30s then retrying once...
+2026-05-02 18:26:13,453 INFO  Calling Gemini Flash (gemini-2.0-flash)...
+2026-05-02 18:26:14,242 WARNING  Gemini retry failed (429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your cu) — falling through to Ollama
+2026-05-02 18:26:14,243 INFO  Calling Groq (llama-3.3-70b-versatile)...
+2026-05-02 18:26:15,646 INFO  Groq responded: 762 chars
+2026-05-02 18:26:15,647 INFO  LLM response received, extracting JSON...
+2026-05-02 18:26:15,648 INFO  Parsed response: concept_type=spatial, visual_type=svg, tags=['earth', 'space', 'home']
+2026-05-02 18:26:15,648 INFO  === Pipeline complete ===
+2026-05-02 18:26:15,649 INFO  Storing result in curiosity map...
+2026-05-02 18:26:15,651 INFO  Saving topic to curiosity map: "why do we live on earth?"
+2026-05-02 18:26:15,651 INFO  Tags: ['home', 'earth', 'space']
+2026-05-02 18:26:15,652 INFO  No existing topics share tags — standalone node
+2026-05-02 18:26:15,655 INFO  Topic saved (id=dede36c9, connections=0, total in map=3)
+2026-05-02 18:26:15,678 INFO  Found 0 related topic(s) in curiosity map
+2026-05-02 18:27:04,792 INFO  --- /api/ask: "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN" (by child) ---
+2026-05-02 18:27:04,792 INFO  === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-02 18:27:04,792 INFO  Question: "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN): why do we live on earth?"
+2026-05-02 18:27:04,793 INFO  Profile age: 4 — applying age-adaptive explanation depth
+2026-05-02 18:27:04,793 INFO  Web search: "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN): why do we live on earth?"
+2026-05-02 18:27:05,252 INFO  DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-02 18:27:05,727 INFO  No web context found — LLM will use its own knowledge
+2026-05-02 18:27:05,727 INFO  Building prompt (0 chars web context) and calling LLM...
+2026-05-02 18:27:05,728 INFO  Gemini quota exhausted this session — skipping, going straight to Ollama
+2026-05-02 18:27:05,728 INFO  Calling Groq (llama-3.3-70b-versatile)...
+2026-05-02 18:27:07,530 INFO  Groq responded: 1344 chars
+2026-05-02 18:27:07,531 INFO  LLM response received, extracting JSON...
+2026-05-02 18:27:07,532 INFO  Parsed response: concept_type=spatial, visual_type=svg, tags=['earth', 'home', 'space']
+2026-05-02 18:27:07,533 INFO  === Pipeline complete ===
+2026-05-02 18:27:07,533 INFO  Storing result in curiosity map...
+2026-05-02 18:27:07,535 INFO  Saving topic to curiosity map: "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN"
+2026-05-02 18:27:07,536 INFO  Tags: ['home', 'earth', 'space']
+2026-05-02 18:27:07,537 INFO  Auto-connected to "why do we live on earth?" (shared tags: ['home', 'earth', 'space'])
+2026-05-02 18:27:07,542 INFO  Topic saved (id=c40495c3, connections=1, total in map=4)
+2026-05-02 18:27:07,580 INFO  Found 1 related topic(s) in curiosity map
+2026-05-02 18:27:16,447 INFO  3D render requested for topic: Show an interactive 3D visualization using Three.js (self-co
+2026-05-02 18:27:16,447 INFO  3D scene request: topic='Show an interactive 3D visualization using Three.js (self-co' concept_type=spatial
+2026-05-02 18:27:16,456 WARNING  Blender is not installed or not found in PATH. Download it from blender.org, install, then try again.
+2026-05-02 18:29:50,857 INFO  Whyzzle webapp starting up
+2026-05-02 18:30:59,072 INFO  --- /api/ask: "How does a volcano erupt?" (by child) ---
+2026-05-02 18:30:59,073 INFO  === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-02 18:30:59,074 INFO  Question: "How does a volcano erupt?"
+2026-05-02 18:30:59,076 INFO  Profile age: 4 — applying age-adaptive explanation depth
+2026-05-02 18:30:59,077 INFO  Web search: "How does a volcano erupt?"
+2026-05-02 18:30:59,678 INFO  DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-02 18:31:01,639 INFO  DuckDuckGo HTML snippets: 1555 chars from 5 results
+2026-05-02 18:31:01,640 INFO  Building prompt (1555 chars web context) and calling LLM...
+2026-05-02 18:31:01,641 INFO  Calling Groq (llama-3.3-70b-versatile)...
+2026-05-02 18:31:03,237 INFO  Groq responded: 910 chars
+2026-05-02 18:31:03,238 INFO  LLM response received, extracting JSON...
+2026-05-02 18:31:03,238 INFO  Parsed response: concept_type=spatial, visual_type=svg, tags=['earth', 'volcano', 'geology']
+2026-05-02 18:31:03,239 INFO  === Pipeline complete ===
+2026-05-02 18:31:03,240 INFO  Storing result in curiosity map...
+2026-05-02 18:31:03,241 INFO  Saving topic to curiosity map: "How does a volcano erupt?"
+2026-05-02 18:31:03,242 INFO  Tags: ['earth', 'volcano', 'geology']
+2026-05-02 18:31:03,243 INFO  Auto-connected to "why do we live on earth?" (shared tags: ['earth'])
+2026-05-02 18:31:03,243 INFO  Auto-connected to "Show an interactive 3D visualization using Three.j" (shared tags: ['earth'])
+2026-05-02 18:31:03,248 INFO  Topic saved (id=dffafdd1, connections=2, total in map=5)
+2026-05-02 18:31:03,280 INFO  Found 2 related topic(s) in curiosity map
+2026-05-02 18:31:11,970 INFO  3D render requested for topic: How does a volcano erupt?
+2026-05-02 18:31:11,971 INFO  3D scene request: topic='How does a volcano erupt?' concept_type=spatial
+2026-05-02 18:31:11,984 WARNING  Blender is not installed or not found in PATH. Download it from blender.org, install, then try again.
+2026-05-02 18:31:17,156 INFO  --- /api/ask: "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN" (by child) ---
+2026-05-02 18:31:17,157 INFO  === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-02 18:31:17,158 INFO  Question: "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN): How does a volcano erupt?"
+2026-05-02 18:31:17,159 INFO  Profile age: 4 — applying age-adaptive explanation depth
+2026-05-02 18:31:17,160 INFO  Web search: "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN): How does a volcano erupt?"
+2026-05-02 18:31:17,681 INFO  DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-02 18:31:18,259 INFO  No web context found — LLM will use its own knowledge
+2026-05-02 18:31:18,259 INFO  Building prompt (0 chars web context) and calling LLM...
+2026-05-02 18:31:18,260 INFO  Calling Groq (llama-3.3-70b-versatile)...
+2026-05-02 18:31:20,002 INFO  Groq responded: 1498 chars
+2026-05-02 18:31:20,002 INFO  LLM response received, extracting JSON...
+2026-05-02 18:31:20,003 INFO  Parsed response: concept_type=spatial, visual_type=html_interactive, tags=['earth', 'geology', 'physics']
+2026-05-02 18:31:20,003 INFO  === Pipeline complete ===
+2026-05-02 18:31:20,003 INFO  Storing result in curiosity map...
+2026-05-02 18:31:20,004 INFO  Saving topic to curiosity map: "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN"
+2026-05-02 18:31:20,004 INFO  Tags: ['physics', 'earth', 'geology']
+2026-05-02 18:31:20,005 INFO  Auto-connected to "why do we live on earth?" (shared tags: ['earth'])
+2026-05-02 18:31:20,005 INFO  Auto-connected to "Show an interactive 3D visualization using Three.j" (shared tags: ['earth'])
+2026-05-02 18:31:20,005 INFO  Auto-connected to "How does a volcano erupt?" (shared tags: ['earth', 'geology'])
+2026-05-02 18:31:20,007 INFO  Topic saved (id=d818b502, connections=3, total in map=6)
+2026-05-02 18:31:20,096 INFO  Found 3 related topic(s) in curiosity map
+2026-05-02 18:32:09,552 INFO  --- /api/ask: "How does a volcano erupt?" (by child) ---
+2026-05-02 18:32:09,553 INFO  === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-02 18:32:09,554 INFO  Question: "How does a volcano erupt?"
+2026-05-02 18:32:09,556 INFO  Profile age: 4 — applying age-adaptive explanation depth
+2026-05-02 18:32:09,557 INFO  Web search: "How does a volcano erupt?"
+2026-05-02 18:32:10,686 INFO  DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-02 18:32:12,009 INFO  DuckDuckGo HTML snippets: 1666 chars from 5 results
+2026-05-02 18:32:12,009 INFO  Building prompt (1666 chars web context) and calling LLM...
+2026-05-02 18:32:12,010 INFO  Calling Groq (llama-3.3-70b-versatile)...
+2026-05-02 18:32:13,479 INFO  Groq responded: 1089 chars
+2026-05-02 18:32:13,480 INFO  LLM response received, extracting JSON...
+2026-05-02 18:32:13,480 INFO  Parsed response: concept_type=spatial, visual_type=svg, tags=['earth', 'volcano', 'eruption']
+2026-05-02 18:32:13,480 INFO  === Pipeline complete ===
+2026-05-02 18:32:13,481 INFO  Storing result in curiosity map...
+2026-05-02 18:32:13,481 INFO  Saving topic to curiosity map: "How does a volcano erupt?"
+2026-05-02 18:32:13,481 INFO  Tags: ['eruption', 'earth', 'volcano']
+2026-05-02 18:32:13,482 INFO  Auto-connected to "why do we live on earth?" (shared tags: ['earth'])
+2026-05-02 18:32:13,482 INFO  Auto-connected to "Show an interactive 3D visualization using Three.j" (shared tags: ['earth'])
+2026-05-02 18:32:13,482 INFO  Auto-connected to "How does a volcano erupt?" (shared tags: ['earth', 'volcano'])
+2026-05-02 18:32:13,482 INFO  Auto-connected to "Show an interactive 3D visualization using Three.j" (shared tags: ['earth'])
+2026-05-02 18:32:13,484 INFO  Topic saved (id=90d1f8b4, connections=4, total in map=7)
+2026-05-02 18:32:13,514 INFO  Found 4 related topic(s) in curiosity map
+2026-05-02 18:32:46,947 INFO  3D render requested for topic: How does a volcano erupt?
+2026-05-02 18:32:46,948 INFO  3D scene request: topic='How does a volcano erupt?' concept_type=spatial
+2026-05-02 18:32:46,975 WARNING  Blender is not installed or not found in PATH. Download it from blender.org, install, then try again.
+2026-05-02 18:34:39,276 INFO  3D render requested for topic: How does a volcano erupt?
+2026-05-02 18:34:39,277 INFO  3D scene request: topic='How does a volcano erupt?' concept_type=spatial
+2026-05-02 18:34:39,305 WARNING  Blender is not installed or not found in PATH. Download it from blender.org, install, then try again.
+2026-05-02 18:34:42,828 INFO  --- /api/ask: "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN" (by child) ---
+2026-05-02 18:34:42,829 INFO  === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-02 18:34:42,830 INFO  Question: "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN): How does a volcano erupt?"
+2026-05-02 18:34:42,831 INFO  Profile age: 4 — applying age-adaptive explanation depth
+2026-05-02 18:34:42,832 INFO  Web search: "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN): How does a volcano erupt?"
+2026-05-02 18:34:43,280 INFO  DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-02 18:34:43,747 INFO  No web context found — LLM will use its own knowledge
+2026-05-02 18:34:43,748 INFO  Building prompt (0 chars web context) and calling LLM...
+2026-05-02 18:34:43,749 INFO  Calling Groq (llama-3.3-70b-versatile)...
+2026-05-02 18:34:45,685 INFO  Groq responded: 1582 chars
+2026-05-02 18:34:45,686 INFO  LLM response received, extracting JSON...
+2026-05-02 18:34:45,687 INFO  Parsed response: concept_type=spatial, visual_type=html_interactive, tags=['volcano', 'eruption', 'geology']
+2026-05-02 18:34:45,688 INFO  === Pipeline complete ===
+2026-05-02 18:34:45,689 INFO  Storing result in curiosity map...
+2026-05-02 18:34:45,691 INFO  Saving topic to curiosity map: "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN"
+2026-05-02 18:34:45,691 INFO  Tags: ['eruption', 'volcano', 'geology']
+2026-05-02 18:34:45,692 INFO  Auto-connected to "How does a volcano erupt?" (shared tags: ['volcano', 'geology'])
+2026-05-02 18:34:45,693 INFO  Auto-connected to "Show an interactive 3D visualization using Three.j" (shared tags: ['geology'])
+2026-05-02 18:34:45,694 INFO  Auto-connected to "How does a volcano erupt?" (shared tags: ['eruption', 'volcano'])
+2026-05-02 18:34:45,698 INFO  Topic saved (id=b4ea8768, connections=3, total in map=8)
+2026-05-02 18:34:45,851 INFO  Found 3 related topic(s) in curiosity map
+2026-05-02 18:45:15,634 INFO  [-] Whyzzle webapp starting up
+2026-05-02 18:46:00,528 INFO  [ask-a20b2] --- /api/ask: "How do planets rotate?" (by both) ---
+2026-05-02 18:46:00,528 INFO  [ask-a20b2] === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=both) ===
+2026-05-02 18:46:00,529 INFO  [ask-a20b2] Question: "How do planets rotate?"
+2026-05-02 18:46:00,531 INFO  [ask-a20b2] Profile age: 4 — applying age-adaptive explanation depth
+2026-05-02 18:46:00,532 INFO  [ask-a20b2] Web search: "How do planets rotate?"
+2026-05-02 18:46:01,614 INFO  [ask-a20b2] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-02 18:46:03,447 INFO  [ask-a20b2] DuckDuckGo HTML snippets: 1435 chars from 5 results
+2026-05-02 18:46:03,447 INFO  [ask-a20b2] Building prompt (1435 chars web context) and calling LLM...
+2026-05-02 18:46:03,447 INFO  [ask-a20b2] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-02 18:46:05,237 INFO  [ask-a20b2] Groq responded: 990 chars
+2026-05-02 18:46:05,238 INFO  [ask-a20b2] LLM response received, extracting JSON...
+2026-05-02 18:46:05,238 INFO  [ask-a20b2] Parsed response: concept_type=spatial, visual_type=svg, tags=['space', 'planets', 'rotation']
+2026-05-02 18:46:05,239 INFO  [ask-a20b2] === Pipeline complete ===
+2026-05-02 18:46:05,239 INFO  [ask-a20b2] Storing result in curiosity map...
+2026-05-02 18:46:05,241 INFO  [ask-a20b2] Saving topic to curiosity map: "How do planets rotate?"
+2026-05-02 18:46:05,241 INFO  [ask-a20b2] Tags: ['space', 'planets', 'rotation']
+2026-05-02 18:46:05,242 INFO  [ask-a20b2] Auto-connected to "why do we live on earth?" (shared tags: ['space'])
+2026-05-02 18:46:05,242 INFO  [ask-a20b2] Auto-connected to "Show an interactive 3D visualization using Three.j" (shared tags: ['space'])
+2026-05-02 18:46:05,247 INFO  [ask-a20b2] Topic saved (id=0878e08c, connections=2, total in map=9)
+2026-05-02 18:46:05,320 INFO  [ask-a20b2] Found 2 related topic(s) in curiosity map
+2026-05-02 18:46:25,345 INFO  [3d-79d86] 3D render requested for topic: How do planets rotate?
+2026-05-02 18:46:25,346 INFO  [3d-79d86] 3D scene request: topic='How do planets rotate?' concept_type=spatial
+2026-05-02 18:46:25,390 WARNING  [3d-79d86] Blender is not installed or not found in PATH. Download it from blender.org, install, then try again.
+2026-05-02 18:47:09,634 INFO  [vis-4f1af] Regenerating visual for: How do planets rotate?
+2026-05-02 18:47:09,635 INFO  [vis-4f1af] generate_canvas_visual: 'How do planets rotate?' (concept=spatial)
+2026-05-02 18:47:11,855 INFO  [vis-4f1af] Canvas visual from Groq: 2052 chars
+2026-05-02 18:47:11,855 INFO  [vis-4f1af] Canvas visual generation successful (2052 chars)
+2026-05-02 18:50:03,952 INFO  [3d-47c9b] 3D render requested for topic: How do planets rotate?
+2026-05-02 18:50:03,952 INFO  [3d-47c9b] 3D scene request: topic='How do planets rotate?' concept_type=spatial
+2026-05-02 18:50:03,963 WARNING  [3d-47c9b] Blender is not installed or not found in PATH. Download it from blender.org, install, then try again.
+2026-05-02 18:53:27,476 INFO  [-] Whyzzle webapp starting up
+2026-05-02 18:55:14,621 INFO  [ask-66d1e] --- /api/ask: "How would it look when all the planets rotate around the sun, along with our moo" (by child) ---
+2026-05-02 18:55:14,622 INFO  [ask-66d1e] === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-02 18:55:14,622 INFO  [ask-66d1e] Question: "How would it look when all the planets rotate around the sun, along with our moon?"
+2026-05-02 18:55:14,623 INFO  [ask-66d1e] Profile age: 4 — applying age-adaptive explanation depth
+2026-05-02 18:55:14,624 INFO  [ask-66d1e] Web search: "How would it look when all the planets rotate around the sun, along with our moon?"
+2026-05-02 18:55:15,450 INFO  [ask-66d1e] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-02 18:55:15,923 INFO  [ask-66d1e] No web context found — LLM will use its own knowledge
+2026-05-02 18:55:15,924 INFO  [ask-66d1e] Building prompt (0 chars web context) and calling LLM...
+2026-05-02 18:55:15,924 INFO  [ask-66d1e] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-02 18:55:17,755 INFO  [ask-66d1e] Groq responded: 1646 chars
+2026-05-02 18:55:17,755 INFO  [ask-66d1e] LLM response received, extracting JSON...
+2026-05-02 18:55:17,755 INFO  [ask-66d1e] Parsed response: concept_type=spatial, visual_type=svg, tags=['space', 'planets', 'moon']
+2026-05-02 18:55:17,756 INFO  [ask-66d1e] === Pipeline complete ===
+2026-05-02 18:55:17,756 INFO  [ask-66d1e] Storing result in curiosity map...
+2026-05-02 18:55:17,756 INFO  [ask-66d1e] Saving topic to curiosity map: "How would it look when all the planets rotate around the sun, along with our moo"
+2026-05-02 18:55:17,757 INFO  [ask-66d1e] Tags: ['planets', 'space', 'moon']
+2026-05-02 18:55:17,757 INFO  [ask-66d1e] Auto-connected to "why do we live on earth?" (shared tags: ['space'])
+2026-05-02 18:55:17,757 INFO  [ask-66d1e] Auto-connected to "Show an interactive 3D visualization using Three.j" (shared tags: ['space'])
+2026-05-02 18:55:17,757 INFO  [ask-66d1e] Auto-connected to "How do planets rotate?" (shared tags: ['planets', 'space'])
+2026-05-02 18:55:17,759 INFO  [ask-66d1e] Topic saved (id=b14732ad, connections=3, total in map=10)
+2026-05-02 18:55:17,772 INFO  [ask-66d1e] Found 3 related topic(s) in curiosity map
+2026-05-02 18:55:26,433 INFO  [3d-eae0e] 3D render requested for topic: How would it look when all the planets rotate around the sun
+2026-05-02 18:55:26,433 INFO  [3d-eae0e] 3D scene request: topic='How would it look when all the planets rotate around the sun' concept_type=spatial
+2026-05-02 18:55:26,589 INFO  [3d-eae0e] Blender found at: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-02 18:55:26,591 INFO  [3d-eae0e] Running: C:\Raghu\Installs\General\Blender\blender.exe --background --python C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py ... --params <json>
+2026-05-02 18:55:35,230 ERROR  [3d-eae0e] Render finished but output file missing: C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\output\scene_How_would_it_look_when_all_the_planets_r.mp4
+2026-05-02 18:56:02,326 INFO  [vis-034a6] Regenerating visual for: How would it look when all the planets rotate around the sun
+2026-05-02 18:56:02,327 INFO  [vis-034a6] generate_canvas_visual: 'How would it look when all the planets rotate around the sun' (concept=spatial)
+2026-05-02 18:56:06,204 INFO  [vis-034a6] Canvas visual from Groq: 5479 chars
+2026-05-02 18:56:06,204 INFO  [vis-034a6] Canvas visual generation successful (5479 chars)
+2026-05-02 19:01:36,666 INFO  [3d-69ead] 3D render requested for topic: How would it look when all the planets rotate around the sun
+2026-05-02 19:01:36,666 INFO  [3d-69ead] 3D scene request: topic='How would it look when all the planets rotate around the sun' concept_type=spatial
+2026-05-02 19:01:37,086 INFO  [3d-69ead] Blender found at: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-02 19:01:37,088 INFO  [3d-69ead] Running: C:\Raghu\Installs\General\Blender\blender.exe --background --python C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py ... --params <json>
+2026-05-02 19:01:38,034 ERROR  [3d-69ead] Render finished but output file missing: C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\output\scene_How_would_it_look_when_all_the_planets_r.mp4
+2026-05-02 19:02:29,419 INFO  [3d-d4a68] 3D render requested for topic: How would it look when all the planets rotate around the sun
+2026-05-02 19:02:29,419 INFO  [3d-d4a68] 3D scene request: topic='How would it look when all the planets rotate around the sun' concept_type=spatial
+2026-05-02 19:02:29,846 INFO  [3d-d4a68] Blender found at: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-02 19:02:29,850 INFO  [3d-d4a68] Running: C:\Raghu\Installs\General\Blender\blender.exe --background --python C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py ... --params <json>
+2026-05-02 19:02:31,077 ERROR  [3d-d4a68] Render finished but output file missing: C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\output\scene_How_would_it_look_when_all_the_planets_r.mp4
+2026-05-02 19:10:49,585 INFO  [-] Whyzzle webapp starting up
+2026-05-02 19:11:07,908 INFO  [3d-01bd7] 3D render requested for topic: How would it look when all the planets rotate around the sun
+2026-05-02 19:11:07,908 INFO  [3d-01bd7] 3D scene request: topic='How would it look when all the planets rotate around the sun' concept_type=spatial
+2026-05-02 19:11:08,093 INFO  [3d-01bd7] Blender found at: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-02 19:11:08,094 INFO  [3d-01bd7] Running: C:\Raghu\Installs\General\Blender\blender.exe --background --python C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py ... --params <json>
+2026-05-02 19:11:08,962 ERROR  [3d-01bd7] Render finished but output file missing: C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\output\scene_How_would_it_look_when_all_the_planets_r.mp4
+2026-05-04 11:15:20,876 INFO  [-] Whyzzle webapp starting up
+2026-05-04 11:26:02,314 INFO  [-] Whyzzle webapp starting up
+2026-05-05 01:09:47,655 INFO  [ask-2bf72] --- /api/ask: "How do planets keep floating and not fall down?" (by child) ---
+2026-05-05 01:09:47,660 INFO  [ask-2bf72] === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-05 01:09:47,661 INFO  [ask-2bf72] Question: "How do planets keep floating and not fall down?"
+2026-05-05 01:09:47,668 INFO  [ask-2bf72] Profile age: 4 — applying age-adaptive explanation depth
+2026-05-05 01:09:47,670 INFO  [ask-2bf72] Web search: "How do planets keep floating and not fall down?"
+2026-05-05 01:09:48,427 INFO  [ask-2bf72] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-05 01:09:49,927 INFO  [ask-2bf72] DuckDuckGo HTML snippets: 1679 chars from 5 results
+2026-05-05 01:09:49,928 INFO  [ask-2bf72] Building prompt (1679 chars web context) and calling LLM...
+2026-05-05 01:09:49,928 INFO  [ask-2bf72] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-05 01:09:51,583 INFO  [ask-2bf72] Groq responded: 1145 chars
+2026-05-05 01:09:51,584 INFO  [ask-2bf72] LLM response received, extracting JSON...
+2026-05-05 01:09:51,585 INFO  [ask-2bf72] Parsed response: concept_type=spatial, visual_type=svg, tags=['space', 'gravity', 'planets']
+2026-05-05 01:09:51,586 INFO  [ask-2bf72] === Pipeline complete ===
+2026-05-05 01:09:51,587 INFO  [ask-2bf72] Storing result in curiosity map...
+2026-05-05 01:09:51,589 INFO  [ask-2bf72] Saving topic to curiosity map: "How do planets keep floating and not fall down?"
+2026-05-05 01:09:51,590 INFO  [ask-2bf72] Tags: ['space', 'gravity', 'planets']
+2026-05-05 01:09:51,591 INFO  [ask-2bf72] Auto-connected to "why do we live on earth?" (shared tags: ['space'])
+2026-05-05 01:09:51,592 INFO  [ask-2bf72] Auto-connected to "Show an interactive 3D visualization using Three.j" (shared tags: ['space'])
+2026-05-05 01:09:51,593 INFO  [ask-2bf72] Auto-connected to "How do planets rotate?" (shared tags: ['space', 'planets'])
+2026-05-05 01:09:51,594 INFO  [ask-2bf72] Auto-connected to "How would it look when all the planets rotate arou" (shared tags: ['space', 'planets'])
+2026-05-05 01:09:51,601 INFO  [ask-2bf72] Topic saved (id=521a3eea, connections=4, total in map=11)
+2026-05-05 01:09:51,641 INFO  [ask-2bf72] Found 4 related topic(s) in curiosity map
+2026-05-05 02:03:18,746 INFO  [-] Whyzzle webapp starting up
+2026-05-05 02:04:04,499 INFO  [ask-8d93f] --- /api/ask: "How do planets keep floating and not fall down?" (by child) ---
+2026-05-05 02:04:04,500 INFO  [ask-8d93f] === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-05 02:04:04,500 INFO  [ask-8d93f] Question: "How do planets keep floating and not fall down?"
+2026-05-05 02:04:04,501 INFO  [ask-8d93f] Profile age: 4 — applying age-adaptive explanation depth
+2026-05-05 02:04:04,502 INFO  [ask-8d93f] Web search: "How do planets keep floating and not fall down?"
+2026-05-05 02:04:05,269 INFO  [ask-8d93f] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-05 02:04:06,621 INFO  [ask-8d93f] DuckDuckGo HTML snippets: 1478 chars from 5 results
+2026-05-05 02:04:06,621 INFO  [ask-8d93f] Building prompt (1478 chars web context) and calling LLM...
+2026-05-05 02:04:06,622 INFO  [ask-8d93f] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-05 02:04:07,969 INFO  [ask-8d93f] Groq responded: 944 chars
+2026-05-05 02:04:07,970 INFO  [ask-8d93f] LLM response received, extracting JSON...
+2026-05-05 02:04:07,971 INFO  [ask-8d93f] Parsed response: concept_type=spatial, visual_type=svg, tags=['space', 'gravity', 'orbits']
+2026-05-05 02:04:07,972 INFO  [ask-8d93f] === Pipeline complete ===
+2026-05-05 02:04:07,973 INFO  [ask-8d93f] Storing result in curiosity map...
+2026-05-05 02:04:07,975 INFO  [ask-8d93f] Saving topic to curiosity map: "How do planets keep floating and not fall down?"
+2026-05-05 02:04:07,976 INFO  [ask-8d93f] Tags: ['gravity', 'space', 'orbits']
+2026-05-05 02:04:07,977 INFO  [ask-8d93f] Auto-connected to "why do we live on earth?" (shared tags: ['space'])
+2026-05-05 02:04:07,978 INFO  [ask-8d93f] Auto-connected to "Show an interactive 3D visualization using Three.j" (shared tags: ['space'])
+2026-05-05 02:04:07,980 INFO  [ask-8d93f] Auto-connected to "How do planets rotate?" (shared tags: ['space'])
+2026-05-05 02:04:07,981 INFO  [ask-8d93f] Auto-connected to "How would it look when all the planets rotate arou" (shared tags: ['space'])
+2026-05-05 02:04:07,982 INFO  [ask-8d93f] Auto-connected to "How do planets keep floating and not fall down?" (shared tags: ['gravity', 'space'])
+2026-05-05 02:04:07,989 INFO  [ask-8d93f] Topic saved (id=9f99c193, connections=5, total in map=12)
+2026-05-05 02:04:08,047 INFO  [ask-8d93f] Found 4 related topic(s) in curiosity map
+2026-05-05 02:04:18,066 INFO  [3d-83ce2] 3D render requested for topic: How do planets keep floating and not fall down?
+2026-05-05 02:04:18,067 INFO  [3d-83ce2] 3D scene request: topic='How do planets keep floating and not fall down?' concept_type=spatial
+2026-05-05 02:04:18,808 INFO  [3d-83ce2] Blender found at: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 02:04:18,812 INFO  [3d-83ce2] Running: C:\Raghu\Installs\General\Blender\blender.exe --background --python C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py ... --params <json>
+2026-05-05 02:04:26,741 ERROR  [3d-83ce2] Blender ran but wrote no frames. Stderr: hu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py:58: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py:69: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+Traceback (most recent call last):
+  File "C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py", line 126, in <module>
+    add_planet(*args)
+    ~~~~~~~~~~^^^^^^^
+  File "C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py", line 119, in add_planet
+    for fc in obj.animation_data.action.fcurves:
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Action' object has no attribute 'fcurves'
+2026-05-05 02:05:10,240 INFO  [3d-b7149] 3D render requested for topic: How do planets keep floating and not fall down?
+2026-05-05 02:05:10,240 INFO  [3d-b7149] 3D scene request: topic='How do planets keep floating and not fall down?' concept_type=spatial
+2026-05-05 02:05:10,381 INFO  [3d-b7149] Blender found at: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 02:05:10,383 INFO  [3d-b7149] Running: C:\Raghu\Installs\General\Blender\blender.exe --background --python C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py ... --params <json>
+2026-05-05 02:05:11,588 ERROR  [3d-b7149] Blender ran but wrote no frames. Stderr: hu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py:58: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py:69: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+Traceback (most recent call last):
+  File "C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py", line 126, in <module>
+    add_planet(*args)
+    ~~~~~~~~~~^^^^^^^
+  File "C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py", line 119, in add_planet
+    for fc in obj.animation_data.action.fcurves:
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Action' object has no attribute 'fcurves'
+2026-05-05 02:09:11,361 INFO  [-] Whyzzle webapp starting up
+2026-05-05 02:09:26,221 INFO  [3d-392ff] 3D render requested for topic: How do planets keep floating and not fall down?
+2026-05-05 02:09:26,222 INFO  [3d-392ff] 3D scene request: topic='How do planets keep floating and not fall down?' concept_type=spatial
+2026-05-05 02:09:26,400 INFO  [3d-392ff] Blender found at: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 02:09:26,406 INFO  [3d-392ff] Running: C:\Raghu\Installs\General\Blender\blender.exe --background --python C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py ... --params <json>
+2026-05-05 02:14:27,082 ERROR  [3d-392ff] Blender render timed out after 300s
+2026-05-05 02:22:26,377 INFO  [-] Whyzzle webapp starting up
+2026-05-05 02:22:52,866 INFO  [3d-51b08] 3D render requested for topic: How do planets keep floating and not fall down?
+2026-05-05 02:22:52,867 INFO  [3d-51b08] 3D scene request: topic='How do planets keep floating and not fall down?' concept_type=spatial
+2026-05-05 02:22:53,047 INFO  [3d-51b08] Blender found at: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 02:22:53,052 INFO  [3d-51b08] Running: C:\Raghu\Installs\General\Blender\blender.exe --background --python C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\orbit.py ... --params <json>
+2026-05-05 02:32:53,865 ERROR  [3d-51b08] Blender render timed out after 600s
+2026-05-05 02:36:23,581 INFO  [-] Whyzzle webapp starting up
+2026-05-05 02:36:55,752 INFO  [3d-af21d] 3D render requested for topic: How do planets keep floating and not fall down?
+2026-05-05 02:36:55,752 INFO  [3d-af21d] 3D scene request: topic='How do planets keep floating and not fall down?' concept_type=spatial
+2026-05-05 02:36:55,914 INFO  [3d-af21d] Blender found at: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 02:36:55,918 INFO  [3d-af21d] Running: C:\Raghu\Installs\General\Blender\blender.exe --background --factory-startup --python ... --params <json>
+2026-05-05 02:37:28,521 INFO  [3d-af21d] Blender stdout tail:  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_k_f323oo\frame_0058.png'
+00:31.563  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_k_f323oo\frame_0059.png'
+00:32.094  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_k_f323oo\frame_0060.png'
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
+
+2026-05-05 02:37:28,525 INFO  [3d-af21d] Blender rendered 60 PNG frames — combining with ffmpeg...
+2026-05-05 02:37:30,390 INFO  [3d-af21d] 3D scene rendered: scene_How_do_planets_keep_floating_and_not_fal.mp4 (28.6 KB)
+2026-05-05 02:44:43,288 INFO  [-] Whyzzle webapp starting up
+2026-05-05 02:44:54,810 INFO  [3d-712e3] 3D render requested for topic: How do planets keep floating and not fall down?
+2026-05-05 02:44:54,811 INFO  [3d-712e3] 3D scene request: topic='How do planets keep floating and not fall down?' concept_type=spatial
+2026-05-05 02:44:54,982 INFO  [3d-712e3] Blender found at: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 02:44:54,987 INFO  [3d-712e3] Running: C:\Raghu\Installs\General\Blender\blender.exe --background --factory-startup --python ... --params <json>
+2026-05-05 02:47:50,035 INFO  [3d-712e3] Blender stdout tail:  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_nrbzaat5\frame_0118.png'
+02:52.453  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_nrbzaat5\frame_0119.png'
+02:54.610  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_nrbzaat5\frame_0120.png'
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
+
+2026-05-05 02:47:50,048 INFO  [3d-712e3] Blender rendered 120 PNG frames — combining with ffmpeg...
+2026-05-05 02:47:51,165 INFO  [3d-712e3] 3D scene rendered: scene_How_do_planets_keep_floating_and_not_fal.mp4 (170.2 KB)
+2026-05-05 02:54:01,641 INFO  [-] Whyzzle webapp starting up
+2026-05-05 02:54:15,230 INFO  [3d-38cf7] 3D render requested for topic: How do planets keep floating and not fall down?
+2026-05-05 02:54:15,230 INFO  [3d-38cf7] 3D scene request: topic='How do planets keep floating and not fall down?' concept_type=spatial
+2026-05-05 02:54:15,380 INFO  [3d-38cf7] Blender: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 02:54:15,383 INFO  [3d-38cf7] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-05 02:54:18,440 INFO  [3d-38cf7] Groq responded: 3746 chars
+2026-05-05 02:54:18,442 INFO  [3d-38cf7] LLM generated Blender script (3732 chars) for: How do planets keep floating and not fall down?
+2026-05-05 02:54:18,444 INFO  [3d-38cf7] Running Blender: C:\Raghu\Installs\General\Blender\blender.exe --background --factory-startup --python C:\Users\rragh\AppData\Local\Temp\tmphgtqudt5.py … --params <json>
+2026-05-05 02:54:19,949 INFO  [3d-38cf7] Blender stdout (tail): Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
+
+2026-05-05 02:54:19,951 ERROR  [3d-38cf7] Blender wrote no frames. stderr: Traceback (most recent call last):
+  File "C:\Users\rragh\AppData\Local\Temp\tmphgtqudt5.py", line 9, in <module>
+    if idx < len.extra:
+             ^^^^^^^^^
+AttributeError: 'builtin_function_or_method' object has no attribute 'extra'
+2026-05-05 02:54:19,951 WARNING  [3d-38cf7] LLM script failed (Blender produced no frames: File "C:\Users\rragh\AppData\Local\Temp\tmphgtqudt5.) — falling back to template
+2026-05-05 02:54:19,953 INFO  [3d-38cf7] Using fallback template: cross_section.py
+2026-05-05 02:54:19,954 INFO  [3d-38cf7] Running Blender: C:\Raghu\Installs\General\Blender\blender.exe --background --factory-startup --python C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\cross_section.py … --params <json>
+2026-05-05 02:55:41,633 INFO  [3d-38cf7] Blender stdout (tail): whyzzle_frames_ereonmq2\frame_0034.png'
+01:15.938  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_ereonmq2\frame_0035.png'
+01:18.438  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_ereonmq2\frame_0036.png'
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Sent an internal break event. Press ^C again to kill Blender
+
+Blender quit
+
+2026-05-05 02:55:41,634 ERROR  [3d-38cf7] Blender exited 1: C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\cross_section.py:50: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  world.use_nodes = True
+C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\cross_section.py:111: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  m.use_nodes = True
+
+2026-05-05 02:55:46,104 INFO  [-] Whyzzle webapp starting up
+2026-05-05 02:55:54,299 INFO  [3d-76bd8] 3D render requested for topic: How do planets keep floating and not fall down?
+2026-05-05 02:55:54,300 INFO  [3d-76bd8] 3D scene request: topic='How do planets keep floating and not fall down?' concept_type=spatial
+2026-05-05 02:55:54,491 INFO  [3d-76bd8] Blender: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 02:55:54,496 INFO  [3d-76bd8] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-05 02:55:57,453 INFO  [3d-76bd8] Groq responded: 2960 chars
+2026-05-05 02:55:57,454 INFO  [3d-76bd8] LLM scene code: 2960 chars → full script: 4457 chars for: How do planets keep floating and not fall down?
+2026-05-05 02:55:57,457 INFO  [3d-76bd8] Running Blender: C:\Raghu\Installs\General\Blender\blender.exe --background --factory-startup --python C:\Users\rragh\AppData\Local\Temp\tmp7qgn82pq.py … --params <json>
+2026-05-05 02:55:59,026 INFO  [3d-76bd8] Blender stdout (tail): Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
+
+2026-05-05 02:55:59,027 ERROR  [3d-76bd8] Blender wrote no frames. stderr: Traceback (most recent call last):
+  File "C:\Users\rragh\AppData\Local\Temp\tmp7qgn82pq.py", line 49, in <module>
+    scene.world.node_tree.nodes["Background"].inputs[0].default_value = (0.08, 0.16, 0.35, 1)
+    ^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'node_tree'
+2026-05-05 02:55:59,027 WARNING  [3d-76bd8] LLM script failed (Blender produced no frames: e 49, in <module>
+    scene.world.node_tree.nodes["B) — falling back to template
+2026-05-05 02:55:59,028 INFO  [3d-76bd8] Using fallback template: cross_section.py
+2026-05-05 02:55:59,029 INFO  [3d-76bd8] Running Blender: C:\Raghu\Installs\General\Blender\blender.exe --background --factory-startup --python C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\cross_section.py … --params <json>
+2026-05-05 02:57:41,906 INFO  [-] Whyzzle webapp starting up
+2026-05-05 02:57:56,284 INFO  [3d-cfbbf] 3D render requested for topic: How do planets keep floating and not fall down?
+2026-05-05 02:57:56,285 INFO  [3d-cfbbf] 3D scene request: topic='How do planets keep floating and not fall down?' concept_type=spatial
+2026-05-05 02:57:56,473 INFO  [3d-cfbbf] Blender: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 02:57:56,480 INFO  [3d-cfbbf] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-05 02:57:58,858 INFO  [3d-cfbbf] Groq responded: 2482 chars
+2026-05-05 02:57:58,863 INFO  [3d-cfbbf] LLM scene code: 2482 chars → full script: 4287 chars for: How do planets keep floating and not fall down?
+2026-05-05 02:57:58,868 INFO  [3d-cfbbf] Running Blender: C:\Raghu\Installs\General\Blender\blender.exe --background --factory-startup --python C:\Users\rragh\AppData\Local\Temp\tmpgghtqlou.py … --params <json>
+2026-05-05 03:07:59,591 WARNING  [3d-cfbbf] LLM script failed (Blender render timed out (>10 minutes).) — falling back to template
+2026-05-05 03:08:00,112 INFO  [3d-cfbbf] Using fallback template: cross_section.py
+2026-05-05 03:08:00,124 INFO  [3d-cfbbf] Running Blender: C:\Raghu\Installs\General\Blender\blender.exe --background --factory-startup --python C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\cross_section.py … --params <json>
+2026-05-05 03:17:15,487 INFO  [-] Whyzzle webapp starting up
+2026-05-05 03:17:49,895 INFO  [3d-3ff23] 3D render requested for topic: How do planets keep floating and not fall down?
+2026-05-05 03:17:49,896 INFO  [3d-3ff23] 3D scene request: topic='How do planets keep floating and not fall down?' concept_type=spatial
+2026-05-05 03:17:50,100 INFO  [3d-3ff23] Blender: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 03:17:50,105 INFO  [3d-3ff23] Render config: 480x270, 60 frames, 4 samples, llm_timeout=90s, template_timeout=300s
+2026-05-05 03:17:50,105 INFO  [3d-3ff23] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-05 03:17:51,833 INFO  [3d-3ff23] Groq responded: 1713 chars
+2026-05-05 03:17:51,845 INFO  [3d-3ff23] LLM script saved to debug_last_llm_script.py (3468 chars, timeout=90s)
+2026-05-05 03:17:51,848 INFO  [3d-3ff23] Running Blender (timeout=90s): C:\Raghu\Installs\General\Blender\blender.exe --background --factory-startup --python C:\Users\rragh\AppData\Local\Temp\tmpjjvbuxu1.py … --params <json>
+2026-05-05 03:19:21,990 WARNING  [3d-3ff23] LLM script failed (Blender render timed out (>90s).) — falling back to template
+2026-05-05 03:19:22,035 INFO  [3d-3ff23] Using fallback template: cross_section.py
+2026-05-05 03:19:22,036 INFO  [3d-3ff23] Running Blender (timeout=300s): C:\Raghu\Installs\General\Blender\blender.exe --background --factory-startup --python C:\Raghu\MyLearnings\EAG_V3\S4-25042026\Whyzzle\blender_scripts\cross_section.py … --params <json>
+2026-05-05 10:39:53,140 INFO  [-] Whyzzle webapp starting up
+2026-05-05 10:40:06,284 INFO  [3d-f739c] 3D render requested for topic: How do planets keep floating and not fall down?
+2026-05-05 10:40:06,285 INFO  [3d-f739c] 3D scene request: topic='How do planets keep floating and not fall down?' concept_type=spatial
+2026-05-05 10:40:06,535 INFO  [3d-f739c] Blender: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 10:40:06,538 INFO  [3d-f739c] Render config: 480x270, 30 frames, 4 samples, llm_timeout=90s, template_timeout=300s
+2026-05-05 10:40:06,539 INFO  [3d-f739c] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-05 10:40:08,874 INFO  [3d-f739c] Groq responded: 2743 chars
+2026-05-05 10:40:08,883 INFO  [3d-f739c] LLM script saved to debug_last_llm_script.py (4812 chars, timeout=90s)
+2026-05-05 10:40:08,886 INFO  [3d-f739c] Running Blender (timeout=90s): C:\Raghu\Installs\General\Blender\blender.exe --background --factory-startup --python C:\Users\rragh\AppData\Local\Temp\tmpalyj_vfb.py … --params <json>
+2026-05-05 10:40:31,350 INFO  [3d-f739c] Blender stdout (tail):  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_czyjlzcq\frame_0028.png'
+00:21.390  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_czyjlzcq\frame_0029.png'
+00:22.015  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_czyjlzcq\frame_0030.png'
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
+
+2026-05-05 10:40:31,351 INFO  [3d-f739c] Blender rendered 30 frames — assembling MP4…
+2026-05-05 10:40:31,630 INFO  [3d-f739c] Scene ready: scene_How_do_planets_keep_floating_and_not_fal.mp4 (9.9 KB)
+2026-05-05 10:40:31,630 INFO  [3d-f739c] LLM-generated script succeeded for: How do planets keep floating and not fall down?

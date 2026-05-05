@@ -14,11 +14,11 @@ build/
 .env
 
 # User data — curiosity maps and profiles are personal
-data/
+# data/
 
 # Log files
-logs/
-*.log
+# logs/
+# *.log
 
 # uv / pyproject build artifacts
 .python-version

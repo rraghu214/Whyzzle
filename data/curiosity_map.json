@@ -1,0 +1,358 @@
+[
+  {
+    "id": "10e1a3be-e611-4867-a3f6-d75bd23784f0",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "Why is the sky blue?",
+    "asked_by": "child",
+    "date": "2026-05-02",
+    "profile_age": 4,
+    "explanation": "The sun sends lots of different colors of light down to us, and blue light bounces around in the air like a bouncy ball hitting walls everywhere \u2014 so blue fills the whole sky! It's like shaking a snow globe: the tiny bits inside spread everywhere, just like blue light spreads all around us.",
+    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 520 420' width='520' height='420' font-family='Arial, sans-serif'><defs><radialGradient id='sunGlow' cx='50%' cy='50%' r='50%'><stop offset='0%' stop-color='#fff7a1'/><stop offset='40%' stop-color='#ffe94d'/><stop offset='100%' stop-color='#ffaa00' stop-opacity='0'/></radialGradient><linearGradient id='skyGrad' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#1a6fcc'/><stop offset='60%' stop-color='#5eb8ff'/><stop offset='100%' stop-color='#a8d8ff'/></linearGradient><linearGradient id='groundGrad' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#6dbf67'/><stop offset='100%' stop-color='#4a9945'/></linearGradient><marker id='arrowR' markerWidth='7' markerHeight='7' refX='5' refY='3.5' orient='auto'><polygon points='0 0, 7 3.5, 0 7' fill='#ff4444'/></marker><marker id='arrowO' markerWidth='7' markerHeight='7' refX='5' refY='3.5' orient='auto'><polygon points='0 0, 7 3.5, 0 7' fill='#ff9900'/></marker><marker id='arrowB1' markerWidth='7' markerHeight='7' refX='5' refY='3.5' orient='auto'><polygon points='0 0, 7 3.5, 0 7' fill='#3399ff'/></marker><marker id='arrowB2' markerWidth='7' markerHeight='7' refX='5' refY='3.5' orient='auto'><polygon points='0 0, 7 3.5, 0 7' fill='#3399ff'/></marker><marker id='arrowB3' markerWidth='7' markerHeight='7' refX='5' refY='3.5' orient='auto'><polygon points='0 0, 7 3.5, 0 7' fill='#3399ff'/></marker><style>@keyframes bounce1{0%,100%{opacity:0.3;transform:translate(0,0)}50%{opacity:1;transform:translate(4px,-4px)}}@keyframes bounce2{0%,100%{opacity:0.3;transform:translate(0,0)}50%{opacity:1;transform:translate(-5px,3px)}}@keyframes bounce3{0%,100%{opacity:0.3;transform:translate(0,0)}50%{opacity:1;transform:translate(3px,5px)}}@keyframes pulse{0%,100%{r:28}50%{r:32}}.b1{animation:bounce1 1.8s ease-in-out infinite}.b2{animation:bounce2 2.1s ease-in-out infinite 0.3s}.b3{animation:bounce3 1.6s ease-in-out infinite 0.6s}.sun{animation:pulse 2s ease-in-out infinite}</style></defs><rect width='520' height='300' fill='url(#skyGrad)'/><rect y='300' width='520' height='120' fill='url(#groundGrad)'/><circle cx='80' cy='72' r='38' fill='url(#sunGlow)'/><circle class='sun' cx='80' cy='72' r='28' fill='#ffe94d'/><text x='80' y='126' text-anchor='middle' font-size='13' font-weight='bold' fill='#ffcc00'>\u2600\ufe0f Sun</text><line x1='118' y1='72' x2='210' y2='105' stroke='#ff4444' stroke-width='2.5' marker-end='url(#arrowR)'/><line x1='118' y1='72' x2='215' y2='130' stroke='#ff9900' stroke-width='2.5' marker-end='url(#arrowO)'/><line x1='118' y1='72' x2='200' y2='80' stroke='#3399ff' stroke-width='2.5' marker-end='url(#arrowB1)'/><text x='165' y='68' font-size='11' fill='#ff4444' font-weight='bold'>red</text><text x='175' y='100' font-size='11' fill='#ff8800' font-weight='bold'>orange</text><text x='155' y='155' font-size='11' fill='#3399ff' font-weight='bold'>blue bounces!</text><circle cx='230' cy='105' r='8' fill='#cceeff' stroke='#88bbdd' stroke-width='1.5'/><text x='230' y='123' text-anchor='middle' font-size='9' fill='#336699'>air</text><circle cx='265' cy='82' r='8' fill='#cceeff' stroke='#88bbdd' stroke-width='1.5'/><text x='265' y='100' text-anchor='middle' font-size='9' fill='#336699'>air</text><circle cx='295' cy='130' r='8' fill='#cceeff' stroke='#88bbdd' stroke-width='1.5'/><text x='295' y='148' text-anchor='middle' font-size='9' fill='#336699'>air</text><circle cx='340' cy='90' r='8' fill='#cceeff' stroke='#88bbdd' stroke-width='1.5'/><circle cx='380' cy='140' r='8' fill='#cceeff' stroke='#88bbdd' stroke-width='1.5'/><circle cx='420' cy='80' r='8' fill='#cceeff' stroke='#88bbdd' stroke-width='1.5'/><circle cx='460' cy='120' r='8' fill='#cceeff' stroke='#88bbdd' stroke-width='1.5'/><g class='b1'><line x1='238' y1='100' x2='258' y2='76' stroke='#3399ff' stroke-width='2' marker-end='url(#arrowB1)'/></g><g class='b2'><line x1='272' y1='86' x2='290' y2='124' stroke='#3399ff' stroke-width='2' marker-end='url(#arrowB2)'/></g><g class='b3'><line x1='302' y1='126' x2='334' y2='94' stroke='#3399ff' stroke-width='2' marker-end='url(#arrowB3)'/></g><line x1='346' y1='86' x2='374' y2='136' stroke='#3399ff' stroke-width='2' marker-end='url(#arrowB1)'/><line x1='386' y1='136' x2='414' y2='84' stroke='#3399ff' stroke-width='2' marker-end='url(#arrowB2)'/><line x1='426' y1='84' x2='454' y2='116' stroke='#3399ff' stroke-width='2' marker-end='url(#arrowB3)'/><line x1='230' y1='113' x2='250' y2='250' stroke='#ff4444' stroke-width='2.5' stroke-dasharray='5,3' marker-end='url(#arrowR)'/><line x1='265' y1='90' x2='270' y2='250' stroke='#ff9900' stroke-width='2.5' stroke-dasharray='5,3' marker-end='url(#arrowO)'/><rect x='60' y='248' width='80' height='50' rx='8' fill='#c8a06a'/><rect x='80' y='228' width='40' height='30' rx='4' fill='#e8c080'/><ellipse cx='260' cy='315' rx='15' ry='7' fill='#228b22'/><rect x='257' y='290' width='6' height='28' fill='#8b4513'/><ellipse cx='310' cy='318' rx='12' ry='6' fill='#228b22'/><rect x='307' y='296' width='5' height='24' fill='#8b4513'/><g transform='translate(390,290)'><circle r='18' fill='#ffd700' stroke='#ff8c00' stroke-width='2'/><text y='5' text-anchor='middle' font-size='20'>\ud83d\ude0a</text></g><text x='390' y='330' text-anchor='middle' font-size='11' fill='#1a1a1a' font-weight='bold'>You see blue!</text><rect x='0' y='350' width='520' height='70' fill='#fffbe6' rx='0'/><text x='260' y='370' text-anchor='middle' font-size='13' font-weight='bold' fill='#333'>\ud83d\udd35 Blue light = bouncy ball \u2192 bounces EVERYWHERE \u2192 fills the sky!</text><text x='260' y='390' text-anchor='middle' font-size='12' fill='#555'>\ud83d\udd34 Red &amp; orange light = straight arrows \u2192 pass right through to the ground</text><text x='260' y='410' text-anchor='middle' font-size='11' fill='#888'>(tiny air bits scatter blue light all around \u2014 called Rayleigh scattering)</text></svg>",
+    "visual_type": "svg",
+    "follow_ups": [
+      "Why does the sky turn orange and red at sunset?",
+      "What color is the sky on other planets?",
+      "Why are clouds white?"
+    ],
+    "tags": [
+      "color",
+      "sky",
+      "light",
+      "atmosphere",
+      "scattering"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [],
+    "depth": 0
+  },
+  {
+    "id": "8fae4384-6013-408e-a6cb-92d05c0086ab",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "How does a mango seed grow into a tree? Show me in 3D",
+    "asked_by": "child",
+    "date": "2026-05-02",
+    "profile_age": 4,
+    "explanation": "A mango seed is like a sleeping baby inside a blanket \u2014 you plant it in the ground, give it water and sunshine, and slowly it wakes up, pushes out a tiny root, then a little shoot, and keeps growing bigger and bigger until it becomes a tall tree with yummy mangoes! It is just like how you grow taller every year when you eat and sleep well.",
+    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 420' width='600' height='420' style='font-family:Arial,sans-serif;background:#fff'><defs><linearGradient id='skyGrad' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#87CEEB'/><stop offset='100%' stop-color='#E0F7FA'/></linearGradient><linearGradient id='groundGrad' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#8B5E3C'/><stop offset='100%' stop-color='#5C3317'/></linearGradient><linearGradient id='seedGrad' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='#C8A04A'/><stop offset='100%' stop-color='#7B4F1E'/></linearGradient><linearGradient id='leafGrad' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#4CAF50'/><stop offset='100%' stop-color='#1B5E20'/></linearGradient><linearGradient id='trunkGrad' x1='0' y1='0' x2='1' y2='0'><stop offset='0%' stop-color='#6D4C41'/><stop offset='100%' stop-color='#A1887F'/></linearGradient><linearGradient id='mangoGrad' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='#FFD600'/><stop offset='100%' stop-color='#FF6D00'/></linearGradient><linearGradient id='rootGrad' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='#A0522D'/><stop offset='100%' stop-color='#4E342E'/></linearGradient><filter id='glow'><feGaussianBlur stdDeviation='2' result='coloredBlur'/><feMerge><feMergeNode in='coloredBlur'/><feMergeNode in='SourceGraphic'/></feMerge></filter></defs><style>@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.7;transform:scale(1.08)}}@keyframes grow{0%{opacity:0;transform:scaleY(0)}100%{opacity:1;transform:scaleY(1)}}@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}.step-label{font-size:13px;font-weight:bold;fill:#fff;text-anchor:middle}.step-title{font-size:11px;fill:#333;text-anchor:middle}.sun-ray{animation:pulse 2s ease-in-out infinite}.tree-top{animation:sway 3s ease-in-out infinite;transform-origin:300px 210px}.mango-bounce{animation:bounce 2s ease-in-out infinite}</style><!-- Sky background --><rect width='600' height='420' fill='url(#skyGrad)'/><!-- Sun --><circle cx='540' cy='45' r='32' fill='#FFD600' filter='url(#glow)'/><g class='sun-ray'><line x1='540' y1='5' x2='540' y2='15' stroke='#FFD600' stroke-width='3' stroke-linecap='round'/><line x1='540' y1='75' x2='540' y2='85' stroke='#FFD600' stroke-width='3' stroke-linecap='round'/><line x1='500' y1='45' x2='510' y2='45' stroke='#FFD600' stroke-width='3' stroke-linecap='round'/><line x1='570' y1='45' x2='580' y2='45' stroke='#FFD600' stroke-width='3' stroke-linecap='round'/><line x1='512' y1='17' x2='519' y2='24' stroke='#FFD600' stroke-width='3' stroke-linecap='round'/><line x1='561' y1='66' x2='568' y2='73' stroke='#FFD600' stroke-width='3' stroke-linecap='round'/><line x1='568' y1='17' x2='561' y2='24' stroke='#FFD600' stroke-width='3' stroke-linecap='round'/><line x1='512' y1='66' x2='519' y2='73' stroke='#FFD600' stroke-width='3' stroke-linecap='round'/></g><text x='540' y='49' text-anchor='middle' font-size='10' fill='#7B6000' font-weight='bold'>\u2600\ufe0f Sun</text><!-- Ground strip --><rect x='0' y='290' width='600' height='130' fill='url(#groundGrad)' rx='0'/><rect x='0' y='288' width='600' height='12' fill='#5D4037' rx='2'/><!-- Grass blades --><g fill='#388E3C'><ellipse cx='30' cy='288' rx='5' ry='12'/><ellipse cx='45' cy='285' rx='4' ry='10'/><ellipse cx='80' cy='288' rx='5' ry='12'/><ellipse cx='130' cy='286' rx='4' ry='10'/><ellipse cx='200' cy='288' rx='5' ry='12'/><ellipse cx='250' cy='286' rx='4' ry='9'/><ellipse cx='350' cy='288' rx='5' ry='12'/><ellipse cx='420' cy='286' rx='4' ry='10'/><ellipse cx='470' cy='288' rx='5' ry='12'/><ellipse cx='530' cy='287' rx='4' ry='9'/><ellipse cx='570' cy='288' rx='5' ry='12'/></g><!-- STAGE DIVIDERS: 5 stages --><text x='60' y='18' text-anchor='middle' font-size='14' fill='#1565C0' font-weight='bold'>\ud83c\udf31 How a Mango Seed Grows into a Tree!</text><!-- STAGE 1: Seed in ground --><g transform='translate(40,60)'><rect x='0' y='0' width='90' height='30' rx='15' fill='#E53935'/><text x='45' y='20' class='step-label'>Step 1</text></g><text x='85' y='110' class='step-title'>Plant the</text><text x='85' y='123' class='step-title'>Seed \ud83c\udf0d</text><!-- Seed shape --><ellipse cx='85' cy='200' rx='18' ry='12' fill='url(#seedGrad)' stroke='#5D4037' stroke-width='2'/><text x='85' y='204' text-anchor='middle' font-size='11' fill='#fff' font-weight='bold'>seed</text><!-- soil layers hint --><ellipse cx='85' cy='305' rx='30' ry='6' fill='#6D4C41' opacity='0.5'/><!-- STAGE 2: Sprouting root --><g transform='translate(165,60)'><rect x='0' y='0' width='90' height='30' rx='15' fill='#FB8C00'/><text x='45' y='20' class='step-label'>Step 2</text></g><text x='210' y='110' class='step-title'>Root grows</text><text x='210' y='123' class='step-title'>down \ud83c\udf27\ufe0f</text><!-- Seed with root --><ellipse cx='210' cy='230' rx='15' ry='10' fill='url(#seedGrad)' stroke='#5D4037' stroke-width='1.5'/><path d='M210 240 Q205 265 210 290' stroke='url(#rootGrad)' stroke-width='4' fill='none' stroke-linecap='round'/><path d='M210 280 Q200 290 195 305' stroke='url(#rootGrad)' stroke-width='2.5' fill='none' stroke-linecap='round'/><path d='M210 275 Q220 285 225 300' stroke='url(#rootGrad)' stroke-width='2.5' fill='none' stroke-linecap='round'/><text x='210' y='234' text-anchor='middle' font-size='9' fill='#fff'>seed</text><!-- Water drops --><g fill='#1E88E5' opacity='0.8'><ellipse cx='195' cy='145' rx='4' ry='6'/><ellipse cx='220' cy='155' rx='3' ry='5'/><ellipse cx='205' cy='165' rx='3' ry='5'/></g><!-- STAGE 3: Tiny sprout --><g transform='translate(285,60)'><rect x='0' y='0' width='90' height='30' rx='15' fill='#43A047'/><text x='45' y='20' class='step-label'>Step 3</text></g><text x='330' y='110' class='step-title'>Shoot pops</text><text x='330' y='123' class='step-title'>up! \ud83c\udf3f</text><!-- Sprout --><!-- stem --><rect x='328' y='220' width='5' height='68' rx='3' fill='#388E3C'/><ellipse cx='318' cy='210' rx='14' ry='8' fill='#66BB6A' transform='rotate(-30,318,210)'/><ellipse cx='343' cy='210' rx='14' ry='8' fill='#81C784' transform='rotate(30,343,210)'/><ellipse cx='330' cy='203' rx='10' ry='6' fill='#A5D6A7' transform='rotate(0,330,203)'/><!-- roots below ground --><path d='M330 290 Q322 308 315 318' stroke='url(#rootGrad)' stroke-width='3' fill='none'/><path d='M330 295 Q338 310 343 320' stroke='url(#rootGrad)' stroke-width='3' fill='none'/><path d='M330 300 Q325 315 318 325' stroke='url(#rootGrad)' stroke-width='2' fill='none'/><path d='M330 300 Q336 315 343 325' stroke='url(#rootGrad)' stroke-width='2' fill='none'/><!-- STAGE 4: Young tree --><g transform='translate(400,60)'><rect x='0' y='0' width='100' height='30' rx='15' fill='#1565C0'/><text x='50' y='20' class='step-label'>Step 4</text></g><text x='450' y='110' class='step-title'>Young Tree</text><text x='450' y='123' class='step-title'>grows tall \ud83c\udf33</text><!-- trunk --><rect x='445' y='200' width='10' height='90' rx='4' fill='url(#trunkGrad)'/><ellipse cx='450' cy='190' rx='30' ry='22' fill='#2E7D32'/><ellipse cx='435' cy='198' rx='22' ry='16' fill='#388E3C'/><ellipse cx='465' cy='196' rx='22' ry='16' fill='#43A047'/><ellipse cx='450' cy='183' rx='24' ry='18' fill='#4CAF50'/><!-- roots --><path d='M450 290 Q438 308 428 322' stroke='url(#rootGrad)' stroke-width='3.5' fill='none'/><path d='M450 290 Q462 308 472 322' stroke='url(#rootGrad)' stroke-width='3.5' fill='none'/><path d='M448 295 Q438 315 430 330' stroke='url(#rootGrad)' stroke-width='2' fill='none'/><path d='M452 295 Q462 315 470 330' stroke='url(#rootGrad)' stroke-width='2' fill='none'/><!-- STAGE 5: Full mango tree (bigger, center-ish at x=555) --><g transform='translate(505,60)'><rect x='0' y='0' width='80' height='30' rx='15' fill='#6A1B9A'/><text x='40' y='20' class='step-label'>Step 5</text></g><text x='547' y='110' class='step-title'>Big Mango</text><text x='547' y='123' class='step-title'>Tree! \ud83e\udd6d</text><!-- big trunk --><rect x='542' y='195' width='14' height='100' rx='5' fill='url(#trunkGrad)'/><g class='tree-top'><ellipse cx='549' cy='175' rx='44' ry='34' fill='#1B5E20'/><ellipse cx='526' cy='182' rx='30' ry='22' fill='#2E7D32'/><ellipse cx='572' cy='182' rx='30' ry='22' fill='#2E7D32'/><ellipse cx='549' cy='160' rx='36' ry='28' fill='#388E3C'/><ellipse cx='535' cy='167' rx='26' ry='20' fill='#43A047'/><ellipse cx='563' cy='167' rx='26' ry='20' fill='#43A047'/><ellipse cx='549' cy='150' rx='30' ry='24' fill='#4CAF50'/></g><!-- Mangoes --><g class='mango-bounce'><ellipse cx='530' cy='183' rx='8' ry='10' fill='url(#mangoGrad)' filter='url(#glow)'/><ellipse cx='567' cy='178' rx='8' ry='10' fill='url(#mangoGrad)' filter='url(#glow)'/><ellipse cx='549' cy='173' rx='7' ry='9' fill='url(#mangoGrad)' filter='url(#glow)'/><line x1='530' y1='173' x2='532' y2='165' stroke='#388E3C' stroke-width='1.5'/><line x1='567' y1='168' x2='569' y2='160' stroke='#388E3C' stroke-width='1.5'/><line x1='549' y1='164' x2='551' y2='156' stroke='#388E3C' stroke-width='1.5'/></g><!-- roots big tree --><path d='M549 295 Q534 312 520 328' stroke='url(#rootGrad)' stroke-width='4' fill='none'/><path d='M549 295 Q564 312 578 328' stroke='url(#rootGrad)' stroke-width='4' fill='none'/><path d='M546 300 Q532 318 522 335' stroke='url(#rootGrad)' stroke-width='2.5' fill='none'/><path d='M552 300 Q566 318 576 335' stroke='url(#rootGrad)' stroke-width='2.5' fill='none'/><!-- Arrows between stages --><g stroke='#FF6F00' stroke-width='2.5' fill='#FF6F00'><line x1='130' y1='200' x2='150' y2='200'/><polygon points='150,195 160,200 150,205'/><line x1='250' y1='210' x2='270' y2='220'/><polygon points='268,215 278,220 270,228'/><line x1='370' y1='220' x2='390' y2='215'/><polygon points='388,210 398,215 390,222'/><line x1='490' y1='200' x2='510' y2='190'/><polygon points='508,185 518,190 512,198'/></g><!-- Underground label --><text x='300' y='330' text-anchor='middle' font-size='11' fill='#FFCCBC' font-weight='bold'>\ud83c\udf31 Underground roots drink water!</text><!-- Legend box --><rect x='10' y='380' width='580' height='32' rx='10' fill='#FFF9C4' stroke='#F9A825' stroke-width='1.5'/><text x='300' y='400' text-anchor='middle' font-size='12' fill='#5D4037'>\ud83d\udca7 Water + \u2600\ufe0f Sunlight + \ud83c\udf0d Soil = \ud83e\udd6d Mangoes! Just like YOU grow with food + sleep!</text></svg>",
+    "visual_type": "svg",
+    "follow_ups": [
+      "Why do roots grow down instead of up?",
+      "How does a mango get its yummy sweet taste?",
+      "How long does it take before a mango tree makes mangoes?"
+    ],
+    "tags": [
+      "biology",
+      "plants",
+      "trees",
+      "growth",
+      "seeds"
+    ],
+    "concept_type": "sequential",
+    "connected_to": [],
+    "depth": 0
+  },
+  {
+    "id": "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "why do we live on earth?",
+    "asked_by": "child",
+    "date": "2026-05-02",
+    "profile_age": 4,
+    "explanation": "We live on Earth because it's like a special house that has everything we need to survive, like food, water, and air. It's like a big ball in space that gives us a place to play, live, and grow.",
+    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 380'><circle cx='250' cy='190' r='150' fill='rgb(0, 191, 255)' /><rect x='170' y='220' rx='10' ry='10' width='160' height='100' fill='rgb(34, 139, 34)' /><text x='230' y='300' font-size='30' fill='white'>Earth: Our Home</text></svg>",
+    "visual_type": "svg",
+    "follow_ups": [
+      "What makes Earth special?",
+      "Why can't we live on other planets?",
+      "How can we take care of Earth?"
+    ],
+    "tags": [
+      "home",
+      "earth",
+      "space"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
+      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
+      "d818b502-0989-4206-b0bd-5fb3936e4173",
+      "90d1f8b4-0d98-4a3d-81b4-ba49aa337fcd",
+      "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
+      "b14732ad-0695-4039-b948-1ff505536c53",
+      "521a3eea-afff-4be7-87fd-908719358f3c",
+      "9f99c193-10d1-4ef1-b1ee-259ab3a311eb"
+    ],
+    "depth": 0
+  },
+  {
+    "id": "c40495c3-4eab-4e99-8025-3dbe2dafe882",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN): why do we live on earth?",
+    "asked_by": "child",
+    "date": "2026-05-02",
+    "profile_age": 4,
+    "explanation": "We live on Earth because it's like a big ball that gives us air to breathe, water to drink, and food to eat, just like how a big basket holds all our favorite toys and snacks. It's a special home that keeps us safe and cozy.",
+    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 480' width='600' height='480'><circle cx='300' cy='240' r='200' fill='url(#grad1)' /><defs><linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'><stop offset='0%' stop-color='#87CEEB' /><stop offset='100%' stop-color='#4682B4' /></linearGradient></defs><circle cx='300' cy='240' r='150' fill='#32CD32' /><text x='300' y='420' font-size='36' text-anchor='middle' fill='#FFFFFF'>Earth</text><text x='300' y='460' font-size='24' text-anchor='middle' fill='#FFFFFF'>Our Home</text><circle cx='400' cy='100' r='50' fill='#FFFF00' /><text x='400' y='150' font-size='24' text-anchor='middle' fill='#000000'>Sun</text><circle cx='500' cy='300' r='30' fill='#FFFFFF' /><text x='500' y='350' font-size='18' text-anchor='middle' fill='#000000'>Moon</text></svg>",
+    "visual_type": "svg",
+    "follow_ups": [
+      "What's outside the Earth?",
+      "Why can't we live on the Sun or the Moon?",
+      "What would happen if we didn't have air to breathe?"
+    ],
+    "tags": [
+      "home",
+      "earth",
+      "space"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
+      "d818b502-0989-4206-b0bd-5fb3936e4173",
+      "90d1f8b4-0d98-4a3d-81b4-ba49aa337fcd",
+      "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
+      "b14732ad-0695-4039-b948-1ff505536c53",
+      "521a3eea-afff-4be7-87fd-908719358f3c",
+      "9f99c193-10d1-4ef1-b1ee-259ab3a311eb"
+    ],
+    "depth": 1
+  },
+  {
+    "id": "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "How does a volcano erupt?",
+    "asked_by": "child",
+    "date": "2026-05-02",
+    "profile_age": 4,
+    "explanation": "A volcano erupts when hot melted rock inside the Earth comes out, like when you open a soda bottle and the fizz comes out. It's like a big bubble of hot rock that gets too big and bursts out of the Earth.",
+    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 380'><circle cx='240' cy='180' r='100' fill='yellow' opacity='0.5'/><path d='M 240 280 L 240 380' stroke='red' stroke-width='10'/><rect x='150' y='50' width='180' height='100' fill='brown'/><text x='220' y='70' font-size='24'>Earth</text><text x='220' y='200' font-size='24'>Magma</text><text x='220' y='350' font-size='24'>Volcano</text></svg>",
+    "visual_type": "svg",
+    "follow_ups": [
+      "What happens after a volcano erupts?",
+      "Why do volcanoes make the sky look colorful?",
+      "Can people live near a volcano?"
+    ],
+    "tags": [
+      "earth",
+      "volcano",
+      "geology"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
+      "d818b502-0989-4206-b0bd-5fb3936e4173",
+      "90d1f8b4-0d98-4a3d-81b4-ba49aa337fcd",
+      "b4ea8768-9b59-4227-9386-29ce02beeeb9"
+    ],
+    "depth": 2
+  },
+  {
+    "id": "d818b502-0989-4206-b0bd-5fb3936e4173",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN): How does a volcano erupt?",
+    "asked_by": "child",
+    "date": "2026-05-02",
+    "profile_age": 4,
+    "explanation": "A volcano erupts like a big bottle of soda that gets shaken up and then the cap comes off with a lot of pressure, making the soda spray everywhere. The volcano has magma inside that gets too hot and pushes out, like the soda, making the eruption.",
+    "visual_code": "<html><head><style>body { margin: 0; }</style></head><body><script src=''></script><script>let scene, camera, renderer;function init() {scene = new THREE.Scene();camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);renderer = new THREE.WebGLRenderer({antialias: true});renderer.setSize(480, 380);document.body.appendChild(renderer.domElement);const volcano = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 32), new THREE.MeshBasicMaterial({color: 'brown'}));volcano.position.y = -2;scene.add(volcano);const eruption = new THREE.Mesh(new THREE.SphereGeometry(0.5, 32, 32), new THREE.MeshBasicMaterial({color: 'red'}));eruption.position.y = 2;scene.add(eruption);camera.position.z = 5;function animate() {requestAnimationFrame(animate);eruption.position.y += 0.01;if (eruption.position.y > 10) {eruption.position.y = 2;}renderer.render(scene, camera);}animate();}</script></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What makes the magma get too hot?",
+      "Can I see a real volcano erupting?",
+      "Why do volcanoes sometimes make big clouds?"
+    ],
+    "tags": [
+      "physics",
+      "earth",
+      "geology"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
+      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
+      "90d1f8b4-0d98-4a3d-81b4-ba49aa337fcd",
+      "b4ea8768-9b59-4227-9386-29ce02beeeb9"
+    ],
+    "depth": 3
+  },
+  {
+    "id": "90d1f8b4-0d98-4a3d-81b4-ba49aa337fcd",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "How does a volcano erupt?",
+    "asked_by": "child",
+    "date": "2026-05-02",
+    "profile_age": 4,
+    "explanation": "A volcano erupts when hot melted rock inside the Earth comes out, like when you open a bottle of soda and the fizzy drink shoots out. It's like a big explosion of hot rock and ash that can go high up into the air.",
+    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 380'><rect x='100' y='50' rx='20' width='280' height='280' fill='gray' /><circle cx='240' cy='200' r='60' fill='orange' /><path d='M 240 260 L 240 380' stroke='orange' stroke-width='10' /><text x='220' y='340' font-size='24' fill='black'>Ash and Rock</text><text x='150' y='120' font-size='24' fill='black'>Volcano</text><circle cx='240' cy='150' r='30' fill='red' /><text x='200' y='160' font-size='18' fill='white'>Magma</text></svg>",
+    "visual_type": "svg",
+    "follow_ups": [
+      "What happens to the ash and rock after it comes out of the volcano?",
+      "Why do volcanoes sometimes erupt quietly and sometimes violently?",
+      "Can people predict when a volcano will erupt?"
+    ],
+    "tags": [
+      "eruption",
+      "earth",
+      "volcano"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
+      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
+      "d818b502-0989-4206-b0bd-5fb3936e4173",
+      "b4ea8768-9b59-4227-9386-29ce02beeeb9"
+    ],
+    "depth": 4
+  },
+  {
+    "id": "b4ea8768-9b59-4227-9386-29ce02beeeb9",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN): How does a volcano erupt?",
+    "asked_by": "child",
+    "date": "2026-05-02",
+    "profile_age": 4,
+    "explanation": "A volcano erupts like a big bottle of soda that gets shaken up and then the top comes off, letting out all the fizz. It's like when you shake a bottle of ketchup and the lid pops off, but with hot melted rock instead.",
+    "visual_code": "<html><head><style>body { margin: 0; }</style></head><body><script src='https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js'></script><script>let scene = new THREE.Scene();let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);let renderer = new THREE.WebGLRenderer({ canvas: document.createElement('canvas'), antialias: true });renderer.setSize(480, 380);document.body.appendChild(renderer.domElement);let volcano = new THREE.Mesh(new THREE.SphereGeometry(50, 60, 60), new THREE.MeshPhongMaterial({ color: 0xff0000 }));let lava = new THREE.Mesh(new THREE.ConeGeometry(20, 50), new THREE.MeshPhongMaterial({ color: 0xffff00 }));scene.add(volcano);scene.add(lava);lava.position.y = -60;let eruption = false;function animate() { requestAnimationFrame(animate ); if (eruption) { lava.position.y += 1; if (lava.position.y > 60) { eruption = false; } } else { if (Math.random() < 0.01) { eruption = true; } } renderer.render(scene, camera); } animate(); camera.position.z = 200;</script></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What happens after a volcano erupts?",
+      "Why do volcanoes erupt?",
+      "Can we predict when a volcano will erupt?"
+    ],
+    "tags": [
+      "eruption",
+      "volcano",
+      "geology"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
+      "d818b502-0989-4206-b0bd-5fb3936e4173",
+      "90d1f8b4-0d98-4a3d-81b4-ba49aa337fcd"
+    ],
+    "depth": 3
+  },
+  {
+    "id": "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "How do planets rotate?",
+    "asked_by": "both",
+    "date": "2026-05-02",
+    "profile_age": 4,
+    "explanation": "Planets rotate like a spinning top, they turn around in a circle. Imagine you're holding a plate and spinning around, that's kind of like what the planets do.",
+    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 400'><circle cx='240' cy='200' r='150' fill='none' stroke='blue' stroke-width='2'/><circle cx='240' cy='200' r='50' fill='yellow'/><text x='240' y='220' font-size='24' text-anchor='middle'>Sun</text><circle cx='400' cy='200' r='20' fill='blue'/><text x='400' y='220' font-size='18' text-anchor='middle'>Planet</text><animateTransform attributeName='transform' type='rotate' from='0 240 200' to='360 240 200' dur='6s' repeatCount='indefinite'/></svg>",
+    "visual_type": "svg",
+    "follow_ups": [
+      "Why do some planets spin very fast and some very slow?",
+      "What makes the planets stay in their orbits around the Sun?",
+      "Do all planets spin in the same direction?"
+    ],
+    "tags": [
+      "space",
+      "planets",
+      "rotation"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
+      "b14732ad-0695-4039-b948-1ff505536c53",
+      "521a3eea-afff-4be7-87fd-908719358f3c",
+      "9f99c193-10d1-4ef1-b1ee-259ab3a311eb"
+    ],
+    "depth": 2
+  },
+  {
+    "id": "b14732ad-0695-4039-b948-1ff505536c53",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "How would it look when all the planets rotate around the sun, along with our moon?",
+    "asked_by": "child",
+    "date": "2026-05-02",
+    "profile_age": 4,
+    "explanation": "Imagine all the planets are like different colored balls moving around a big yellow ball, which is the sun, and our moon is like a small white ball moving around the blue ball, which is Earth. It's like a big cosmic dance with all the balls moving in their own paths.",
+    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 380'><circle cx='250' cy='190' r='50' fill='yellow' /><circle cx='100' cy='100' r='10' fill='blue' /><circle cx='150' cy='150' r='5' fill='white' /><circle cx='300' cy='100' r='15' fill='red' /><circle cx='400' cy='150' r='20' fill='orange' /><circle cx='200' cy='250' r='12' fill='green' /><circle cx='350' cy='250' r='18' fill='purple' /><path d='M 100 100 L 150 150' stroke='gray' stroke-width='2' /><path d='M 150 150 L 200 200' stroke='gray' stroke-width='2' /><path d='M 200 200 L 250 250' stroke='gray' stroke-width='2' /><path d='M 250 250 L 300 300' stroke='gray' stroke-width='2' /><path d='M 300 300 L 350 350' stroke='gray' stroke-width='2' /><text x='100' y='90' fill='black' font-size='14'>Earth</text><text x='300' y='90' fill='black' font-size='14'>Mars</text><text x='400' y='140' fill='black' font-size='14'>Jupiter</text><text x='200' y='240' fill='black' font-size='14'>Saturn</text><text x='350' y='240' fill='black' font-size='14'>Uranus</text><text x='150' y='160' fill='black' font-size='10'>Moon</text></svg>",
+    "visual_type": "svg",
+    "follow_ups": [
+      "What happens when the planets align?",
+      "Why do the planets move at different speeds?",
+      "Are there other moons in our solar system?"
+    ],
+    "tags": [
+      "planets",
+      "space",
+      "moon"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
+      "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
+      "521a3eea-afff-4be7-87fd-908719358f3c",
+      "9f99c193-10d1-4ef1-b1ee-259ab3a311eb"
+    ],
+    "depth": 3
+  },
+  {
+    "id": "521a3eea-afff-4be7-87fd-908719358f3c",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "How do planets keep floating and not fall down?",
+    "asked_by": "child",
+    "date": "2026-05-05",
+    "profile_age": 4,
+    "explanation": "Planets stay in space because they are moving really fast around the Sun, like a ball on a string that doesn't fall down. It's like when you spin a pizza dough in the air and it keeps moving in a circle without falling.",
+    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 380'><circle cx='250' cy='190' r='120' fill='yellow' /><circle cx='250' cy='190' r='20' fill='orange' /><path d='M 250 70 L 250 310' stroke='gray' stroke-width='2' /><path d='M 130 190 L 370 190' stroke='gray' stroke-width='2' /><circle cx='400' cy='190' r='10' fill='blue' /><path d='M 400 190 L 420 200' stroke='blue' stroke-width='2' /><animateTransform attributeName='transform' type='rotate' from='0 250 190' to='360 250 190' dur='6s' repeatCount='indefinite' /><text x='220' y='350' font-size='24'>Sun</text><text x='420' y='220' font-size='18'>Planet</text></svg>",
+    "visual_type": "svg",
+    "follow_ups": [
+      "What happens if a planet moves too fast or too slow?",
+      "Why do some planets have more than one moon?",
+      "Can people live on other planets?"
+    ],
+    "tags": [
+      "space",
+      "gravity",
+      "planets"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
+      "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
+      "b14732ad-0695-4039-b948-1ff505536c53",
+      "9f99c193-10d1-4ef1-b1ee-259ab3a311eb"
+    ],
+    "depth": 4
+  },
+  {
+    "id": "9f99c193-10d1-4ef1-b1ee-259ab3a311eb",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "How do planets keep floating and not fall down?",
+    "asked_by": "child",
+    "date": "2026-05-05",
+    "profile_age": 4,
+    "explanation": "Planets stay in space because they are moving really fast around the Sun, like a toy car on a track that never ends. It's like when you spin a ball on a string and it keeps moving around your head without falling down.",
+    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 380'><circle cx='250' cy='190' r='150' fill='yellow' /><circle cx='250' cy='190' r='20' fill='blue' /><path d='M 250 190 m -150 0 a 150 150 0 0 1 300 0' stroke='green' stroke-width='5' fill='none' /><text x='250' y='350' font-size='24' text-anchor='middle'>Sun</text><text x='250' y='20' font-size='24' text-anchor='middle'>Planet</text></svg>",
+    "visual_type": "svg",
+    "follow_ups": [
+      "What would happen if the planet moved too slow or too fast?",
+      "How do moons orbit around planets?",
+      "Why don't planets crash into each other?"
+    ],
+    "tags": [
+      "gravity",
+      "space",
+      "orbits"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
+      "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
+      "b14732ad-0695-4039-b948-1ff505536c53",
+      "521a3eea-afff-4be7-87fd-908719358f3c"
+    ],
+    "depth": 5
+  }
+]

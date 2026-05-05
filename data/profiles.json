@@ -1,0 +1,12 @@
+{
+  "profiles": [
+    {
+      "id": "710b1429-f02e-437e-b11c-c51e10137748",
+      "name": "Kid",
+      "age": 4,
+      "avatar_color": "#7B5EA7",
+      "created_at": "2026-05-02"
+    }
+  ],
+  "active_profile_id": "710b1429-f02e-437e-b11c-c51e10137748"
+}
