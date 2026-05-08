@@ -34,7 +34,7 @@ from mcp.server.models import InitializationOptions
 from mcp.server.stdio import stdio_server
 import mcp.types as types
 
-from tools.blender_scene import generate_3d_scene
+from tools.video_pipeline import generate_video
 from tools.curiosity_map import manage_curiosity_map
 from tools.profiles import manage_profiles
 from tools.render_dashboard import render_dashboard
@@ -132,10 +132,11 @@ async def handle_list_tools() -> list[types.Tool]:
         types.Tool(
             name="generate_3d_scene",
             description=(
-                "Generate a 10-second Blender EEVEE 3D animation for a topic. "
-                "Requires Blender installed. Selects template automatically from concept_type "
-                "(orbit.py for space/planets, cross_section.py for structures, growth.py for biology). "
-                "Returns a local .mp4 video path. Only call when user explicitly requests 3D."
+                "Generate an educational animation for a topic using the three-tier pipeline: "
+                "Tier 1 Manim (math/science diagrams, local), "
+                "Tier 2 Blender (3D scenes: orbit/cross-section/growth, local), "
+                "Tier 3 CogVideoX (HuggingFace cloud fallback). "
+                "Returns a local .mp4 video path. Only call when user explicitly requests video/animation."
             ),
             inputSchema={
                 "type": "object",
@@ -148,11 +149,6 @@ async def handle_list_tools() -> list[types.Tool]:
                         "type": "string",
                         "enum": ["spatial", "sequential", "comparative",
                                  "mathematical", "biological", "other"],
-                    },
-                    "parameters": {
-                        "type": "object",
-                        "default": {},
-                        "description": "Optional extra params for the template",
                     },
                 },
                 "required": ["topic", "concept_type"],
@@ -190,10 +186,9 @@ async def handle_call_tool(
             result = render_dashboard(args["view"], args.get("payload", {}))
         elif name == "generate_3d_scene":
             result = await asyncio.to_thread(
-                generate_3d_scene,
+                generate_video,
                 args["topic"],
                 args.get("concept_type", "other"),
-                args.get("parameters", {}),
             )
         else:
             result = {"error": f"Unknown tool: {name}"}

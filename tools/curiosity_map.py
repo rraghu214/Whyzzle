@@ -1,5 +1,6 @@
 import json
 import logging
+import re
 import uuid
 from collections import Counter
 from datetime import date, datetime, timedelta
@@ -59,6 +60,18 @@ def manage_curiosity_map(action: str, profile_id: str, payload: dict | None = No
         question = payload.get("question", "")
         logger.info("Saving topic to curiosity map: \"%s\"", question[:80])
         logger.info("Tags: %s", list(new_tags))
+
+        # Deduplicate: if same question already exists for this profile, return it
+        def _normalize(q: str) -> str:
+            return re.sub(r"[^a-z0-9 ]", "", q.lower().strip())
+
+        norm_q = _normalize(question)
+        for existing_topic in profile_topics:
+            if _normalize(existing_topic.get("question", "")) == norm_q:
+                logger.info("Duplicate question detected — skipping save, returning existing id=%s",
+                            existing_topic["id"][:8])
+                return {"topic": existing_topic, "connected_count": len(existing_topic.get("connected_to", []))}
+
 
         # Auto-connect: find profile topics with overlapping tags
         connected = []

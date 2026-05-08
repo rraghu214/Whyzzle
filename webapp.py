@@ -202,13 +202,12 @@ def render_3d():
     if not topic:
         return jsonify({"error": "Topic not found"}), 404
 
-    from tools.blender_scene import generate_3d_scene
+    from tools.video_pipeline import generate_video
     _req_id.set(f"3d-{uuid.uuid4().hex[:5]}")
-    _wz.info("3D render requested for topic: %s", topic.get("question", "")[:60])
-    result = generate_3d_scene(
+    _wz.info("Video render requested for topic: %s", topic.get("question", "")[:60])
+    result = generate_video(
         topic       = topic.get("question", ""),
         concept_type= topic.get("concept_type", "other"),
-        parameters  = {},
     )
     return jsonify(result)
 

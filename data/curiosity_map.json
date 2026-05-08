@@ -48,8 +48,10 @@
       "seeds"
     ],
     "concept_type": "sequential",
-    "connected_to": [],
-    "depth": 0
+    "connected_to": [
+      "94b05ae1-3fed-4726-a987-f82fd2625777"
+    ],
+    "depth": 1
   },
   {
     "id": "dede36c9-2e55-4ecf-9c49-a5daed92b840",
@@ -76,13 +78,11 @@
       "c40495c3-4eab-4e99-8025-3dbe2dafe882",
       "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
       "d818b502-0989-4206-b0bd-5fb3936e4173",
-      "90d1f8b4-0d98-4a3d-81b4-ba49aa337fcd",
       "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
       "b14732ad-0695-4039-b948-1ff505536c53",
-      "521a3eea-afff-4be7-87fd-908719358f3c",
-      "9f99c193-10d1-4ef1-b1ee-259ab3a311eb"
+      "521a3eea-afff-4be7-87fd-908719358f3c"
     ],
-    "depth": 0
+    "depth": 6
   },
   {
     "id": "c40495c3-4eab-4e99-8025-3dbe2dafe882",
@@ -109,13 +109,11 @@
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
       "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
       "d818b502-0989-4206-b0bd-5fb3936e4173",
-      "90d1f8b4-0d98-4a3d-81b4-ba49aa337fcd",
       "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
       "b14732ad-0695-4039-b948-1ff505536c53",
-      "521a3eea-afff-4be7-87fd-908719358f3c",
-      "9f99c193-10d1-4ef1-b1ee-259ab3a311eb"
+      "521a3eea-afff-4be7-87fd-908719358f3c"
     ],
-    "depth": 1
+    "depth": 6
   },
   {
     "id": "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
@@ -141,11 +139,9 @@
     "connected_to": [
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
       "c40495c3-4eab-4e99-8025-3dbe2dafe882",
-      "d818b502-0989-4206-b0bd-5fb3936e4173",
-      "90d1f8b4-0d98-4a3d-81b4-ba49aa337fcd",
-      "b4ea8768-9b59-4227-9386-29ce02beeeb9"
+      "d818b502-0989-4206-b0bd-5fb3936e4173"
     ],
-    "depth": 2
+    "depth": 3
   },
   {
     "id": "d818b502-0989-4206-b0bd-5fb3936e4173",
@@ -171,67 +167,7 @@
     "connected_to": [
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
       "c40495c3-4eab-4e99-8025-3dbe2dafe882",
-      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
-      "90d1f8b4-0d98-4a3d-81b4-ba49aa337fcd",
-      "b4ea8768-9b59-4227-9386-29ce02beeeb9"
-    ],
-    "depth": 3
-  },
-  {
-    "id": "90d1f8b4-0d98-4a3d-81b4-ba49aa337fcd",
-    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
-    "question": "How does a volcano erupt?",
-    "asked_by": "child",
-    "date": "2026-05-02",
-    "profile_age": 4,
-    "explanation": "A volcano erupts when hot melted rock inside the Earth comes out, like when you open a bottle of soda and the fizzy drink shoots out. It's like a big explosion of hot rock and ash that can go high up into the air.",
-    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 380'><rect x='100' y='50' rx='20' width='280' height='280' fill='gray' /><circle cx='240' cy='200' r='60' fill='orange' /><path d='M 240 260 L 240 380' stroke='orange' stroke-width='10' /><text x='220' y='340' font-size='24' fill='black'>Ash and Rock</text><text x='150' y='120' font-size='24' fill='black'>Volcano</text><circle cx='240' cy='150' r='30' fill='red' /><text x='200' y='160' font-size='18' fill='white'>Magma</text></svg>",
-    "visual_type": "svg",
-    "follow_ups": [
-      "What happens to the ash and rock after it comes out of the volcano?",
-      "Why do volcanoes sometimes erupt quietly and sometimes violently?",
-      "Can people predict when a volcano will erupt?"
-    ],
-    "tags": [
-      "eruption",
-      "earth",
-      "volcano"
-    ],
-    "concept_type": "spatial",
-    "connected_to": [
-      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
-      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
-      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
-      "d818b502-0989-4206-b0bd-5fb3936e4173",
-      "b4ea8768-9b59-4227-9386-29ce02beeeb9"
-    ],
-    "depth": 4
-  },
-  {
-    "id": "b4ea8768-9b59-4227-9386-29ce02beeeb9",
-    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
-    "question": "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN): How does a volcano erupt?",
-    "asked_by": "child",
-    "date": "2026-05-02",
-    "profile_age": 4,
-    "explanation": "A volcano erupts like a big bottle of soda that gets shaken up and then the top comes off, letting out all the fizz. It's like when you shake a bottle of ketchup and the lid pops off, but with hot melted rock instead.",
-    "visual_code": "<html><head><style>body { margin: 0; }</style></head><body><script src='https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js'></script><script>let scene = new THREE.Scene();let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);let renderer = new THREE.WebGLRenderer({ canvas: document.createElement('canvas'), antialias: true });renderer.setSize(480, 380);document.body.appendChild(renderer.domElement);let volcano = new THREE.Mesh(new THREE.SphereGeometry(50, 60, 60), new THREE.MeshPhongMaterial({ color: 0xff0000 }));let lava = new THREE.Mesh(new THREE.ConeGeometry(20, 50), new THREE.MeshPhongMaterial({ color: 0xffff00 }));scene.add(volcano);scene.add(lava);lava.position.y = -60;let eruption = false;function animate() { requestAnimationFrame(animate ); if (eruption) { lava.position.y += 1; if (lava.position.y > 60) { eruption = false; } } else { if (Math.random() < 0.01) { eruption = true; } } renderer.render(scene, camera); } animate(); camera.position.z = 200;</script></body></html>",
-    "visual_type": "html_interactive",
-    "follow_ups": [
-      "What happens after a volcano erupts?",
-      "Why do volcanoes erupt?",
-      "Can we predict when a volcano will erupt?"
-    ],
-    "tags": [
-      "eruption",
-      "volcano",
-      "geology"
-    ],
-    "concept_type": "spatial",
-    "connected_to": [
-      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
-      "d818b502-0989-4206-b0bd-5fb3936e4173",
-      "90d1f8b4-0d98-4a3d-81b4-ba49aa337fcd"
+      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45"
     ],
     "depth": 3
   },
@@ -260,10 +196,9 @@
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
       "c40495c3-4eab-4e99-8025-3dbe2dafe882",
       "b14732ad-0695-4039-b948-1ff505536c53",
-      "521a3eea-afff-4be7-87fd-908719358f3c",
-      "9f99c193-10d1-4ef1-b1ee-259ab3a311eb"
+      "521a3eea-afff-4be7-87fd-908719358f3c"
     ],
-    "depth": 2
+    "depth": 4
   },
   {
     "id": "b14732ad-0695-4039-b948-1ff505536c53",
@@ -290,10 +225,9 @@
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
       "c40495c3-4eab-4e99-8025-3dbe2dafe882",
       "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
-      "521a3eea-afff-4be7-87fd-908719358f3c",
-      "9f99c193-10d1-4ef1-b1ee-259ab3a311eb"
+      "521a3eea-afff-4be7-87fd-908719358f3c"
     ],
-    "depth": 3
+    "depth": 4
   },
   {
     "id": "521a3eea-afff-4be7-87fd-908719358f3c",
@@ -320,39 +254,59 @@
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
       "c40495c3-4eab-4e99-8025-3dbe2dafe882",
       "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
-      "b14732ad-0695-4039-b948-1ff505536c53",
-      "9f99c193-10d1-4ef1-b1ee-259ab3a311eb"
+      "b14732ad-0695-4039-b948-1ff505536c53"
     ],
     "depth": 4
   },
   {
-    "id": "9f99c193-10d1-4ef1-b1ee-259ab3a311eb",
+    "id": "94b05ae1-3fed-4726-a987-f82fd2625777",
     "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
-    "question": "How do planets keep floating and not fall down?",
+    "question": "How does a DNA look like ?",
     "asked_by": "child",
     "date": "2026-05-05",
     "profile_age": 4,
-    "explanation": "Planets stay in space because they are moving really fast around the Sun, like a toy car on a track that never ends. It's like when you spin a ball on a string and it keeps moving around your head without falling down.",
-    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 380'><circle cx='250' cy='190' r='150' fill='yellow' /><circle cx='250' cy='190' r='20' fill='blue' /><path d='M 250 190 m -150 0 a 150 150 0 0 1 300 0' stroke='green' stroke-width='5' fill='none' /><text x='250' y='350' font-size='24' text-anchor='middle'>Sun</text><text x='250' y='20' font-size='24' text-anchor='middle'>Planet</text></svg>",
+    "explanation": "DNA looks like a special kind of twisted ladder, like a curly slide in a playground. It's made up of two long strands that are curled around each other.",
+    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 400'><rect x='10' y='10' width='460' height='380' fill '#f0f0f0' rx='10'/><path d='M 50 50 L 430 350' stroke='#ff69b4' stroke-width='20' fill='none'/><path d='M 50 350 L 430 50' stroke='#ff69b4' stroke-width='20' fill='none'/><circle cx='50' cy='200' r='10' fill='#4caf50'/><circle cx='430' cy='200' r='10' fill='#4caf50'/><text x='220' y='380' font-size='24' fill='#666'>DNA Twisted Ladder</text></svg>",
     "visual_type": "svg",
     "follow_ups": [
-      "What would happen if the planet moved too slow or too fast?",
-      "How do moons orbit around planets?",
-      "Why don't planets crash into each other?"
+      "What is DNA used for?",
+      "Where is DNA found in our body?",
+      "How is DNA made?"
     ],
     "tags": [
-      "gravity",
-      "space",
-      "orbits"
+      "dna",
+      "molecule",
+      "genetics",
+      "biology"
     ],
-    "concept_type": "spatial",
+    "concept_type": "biological",
     "connected_to": [
-      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
-      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
-      "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
-      "b14732ad-0695-4039-b948-1ff505536c53",
-      "521a3eea-afff-4be7-87fd-908719358f3c"
+      "8fae4384-6013-408e-a6cb-92d05c0086ab"
     ],
-    "depth": 5
+    "depth": 1
+  },
+  {
+    "id": "bc0bbfd8-aba0-4ee6-ae4b-496d280fae5a",
+    "profile_id": "ff4c35d9-a43a-43fa-b350-ca3dded0b061",
+    "question": "How does a DNA look like ?",
+    "asked_by": "child",
+    "date": "2026-05-08",
+    "profile_age": 15,
+    "explanation": "\nDeoxyribonucleic acid, or DNA, is a complex molecule that contains the genetic instructions used in the development and function of all living organisms. It is often referred to as the 'building blocks of life' or the 'instructions for life'. DNA is composed of two long chains of nucleotides that are coiled together in a double helix structure. Each nucleotide is made up of a sugar molecule called deoxyribose, a phosphate group, and one of four nitrogenous bases - adenine (A), guanine (G), cytosine (C), and thymine (T). The sequence of these bases determines the genetic information encoded in the DNA molecule.\n\nThe double helix structure of DNA is stabilized by hydrogen bonds between the bases, with adenine pairing with thymine and guanine pairing with cytosine. This structure allows for the efficient storage and transmission of genetic information. The DNA molecule is incredibly thin, measuring only about 2 nanometers in diameter, yet it contains all the information necessary to create and sustain life. This is achieved through a process called gene expression, where the genetic information in the DNA is transcribed into RNA and then translated into proteins, which perform a wide range of functions in the cell.\n\nThe unique structure of DNA allows it to replicate itself, a process that is essential for cell division and the transmission of genetic information from one generation to the next. During replication, the double helix is unwound, and the genetic material is copied, resulting in two identical daughter molecules. This process is crucial for the survival and evolution of living organisms. Furthermore, the study of DNA has led to numerous advances in fields such as genetics, biotechnology, and medicine, and continues to be an active area of research.\n\nIn addition to its role in storing genetic information, DNA also plays a critical role in the regulation of gene expression, the repair of damaged DNA, and the response to environmental stimuli. The complex interactions between DNA, proteins, and other molecules in the cell are still not fully understood and are the subject of ongoing research. The study of DNA has far-reaching implications for our understanding of life and the development of new technologies and therapies.\n\n",
+    "visual_code": "\n<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 380'>\n  <defs>\n    <linearGradient id='grad1' x1='0%' y1='0%' x2='100%' y2='0%'>\n      <stop offset='0%' stop-color='#ff0000' />\n      <stop offset='100%' stop-color='#0000ff' />\n    </linearGradient>\n  </defs>\n  <rect x='50' y='50' width='400' height='280' fill='none' stroke='black' stroke-width='2' />\n  <path d='M 100 100 C 150 50, 350 50, 400 100' fill='none' stroke='black' stroke-width='2' />\n  <path d='M 100 200 C 150 250, 350 250, 400 200' fill='none' stroke='black' stroke-width='2' />\n  <text x='100' y='150' font-size='20' fill='black'>Adenine (A)</text>\n  <text x='300' y='150' font-size='20' fill='black'>Guanine (G)</text>\n  <text x='100' y='250' font-size='20' fill='black'>Thymine (T)</text>\n  <text x='300' y='250' font-size='20' fill='black'>Cytosine (C)</text>\n  <rect x='200' y='300' width='100' height='50' fill='url(#grad1)' rx='10' />\n  <text x='220' y='325' font-size='20' fill='black'>Double Helix</text>\n</svg>\n",
+    "visual_type": "svg",
+    "follow_ups": [
+      "What is the process of DNA replication and how does it occur?",
+      "How do genetic mutations affect the structure and function of DNA?",
+      "What are some of the current applications and potential future uses of DNA technology?"
+    ],
+    "tags": [
+      "genetics",
+      "dna",
+      "molecular biology"
+    ],
+    "concept_type": "biological",
+    "connected_to": [],
+    "depth": 0
   }
 ]

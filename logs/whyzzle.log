@@ -450,3 +450,503 @@ Blender quit
 2026-05-05 10:40:31,351 INFO  [3d-f739c] Blender rendered 30 frames — assembling MP4…
 2026-05-05 10:40:31,630 INFO  [3d-f739c] Scene ready: scene_How_do_planets_keep_floating_and_not_fal.mp4 (9.9 KB)
 2026-05-05 10:40:31,630 INFO  [3d-f739c] LLM-generated script succeeded for: How do planets keep floating and not fall down?
+2026-05-05 11:20:50,239 INFO  [-] Whyzzle webapp starting up
+2026-05-05 11:20:59,594 INFO  [3d-ac456] 3D render requested for topic: How do planets keep floating and not fall down?
+2026-05-05 11:20:59,595 INFO  [3d-ac456] 3D scene: 'How do planets keep floating and not fall down?' | 480x270 30f 4s
+2026-05-05 11:20:59,882 INFO  [3d-ac456] Blender: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 11:20:59,884 INFO  [3d-ac456] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-05 11:21:01,112 INFO  [3d-ac456] Groq responded: 455 chars
+2026-05-05 11:21:01,114 INFO  [3d-ac456] LLM chose template 'orbit' for: How do planets keep floating and not fall down?
+2026-05-05 11:21:01,122 INFO  [3d-ac456] Running template 'orbit' (timeout=90s)
+2026-05-05 11:21:01,123 INFO  [3d-ac456] Blender (timeout=90s): orbit.py
+2026-05-05 11:21:23,139 INFO  [3d-ac456] Blender stdout: '
+00:20.610  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_gabksy0v\frame_0029.png'
+00:21.266  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_gabksy0v\frame_0030.png'
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
+
+2026-05-05 11:21:23,141 INFO  [3d-ac456] 30 frames rendered — assembling MP4
+2026-05-05 11:21:24,680 INFO  [3d-ac456] Done: scene_How_do_planets_keep_floating_and_not_fal.mp4 (22.7 KB)
+2026-05-05 11:22:21,498 INFO  [3d-12a0e] 3D render requested for topic: Show an interactive 3D visualization using Three.js (self-co
+2026-05-05 11:22:21,499 INFO  [3d-12a0e] 3D scene: 'Show an interactive 3D visualization using Three.js (self-co' | 480x270 30f 4s
+2026-05-05 11:22:21,681 INFO  [3d-12a0e] Blender: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 11:22:21,683 INFO  [3d-12a0e] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-05 11:22:22,731 INFO  [3d-12a0e] Groq responded: 367 chars
+2026-05-05 11:22:22,732 INFO  [3d-12a0e] LLM chose template 'cross_section' for: Show an interactive 3D visualization using Three.js (self-co
+2026-05-05 11:22:22,736 INFO  [3d-12a0e] Running template 'cross_section' (timeout=90s)
+2026-05-05 11:22:22,736 INFO  [3d-12a0e] Blender (timeout=90s): cross_section.py
+2026-05-05 11:22:50,620 INFO  [3d-12a0e] Blender stdout: '
+00:26.828  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_skifa0c2\frame_0029.png'
+00:27.578  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_skifa0c2\frame_0030.png'
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
+
+2026-05-05 11:22:50,621 INFO  [3d-12a0e] 30 frames rendered — assembling MP4
+2026-05-05 11:22:50,783 INFO  [3d-12a0e] Done: scene_Show_an_interactive_3D_visualization_usi.mp4 (19.2 KB)
+2026-05-05 23:39:16,710 INFO  [-] Whyzzle webapp starting up
+2026-05-05 23:40:47,123 INFO  [ask-d72ef] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-05 23:40:47,124 INFO  [ask-d72ef] === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-05 23:40:47,125 INFO  [ask-d72ef] Question: "How does a DNA look like ?"
+2026-05-05 23:40:47,127 INFO  [ask-d72ef] Profile age: 4 — applying age-adaptive explanation depth
+2026-05-05 23:40:47,128 INFO  [ask-d72ef] Web search: "How does a DNA look like ?"
+2026-05-05 23:40:47,914 INFO  [ask-d72ef] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-05 23:40:49,463 INFO  [ask-d72ef] DuckDuckGo HTML snippets: 1481 chars from 5 results
+2026-05-05 23:40:49,464 INFO  [ask-d72ef] Building prompt (1481 chars web context) and calling LLM...
+2026-05-05 23:40:49,465 INFO  [ask-d72ef] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-05 23:40:51,030 INFO  [ask-d72ef] Groq responded: 888 chars
+2026-05-05 23:40:51,031 INFO  [ask-d72ef] LLM response received, extracting JSON...
+2026-05-05 23:40:51,031 INFO  [ask-d72ef] Parsed response: concept_type=biological, visual_type=svg, tags=['dna', 'biology', 'genetics', 'molecule']
+2026-05-05 23:40:51,032 INFO  [ask-d72ef] === Pipeline complete ===
+2026-05-05 23:40:51,033 INFO  [ask-d72ef] Storing result in curiosity map...
+2026-05-05 23:40:51,035 INFO  [ask-d72ef] Saving topic to curiosity map: "How does a DNA look like ?"
+2026-05-05 23:40:51,035 INFO  [ask-d72ef] Tags: ['dna', 'molecule', 'genetics', 'biology']
+2026-05-05 23:40:51,036 INFO  [ask-d72ef] Auto-connected to "How does a mango seed grow into a tree? Show me in" (shared tags: ['biology'])
+2026-05-05 23:40:51,042 INFO  [ask-d72ef] Topic saved (id=94b05ae1, connections=1, total in map=13)
+2026-05-05 23:40:51,068 INFO  [ask-d72ef] Found 1 related topic(s) in curiosity map
+2026-05-05 23:41:03,342 INFO  [3d-127e4] Video render requested for topic: How does a DNA look like ?
+2026-05-05 23:41:03,383 INFO  [3d-127e4] Pipeline: Manim not available, skipping
+2026-05-05 23:41:04,463 INFO  [3d-127e4] Pipeline: trying Blender for 'How does a DNA look like ?'
+2026-05-05 23:41:04,463 INFO  [3d-127e4] 3D scene: 'How does a DNA look like ?' | 480x270 30f 4s
+2026-05-05 23:41:04,685 INFO  [3d-127e4] Blender: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-05 23:41:04,687 INFO  [3d-127e4] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-05 23:41:05,647 INFO  [3d-127e4] Groq responded: 388 chars
+2026-05-05 23:41:05,649 INFO  [3d-127e4] LLM chose template 'cross_section' for: How does a DNA look like ?
+2026-05-05 23:41:05,657 INFO  [3d-127e4] Running template 'cross_section' (timeout=90s)
+2026-05-05 23:41:05,658 INFO  [3d-127e4] Blender (timeout=90s): cross_section.py
+2026-05-05 23:42:08,765 INFO  [3d-127e4] Blender stdout: '
+00:59.125  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_rekndl7f\frame_0029.png'
+01:01.797  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_rekndl7f\frame_0030.png'
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
+
+2026-05-05 23:42:08,767 INFO  [3d-127e4] 30 frames rendered — assembling MP4
+2026-05-05 23:42:10,014 INFO  [3d-127e4] Done: scene_How_does_a_DNA_look_like__.mp4 (15.9 KB)
+2026-05-05 23:42:10,023 INFO  [3d-127e4] Pipeline: Blender succeeded
+2026-05-05 23:52:44,735 INFO  [-] Whyzzle webapp starting up
+2026-05-05 23:53:46,721 INFO  [ask-903b7] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-05 23:53:46,721 INFO  [ask-903b7] === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-05 23:53:46,722 INFO  [ask-903b7] Question: "How does a DNA look like ?"
+2026-05-05 23:53:46,722 INFO  [ask-903b7] Profile age: 4 — applying age-adaptive explanation depth
+2026-05-05 23:53:46,723 INFO  [ask-903b7] Web search: "How does a DNA look like ?"
+2026-05-05 23:53:47,330 INFO  [ask-903b7] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-05 23:53:48,573 INFO  [ask-903b7] DuckDuckGo HTML snippets: 1481 chars from 5 results
+2026-05-05 23:53:48,574 INFO  [ask-903b7] Building prompt (1481 chars web context) and calling LLM...
+2026-05-05 23:53:48,574 INFO  [ask-903b7] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-05 23:53:50,128 INFO  [ask-903b7] Groq responded: 1020 chars
+2026-05-05 23:53:50,128 INFO  [ask-903b7] LLM response received, extracting JSON...
+2026-05-05 23:53:50,128 INFO  [ask-903b7] Parsed response: concept_type=biological, visual_type=svg, tags=['biology', 'dna', 'genes']
+2026-05-05 23:53:50,128 INFO  [ask-903b7] === Pipeline complete ===
+2026-05-05 23:53:50,129 INFO  [ask-903b7] Storing result in curiosity map...
+2026-05-05 23:53:50,129 INFO  [ask-903b7] Saving topic to curiosity map: "How does a DNA look like ?"
+2026-05-05 23:53:50,130 INFO  [ask-903b7] Tags: ['biology', 'dna', 'genes']
+2026-05-05 23:53:50,130 INFO  [ask-903b7] Auto-connected to "How does a mango seed grow into a tree? Show me in" (shared tags: ['biology'])
+2026-05-05 23:53:50,130 INFO  [ask-903b7] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-05 23:53:50,132 INFO  [ask-903b7] Topic saved (id=aecab2fc, connections=2, total in map=14)
+2026-05-05 23:53:50,143 INFO  [ask-903b7] Found 2 related topic(s) in curiosity map
+2026-05-05 23:54:21,473 INFO  [3d-1ac5b] Video render requested for topic: How does a DNA look like ?
+2026-05-05 23:54:21,475 INFO  [3d-1ac5b] Pipeline: trying Manim for 'How does a DNA look like ?'
+2026-05-05 23:54:21,476 INFO  [3d-1ac5b] Manim: generating code for 'How does a DNA look like ?'
+2026-05-05 23:54:21,476 INFO  [3d-1ac5b] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-05 23:54:22,646 INFO  [3d-1ac5b] Groq responded: 1003 chars
+2026-05-05 23:54:22,649 INFO  [3d-1ac5b] Manim script saved to debug_last_manim_script.py
+2026-05-05 23:54:22,650 INFO  [3d-1ac5b] Running: manim -ql WhyzzleScene (timeout=120s)
+2026-05-05 23:54:33,654 INFO  [3d-1ac5b] Manim stdout:          '                                                 
+                                                                               
+                    INFO     Rendered WhyzzleScene                 scene.py:278
+                             Played 7 animations                               
+
+2026-05-05 23:54:33,668 INFO  [3d-1ac5b] Manim done: manim_How_does_a_DNA_look_like__.mp4 (58.6 KB)
+2026-05-05 23:54:33,674 INFO  [3d-1ac5b] Pipeline: Manim succeeded
+2026-05-06 00:03:02,028 INFO  [-] Whyzzle webapp starting up
+2026-05-06 00:03:21,153 INFO  [ask-85906] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-06 00:03:21,153 INFO  [ask-85906] === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-06 00:03:21,153 INFO  [ask-85906] Question: "How does a DNA look like ?"
+2026-05-06 00:03:21,154 INFO  [ask-85906] Profile age: 4 — applying age-adaptive explanation depth
+2026-05-06 00:03:21,154 INFO  [ask-85906] Web search: "How does a DNA look like ?"
+2026-05-06 00:03:21,704 INFO  [ask-85906] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-06 00:03:23,178 INFO  [ask-85906] DuckDuckGo HTML snippets: 1481 chars from 5 results
+2026-05-06 00:03:23,179 INFO  [ask-85906] Building prompt (1481 chars web context) and calling LLM...
+2026-05-06 00:03:23,179 INFO  [ask-85906] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-06 00:03:24,974 INFO  [ask-85906] Groq responded: 1185 chars
+2026-05-06 00:03:24,974 INFO  [ask-85906] LLM response received, extracting JSON...
+2026-05-06 00:03:24,975 INFO  [ask-85906] Parsed response: concept_type=biological, visual_type=svg, tags=['biology', 'dna', 'genetics']
+2026-05-06 00:03:24,975 INFO  [ask-85906] === Pipeline complete ===
+2026-05-06 00:03:24,975 INFO  [ask-85906] Storing result in curiosity map...
+2026-05-06 00:03:24,976 INFO  [ask-85906] Saving topic to curiosity map: "How does a DNA look like ?"
+2026-05-06 00:03:24,977 INFO  [ask-85906] Tags: ['biology', 'genetics', 'dna']
+2026-05-06 00:03:24,977 INFO  [ask-85906] Auto-connected to "How does a mango seed grow into a tree? Show me in" (shared tags: ['biology'])
+2026-05-06 00:03:24,978 INFO  [ask-85906] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'genetics', 'dna'])
+2026-05-06 00:03:24,979 INFO  [ask-85906] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-06 00:03:24,983 INFO  [ask-85906] Topic saved (id=753f2bab, connections=3, total in map=15)
+2026-05-06 00:03:25,002 INFO  [ask-85906] Found 3 related topic(s) in curiosity map
+2026-05-06 00:03:32,483 INFO  [3d-b2388] Video render requested for topic: How does a DNA look like ?
+2026-05-06 00:03:32,492 INFO  [3d-b2388] Pipeline: trying Manim for 'How does a DNA look like ?'
+2026-05-06 00:03:32,494 INFO  [3d-b2388] Manim: generating code for 'How does a DNA look like ?'
+2026-05-06 00:03:32,494 INFO  [3d-b2388] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-06 00:03:33,989 INFO  [3d-b2388] Groq responded: 811 chars
+2026-05-06 00:03:33,990 INFO  [3d-b2388] Manim visual plan: The animation starts with 12 blue Dots and 12 orange Dots along two sine curves, connected by 12 short white Line rungs between them, representing the sugar-phosphate backbone of DNA. As the animation
+2026-05-06 00:03:33,991 INFO  [3d-b2388] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-06 00:03:36,157 INFO  [3d-b2388] Groq responded: 2023 chars
+2026-05-06 00:03:36,168 INFO  [3d-b2388] Manim script saved to output/debug_last_manim_script.py
+2026-05-06 00:03:36,172 INFO  [3d-b2388] Running: manim -ql WhyzzleScene (timeout=120s)
+2026-05-06 00:03:41,912 INFO  [3d-b2388] Manim stdout:          9_gr8h0\videos\tmpzq8isxs                         
+                             q\480p15\partial_movie_fi                         
+                             les\WhyzzleScene\uncached                         
+                             _00002.mp4'                                       
+
+2026-05-06 00:03:41,913 ERROR  [3d-b2388] Manim failed (exit 1):
+nge_circles[i])          |
+| > 30             rect = Rectangle(0.1, 0.05, color=YELLOW).move_to(pair)    |
+|   31             pair.add(rect)                                             |
+|   32             pairs.add(pair)                                            |
+|   33         self.play(Create(pairs))                                       |
++-----------------------------------------------------------------------------+
+TypeError: Rectangle.__init__() got multiple values for argument 'color'
+
+2026-05-06 00:03:41,916 INFO  [3d-b2388] Pipeline: Manim failed — Manim: Manim render failed: airs))                                       |
++-----------------------------------------------------------------------------+
+TypeError: Rectangle.__init__() got multiple values for argument 'color'
+
+2026-05-06 00:03:41,925 INFO  [3d-b2388] Pipeline: Blender skipped — topic 'How does a DNA look like ?' not spatial/3D
+2026-05-06 00:03:43,580 INFO  [3d-b2388] Pipeline: trying CogVideoX for 'How does a DNA look like ?'
+2026-05-06 00:03:43,580 INFO  [3d-b2388] CogVideoX: generating for 'How does a DNA look like ?'
+2026-05-06 00:03:43,581 INFO  [3d-b2388] Prompt: Short educational animation explaining 'How does a DNA look like ?' for children aged 8-14. nature documentary style, vivid colors, slow motion, educational. High quality, visually engaging, simple to understand.
+2026-05-06 00:07:32,173 INFO  [3d-b2388] CogVideoX done: cogvideo_How_does_a_DNA_look_like__.mp4 (4945.0 KB)
+2026-05-06 00:07:32,174 INFO  [3d-b2388] Pipeline: CogVideoX succeeded
+2026-05-08 13:11:17,139 INFO  [-] Whyzzle webapp starting up
+2026-05-08 13:12:36,802 INFO  [ask-9a3dd] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-08 13:12:36,803 INFO  [ask-9a3dd] === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-08 13:12:36,803 INFO  [ask-9a3dd] Question: "How does a DNA look like ?"
+2026-05-08 13:12:36,805 INFO  [ask-9a3dd] Profile age: 4 — applying age-adaptive explanation depth
+2026-05-08 13:12:36,808 INFO  [ask-9a3dd] Web search: "How does a DNA look like ?"
+2026-05-08 13:12:38,116 INFO  [ask-9a3dd] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-08 13:12:39,513 INFO  [ask-9a3dd] DuckDuckGo HTML snippets: 1485 chars from 5 results
+2026-05-08 13:12:39,515 INFO  [ask-9a3dd] Building prompt (1485 chars web context) and calling LLM...
+2026-05-08 13:12:39,519 INFO  [ask-9a3dd] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 13:12:41,425 INFO  [ask-9a3dd] Groq responded: 1054 chars
+2026-05-08 13:12:41,426 INFO  [ask-9a3dd] LLM response received, extracting JSON...
+2026-05-08 13:12:41,426 INFO  [ask-9a3dd] Parsed response: concept_type=biological, visual_type=svg, tags=['biology', 'dna', 'genetics']
+2026-05-08 13:12:41,427 INFO  [ask-9a3dd] === Pipeline complete ===
+2026-05-08 13:12:41,428 INFO  [ask-9a3dd] Storing result in curiosity map...
+2026-05-08 13:12:41,430 INFO  [ask-9a3dd] Saving topic to curiosity map: "How does a DNA look like ?"
+2026-05-08 13:12:41,431 INFO  [ask-9a3dd] Tags: ['biology', 'genetics', 'dna']
+2026-05-08 13:12:41,431 INFO  [ask-9a3dd] Auto-connected to "How does a mango seed grow into a tree? Show me in" (shared tags: ['biology'])
+2026-05-08 13:12:41,432 INFO  [ask-9a3dd] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'genetics', 'dna'])
+2026-05-08 13:12:41,433 INFO  [ask-9a3dd] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 13:12:41,434 INFO  [ask-9a3dd] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'genetics', 'dna'])
+2026-05-08 13:12:41,440 INFO  [ask-9a3dd] Topic saved (id=8d3e6625, connections=4, total in map=16)
+2026-05-08 13:12:41,483 INFO  [ask-9a3dd] Found 4 related topic(s) in curiosity map
+2026-05-08 13:13:55,813 INFO  [ask-e1033] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-08 13:13:55,814 INFO  [ask-e1033] === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-08 13:13:55,815 INFO  [ask-e1033] Question: "How does a DNA look like ?"
+2026-05-08 13:13:55,816 INFO  [ask-e1033] Profile age: 4 — applying age-adaptive explanation depth
+2026-05-08 13:13:55,817 INFO  [ask-e1033] Web search: "How does a DNA look like ?"
+2026-05-08 13:13:56,343 INFO  [ask-e1033] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-08 13:13:57,892 INFO  [ask-e1033] DuckDuckGo HTML snippets: 1422 chars from 5 results
+2026-05-08 13:13:57,893 INFO  [ask-e1033] Building prompt (1422 chars web context) and calling LLM...
+2026-05-08 13:13:57,894 INFO  [ask-e1033] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 13:13:59,731 INFO  [ask-e1033] Groq responded: 1026 chars
+2026-05-08 13:13:59,731 INFO  [ask-e1033] LLM response received, extracting JSON...
+2026-05-08 13:13:59,732 INFO  [ask-e1033] Parsed response: concept_type=biological, visual_type=svg, tags=['biology', 'dna', 'helix']
+2026-05-08 13:13:59,732 INFO  [ask-e1033] === Pipeline complete ===
+2026-05-08 13:13:59,733 INFO  [ask-e1033] Storing result in curiosity map...
+2026-05-08 13:13:59,734 INFO  [ask-e1033] Saving topic to curiosity map: "How does a DNA look like ?"
+2026-05-08 13:13:59,734 INFO  [ask-e1033] Tags: ['biology', 'helix', 'dna']
+2026-05-08 13:13:59,735 INFO  [ask-e1033] Auto-connected to "How does a mango seed grow into a tree? Show me in" (shared tags: ['biology'])
+2026-05-08 13:13:59,735 INFO  [ask-e1033] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 13:13:59,736 INFO  [ask-e1033] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 13:13:59,736 INFO  [ask-e1033] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 13:13:59,737 INFO  [ask-e1033] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 13:13:59,741 INFO  [ask-e1033] Topic saved (id=8d030af0, connections=5, total in map=17)
+2026-05-08 13:13:59,764 INFO  [ask-e1033] Found 4 related topic(s) in curiosity map
+2026-05-08 13:14:15,071 INFO  [ask-2c784] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-08 13:14:15,072 INFO  [ask-2c784] === New question (profile=ff4c35d9-a43a-43fa-b350-ca3dded0b061, asked_by=child) ===
+2026-05-08 13:14:15,073 INFO  [ask-2c784] Question: "How does a DNA look like ?"
+2026-05-08 13:14:15,074 INFO  [ask-2c784] Profile age: 15 — applying age-adaptive explanation depth
+2026-05-08 13:14:15,075 INFO  [ask-2c784] Web search: "How does a DNA look like ?"
+2026-05-08 13:14:15,604 INFO  [ask-2c784] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-08 13:14:17,037 INFO  [ask-2c784] DuckDuckGo HTML snippets: 1485 chars from 5 results
+2026-05-08 13:14:17,039 INFO  [ask-2c784] Building prompt (1485 chars web context) and calling LLM...
+2026-05-08 13:14:17,040 INFO  [ask-2c784] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 13:14:19,942 INFO  [ask-2c784] Groq responded: 3682 chars
+2026-05-08 13:14:19,943 INFO  [ask-2c784] LLM response received, extracting JSON...
+2026-05-08 13:21:20,404 INFO  [-] Whyzzle webapp starting up
+2026-05-08 13:21:48,165 INFO  [ask-9012a] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-08 13:21:48,167 INFO  [ask-9012a] === New question (profile=ff4c35d9-a43a-43fa-b350-ca3dded0b061, asked_by=child) ===
+2026-05-08 13:21:48,168 INFO  [ask-9012a] Question: "How does a DNA look like ?"
+2026-05-08 13:21:48,170 INFO  [ask-9012a] Profile age: 15 — applying age-adaptive explanation depth
+2026-05-08 13:21:48,171 INFO  [ask-9012a] Web search: "How does a DNA look like ?"
+2026-05-08 13:21:48,909 INFO  [ask-9012a] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-08 13:21:50,204 INFO  [ask-9012a] DuckDuckGo HTML snippets: 1422 chars from 5 results
+2026-05-08 13:21:50,205 INFO  [ask-9012a] Building prompt (1422 chars web context) and calling LLM...
+2026-05-08 13:21:50,205 INFO  [ask-9012a] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 13:21:52,930 INFO  [ask-9012a] Groq responded: 3709 chars
+2026-05-08 13:21:52,931 INFO  [ask-9012a] LLM response received, extracting JSON...
+2026-05-08 13:21:52,933 INFO  [ask-9012a] Parsed response: concept_type=biological, visual_type=svg, tags=['dna', 'genetics', 'molecular biology']
+2026-05-08 13:21:52,934 INFO  [ask-9012a] === Pipeline complete ===
+2026-05-08 13:21:52,935 INFO  [ask-9012a] Storing result in curiosity map...
+2026-05-08 13:21:52,937 INFO  [ask-9012a] Saving topic to curiosity map: "How does a DNA look like ?"
+2026-05-08 13:21:52,937 INFO  [ask-9012a] Tags: ['genetics', 'dna', 'molecular biology']
+2026-05-08 13:21:52,938 INFO  [ask-9012a] No existing topics share tags — standalone node
+2026-05-08 13:21:52,944 INFO  [ask-9012a] Topic saved (id=bc0bbfd8, connections=0, total in map=18)
+2026-05-08 13:21:52,977 INFO  [ask-9012a] Found 0 related topic(s) in curiosity map
+2026-05-08 13:31:11,175 INFO  [-] Whyzzle webapp starting up
+2026-05-08 13:31:33,353 INFO  [ask-dd347] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-08 13:31:33,354 INFO  [ask-dd347] === New question (profile=ff4c35d9-a43a-43fa-b350-ca3dded0b061, asked_by=child) ===
+2026-05-08 13:31:33,355 INFO  [ask-dd347] Question: "How does a DNA look like ?"
+2026-05-08 13:31:33,357 INFO  [ask-dd347] Profile age: 15 — applying age-adaptive explanation depth
+2026-05-08 13:31:33,358 INFO  [ask-dd347] Web search: "How does a DNA look like ?"
+2026-05-08 13:31:34,023 INFO  [ask-dd347] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-08 13:31:35,412 INFO  [ask-dd347] DuckDuckGo HTML snippets: 1422 chars from 5 results
+2026-05-08 13:31:35,412 INFO  [ask-dd347] Building prompt (1422 chars web context) and calling LLM...
+2026-05-08 13:31:35,413 INFO  [ask-dd347] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 13:31:38,748 INFO  [ask-dd347] Groq responded: 2987 chars
+2026-05-08 13:31:38,749 INFO  [ask-dd347] LLM response received, extracting JSON...
+2026-05-08 13:31:38,751 INFO  [ask-dd347] Generating SVG visual (dedicated call, concept=biological)...
+2026-05-08 13:31:38,752 INFO  [ask-dd347] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 13:31:41,854 INFO  [ask-dd347] Groq responded: 3390 chars
+2026-05-08 13:31:41,855 INFO  [ask-dd347] SVG visual generated: 3390 chars
+2026-05-08 13:31:41,855 INFO  [ask-dd347] Parsed response: concept_type=biological, visual_type=svg, tags=['molecular biology', 'genetics', 'dna structure']
+2026-05-08 13:31:41,856 INFO  [ask-dd347] === Pipeline complete ===
+2026-05-08 13:31:41,856 INFO  [ask-dd347] Storing result in curiosity map...
+2026-05-08 13:31:41,858 INFO  [ask-dd347] Saving topic to curiosity map: "How does a DNA look like ?"
+2026-05-08 13:31:41,858 INFO  [ask-dd347] Tags: ['molecular biology', 'dna structure', 'genetics']
+2026-05-08 13:31:41,859 INFO  [ask-dd347] Auto-connected to "How does a DNA look like ?" (shared tags: ['molecular biology', 'genetics'])
+2026-05-08 13:31:41,863 INFO  [ask-dd347] Topic saved (id=7c2fb010, connections=1, total in map=19)
+2026-05-08 13:31:41,885 INFO  [ask-dd347] Found 1 related topic(s) in curiosity map
+2026-05-08 13:32:08,433 INFO  [ask-c1883] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-08 13:32:08,434 INFO  [ask-c1883] === New question (profile=ff4c35d9-a43a-43fa-b350-ca3dded0b061, asked_by=child) ===
+2026-05-08 13:32:08,434 INFO  [ask-c1883] Question: "How does a DNA look like ?"
+2026-05-08 13:32:08,436 INFO  [ask-c1883] Profile age: 15 — applying age-adaptive explanation depth
+2026-05-08 13:32:08,437 INFO  [ask-c1883] Web search: "How does a DNA look like ?"
+2026-05-08 13:32:09,038 INFO  [ask-c1883] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-08 13:32:10,155 INFO  [ask-c1883] DuckDuckGo HTML snippets: 1423 chars from 5 results
+2026-05-08 13:32:10,156 INFO  [ask-c1883] Building prompt (1423 chars web context) and calling LLM...
+2026-05-08 13:32:10,156 INFO  [ask-c1883] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 13:32:12,519 INFO  [ask-c1883] Groq responded: 3321 chars
+2026-05-08 13:32:12,520 INFO  [ask-c1883] LLM response received, extracting JSON...
+2026-05-08 13:32:12,523 INFO  [ask-c1883] Generating SVG visual (dedicated call, concept=spatial)...
+2026-05-08 13:32:12,524 INFO  [ask-c1883] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 13:32:15,379 INFO  [ask-c1883] Groq responded: 2948 chars
+2026-05-08 13:32:15,380 INFO  [ask-c1883] SVG visual generated: 2948 chars
+2026-05-08 13:32:15,381 INFO  [ask-c1883] Parsed response: concept_type=spatial, visual_type=svg, tags=['molecule', 'genetics', 'double helix', 'nucleic acid']
+2026-05-08 13:32:15,381 INFO  [ask-c1883] === Pipeline complete ===
+2026-05-08 13:32:15,382 INFO  [ask-c1883] Storing result in curiosity map...
+2026-05-08 13:32:15,385 INFO  [ask-c1883] Saving topic to curiosity map: "How does a DNA look like ?"
+2026-05-08 13:32:15,385 INFO  [ask-c1883] Tags: ['double helix', 'nucleic acid', 'molecule', 'genetics']
+2026-05-08 13:32:15,386 INFO  [ask-c1883] Auto-connected to "How does a DNA look like ?" (shared tags: ['genetics'])
+2026-05-08 13:32:15,387 INFO  [ask-c1883] Auto-connected to "How does a DNA look like ?" (shared tags: ['genetics'])
+2026-05-08 13:32:15,392 INFO  [ask-c1883] Topic saved (id=53432b60, connections=2, total in map=20)
+2026-05-08 13:32:15,428 INFO  [ask-c1883] Found 2 related topic(s) in curiosity map
+2026-05-08 13:33:17,452 INFO  [ask-9a495] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-08 13:33:17,453 INFO  [ask-9a495] === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-08 13:33:17,454 INFO  [ask-9a495] Question: "How does a DNA look like ?"
+2026-05-08 13:33:17,455 INFO  [ask-9a495] Profile age: 4 — applying age-adaptive explanation depth
+2026-05-08 13:33:17,456 INFO  [ask-9a495] Web search: "How does a DNA look like ?"
+2026-05-08 13:33:18,036 INFO  [ask-9a495] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-08 13:33:19,355 INFO  [ask-9a495] DuckDuckGo HTML snippets: 1485 chars from 5 results
+2026-05-08 13:33:19,356 INFO  [ask-9a495] Building prompt (1485 chars web context) and calling LLM...
+2026-05-08 13:33:19,356 INFO  [ask-9a495] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 13:33:20,545 INFO  [ask-9a495] Groq responded: 408 chars
+2026-05-08 13:33:20,545 INFO  [ask-9a495] LLM response received, extracting JSON...
+2026-05-08 13:33:20,546 INFO  [ask-9a495] Generating SVG visual (dedicated call, concept=spatial)...
+2026-05-08 13:33:20,547 INFO  [ask-9a495] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 13:33:23,033 INFO  [ask-9a495] Groq responded: 2299 chars
+2026-05-08 13:33:23,034 INFO  [ask-9a495] SVG visual generated: 2299 chars
+2026-05-08 13:33:23,035 INFO  [ask-9a495] Parsed response: concept_type=spatial, visual_type=svg, tags=['dna', 'genetics', 'biology']
+2026-05-08 13:33:23,036 INFO  [ask-9a495] === Pipeline complete ===
+2026-05-08 13:33:23,036 INFO  [ask-9a495] Storing result in curiosity map...
+2026-05-08 13:33:23,039 INFO  [ask-9a495] Saving topic to curiosity map: "How does a DNA look like ?"
+2026-05-08 13:33:23,040 INFO  [ask-9a495] Tags: ['biology', 'dna', 'genetics']
+2026-05-08 13:33:23,041 INFO  [ask-9a495] Auto-connected to "How does a mango seed grow into a tree? Show me in" (shared tags: ['biology'])
+2026-05-08 13:33:23,041 INFO  [ask-9a495] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna', 'genetics'])
+2026-05-08 13:33:23,042 INFO  [ask-9a495] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 13:33:23,043 INFO  [ask-9a495] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna', 'genetics'])
+2026-05-08 13:33:23,044 INFO  [ask-9a495] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna', 'genetics'])
+2026-05-08 13:33:23,045 INFO  [ask-9a495] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 13:33:23,053 INFO  [ask-9a495] Topic saved (id=14a96a4f, connections=6, total in map=21)
+2026-05-08 13:33:23,103 INFO  [ask-9a495] Found 4 related topic(s) in curiosity map
+2026-05-08 13:39:19,716 INFO  [-] Whyzzle webapp starting up
+2026-05-08 13:39:37,078 INFO  [ask-e9a0f] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-08 13:39:37,079 INFO  [ask-e9a0f] === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-08 13:39:37,079 INFO  [ask-e9a0f] Question: "How does a DNA look like ?"
+2026-05-08 13:39:37,081 INFO  [ask-e9a0f] Profile age: 4 — applying age-adaptive explanation depth
+2026-05-08 13:39:37,083 INFO  [ask-e9a0f] Web search: "How does a DNA look like ?"
+2026-05-08 13:39:37,969 INFO  [ask-e9a0f] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-08 13:39:39,257 INFO  [ask-e9a0f] DuckDuckGo HTML snippets: 1391 chars from 5 results
+2026-05-08 13:39:39,258 INFO  [ask-e9a0f] Building prompt (1391 chars web context) and calling LLM...
+2026-05-08 13:39:39,258 INFO  [ask-e9a0f] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 13:39:40,129 INFO  [ask-e9a0f] Groq responded: 361 chars
+2026-05-08 13:39:40,130 INFO  [ask-e9a0f] LLM response received, extracting JSON...
+2026-05-08 13:39:40,138 INFO  [ask-e9a0f] Generating AI image (concept=spatial)...
+2026-05-08 13:39:40,139 INFO  [ask-e9a0f] ImageGen: prompt=space science educational illustration of How does a DNA look like ?, colorful labeled diagram, scal
+2026-05-08 13:39:41,106 INFO  [ask-e9a0f] ImageGen: HuggingFace FLUX.1-schnell...
+2026-05-08 13:39:41,954 WARNING  [ask-e9a0f] ImageGen: HuggingFace failed (Client error '402 Payment Required' for url 'https://router.huggingface.co/fal-ai/fal-ai/flux/schnell' (Request ID: Root)
+2026-05-08 13:39:41,955 INFO  [ask-e9a0f] ImageGen: falling back to Pollinations.ai (FLUX, no key required)
+2026-05-08 13:39:41,956 INFO  [ask-e9a0f] Parsed response: concept_type=spatial, visual_type=html_interactive, tags=['dna', 'biology', 'cells']
+2026-05-08 13:39:41,956 INFO  [ask-e9a0f] === Pipeline complete ===
+2026-05-08 13:39:41,957 INFO  [ask-e9a0f] Storing result in curiosity map...
+2026-05-08 13:39:41,959 INFO  [ask-e9a0f] Saving topic to curiosity map: "How does a DNA look like ?"
+2026-05-08 13:39:41,960 INFO  [ask-e9a0f] Tags: ['biology', 'dna', 'cells']
+2026-05-08 13:39:41,960 INFO  [ask-e9a0f] Auto-connected to "How does a mango seed grow into a tree? Show me in" (shared tags: ['biology'])
+2026-05-08 13:39:41,961 INFO  [ask-e9a0f] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 13:39:41,962 INFO  [ask-e9a0f] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 13:39:41,962 INFO  [ask-e9a0f] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 13:39:41,963 INFO  [ask-e9a0f] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 13:39:41,964 INFO  [ask-e9a0f] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 13:39:41,964 INFO  [ask-e9a0f] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 13:39:41,970 INFO  [ask-e9a0f] Topic saved (id=6cead3d7, connections=7, total in map=22)
+2026-05-08 13:39:42,007 INFO  [ask-e9a0f] Found 4 related topic(s) in curiosity map
+2026-05-08 13:40:03,867 INFO  [ask-70e1a] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-08 13:40:03,868 INFO  [ask-70e1a] === New question (profile=ff4c35d9-a43a-43fa-b350-ca3dded0b061, asked_by=child) ===
+2026-05-08 13:40:03,869 INFO  [ask-70e1a] Question: "How does a DNA look like ?"
+2026-05-08 13:40:03,871 INFO  [ask-70e1a] Profile age: 15 — applying age-adaptive explanation depth
+2026-05-08 13:40:03,872 INFO  [ask-70e1a] Web search: "How does a DNA look like ?"
+2026-05-08 13:40:04,407 INFO  [ask-70e1a] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-08 13:40:05,701 INFO  [ask-70e1a] DuckDuckGo HTML snippets: 1391 chars from 5 results
+2026-05-08 13:40:05,702 INFO  [ask-70e1a] Building prompt (1391 chars web context) and calling LLM...
+2026-05-08 13:40:05,702 INFO  [ask-70e1a] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 13:40:07,445 INFO  [ask-70e1a] Groq responded: 2021 chars
+2026-05-08 13:40:07,446 INFO  [ask-70e1a] LLM response received, extracting JSON...
+2026-05-08 13:40:07,446 INFO  [ask-70e1a] Generating AI image (concept=biological)...
+2026-05-08 13:40:07,446 INFO  [ask-70e1a] ImageGen: prompt=colorful biology education poster of How does a DNA look like ?, showing detailed anatomical structu
+2026-05-08 13:40:07,447 INFO  [ask-70e1a] ImageGen: HuggingFace FLUX.1-schnell...
+2026-05-08 13:40:07,740 WARNING  [ask-70e1a] ImageGen: HuggingFace failed (Client error '402 Payment Required' for url 'https://router.huggingface.co/fal-ai/fal-ai/flux/schnell' (Request ID: Root)
+2026-05-08 13:40:07,740 INFO  [ask-70e1a] ImageGen: falling back to Pollinations.ai (FLUX, no key required)
+2026-05-08 13:40:07,740 INFO  [ask-70e1a] Parsed response: concept_type=biological, visual_type=html_interactive, tags=['dna', 'molecular biology', 'genetics', 'microscopy']
+2026-05-08 13:40:07,741 INFO  [ask-70e1a] === Pipeline complete ===
+2026-05-08 13:40:07,741 INFO  [ask-70e1a] Storing result in curiosity map...
+2026-05-08 13:40:07,742 INFO  [ask-70e1a] Saving topic to curiosity map: "How does a DNA look like ?"
+2026-05-08 13:40:07,742 INFO  [ask-70e1a] Tags: ['dna', 'genetics', 'microscopy', 'molecular biology']
+2026-05-08 13:40:07,742 INFO  [ask-70e1a] Auto-connected to "How does a DNA look like ?" (shared tags: ['dna', 'genetics', 'molecular biology'])
+2026-05-08 13:40:07,743 INFO  [ask-70e1a] Auto-connected to "How does a DNA look like ?" (shared tags: ['molecular biology', 'genetics'])
+2026-05-08 13:40:07,743 INFO  [ask-70e1a] Auto-connected to "How does a DNA look like ?" (shared tags: ['genetics'])
+2026-05-08 13:40:07,745 INFO  [ask-70e1a] Topic saved (id=d49f557c, connections=3, total in map=23)
+2026-05-08 13:40:07,760 INFO  [ask-70e1a] Found 3 related topic(s) in curiosity map
+2026-05-08 13:42:18,333 INFO  [3d-ee349] Video render requested for topic: How does a DNA look like ?
+2026-05-08 13:42:18,341 INFO  [3d-ee349] Pipeline: trying Manim for 'How does a DNA look like ?'
+2026-05-08 13:42:18,342 INFO  [3d-ee349] Pipeline: Manim failed — Manim: Topic better suited for Blender (spatial/3D)
+2026-05-08 13:42:18,856 INFO  [3d-ee349] Pipeline: trying Blender for 'How does a DNA look like ?'
+2026-05-08 13:42:18,856 INFO  [3d-ee349] 3D scene: 'How does a DNA look like ?' | 480x270 30f 4s
+2026-05-08 13:42:18,962 INFO  [3d-ee349] Blender: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-08 13:42:18,964 INFO  [3d-ee349] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 13:42:20,135 INFO  [3d-ee349] Groq responded: 657 chars
+2026-05-08 13:42:20,136 INFO  [3d-ee349] LLM chose template 'orbit' for: How does a DNA look like ?
+2026-05-08 13:42:20,151 INFO  [3d-ee349] Running template 'orbit' (timeout=90s)
+2026-05-08 13:42:20,152 INFO  [3d-ee349] Blender (timeout=90s): orbit.py
+2026-05-08 13:42:49,946 INFO  [3d-ee349] Blender stdout: '
+00:27.563  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_56mcmz7i\frame_0029.png'
+00:28.360  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_56mcmz7i\frame_0030.png'
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
+
+2026-05-08 13:42:49,949 INFO  [3d-ee349] 30 frames rendered — assembling MP4
+2026-05-08 13:42:51,198 INFO  [3d-ee349] Done: scene_How_does_a_DNA_look_like__.mp4 (27.4 KB)
+2026-05-08 13:42:51,206 INFO  [3d-ee349] Pipeline: Blender succeeded
+2026-05-08 14:58:40,735 INFO  [ask-955d4] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-08 14:58:40,737 INFO  [ask-955d4] === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-08 14:58:40,737 INFO  [ask-955d4] Question: "How does a DNA look like ?"
+2026-05-08 14:58:40,739 INFO  [ask-955d4] Profile age: 4 — applying age-adaptive explanation depth
+2026-05-08 14:58:40,740 INFO  [ask-955d4] Web search: "How does a DNA look like ?"
+2026-05-08 14:58:41,250 INFO  [ask-955d4] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-08 14:58:42,728 INFO  [ask-955d4] DuckDuckGo HTML snippets: 1485 chars from 5 results
+2026-05-08 14:58:42,729 INFO  [ask-955d4] Building prompt (1485 chars web context) and calling LLM...
+2026-05-08 14:58:42,730 INFO  [ask-955d4] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 14:58:43,842 INFO  [ask-955d4] Groq responded: 383 chars
+2026-05-08 14:58:43,842 INFO  [ask-955d4] LLM response received, extracting JSON...
+2026-05-08 14:58:43,843 INFO  [ask-955d4] Generating AI image (concept=spatial)...
+2026-05-08 14:58:43,843 INFO  [ask-955d4] ImageGen: prompt=space science educational illustration of How does a DNA look like ?, colorful labeled diagram, scal
+2026-05-08 14:58:43,844 INFO  [ask-955d4] ImageGen: HuggingFace FLUX.1-schnell...
+2026-05-08 14:58:44,165 WARNING  [ask-955d4] ImageGen: HuggingFace failed (Client error '402 Payment Required' for url 'https://router.huggingface.co/fal-ai/fal-ai/flux/schnell' (Request ID: Root)
+2026-05-08 14:58:44,166 INFO  [ask-955d4] ImageGen: falling back to Pollinations.ai (FLUX, no key required)
+2026-05-08 14:58:44,166 INFO  [ask-955d4] Parsed response: concept_type=spatial, visual_type=html_interactive, tags=['dna', 'genes', 'biology']
+2026-05-08 14:58:44,167 INFO  [ask-955d4] === Pipeline complete ===
+2026-05-08 14:58:44,167 INFO  [ask-955d4] Storing result in curiosity map...
+2026-05-08 14:58:44,170 INFO  [ask-955d4] Saving topic to curiosity map: "How does a DNA look like ?"
+2026-05-08 14:58:44,170 INFO  [ask-955d4] Tags: ['biology', 'dna', 'genes']
+2026-05-08 14:58:44,171 INFO  [ask-955d4] Auto-connected to "How does a mango seed grow into a tree? Show me in" (shared tags: ['biology'])
+2026-05-08 14:58:44,171 INFO  [ask-955d4] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 14:58:44,172 INFO  [ask-955d4] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna', 'genes'])
+2026-05-08 14:58:44,172 INFO  [ask-955d4] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 14:58:44,173 INFO  [ask-955d4] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 14:58:44,173 INFO  [ask-955d4] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 14:58:44,174 INFO  [ask-955d4] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 14:58:44,174 INFO  [ask-955d4] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 14:58:44,180 INFO  [ask-955d4] Topic saved (id=651ef5db, connections=8, total in map=24)
+2026-05-08 14:58:44,202 INFO  [ask-955d4] Found 4 related topic(s) in curiosity map
+2026-05-08 14:58:50,124 INFO  [3d-dafba] Video render requested for topic: How does a DNA look like ?
+2026-05-08 14:58:50,125 INFO  [3d-dafba] Pipeline: trying Manim for 'How does a DNA look like ?'
+2026-05-08 14:58:50,126 INFO  [3d-dafba] Pipeline: Manim failed — Manim: Topic better suited for Blender (spatial/3D)
+2026-05-08 14:58:50,301 INFO  [3d-dafba] Pipeline: trying Blender for 'How does a DNA look like ?'
+2026-05-08 14:58:50,302 INFO  [3d-dafba] 3D scene: 'How does a DNA look like ?' | 480x270 30f 4s
+2026-05-08 14:58:50,407 INFO  [3d-dafba] Blender: C:\Raghu\Installs\General\Blender\blender.exe
+2026-05-08 14:58:50,408 INFO  [3d-dafba] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 14:58:51,481 INFO  [3d-dafba] Groq responded: 485 chars
+2026-05-08 14:58:51,481 INFO  [3d-dafba] LLM chose template 'orbit' for: How does a DNA look like ?
+2026-05-08 14:58:51,484 INFO  [3d-dafba] Running template 'orbit' (timeout=90s)
+2026-05-08 14:58:51,484 INFO  [3d-dafba] Blender (timeout=90s): orbit.py
+2026-05-08 14:59:11,713 INFO  [3d-dafba] Blender stdout: '
+00:19.218  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_n4r45pi6\frame_0029.png'
+00:19.859  render           | Saved: 'C:\Users\rragh\AppData\Local\Temp\whyzzle_frames_n4r45pi6\frame_0030.png'
+Blender 5.1.1 (hash b70da489d7f4 built 2026-04-14 01:37:22)
+
+Blender quit
+
+2026-05-08 14:59:11,715 INFO  [3d-dafba] 30 frames rendered — assembling MP4
+2026-05-08 14:59:11,862 INFO  [3d-dafba] Done: scene_How_does_a_DNA_look_like__.mp4 (42.4 KB)
+2026-05-08 14:59:11,869 INFO  [3d-dafba] Pipeline: Blender succeeded
+2026-05-08 15:03:01,984 INFO  [-] Whyzzle webapp starting up
+2026-05-08 15:03:11,277 INFO  [ask-3f143] --- /api/ask: "How does a DNA look like ?" (by child) ---
+2026-05-08 15:03:11,278 INFO  [ask-3f143] === New question (profile=710b1429-f02e-437e-b11c-c51e10137748, asked_by=child) ===
+2026-05-08 15:03:11,278 INFO  [ask-3f143] Question: "How does a DNA look like ?"
+2026-05-08 15:03:11,281 INFO  [ask-3f143] Profile age: 4 — applying age-adaptive explanation depth
+2026-05-08 15:03:11,282 INFO  [ask-3f143] Web search: "How does a DNA look like ?"
+2026-05-08 15:03:12,002 INFO  [ask-3f143] DuckDuckGo Instant: no abstract, trying HTML snippets
+2026-05-08 15:03:13,289 INFO  [ask-3f143] DuckDuckGo HTML snippets: 1485 chars from 5 results
+2026-05-08 15:03:13,290 INFO  [ask-3f143] Building prompt (1485 chars web context) and calling LLM...
+2026-05-08 15:03:13,292 INFO  [ask-3f143] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 15:03:14,144 INFO  [ask-3f143] Groq responded: 392 chars
+2026-05-08 15:03:14,145 INFO  [ask-3f143] LLM response received, extracting JSON...
+2026-05-08 15:03:14,151 INFO  [ask-3f143] Generating AI image (concept=biological)...
+2026-05-08 15:03:14,152 INFO  [ask-3f143] ImageGen: prompt=colorful biology education poster of How does a DNA look like ?, showing detailed anatomical structu
+2026-05-08 15:03:14,580 INFO  [ask-3f143] ImageGen: HuggingFace FLUX.1-schnell...
+2026-05-08 15:03:15,446 WARNING  [ask-3f143] ImageGen: HuggingFace failed (Client error '402 Payment Required' for url 'https://router.huggingface.co/fal-ai/fal-ai/flux/schnell' (Request ID: Root)
+2026-05-08 15:03:15,447 INFO  [ask-3f143] ImageGen: falling back to Pollinations.ai (FLUX, no key required)
+2026-05-08 15:03:15,448 INFO  [ask-3f143] Parsed response: concept_type=biological, visual_type=html_interactive, tags=['dna', 'cells', 'biology']
+2026-05-08 15:03:15,448 INFO  [ask-3f143] === Pipeline complete ===
+2026-05-08 15:03:15,449 INFO  [ask-3f143] Storing result in curiosity map...
+2026-05-08 15:03:15,452 INFO  [ask-3f143] Saving topic to curiosity map: "How does a DNA look like ?"
+2026-05-08 15:03:15,453 INFO  [ask-3f143] Tags: ['cells', 'biology', 'dna']
+2026-05-08 15:03:15,453 INFO  [ask-3f143] Auto-connected to "How does a mango seed grow into a tree? Show me in" (shared tags: ['biology'])
+2026-05-08 15:03:15,454 INFO  [ask-3f143] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 15:03:15,455 INFO  [ask-3f143] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 15:03:15,455 INFO  [ask-3f143] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 15:03:15,456 INFO  [ask-3f143] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 15:03:15,457 INFO  [ask-3f143] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 15:03:15,458 INFO  [ask-3f143] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 15:03:15,458 INFO  [ask-3f143] Auto-connected to "How does a DNA look like ?" (shared tags: ['cells', 'biology', 'dna'])
+2026-05-08 15:03:15,459 INFO  [ask-3f143] Auto-connected to "How does a DNA look like ?" (shared tags: ['biology', 'dna'])
+2026-05-08 15:03:15,467 INFO  [ask-3f143] Topic saved (id=2b124e97, connections=9, total in map=25)
+2026-05-08 15:03:15,498 INFO  [ask-3f143] Found 4 related topic(s) in curiosity map
+2026-05-08 15:03:27,658 INFO  [3d-85b50] Video render requested for topic: How does a DNA look like ?
+2026-05-08 15:03:27,663 INFO  [3d-85b50] Pipeline: trying Manim for 'How does a DNA look like ?'
+2026-05-08 15:03:27,664 INFO  [3d-85b50] Manim: generating code for 'How does a DNA look like ?'
+2026-05-08 15:03:27,664 INFO  [3d-85b50] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 15:03:29,206 INFO  [3d-85b50] Groq responded: 756 chars
+2026-05-08 15:03:29,207 INFO  [3d-85b50] Manim visual plan: The animation starts with 12 pairs of blue dots and orange dots appearing one by one along two sine curves, connected by 12 short white line rungs between them. As the pairs of dots grow from the cent
+2026-05-08 15:03:29,208 INFO  [3d-85b50] Calling Groq (llama-3.3-70b-versatile)...
+2026-05-08 15:03:31,142 INFO  [3d-85b50] Groq responded: 2376 chars
+2026-05-08 15:03:31,152 INFO  [3d-85b50] Manim script saved to output/debug_last_manim_script.py
+2026-05-08 15:03:31,154 INFO  [3d-85b50] Running: manim -ql WhyzzleScene (timeout=120s)
+2026-05-08 15:03:46,536 INFO  [3d-85b50] Manim stdout:          '                                                 
+                                                                               
+                    INFO     Rendered WhyzzleScene                 scene.py:278
+                             Played 41 animations                              
+
+2026-05-08 15:03:46,541 INFO  [3d-85b50] Manim done: manim_How_does_a_DNA_look_like__.mp4 (344.5 KB)
+2026-05-08 15:03:46,552 INFO  [3d-85b50] Pipeline: Manim succeeded
+2026-05-08 22:20:49,480 INFO  [-] Whyzzle webapp starting up

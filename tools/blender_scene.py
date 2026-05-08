@@ -134,12 +134,18 @@ AUDIENCE: children aged 8-14
 Pick the best template and fill in creative, topic-appropriate parameters.
 
 Templates:
-• "orbit"         — objects revolving around a central body
-                    Use for: solar system, atoms, satellites, moons, anything that orbits
-• "cross_section" — nested concentric spheres that rotate to reveal layers
-                    Use for: Earth's interior, cell structure, any layered system
-• "growth"        — something sprouting and growing upward from the ground
-                    Use for: plants, seeds, trees, anything that grows
+• "orbit"         — spheres revolving around a glowing central body in 3D space
+                    Use for: solar system, atom (electrons around nucleus), satellites, moons
+• "cross_section" — nested CONCENTRIC SPHERES rotating to reveal inner layers
+                    Use for: Earth's interior (crust/mantle/core), onion layers, fruit cross-section,
+                    any topic where the structure is literally spherical concentric shells
+                    NOT for: DNA, molecules, proteins, flat diagrams, chemical reactions
+• "growth"        — a seed sprouts and a plant grows upward from the ground
+                    Use for: plant growth, seed germination, tree lifecycle, any upward-growth process
+                    NOT for: DNA, chemistry, physics, or abstract concepts
+
+IMPORTANT: If none of the templates is a good fit, choose "orbit" as the most general fallback —
+it can represent any system with parts moving around a center.
 
 Rules:
 - orbit: 2–5 orbiting bodies; orbit_r 2.0–7.0; speed 0.5–5.0
