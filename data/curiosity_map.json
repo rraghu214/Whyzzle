@@ -79,7 +79,8 @@
       "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
       "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
       "b14732ad-0695-4039-b948-1ff505536c53",
-      "521a3eea-afff-4be7-87fd-908719358f3c"
+      "521a3eea-afff-4be7-87fd-908719358f3c",
+      "4c97a0b7-9013-4442-97cb-8c29a8450b08"
     ],
     "depth": 4
   },
@@ -105,7 +106,8 @@
     ],
     "concept_type": "spatial",
     "connected_to": [
-      "dede36c9-2e55-4ecf-9c49-a5daed92b840"
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+      "4c97a0b7-9013-4442-97cb-8c29a8450b08"
     ],
     "depth": 1
   },
@@ -467,5 +469,54 @@
     "concept_type": "mathematical",
     "connected_to": [],
     "depth": 0
+  },
+  {
+    "id": "a63b1fbe-f34e-4be5-962f-0b0a0b7a474f",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "How do fish breathe underwater?",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 4,
+    "explanation": "Fish breathe underwater like we drink juice from a straw, but instead of a straw, they use special things called gills to pull oxygen from the water. It's like a magic filter that helps them get the air they need from the water.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_How_do_fish_breathe_underwater__55122.jpg\" alt=\"How do fish breathe underwater?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "How do gills work?",
+      "Can humans breathe underwater like fish?",
+      "Do all fish have gills?"
+    ],
+    "tags": [
+      "water",
+      "gills",
+      "fish",
+      "oxygen"
+    ],
+    "concept_type": "biological",
+    "connected_to": [],
+    "depth": 0
+  },
+  {
+    "id": "4c97a0b7-9013-4442-97cb-8c29a8450b08",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "How do volcanoes erupt?",
+    "asked_by": "agent",
+    "date": "2026-05-10",
+    "profile_age": 7,
+    "explanation": "Volcanoes erupt when hot melted rock inside the Earth gets too hot and comes out like a big burst of soda from a shaken-up bottle. It's like when you open a soda and the fizz comes out really fast!",
+    "visual_code": "",
+    "visual_type": "svg",
+    "follow_ups": [],
+    "tags": [
+      "earth",
+      "lava",
+      "volcano",
+      "geology"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45"
+    ],
+    "depth": 2
   }
 ]
