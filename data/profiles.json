@@ -13,7 +13,14 @@
       "age": 15,
       "avatar_color": "#27AE9E",
       "created_at": "2026-05-05"
+    },
+    {
+      "id": "7e3cdbc3-f29c-4144-973f-1dfc657104d1",
+      "name": "Kid10",
+      "age": 10,
+      "avatar_color": "#E8735A",
+      "created_at": "2026-05-09"
     }
   ],
-  "active_profile_id": "710b1429-f02e-437e-b11c-c51e10137748"
+  "active_profile_id": "7e3cdbc3-f29c-4144-973f-1dfc657104d1"
 }

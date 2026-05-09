@@ -80,7 +80,8 @@
       "d818b502-0989-4206-b0bd-5fb3936e4173",
       "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
       "b14732ad-0695-4039-b948-1ff505536c53",
-      "521a3eea-afff-4be7-87fd-908719358f3c"
+      "521a3eea-afff-4be7-87fd-908719358f3c",
+      "aa358da0-d851-4287-911e-539a3f6e3c2f"
     ],
     "depth": 6
   },
@@ -111,7 +112,8 @@
       "d818b502-0989-4206-b0bd-5fb3936e4173",
       "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
       "b14732ad-0695-4039-b948-1ff505536c53",
-      "521a3eea-afff-4be7-87fd-908719358f3c"
+      "521a3eea-afff-4be7-87fd-908719358f3c",
+      "aa358da0-d851-4287-911e-539a3f6e3c2f"
     ],
     "depth": 6
   },
@@ -139,7 +141,8 @@
     "connected_to": [
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
       "c40495c3-4eab-4e99-8025-3dbe2dafe882",
-      "d818b502-0989-4206-b0bd-5fb3936e4173"
+      "d818b502-0989-4206-b0bd-5fb3936e4173",
+      "aa358da0-d851-4287-911e-539a3f6e3c2f"
     ],
     "depth": 3
   },
@@ -167,7 +170,8 @@
     "connected_to": [
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
       "c40495c3-4eab-4e99-8025-3dbe2dafe882",
-      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45"
+      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
+      "aa358da0-d851-4287-911e-539a3f6e3c2f"
     ],
     "depth": 3
   },
@@ -306,6 +310,192 @@
       "molecular biology"
     ],
     "concept_type": "biological",
+    "connected_to": [],
+    "depth": 0
+  },
+  {
+    "id": "aa358da0-d851-4287-911e-539a3f6e3c2f",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "Why do volcanoes erupt?",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 4,
+    "explanation": "Volcanoes erupt because of a big buildup of heat and pressure inside the Earth, like when you shake up a soda bottle and the lid pops off. It's kind of like when you heat up a pot of water and the steam gets too strong, so it blows the lid off.",
+    "visual_code": "<img src=\"https://image.pollinations.ai/prompt/space%20science%20educational%20illustration%20of%20Why%20do%20volcanoes%20erupt%3F%2C%20colorful%20labeled%20diagram%2C%20scale%20comparison%2C%20vivid%20cosmic%20colors%2C%20educational%20poster%20style%2C%20educational%20infographic%20illustration%2C%20vivid%20saturated%20colors%2C%20cartoon%20style%2C%20child-friendly%2C%20clean%20background%2C%20detailed%20labeled%20diagram%2C%20digital%20art%2C%20no%20watermarks%2C%20high%20quality?width=800&height=600&model=flux&nologo=true&seed=14649\" alt=\"Why do volcanoes erupt?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" loading=\"lazy\" onerror=\"this.style.display='none'\" />",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What happens when a volcano erupts?",
+      "Why do volcanoes have different types of eruptions?",
+      "Can people predict when a volcano will erupt?"
+    ],
+    "tags": [
+      "geology",
+      "earth",
+      "volcanoes"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
+      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
+      "d818b502-0989-4206-b0bd-5fb3936e4173"
+    ],
+    "depth": 4
+  },
+  {
+    "id": "aa6fae42-5813-4a81-acb1-63e5fcc2f3ca",
+    "profile_id": "7e3cdbc3-f29c-4144-973f-1dfc657104d1",
+    "question": "How do northern lights look ?",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 10,
+    "explanation": "The northern lights are like a big, natural light show in the sky. Imagine you're watching a movie with colors dancing across the screen, but instead of a screen, it's the whole sky. The colors can be green, red, or purple, and they can swirl and move like they're alive. This happens when tiny particles from the sun interact with the air around the Earth, kind of like when you mix different colors of paint and they create a new color. A new word to learn is 'aurora', which means a big, colorful light display in the sky.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"https://image.pollinations.ai/prompt/space%20science%20educational%20illustration%20of%20How%20do%20northern%20lights%20look%20%3F%2C%20colorful%20labeled%20diagram%2C%20scale%20comparison%2C%20vivid%20cosmic%20colors%2C%20educational%20poster%20style%2C%20educational%20infographic%20illustration%2C%20vivid%20saturated%20colors%2C%20cartoon%20style%2C%20child-friendly%2C%20clean%20background%2C%20detailed%20labeled%20diagram%2C%20digital%20art%2C%20no%20watermarks%2C%20high%20quality?width=800&height=600&model=flux&nologo=true&seed=29265\" alt=\"How do northern lights look ?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" loading=\"lazy\" onerror=\"this.style.display='none'\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What causes the different colors in the northern lights?",
+      "Where can I see the northern lights in person?",
+      "How often do the northern lights happen?"
+    ],
+    "tags": [
+      "light",
+      "space",
+      "atmosphere"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "50e89306-3613-4450-830a-8428399c99ec",
+      "8fd58710-a790-4b5c-80fb-77fac569772a"
+    ],
+    "depth": 0
+  },
+  {
+    "id": "5aa275ab-7302-4775-bd2d-8aecb40c5060",
+    "profile_id": "ff4c35d9-a43a-43fa-b350-ca3dded0b061",
+    "question": "Why is the sky blue?",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 15,
+    "explanation": "The sky appears blue due to a phenomenon known as Rayleigh scattering, which is the scattering of light by small particles or molecules, such as the gases that comprise Earth's atmosphere. This process occurs when sunlight, which is composed of a broad spectrum of wavelengths (or colors), enters the atmosphere and encounters these tiny molecules. The shorter, blue wavelengths are scattered more efficiently than the longer, red wavelengths, resulting in the sky's blue appearance. This is because the smaller molecules are more effective at scattering the shorter wavelengths, a process that is inversely proportional to the fourth power of the wavelength, as described by the Rayleigh scattering formula. As a consequence, our atmosphere acts as a filter, dispersing the blue light in all directions and creating the blue sky we observe during the daytime.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"https://image.pollinations.ai/prompt/space%20science%20educational%20illustration%20of%20Why%20is%20the%20sky%20blue%3F%2C%20colorful%20labeled%20diagram%2C%20scale%20comparison%2C%20vivid%20cosmic%20colors%2C%20educational%20poster%20style%2C%20educational%20infographic%20illustration%2C%20vivid%20saturated%20colors%2C%20cartoon%20style%2C%20child-friendly%2C%20clean%20background%2C%20detailed%20labeled%20diagram%2C%20digital%20art%2C%20no%20watermarks%2C%20high%20quality?width=800&height=600&model=flux&nologo=true&seed=97305\" alt=\"Why is the sky blue?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" loading=\"lazy\" onerror=\"this.style.display='none'\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What causes the different colors of sunsets?",
+      "How does the atmosphere affect the appearance of the sky on other planets?",
+      "What role do aerosols play in shaping the sky's color?"
+    ],
+    "tags": [
+      "light",
+      "physics",
+      "atmosphere",
+      "rayleigh scattering"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "7e1cc623-7d73-4f99-8e64-883f8ca7c878"
+    ],
+    "depth": 0
+  },
+  {
+    "id": "7e1cc623-7d73-4f99-8e64-883f8ca7c878",
+    "profile_id": "ff4c35d9-a43a-43fa-b350-ca3dded0b061",
+    "question": "How does a rainbow form?",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 15,
+    "explanation": "A rainbow is a captivating optical phenomenon that occurs when sunlight interacts with water droplets in the air. This process involves the refraction [the bending of light as it passes from one medium to another] of white light as it enters the raindrop, which acts as a tiny prism. As the light passes through the droplet, it undergoes dispersion [the separation of light into its individual colors], resulting in a spectrum of colors. The light is then reflected within the raindrop and emerges, creating the appearance of a rainbow. The position of the rainbow in the sky is determined by the angle of refraction, which is approximately 42 degrees, and the fact that it always appears in the section of sky directly opposite the sun.\n\nThe formation of a rainbow can be thought of as a complex system, involving the interaction of sunlight, water droplets, and the observer's position. The sunlight, water droplets, and observer's position are all interconnected components that work together to produce the rainbow. This system can be understood by considering the optical physics behind the phenomenon, including the principles of refraction, dispersion, and reflection. By analyzing these components and their interactions, we can gain a deeper understanding of the underlying mechanisms that create the beautiful colors and shapes of a rainbow.\n\nThe abstract concept of a rainbow as an optical illusion is also worth considering. Although a rainbow appears to be a physical entity with a specific location in the sky, it is actually a subjective experience created by the interaction of light and the observer's perception. This highlights the complex relationship between the physical world and our perception of it, and how our understanding of reality is shaped by the way we interpret sensory information.\n\nIn conclusion, the formation of a rainbow is a fascinating example of the intricate and complex interactions between light, matter, and the observer. By examining the optical physics and systemic components of this phenomenon, we can gain a deeper appreciation for the beauty and complexity of the natural world.\n\n",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"https://image.pollinations.ai/prompt/space%20science%20educational%20illustration%20of%20How%20does%20a%20rainbow%20form%3F%2C%20colorful%20labeled%20diagram%2C%20scale%20comparison%2C%20vivid%20cosmic%20colors%2C%20educational%20poster%20style%2C%20educational%20infographic%20illustration%2C%20vivid%20saturated%20colors%2C%20cartoon%20style%2C%20child-friendly%2C%20clean%20background%2C%20detailed%20labeled%20diagram%2C%20digital%20art%2C%20no%20watermarks%2C%20high%20quality?width=800&height=600&model=flux&nologo=true&seed=93827\" alt=\"How does a rainbow form?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" loading=\"lazy\" onerror=\"this.style.display='none'\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What are some other examples of optical illusions in nature?",
+      "How do different types of light sources affect the appearance of a rainbow?",
+      "Can rainbows occur at night or in other conditions besides sunlight and rain?"
+    ],
+    "tags": [
+      "light",
+      "physics",
+      "atmosphere",
+      "optics"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "5aa275ab-7302-4775-bd2d-8aecb40c5060"
+    ],
+    "depth": 1
+  },
+  {
+    "id": "50e89306-3613-4450-830a-8428399c99ec",
+    "profile_id": "7e3cdbc3-f29c-4144-973f-1dfc657104d1",
+    "question": "How does a rocket launch?",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 10,
+    "explanation": "Imagine you're blowing up a big balloon and then letting it go. The air rushing out of the balloon makes it zoom across the room, right? A rocket works in a similar way. It has a special liquid called propellant that burns really fast, creating a lot of hot gas. This gas shoots out of the back of the rocket, making it move really, really fast upwards. As the rocket goes higher and higher, it starts to curve, kind of like when you throw a ball and it follows a curvy path. This curvy path is called a trajectory. The rocket keeps going until it reaches the right distance from Earth, and then it releases the satellite or spacecraft it's carrying. \nThe rocket has different stages, like layers of a cake. Each stage has its own propellant and job. When one stage runs out of propellant, it falls away, and the next stage takes over. This keeps happening until the rocket reaches its final destination. It's like a big team effort, with each stage working together to get the rocket all the way into space. \nThe whole process is really cool and takes a lot of planning and science to make it work. But basically, it's like a super-powerful, high-tech version of blowing up a balloon and letting it go!",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><div id=\"pv-wrap\" style=\"width:100%;max-width:600px;margin:0 auto\"><img id=\"pv-img\" src=\"https://image.pollinations.ai/prompt/space%20science%20educational%20illustration%20of%20How%20does%20a%20rocket%20launch%3F%2C%20colorful%20labeled%20diagram%2C%20scale%20comparison%2C%20vivid%20cosmic%20colors%2C%20educational%20poster%20style%2C%20educational%20infographic%20illustration%2C%20vivid%20saturated%20colors%2C%20cartoon%20style%2C%20child-friendly%2C%20clean%20background%2C%20detailed%20labeled%20diagram%2C%20digital%20art%2C%20no%20watermarks%2C%20high%20quality?width=800&height=600&model=flux&nologo=true&seed=24686\" alt=\"How does a rocket launch?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" loading=\"lazy\" /><div id=\"pv-err\" style=\"display:none;flex-direction:column;align-items:center;padding:40px 24px;background:rgba(123,63,189,.06);border-radius:16px;font-family:Arial,sans-serif\"><div style=\"font-size:48px\">\ud83d\uddbc\ufe0f</div><div style=\"color:#7B3FBD;font-weight:700;margin-top:12px;text-align:center\">How does a rocket launch?</div><div style=\"color:#888;font-size:13px;margin-top:6px\">Image temporarily unavailable</div></div></div><script>(function(){var i=document.getElementById(\"pv-img\"),e=document.getElementById(\"pv-err\");i.onerror=function(){this.style.display=\"none\";e.style.display=\"flex\";};})();</script></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What happens to the rocket stages after they fall away?",
+      "How does the rocket know when to release the satellite?",
+      "Why do rockets have to curve after liftoff?"
+    ],
+    "tags": [
+      "trajectory",
+      "physics",
+      "space"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "aa6fae42-5813-4a81-acb1-63e5fcc2f3ca"
+    ],
+    "depth": 1
+  },
+  {
+    "id": "8fd58710-a790-4b5c-80fb-77fac569772a",
+    "profile_id": "7e3cdbc3-f29c-4144-973f-1dfc657104d1",
+    "question": "Why do leaves change color in autumn?",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 10,
+    "explanation": "You know how sometimes you stop using something when you don't need it anymore? Like turning off the lights when you leave a room? Well, trees do something similar with their leaves in autumn. As the days get shorter and there's less sunlight, the trees start to prepare for winter and stop making a green stuff called chlorophyll that helps them use sunlight to make food. Imagine chlorophyll like a special sauce that helps trees grow, and when they don't need it anymore, they stop making it. As the green color fades, the other colors in the leaf, like red, orange, and yellow, become visible. It's like the tree is showing off its favorite colors! A word you might not know is 'deciduous', which means a tree that loses its leaves in autumn. Think of it like a tree that sheds its coat for the winter.",
+    "visual_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 520 400\" width=\"520\" height=\"400\">\n  <rect width=\"520\" height=\"400\" rx=\"0\" fill=\"#FFF8F0\"/>\n  <rect x=\"0\" y=\"0\" width=\"520\" height=\"52\" fill=\"#7B3FBD\"/>\n  <text x=\"260\" y=\"30\" font-family=\"Arial,sans-serif\" font-weight=\"bold\" font-size=\"20\" fill=\"#FFFFFF\" text-anchor=\"middle\">Why do leaves change color in autumn?</text>\n  <defs>\n    <linearGradient id=\"grad\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\n      <stop offset=\"0\" stop-color=\"#FF6B35\" stop-opacity=\"1\"/>\n      <stop offset=\"1\" stop-color=\"#7B3FBD\" stop-opacity=\"1\"/>\n    </linearGradient>\n  </defs>\n  <path d=\"M 100,70 C 120,80 140,70 160,80\" stroke=\"#FF6B35\" stroke-width=\"3\" fill=\"none\"/>\n  <path d=\"M 100,90 C 120,100 140,90 160,100\" stroke=\"#7B3FBD\" stroke-width=\"3\" fill=\"none\"/>\n  <line x1=\"110\" y1=\"80\" x2=\"110\" y2=\"100\" stroke=\"#000000\" stroke-width=\"2\"/>\n  <line x1=\"130\" y1=\"80\" x2=\"130\" y2=\"100\" stroke=\"#000000\" stroke-width=\"2\"/>\n  <line x1=\"150\" y1=\"80\" x2=\"150\" y2=\"100\" stroke=\"#000000\" stroke-width=\"2\"/>\n  <circle cx=\"110\" cy=\"80\" r=\"5\" fill=\"#00B4A2\"/>\n  <circle cx=\"110\" cy=\"100\" r=\"5\" fill=\"#40C057\"/>\n  <circle cx=\"130\" cy=\"80\" r=\"5\" fill=\"#FFD43B\"/>\n  <circle cx=\"130\" cy=\"100\" r=\"5\" fill=\"#FF6B6B\"/>\n  <circle cx=\"150\" cy=\"80\" r=\"5\" fill=\"#339AF0\"/>\n  <circle cx=\"150\" cy=\"100\" r=\"5\" fill=\"#7B3FBD\"/>\n  <text x=\"105\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#000000\">Adenine</text>\n  <text x=\"105\" y=\"105\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#000000\">Guanine</text>\n  <text x=\"125\" y=\"75\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#000000\">Thymine</text>\n  <text x=\"125\" y=\"105\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#000000\">Cytosine</text>\n  <text x=\"80\" y=\"60\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#000000\">DNA Strand 1</text>\n  <text x=\"80\" y=\"110\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#000000\">DNA Strand 2</text>\n  <ellipse cx=\"300\" cy=\"120\" rx=\"50\" ry=\"30\" stroke=\"#FF6B35\" stroke-width=\"3\" fill=\"none\"/>\n  <ellipse cx=\"300\" cy=\"120\" rx=\"40\" ry=\"20\" stroke=\"#7B3FBD\" stroke-width=\"3\" fill=\"none\"/>\n  <circle cx=\"300\" cy=\"120\" r=\"10\" stroke=\"#000000\" stroke-width=\"2\" fill=\"#FFF8F0\"/>\n  <circle cx=\"300\" cy=\"120\" r=\"5\" stroke=\"#000000\" stroke-width=\"2\" fill=\"#FFF8F0\"/>\n  <text x=\"280\" y=\"100\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#000000\">Cell</text>\n  <text x=\"280\" y=\"140\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#000000\">Nucleus</text>\n  <text x=\"310\" y=\"140\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#000000\">Nucleolus</text>\n  <path d=\"M 350,150 C 370,160 390,150 410,160\" stroke=\"#FF6B35\" stroke-width=\"3\" fill=\"none\"/>\n  <circle cx=\"360\" cy=\"150\" r=\"5\" fill=\"#FFD43B\"/>\n  <circle cx=\"380\" cy=\"150\" r=\"5\" fill=\"#FF6B6B\"/>\n  <circle cx=\"400\" cy=\"150\" r=\"5\" fill=\"#339AF0\"/>\n  <text x=\"355\" y=\"145\" font-family=\"Arial,sans-serif\" font-size=\"12\" fill=\"#000000\">Protein</text>\n  <rect x=\"50\" y=\"270\" width=\"140\" height=\"100\" rx=\"10\" fill=\"#FF6B35\"/>\n  <text x=\"90\" y=\"300\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#000000\"> Fact 1: Trees stop making chlorophyll in autumn.</text>\n  <rect x=\"210\" y=\"270\" width=\"140\" height=\"100\" rx=\"10\" fill=\"#7B3FBD\"/>\n  <text x=\"250\" y=\"300\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#FFFFFF\">Fact 2: Leaves change color due to remaining pigments.</text>\n  <rect x=\"370\" y=\"270\" width=\"140\" height=\"100\" rx=\"10\" fill=\"#40C057\"/>\n  <text x=\"410\" y=\"300\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#000000\">Fact 3: Other pigments like carotenoids and anthocyanins become visible.</text>\n</svg>",
+    "visual_type": "svg",
+    "follow_ups": [
+      "Why do some trees stay green all year round?",
+      "What happens to the leaves after they fall off the tree?",
+      "Can all trees change color in autumn?"
+    ],
+    "tags": [
+      "light",
+      "plants",
+      "seasons"
+    ],
+    "concept_type": "biological",
+    "connected_to": [
+      "aa6fae42-5813-4a81-acb1-63e5fcc2f3ca"
+    ],
+    "depth": 1
+  },
+  {
+    "id": "7d60d2fd-e76b-4150-a22c-3affa9c1d009",
+    "profile_id": "ff4c35d9-a43a-43fa-b350-ca3dded0b061",
+    "question": "Explain me pythagoras theorem",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 15,
+    "explanation": "The Pythagorean theorem is a fundamental concept in Euclidean geometry, which describes the relationship between the sides of a right-angled triangle. A right-angled triangle is a triangle with one angle that measures 90 degrees, also known as a right angle. The theorem states that the square of the length of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the lengths of the other two sides. This can be expressed mathematically as a^2 + b^2 = c^2, where a and b are the lengths of the two sides, and c is the length of the hypotenuse. The theorem has numerous applications in various fields, including architecture, engineering, and physics, as it allows for the calculation of distances and heights in right-angled triangles. The Pythagorean theorem can also be used to derive other geometric concepts, such as the concept of similar triangles and the calculation of trigonometric ratios. Furthermore, the theorem has been generalized to higher-dimensional spaces, where it is known as the Pythagorean inequality, and has numerous applications in fields such as linear algebra and differential geometry.",
+    "visual_code": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 520 400\" width=\"520\" height=\"400\">\n  <rect width=\"520\" height=\"400\" rx=\"0\" fill=\"#FFF8F0\"/>\n  <rect x=\"0\" y=\"0\" width=\"520\" height=\"52\" fill=\"#7B3FBD\"/>\n  <text x=\"260\" y=\"35\" font-family=\"Arial,sans-serif\" font-weight=\"bold\" font-size=\"20\" fill=\"#FFFFFF\" text-anchor=\"middle\">Pythagoras Theorem</text>\n  <defs>\n    <linearGradient id=\"grad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"0%\">\n      <stop offset=\"0%\" stop-color=\"#FF6B35\" stop-opacity=\"1\"/>\n      <stop offset=\"100%\" stop-color=\"#FFD43B\" stop-opacity=\"1\"/>\n    </linearGradient>\n  </defs>\n  <rect x=\"50\" y=\"70\" width=\"100\" height=\"50\" fill=\"#40C057\" rx=\"5\" stroke=\"#339AF0\" stroke-width=\"3\"/>\n  <text x=\"50\" y=\"60\" font-family=\"Arial,sans-serif\" font-weight=\"bold\" font-size=\"14\" fill=\"#000000\">a</text>\n  <rect x=\"170\" y=\"70\" width=\"100\" height=\"50\" fill=\"#40C057\" rx=\"5\" stroke=\"#339AF0\" stroke-width=\"3\"/>\n  <text x=\"170\" y=\"60\" font-family=\"Arial,sans-serif\" font-weight=\"bold\" font-size=\"14\" fill=\"#000000\">b</text>\n  <path d=\"M 220,120 C 230,120 240,130 250,140\" stroke=\"#00B4A2\" stroke-width=\"2\" fill=\"none\"/>\n  <text x=\"230\" y=\"110\" font-family=\"Arial,sans-serif\" font-weight=\"bold\" font-size=\"14\" fill=\"#000000\">\u2192</text>\n  <rect x=\"250\" y=\"150\" width=\"100\" height=\"50\" fill=\"#FF6B6B\" rx=\"5\" stroke=\"#339AF0\" stroke-width=\"3\"/>\n  <text x=\"250\" y=\"140\" font-family=\"Arial,sans-serif\" font-weight=\"bold\" font-size=\"14\" fill=\"#000000\">c</text>\n  <path d=\"M 120,200 C 150,180 180,160 200,150\" stroke=\"#00B4A2\" stroke-width=\"2\" fill=\"none\"/>\n  <text x=\"150\" y=\"190\" font-family=\"Arial,sans-serif\" font-weight=\"bold\" font-size=\"14\" fill=\"#000000\">a\u00b2 + b\u00b2 = c\u00b2</text>\n  <rect x=\"50\" y=\"270\" width=\"150\" height=\"50\" rx=\"10\" fill=\"#FFD43B\" stroke=\"#339AF0\" stroke-width=\"3\"/>\n  <text x=\"60\" y=\"285\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#000000\">The theorem is used to find the length of the hypotenuse of a right triangle.</text>\n  <rect x=\"210\" y=\"270\" width=\"150\" height=\"50\" rx=\"10\" fill=\"#FF6B35\" stroke=\"#339AF0\" stroke-width=\"3\"/>\n  <text x=\"220\" y=\"285\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#000000\">It is named after the ancient Greek philosopher and mathematician Pythagoras.</text>\n  <rect x=\"370\" y=\"270\" width=\"150\" height=\"50\" rx=\"10\" fill=\"#40C057\" stroke=\"#339AF0\" stroke-width=\"3\"/>\n  <text x=\"380\" y=\"285\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#000000\">The theorem has many applications in geometry, trigonometry, and engineering.</text>\n  <rect x=\"50\" y=\"340\" width=\"420\" height=\"20\" fill=\"url(#grad)\" rx=\"5\" stroke=\"#339AF0\" stroke-width=\"2\"/>\n  <text x=\"200\" y=\"355\" font-family=\"Arial,sans-serif\" font-size=\"14\" fill=\"#000000\">Now you know the Pythagorean theorem!</text>\n</svg>",
+    "visual_type": "svg",
+    "follow_ups": [
+      "What are some real-life applications of the Pythagorean theorem?",
+      "How is the Pythagorean theorem used in trigonometry?",
+      "Can the Pythagorean theorem be applied to non-right-angled triangles?"
+    ],
+    "tags": [
+      "mathematics",
+      "geometry",
+      "trigonometry"
+    ],
+    "concept_type": "mathematical",
     "connected_to": [],
     "depth": 0
   }

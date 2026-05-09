@@ -142,8 +142,18 @@ def generate_educational_image(topic: str, concept_type: str) -> str | None:
     # Tier 2: Pollinations.ai (always free, no key)
     logger.info("ImageGen: falling back to Pollinations.ai (FLUX, no key required)")
     pol_url = _pollinations_url(prompt, seed)
+    safe_topic = topic.replace("'", "&#39;").replace('"', "&quot;")
     return (
-        f'<img src="{pol_url}" alt="{topic}" '
-        f'style="{img_style}" loading="lazy" '
-        f'onerror="this.style.display=\'none\'" />'
+        f'<div id="pv-wrap" style="width:100%;max-width:600px;margin:0 auto">'
+        f'<img id="pv-img" src="{pol_url}" alt="{safe_topic}" style="{img_style}" loading="lazy" />'
+        f'<div id="pv-err" style="display:none;flex-direction:column;align-items:center;'
+        f'padding:40px 24px;background:rgba(123,63,189,.06);border-radius:16px;font-family:Arial,sans-serif">'
+        f'<div style="font-size:48px">🖼️</div>'
+        f'<div style="color:#7B3FBD;font-weight:700;margin-top:12px;text-align:center">{safe_topic}</div>'
+        f'<div style="color:#888;font-size:13px;margin-top:6px">Image temporarily unavailable</div>'
+        f'</div></div>'
+        f'<script>(function(){{'
+        f'var i=document.getElementById("pv-img"),e=document.getElementById("pv-err");'
+        f'i.onerror=function(){{this.style.display="none";e.style.display="flex";}};'
+        f'}})();</script>'
     )

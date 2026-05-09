@@ -676,28 +676,16 @@ DNA/cells/proteins → biological. Orbits/volcanoes → spatial."""
     concept   = result.get("concept_type", "other")
     tags_list = result.get("tags", [])
 
-    # ── Visual: try AI image first, fall back to SVG, then template ─────────────
-    visual_html = None
-    try:
-        from tools.image_gen import generate_educational_image
-        logger.info("Generating AI image (concept=%s)...", concept)
-        visual_html = generate_educational_image(question, concept)
-    except Exception as exc:
-        logger.warning("Image generation import/call failed: %s", exc)
-
-    if visual_html:
-        result["visual_code"] = visual_html
-        result["visual_type"] = "html_interactive"
+    # ── Visual: LLM SVG (reliable) → template SVG fallback ──────────────────────
+    logger.info("Generating LLM SVG visual (concept=%s)...", concept)
+    svg = _generate_svg_visual(question, concept, result.get("explanation", ""))
+    if svg:
+        result["visual_code"] = svg
+        result["visual_type"] = "svg"
     else:
-        logger.info("Image gen unavailable — trying LLM SVG (concept=%s)...", concept)
-        svg = _generate_svg_visual(question, concept, result.get("explanation", ""))
-        if svg:
-            result["visual_code"] = svg
-            result["visual_type"] = "svg"
-        else:
-            logger.info("SVG generation failed — using template SVG")
-            result["visual_code"] = _template_svg(concept, question, tags_list)
-            result["visual_type"] = "svg"
+        logger.info("SVG generation failed — using template SVG")
+        result["visual_code"] = _template_svg(concept, question, tags_list)
+        result["visual_type"] = "svg"
 
     tags  = tags_list
     vtype = result.get("visual_type", "svg")

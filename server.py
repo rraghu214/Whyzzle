@@ -1,223 +1,50 @@
 """
-Whyzzle MCP Server
-------------------
-Run this for Claude Desktop integration:
-  python server.py
+Whyzzle — FastMCP + Prefab server  (Step 2 stub)
+=================================================
+One FastMCP server replaces both the old server.py (raw MCP) and
+webapp.py (Flask). The UI renders inside Claude Desktop via Prefab.
 
-Add to Claude Desktop config (~/.config/claude/claude_desktop_config.json):
-  {
-    "mcpServers": {
-      "whyzzle": {
-        "command": "python",
-        "args": ["/absolute/path/to/whyzzle/server.py"],
-        "env": { "ANTHROPIC_API_KEY": "sk-ant-..." }
-      }
+Claude Desktop config  (~AppData/Roaming/Claude/claude_desktop_config.json):
+{
+  "mcpServers": {
+    "whyzzle": {
+      "command": "uv",
+      "args": ["run", "python", "server.py"],
+      "cwd": "C:/Raghu/MyLearnings/EAG_V3/S4-25042026/Whyzzle"
     }
   }
+}
 """
 
-import asyncio
-import json
-import os
 import sys
 from pathlib import Path
-
 from dotenv import load_dotenv
 
 load_dotenv()
-
-# Ensure tools/ is importable regardless of cwd
 sys.path.insert(0, str(Path(__file__).parent))
 
-from mcp.server import NotificationOptions, Server
-from mcp.server.models import InitializationOptions
-from mcp.server.stdio import stdio_server
-import mcp.types as types
+from fastmcp import FastMCP
+from prefab_ui.app import PrefabApp
+from prefab_ui.components import (
+    Card, CardHeader, CardTitle, CardContent, Muted,
+)
 
-from tools.video_pipeline import generate_video
-from tools.curiosity_map import manage_curiosity_map
-from tools.profiles import manage_profiles
-from tools.render_dashboard import render_dashboard
-from tools.search_and_explain import search_and_explain
-
-server = Server("whyzzle")
+mcp = FastMCP("Whyzzle")
 
 
-@server.list_tools()
-async def handle_list_tools() -> list[types.Tool]:
-    return [
-        types.Tool(
-            name="manage_profiles",
-            description=(
-                "Manage Whyzzle user profiles. "
-                "Actions: list, create (name+age required), read, update, delete, set_active."
-            ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "action": {
-                        "type": "string",
-                        "enum": ["list", "create", "read", "update", "delete", "set_active"],
-                    },
-                    "payload": {"type": "object", "default": {}},
-                },
-                "required": ["action"],
-            },
-        ),
-        types.Tool(
-            name="search_and_explain",
-            description=(
-                "Search the web for an answer and generate an age-appropriate explanation "
-                "plus a custom SVG/HTML visual for any question."
-            ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "question": {"type": "string"},
-                    "profile_id": {"type": "string"},
-                    "asked_by": {
-                        "type": "string",
-                        "enum": ["child", "parent", "both"],
-                        "default": "child",
-                    },
-                },
-                "required": ["question", "profile_id"],
-            },
-        ),
-        types.Tool(
-            name="manage_curiosity_map",
-            description=(
-                "Read, add, and query the personal curiosity knowledge graph (scoped per profile). "
-                "Actions: read, add_topic, get_related, get_stats, update_connections."
-            ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "action": {
-                        "type": "string",
-                        "enum": ["read", "add_topic", "get_related", "get_stats", "update_connections"],
-                    },
-                    "profile_id": {"type": "string"},
-                    "payload": {"type": "object", "default": {}},
-                },
-                "required": ["action", "profile_id"],
-            },
-        ),
-        types.Tool(
-            name="render_dashboard",
-            description=(
-                "Return structured view data for the Whyzzle dashboard. "
-                "Open http://localhost:5001 for the full interactive UI. "
-                "Views: topic_detail, graph, recent, stats, visual_fullscreen, profile_select."
-            ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "view": {
-                        "type": "string",
-                        "enum": [
-                            "topic_detail",
-                            "graph",
-                            "recent",
-                            "stats",
-                            "visual_fullscreen",
-                            "profile_select",
-                        ],
-                    },
-                    "payload": {"type": "object", "default": {}},
-                },
-                "required": ["view"],
-            },
-        ),
-        types.Tool(
-            name="generate_3d_scene",
-            description=(
-                "Generate an educational animation for a topic using the three-tier pipeline: "
-                "Tier 1 Manim (math/science diagrams, local), "
-                "Tier 2 Blender (3D scenes: orbit/cross-section/growth, local), "
-                "Tier 3 CogVideoX (HuggingFace cloud fallback). "
-                "Returns a local .mp4 video path. Only call when user explicitly requests video/animation."
-            ),
-            inputSchema={
-                "type": "object",
-                "properties": {
-                    "topic": {
-                        "type": "string",
-                        "description": "The concept to visualise (e.g. 'planetary orbits')",
-                    },
-                    "concept_type": {
-                        "type": "string",
-                        "enum": ["spatial", "sequential", "comparative",
-                                 "mathematical", "biological", "other"],
-                    },
-                },
-                "required": ["topic", "concept_type"],
-            },
-        ),
-    ]
+# ── Step 2: minimal dashboard stub ────────────────────────────────────────────
 
+@mcp.tool(app=True)
+def whyzzle_dashboard() -> PrefabApp:
+    """Open the Whyzzle curiosity dashboard."""
+    with Card() as card:
+        with CardHeader():
+            CardTitle("🧠 Whyzzle")
+        with CardContent():
+            Muted("Ask anything. See everything.")
 
-@server.call_tool()
-async def handle_call_tool(
-    name: str, arguments: dict | None
-) -> list[types.TextContent]:
-    args = arguments or {}
-    try:
-        if name == "manage_profiles":
-            result = await asyncio.to_thread(
-                manage_profiles, args["action"], args.get("payload", {})
-            )
-        elif name == "search_and_explain":
-            # search_and_explain makes network + Claude API calls — run off event loop
-            result = await asyncio.to_thread(
-                search_and_explain,
-                args["question"],
-                args["profile_id"],
-                args.get("asked_by", "child"),
-            )
-        elif name == "manage_curiosity_map":
-            result = await asyncio.to_thread(
-                manage_curiosity_map,
-                args["action"],
-                args["profile_id"],
-                args.get("payload", {}),
-            )
-        elif name == "render_dashboard":
-            result = render_dashboard(args["view"], args.get("payload", {}))
-        elif name == "generate_3d_scene":
-            result = await asyncio.to_thread(
-                generate_video,
-                args["topic"],
-                args.get("concept_type", "other"),
-            )
-        else:
-            result = {"error": f"Unknown tool: {name}"}
-    except Exception as exc:
-        result = {"error": str(exc)}
-
-    return [types.TextContent(type="text", text=json.dumps(result, indent=2, ensure_ascii=False))]
-
-
-async def main() -> None:
-    async with stdio_server() as (read_stream, write_stream):
-        await server.run(
-            read_stream,
-            write_stream,
-            InitializationOptions(
-                server_name="whyzzle",
-                server_version="0.1.0",
-                capabilities=server.get_capabilities(
-                    notification_options=NotificationOptions(),
-                    experimental_capabilities={},
-                ),
-            ),
-        )
-
-
-def run():
-    """Sync entry point for uv / pyproject.toml scripts."""
-    asyncio.run(main())
+    return PrefabApp(view=card, state={})
 
 
 if __name__ == "__main__":
-    run()
+    mcp.run()
