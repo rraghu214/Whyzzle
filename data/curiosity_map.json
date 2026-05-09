@@ -49,7 +49,8 @@
     ],
     "concept_type": "sequential",
     "connected_to": [
-      "94b05ae1-3fed-4726-a987-f82fd2625777"
+      "94b05ae1-3fed-4726-a987-f82fd2625777",
+      "5a1e633a-b175-4b44-88f6-b44feca2ce7a"
     ],
     "depth": 1
   },
@@ -75,47 +76,12 @@
     ],
     "concept_type": "spatial",
     "connected_to": [
-      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
       "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
-      "d818b502-0989-4206-b0bd-5fb3936e4173",
       "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
       "b14732ad-0695-4039-b948-1ff505536c53",
-      "521a3eea-afff-4be7-87fd-908719358f3c",
-      "aa358da0-d851-4287-911e-539a3f6e3c2f"
+      "521a3eea-afff-4be7-87fd-908719358f3c"
     ],
-    "depth": 6
-  },
-  {
-    "id": "c40495c3-4eab-4e99-8025-3dbe2dafe882",
-    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
-    "question": "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN): why do we live on earth?",
-    "asked_by": "child",
-    "date": "2026-05-02",
-    "profile_age": 4,
-    "explanation": "We live on Earth because it's like a big ball that gives us air to breathe, water to drink, and food to eat, just like how a big basket holds all our favorite toys and snacks. It's a special home that keeps us safe and cozy.",
-    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 480' width='600' height='480'><circle cx='300' cy='240' r='200' fill='url(#grad1)' /><defs><linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'><stop offset='0%' stop-color='#87CEEB' /><stop offset='100%' stop-color='#4682B4' /></linearGradient></defs><circle cx='300' cy='240' r='150' fill='#32CD32' /><text x='300' y='420' font-size='36' text-anchor='middle' fill='#FFFFFF'>Earth</text><text x='300' y='460' font-size='24' text-anchor='middle' fill='#FFFFFF'>Our Home</text><circle cx='400' cy='100' r='50' fill='#FFFF00' /><text x='400' y='150' font-size='24' text-anchor='middle' fill='#000000'>Sun</text><circle cx='500' cy='300' r='30' fill='#FFFFFF' /><text x='500' y='350' font-size='18' text-anchor='middle' fill='#000000'>Moon</text></svg>",
-    "visual_type": "svg",
-    "follow_ups": [
-      "What's outside the Earth?",
-      "Why can't we live on the Sun or the Moon?",
-      "What would happen if we didn't have air to breathe?"
-    ],
-    "tags": [
-      "home",
-      "earth",
-      "space"
-    ],
-    "concept_type": "spatial",
-    "connected_to": [
-      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
-      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
-      "d818b502-0989-4206-b0bd-5fb3936e4173",
-      "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
-      "b14732ad-0695-4039-b948-1ff505536c53",
-      "521a3eea-afff-4be7-87fd-908719358f3c",
-      "aa358da0-d851-4287-911e-539a3f6e3c2f"
-    ],
-    "depth": 6
+    "depth": 4
   },
   {
     "id": "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
@@ -139,41 +105,9 @@
     ],
     "concept_type": "spatial",
     "connected_to": [
-      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
-      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
-      "d818b502-0989-4206-b0bd-5fb3936e4173",
-      "aa358da0-d851-4287-911e-539a3f6e3c2f"
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840"
     ],
-    "depth": 3
-  },
-  {
-    "id": "d818b502-0989-4206-b0bd-5fb3936e4173",
-    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
-    "question": "Show an interactive 3D visualization using Three.js (self-contained HTML, no CDN): How does a volcano erupt?",
-    "asked_by": "child",
-    "date": "2026-05-02",
-    "profile_age": 4,
-    "explanation": "A volcano erupts like a big bottle of soda that gets shaken up and then the cap comes off with a lot of pressure, making the soda spray everywhere. The volcano has magma inside that gets too hot and pushes out, like the soda, making the eruption.",
-    "visual_code": "<html><head><style>body { margin: 0; }</style></head><body><script src=''></script><script>let scene, camera, renderer;function init() {scene = new THREE.Scene();camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);renderer = new THREE.WebGLRenderer({antialias: true});renderer.setSize(480, 380);document.body.appendChild(renderer.domElement);const volcano = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 32), new THREE.MeshBasicMaterial({color: 'brown'}));volcano.position.y = -2;scene.add(volcano);const eruption = new THREE.Mesh(new THREE.SphereGeometry(0.5, 32, 32), new THREE.MeshBasicMaterial({color: 'red'}));eruption.position.y = 2;scene.add(eruption);camera.position.z = 5;function animate() {requestAnimationFrame(animate);eruption.position.y += 0.01;if (eruption.position.y > 10) {eruption.position.y = 2;}renderer.render(scene, camera);}animate();}</script></body></html>",
-    "visual_type": "html_interactive",
-    "follow_ups": [
-      "What makes the magma get too hot?",
-      "Can I see a real volcano erupting?",
-      "Why do volcanoes sometimes make big clouds?"
-    ],
-    "tags": [
-      "physics",
-      "earth",
-      "geology"
-    ],
-    "concept_type": "spatial",
-    "connected_to": [
-      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
-      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
-      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
-      "aa358da0-d851-4287-911e-539a3f6e3c2f"
-    ],
-    "depth": 3
+    "depth": 1
   },
   {
     "id": "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
@@ -198,11 +132,10 @@
     "concept_type": "spatial",
     "connected_to": [
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
-      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
       "b14732ad-0695-4039-b948-1ff505536c53",
       "521a3eea-afff-4be7-87fd-908719358f3c"
     ],
-    "depth": 4
+    "depth": 3
   },
   {
     "id": "b14732ad-0695-4039-b948-1ff505536c53",
@@ -227,11 +160,10 @@
     "concept_type": "spatial",
     "connected_to": [
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
-      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
       "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
       "521a3eea-afff-4be7-87fd-908719358f3c"
     ],
-    "depth": 4
+    "depth": 3
   },
   {
     "id": "521a3eea-afff-4be7-87fd-908719358f3c",
@@ -256,11 +188,10 @@
     "concept_type": "spatial",
     "connected_to": [
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
-      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
       "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
       "b14732ad-0695-4039-b948-1ff505536c53"
     ],
-    "depth": 4
+    "depth": 3
   },
   {
     "id": "94b05ae1-3fed-4726-a987-f82fd2625777",
@@ -314,142 +245,6 @@
     "depth": 0
   },
   {
-    "id": "aa358da0-d851-4287-911e-539a3f6e3c2f",
-    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
-    "question": "Why do volcanoes erupt?",
-    "asked_by": "child",
-    "date": "2026-05-09",
-    "profile_age": 4,
-    "explanation": "Volcanoes erupt because of a big buildup of heat and pressure inside the Earth, like when you shake up a soda bottle and the lid pops off. It's kind of like when you heat up a pot of water and the steam gets too strong, so it blows the lid off.",
-    "visual_code": "<img src=\"https://image.pollinations.ai/prompt/space%20science%20educational%20illustration%20of%20Why%20do%20volcanoes%20erupt%3F%2C%20colorful%20labeled%20diagram%2C%20scale%20comparison%2C%20vivid%20cosmic%20colors%2C%20educational%20poster%20style%2C%20educational%20infographic%20illustration%2C%20vivid%20saturated%20colors%2C%20cartoon%20style%2C%20child-friendly%2C%20clean%20background%2C%20detailed%20labeled%20diagram%2C%20digital%20art%2C%20no%20watermarks%2C%20high%20quality?width=800&height=600&model=flux&nologo=true&seed=14649\" alt=\"Why do volcanoes erupt?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" loading=\"lazy\" onerror=\"this.style.display='none'\" />",
-    "visual_type": "html_interactive",
-    "follow_ups": [
-      "What happens when a volcano erupts?",
-      "Why do volcanoes have different types of eruptions?",
-      "Can people predict when a volcano will erupt?"
-    ],
-    "tags": [
-      "geology",
-      "earth",
-      "volcanoes"
-    ],
-    "concept_type": "spatial",
-    "connected_to": [
-      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
-      "c40495c3-4eab-4e99-8025-3dbe2dafe882",
-      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
-      "d818b502-0989-4206-b0bd-5fb3936e4173"
-    ],
-    "depth": 4
-  },
-  {
-    "id": "aa6fae42-5813-4a81-acb1-63e5fcc2f3ca",
-    "profile_id": "7e3cdbc3-f29c-4144-973f-1dfc657104d1",
-    "question": "How do northern lights look ?",
-    "asked_by": "child",
-    "date": "2026-05-09",
-    "profile_age": 10,
-    "explanation": "The northern lights are like a big, natural light show in the sky. Imagine you're watching a movie with colors dancing across the screen, but instead of a screen, it's the whole sky. The colors can be green, red, or purple, and they can swirl and move like they're alive. This happens when tiny particles from the sun interact with the air around the Earth, kind of like when you mix different colors of paint and they create a new color. A new word to learn is 'aurora', which means a big, colorful light display in the sky.",
-    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"https://image.pollinations.ai/prompt/space%20science%20educational%20illustration%20of%20How%20do%20northern%20lights%20look%20%3F%2C%20colorful%20labeled%20diagram%2C%20scale%20comparison%2C%20vivid%20cosmic%20colors%2C%20educational%20poster%20style%2C%20educational%20infographic%20illustration%2C%20vivid%20saturated%20colors%2C%20cartoon%20style%2C%20child-friendly%2C%20clean%20background%2C%20detailed%20labeled%20diagram%2C%20digital%20art%2C%20no%20watermarks%2C%20high%20quality?width=800&height=600&model=flux&nologo=true&seed=29265\" alt=\"How do northern lights look ?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" loading=\"lazy\" onerror=\"this.style.display='none'\" /></body></html>",
-    "visual_type": "html_interactive",
-    "follow_ups": [
-      "What causes the different colors in the northern lights?",
-      "Where can I see the northern lights in person?",
-      "How often do the northern lights happen?"
-    ],
-    "tags": [
-      "light",
-      "space",
-      "atmosphere"
-    ],
-    "concept_type": "spatial",
-    "connected_to": [
-      "50e89306-3613-4450-830a-8428399c99ec",
-      "8fd58710-a790-4b5c-80fb-77fac569772a"
-    ],
-    "depth": 0
-  },
-  {
-    "id": "5aa275ab-7302-4775-bd2d-8aecb40c5060",
-    "profile_id": "ff4c35d9-a43a-43fa-b350-ca3dded0b061",
-    "question": "Why is the sky blue?",
-    "asked_by": "child",
-    "date": "2026-05-09",
-    "profile_age": 15,
-    "explanation": "The sky appears blue due to a phenomenon known as Rayleigh scattering, which is the scattering of light by small particles or molecules, such as the gases that comprise Earth's atmosphere. This process occurs when sunlight, which is composed of a broad spectrum of wavelengths (or colors), enters the atmosphere and encounters these tiny molecules. The shorter, blue wavelengths are scattered more efficiently than the longer, red wavelengths, resulting in the sky's blue appearance. This is because the smaller molecules are more effective at scattering the shorter wavelengths, a process that is inversely proportional to the fourth power of the wavelength, as described by the Rayleigh scattering formula. As a consequence, our atmosphere acts as a filter, dispersing the blue light in all directions and creating the blue sky we observe during the daytime.",
-    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"https://image.pollinations.ai/prompt/space%20science%20educational%20illustration%20of%20Why%20is%20the%20sky%20blue%3F%2C%20colorful%20labeled%20diagram%2C%20scale%20comparison%2C%20vivid%20cosmic%20colors%2C%20educational%20poster%20style%2C%20educational%20infographic%20illustration%2C%20vivid%20saturated%20colors%2C%20cartoon%20style%2C%20child-friendly%2C%20clean%20background%2C%20detailed%20labeled%20diagram%2C%20digital%20art%2C%20no%20watermarks%2C%20high%20quality?width=800&height=600&model=flux&nologo=true&seed=97305\" alt=\"Why is the sky blue?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" loading=\"lazy\" onerror=\"this.style.display='none'\" /></body></html>",
-    "visual_type": "html_interactive",
-    "follow_ups": [
-      "What causes the different colors of sunsets?",
-      "How does the atmosphere affect the appearance of the sky on other planets?",
-      "What role do aerosols play in shaping the sky's color?"
-    ],
-    "tags": [
-      "light",
-      "physics",
-      "atmosphere",
-      "rayleigh scattering"
-    ],
-    "concept_type": "spatial",
-    "connected_to": [
-      "7e1cc623-7d73-4f99-8e64-883f8ca7c878"
-    ],
-    "depth": 0
-  },
-  {
-    "id": "7e1cc623-7d73-4f99-8e64-883f8ca7c878",
-    "profile_id": "ff4c35d9-a43a-43fa-b350-ca3dded0b061",
-    "question": "How does a rainbow form?",
-    "asked_by": "child",
-    "date": "2026-05-09",
-    "profile_age": 15,
-    "explanation": "A rainbow is a captivating optical phenomenon that occurs when sunlight interacts with water droplets in the air. This process involves the refraction [the bending of light as it passes from one medium to another] of white light as it enters the raindrop, which acts as a tiny prism. As the light passes through the droplet, it undergoes dispersion [the separation of light into its individual colors], resulting in a spectrum of colors. The light is then reflected within the raindrop and emerges, creating the appearance of a rainbow. The position of the rainbow in the sky is determined by the angle of refraction, which is approximately 42 degrees, and the fact that it always appears in the section of sky directly opposite the sun.\n\nThe formation of a rainbow can be thought of as a complex system, involving the interaction of sunlight, water droplets, and the observer's position. The sunlight, water droplets, and observer's position are all interconnected components that work together to produce the rainbow. This system can be understood by considering the optical physics behind the phenomenon, including the principles of refraction, dispersion, and reflection. By analyzing these components and their interactions, we can gain a deeper understanding of the underlying mechanisms that create the beautiful colors and shapes of a rainbow.\n\nThe abstract concept of a rainbow as an optical illusion is also worth considering. Although a rainbow appears to be a physical entity with a specific location in the sky, it is actually a subjective experience created by the interaction of light and the observer's perception. This highlights the complex relationship between the physical world and our perception of it, and how our understanding of reality is shaped by the way we interpret sensory information.\n\nIn conclusion, the formation of a rainbow is a fascinating example of the intricate and complex interactions between light, matter, and the observer. By examining the optical physics and systemic components of this phenomenon, we can gain a deeper appreciation for the beauty and complexity of the natural world.\n\n",
-    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"https://image.pollinations.ai/prompt/space%20science%20educational%20illustration%20of%20How%20does%20a%20rainbow%20form%3F%2C%20colorful%20labeled%20diagram%2C%20scale%20comparison%2C%20vivid%20cosmic%20colors%2C%20educational%20poster%20style%2C%20educational%20infographic%20illustration%2C%20vivid%20saturated%20colors%2C%20cartoon%20style%2C%20child-friendly%2C%20clean%20background%2C%20detailed%20labeled%20diagram%2C%20digital%20art%2C%20no%20watermarks%2C%20high%20quality?width=800&height=600&model=flux&nologo=true&seed=93827\" alt=\"How does a rainbow form?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" loading=\"lazy\" onerror=\"this.style.display='none'\" /></body></html>",
-    "visual_type": "html_interactive",
-    "follow_ups": [
-      "What are some other examples of optical illusions in nature?",
-      "How do different types of light sources affect the appearance of a rainbow?",
-      "Can rainbows occur at night or in other conditions besides sunlight and rain?"
-    ],
-    "tags": [
-      "light",
-      "physics",
-      "atmosphere",
-      "optics"
-    ],
-    "concept_type": "spatial",
-    "connected_to": [
-      "5aa275ab-7302-4775-bd2d-8aecb40c5060"
-    ],
-    "depth": 1
-  },
-  {
-    "id": "50e89306-3613-4450-830a-8428399c99ec",
-    "profile_id": "7e3cdbc3-f29c-4144-973f-1dfc657104d1",
-    "question": "How does a rocket launch?",
-    "asked_by": "child",
-    "date": "2026-05-09",
-    "profile_age": 10,
-    "explanation": "Imagine you're blowing up a big balloon and then letting it go. The air rushing out of the balloon makes it zoom across the room, right? A rocket works in a similar way. It has a special liquid called propellant that burns really fast, creating a lot of hot gas. This gas shoots out of the back of the rocket, making it move really, really fast upwards. As the rocket goes higher and higher, it starts to curve, kind of like when you throw a ball and it follows a curvy path. This curvy path is called a trajectory. The rocket keeps going until it reaches the right distance from Earth, and then it releases the satellite or spacecraft it's carrying. \nThe rocket has different stages, like layers of a cake. Each stage has its own propellant and job. When one stage runs out of propellant, it falls away, and the next stage takes over. This keeps happening until the rocket reaches its final destination. It's like a big team effort, with each stage working together to get the rocket all the way into space. \nThe whole process is really cool and takes a lot of planning and science to make it work. But basically, it's like a super-powerful, high-tech version of blowing up a balloon and letting it go!",
-    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><div id=\"pv-wrap\" style=\"width:100%;max-width:600px;margin:0 auto\"><img id=\"pv-img\" src=\"https://image.pollinations.ai/prompt/space%20science%20educational%20illustration%20of%20How%20does%20a%20rocket%20launch%3F%2C%20colorful%20labeled%20diagram%2C%20scale%20comparison%2C%20vivid%20cosmic%20colors%2C%20educational%20poster%20style%2C%20educational%20infographic%20illustration%2C%20vivid%20saturated%20colors%2C%20cartoon%20style%2C%20child-friendly%2C%20clean%20background%2C%20detailed%20labeled%20diagram%2C%20digital%20art%2C%20no%20watermarks%2C%20high%20quality?width=800&height=600&model=flux&nologo=true&seed=24686\" alt=\"How does a rocket launch?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" loading=\"lazy\" /><div id=\"pv-err\" style=\"display:none;flex-direction:column;align-items:center;padding:40px 24px;background:rgba(123,63,189,.06);border-radius:16px;font-family:Arial,sans-serif\"><div style=\"font-size:48px\">\ud83d\uddbc\ufe0f</div><div style=\"color:#7B3FBD;font-weight:700;margin-top:12px;text-align:center\">How does a rocket launch?</div><div style=\"color:#888;font-size:13px;margin-top:6px\">Image temporarily unavailable</div></div></div><script>(function(){var i=document.getElementById(\"pv-img\"),e=document.getElementById(\"pv-err\");i.onerror=function(){this.style.display=\"none\";e.style.display=\"flex\";};})();</script></body></html>",
-    "visual_type": "html_interactive",
-    "follow_ups": [
-      "What happens to the rocket stages after they fall away?",
-      "How does the rocket know when to release the satellite?",
-      "Why do rockets have to curve after liftoff?"
-    ],
-    "tags": [
-      "trajectory",
-      "physics",
-      "space"
-    ],
-    "concept_type": "spatial",
-    "connected_to": [
-      "aa6fae42-5813-4a81-acb1-63e5fcc2f3ca"
-    ],
-    "depth": 1
-  },
-  {
     "id": "8fd58710-a790-4b5c-80fb-77fac569772a",
     "profile_id": "7e3cdbc3-f29c-4144-973f-1dfc657104d1",
     "question": "Why do leaves change color in autumn?",
@@ -470,10 +265,8 @@
       "seasons"
     ],
     "concept_type": "biological",
-    "connected_to": [
-      "aa6fae42-5813-4a81-acb1-63e5fcc2f3ca"
-    ],
-    "depth": 1
+    "connected_to": [],
+    "depth": 0
   },
   {
     "id": "7d60d2fd-e76b-4150-a22c-3affa9c1d009",
@@ -494,6 +287,182 @@
       "mathematics",
       "geometry",
       "trigonometry"
+    ],
+    "concept_type": "mathematical",
+    "connected_to": [
+      "50ea2514-b977-4a0d-98f5-a2e425c3d813"
+    ],
+    "depth": 0
+  },
+  {
+    "id": "ffde4725-25df-439a-aa55-bcbb03b5ca33",
+    "profile_id": "7e3cdbc3-f29c-4144-973f-1dfc657104d1",
+    "question": "How does lightning form?",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 10,
+    "explanation": "Imagine you're playing with a big balloon and rubbing it against your hair. This makes the balloon get a lot of extra tiny particles called electrons, which are negatively charged. Now, when you bring the balloon close to a piece of paper, the electrons in the balloon are attracted to the positive charges in the paper, making the paper move towards the balloon. Something similar happens in the sky when there's a thunderstorm. The clouds get filled with extra electrons, making them negatively charged. The ground, on the other hand, has positive charges. When the difference between these charges becomes too big, it creates a huge spark of electricity, which we see as lightning. This spark is so hot that it makes the air around it expand rapidly, creating a sound wave that we hear as thunder.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_How_does_lightning_form__47101.jpg\" alt=\"How does lightning form?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What are the different types of lightning?",
+      "Why is lightning so dangerous?",
+      "Can we predict when lightning will strike?"
+    ],
+    "tags": [
+      "lightning",
+      "thunderstorm",
+      "electricity"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [],
+    "depth": 0
+  },
+  {
+    "id": "7d55710d-ebd4-44e9-b92d-519c26584037",
+    "profile_id": "7e3cdbc3-f29c-4144-973f-1dfc657104d1",
+    "question": "Explain me pythagoras theorem",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 10,
+    "explanation": "So, the Pythagorean theorem is like a secret code that helps us figure out the missing side of a right triangle. It's used by architects to design buildings, by engineers to build bridges, and even by video game designers to create 3D worlds. It's a fundamental concept in geometry that can help us solve all sorts of real-world problems.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_Explain_me_pythagoras_theorem_94158.jpg\" alt=\"Explain me pythagoras theorem\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What are some real-life examples of the Pythagorean theorem?",
+      "How do I use the Pythagorean theorem to solve problems?",
+      "Why is the Pythagorean theorem important?"
+    ],
+    "tags": [
+      "geometry",
+      "math",
+      "spatial"
+    ],
+    "concept_type": "mathematical",
+    "connected_to": [],
+    "depth": 0
+  },
+  {
+    "id": "50ea2514-b977-4a0d-98f5-a2e425c3d813",
+    "profile_id": "ff4c35d9-a43a-43fa-b350-ca3dded0b061",
+    "question": "Explain pythagoras theorem",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 15,
+    "explanation": "The Pythagorean theorem is a fundamental concept in Euclidean geometry, which describes the relationship between the three sides of a right-angled triangle. A right-angled triangle is a triangle with one angle that measures 90 degrees, also known as a right angle. The theorem states that the square of the length of the hypotenuse (the side opposite the right angle) is equal to the sum of the squares of the lengths of the other two sides. This can be expressed mathematically as a^2 + b^2 = c^2, where a and b are the lengths of the two sides that form the right angle, and c is the length of the hypotenuse. The Pythagorean theorem is a powerful tool for finding the length of an unknown side of a right-angled triangle, and it has numerous applications in various fields, including architecture, engineering, and physics. The theorem can be proven using various methods, including geometric and algebraic proofs, and it is a key concept in the study of trigonometry and geometry. By understanding the Pythagorean theorem, one can develop a deeper appreciation for the underlying structure of geometric shapes and the relationships between their components.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_Explain_pythagoras_theorem_33824.jpg\" alt=\"Explain pythagoras theorem\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "How is the Pythagorean theorem used in real-world applications?",
+      "What are some common mistakes to avoid when applying the Pythagorean theorem?",
+      "Can the Pythagorean theorem be extended to non-right-angled triangles?"
+    ],
+    "tags": [
+      "geometry",
+      "mathematics",
+      "trigonometry"
+    ],
+    "concept_type": "mathematical",
+    "connected_to": [
+      "7d60d2fd-e76b-4150-a22c-3affa9c1d009"
+    ],
+    "depth": 1
+  },
+  {
+    "id": "91c4e7ed-ba39-4d92-b741-3e85090a9008",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "Which is the longest bone in human body?",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 4,
+    "explanation": "The longest bone in the human body is the femur, which is like a long pencil that goes from your hip to your knee. It's about as long as a big ruler, almost 20 inches!",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_Which_is_the_longest_bone_in_human_body__40156.jpg\" alt=\"Which is the longest bone in human body?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What does the femur do?",
+      "Where is the femur located?",
+      "Can the femur break?"
+    ],
+    "tags": [
+      "body",
+      "femur",
+      "bones"
+    ],
+    "concept_type": "biological",
+    "connected_to": [],
+    "depth": 0
+  },
+  {
+    "id": "5a1e633a-b175-4b44-88f6-b44feca2ce7a",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "What is photosynthesis?",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 4,
+    "explanation": "Photosynthesis is like a magic kitchen inside plants that uses sunlight to make food, like a special kind of sugar. It's how plants grow and get energy, just like we do when we eat food.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_What_is_photosynthesis__64244.jpg\" alt=\"What is photosynthesis?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What do plants use to make food?",
+      "Why is sunlight important for plants?",
+      "Do all living things make food like plants do?"
+    ],
+    "tags": [
+      "plants",
+      "food",
+      "energy",
+      "sunlight"
+    ],
+    "concept_type": "biological",
+    "connected_to": [
+      "8fae4384-6013-408e-a6cb-92d05c0086ab"
+    ],
+    "depth": 1
+  },
+  {
+    "id": "3e407c74-25c1-437e-80be-d39fa1aa68a0",
+    "profile_id": "ff4c35d9-a43a-43fa-b350-ca3dded0b061",
+    "question": "What is photosynthesis?",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 15,
+    "explanation": "Photosynthesis is a complex biological process by which certain organisms, such as plants, algae, and cyanobacteria, convert light energy from the sun into chemical energy. This process involves the conversion of carbon dioxide and water into glucose and oxygen, with light serving as the primary energy source. The term 'photopigment-bearing autotrophic organisms' refers to the fact that these organisms have specialized pigments, such as chlorophyll, that enable them to capture light energy. This energy is then stored within the bonds of organic compounds, such as carbohydrates, which can be metabolized by the organism's cells through cellular respiration when needed. Photosynthesis plays a crucial role in maintaining the balance of oxygen in the Earth's atmosphere, which is essential for the survival of most living organisms. At a systemic level, photosynthesis can be seen as a critical component of the Earth's ecosystem, as it provides the energy necessary to support the food chain and regulate the climate. Furthermore, understanding photosynthesis requires an appreciation for the interconnectedness of biological systems and the flow of energy through these systems. For instance, the process of photosynthesis is closely tied to the water cycle, as water is a key reactant in the process, and the oxygen produced is released into the atmosphere, where it can influence weather patterns and climate. The study of photosynthesis also involves considering the concept of 'emergy' [a measure of the energy required to produce a given product or service], which helps to quantify the energy inputs and outputs of the process. By examining photosynthesis through this lens, we can gain a deeper understanding of the intricate relationships between living organisms and their environment. Additionally, the concept of 'trophic levels' [the positions that organisms occupy in a food chain] is relevant to photosynthesis, as it highlights the importance of primary producers, such as plants, in supporting the entire food chain.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_What_is_photosynthesis__64244.jpg\" alt=\"What is photosynthesis?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What is the difference between oxygenic and anoxygenic photosynthesis?",
+      "How do plants adapt to different levels of light intensity?",
+      "What role do other organisms, such as fungi, play in the process of photosynthesis?"
+    ],
+    "tags": [
+      "ecosystem",
+      "light",
+      "biology",
+      "atmosphere"
+    ],
+    "concept_type": "biological",
+    "connected_to": [],
+    "depth": 0
+  },
+  {
+    "id": "a4358223-ea97-4a54-91bb-fa5f77ea7987",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "Why do we count on 10 fingers?",
+    "asked_by": "child",
+    "date": "2026-05-09",
+    "profile_age": 4,
+    "explanation": "We count on 10 fingers because it's like having 10 cookies in a jar, and we can use each finger to show how many cookies we have. It's a simple way to keep track of numbers, like counting how many toys we have.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_Why_do_we_count_on_10_fingers__90509.jpg\" alt=\"Why do we count on 10 fingers?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "Why do some people count differently?",
+      "Can we count higher than 10 on our fingers?",
+      "Why is 10 a special number?"
+    ],
+    "tags": [
+      "numbers",
+      "counting",
+      "fingers"
     ],
     "concept_type": "mathematical",
     "connected_to": [],

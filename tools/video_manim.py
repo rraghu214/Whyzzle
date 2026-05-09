@@ -129,6 +129,13 @@ Hard rules — follow ALL of them:
 10. Total runtime: 6-8 seconds — end with self.wait(1)
 11. Use Python for-loops freely; build as many objects as the plan requires
 12. Dot/Line positions use np.array([x, y, 0]) — never plain tuples
+13. NEVER use += on Animation, AnimationGroup, or Succession objects — they don't support +=.
+    To combine: collect in a plain Python list, then pass to AnimationGroup() or Succession():
+        anims = []
+        for obj in objects:
+            anims.append(FadeIn(obj))
+        self.play(AnimationGroup(*anims))
+14. NEVER call self.play() with a list — always unpack: self.play(*anims) or self.play(anim1, anim2)
 
 Output ONLY the Python code. No markdown fences, no explanation."""
 
@@ -174,9 +181,9 @@ def generate_manim_video(topic: str, concept_type: str) -> dict:
     output_file = OUTPUT_DIR / f"manim_{safe}.mp4"
     media_dir   = Path(tempfile.mkdtemp(prefix="whyzzle_manim_"))
 
-    # Save debug copy
-    (OUTPUT_DIR / "debug_last_manim_script.py").write_text(code, encoding="utf-8")
-    logger.info("Manim script saved to output/debug_last_manim_script.py")
+    # Save debug copy as .txt so uvicorn --reload doesn't trigger on it
+    (OUTPUT_DIR / "debug_last_manim_script.txt").write_text(code, encoding="utf-8")
+    logger.info("Manim script saved to output/debug_last_manim_script.txt")
 
     with tempfile.NamedTemporaryFile(
             mode="w", suffix=".py", delete=False, encoding="utf-8") as f:
