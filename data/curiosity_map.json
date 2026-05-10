@@ -22,7 +22,11 @@
       "scattering"
     ],
     "concept_type": "spatial",
-    "connected_to": [],
+    "connected_to": [
+      "e0e414b0-148b-481a-a16c-8d4be2e9e4a4",
+      "4c962424-7cbb-47bd-882d-a3d3a71d0b90",
+      "4003392d-ca66-4584-b905-9a31ea445abf"
+    ],
     "depth": 0
   },
   {
@@ -80,36 +84,10 @@
       "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
       "b14732ad-0695-4039-b948-1ff505536c53",
       "521a3eea-afff-4be7-87fd-908719358f3c",
-      "4c97a0b7-9013-4442-97cb-8c29a8450b08"
+      "4c97a0b7-9013-4442-97cb-8c29a8450b08",
+      "6f4f0db6-38ff-41be-9261-4cc36640748c"
     ],
     "depth": 4
-  },
-  {
-    "id": "dffafdd1-10db-4fc5-809b-a3ec0fc49e45",
-    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
-    "question": "How does a volcano erupt?",
-    "asked_by": "child",
-    "date": "2026-05-02",
-    "profile_age": 4,
-    "explanation": "A volcano erupts when hot melted rock inside the Earth comes out, like when you open a soda bottle and the fizz comes out. It's like a big bubble of hot rock that gets too big and bursts out of the Earth.",
-    "visual_code": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 380'><circle cx='240' cy='180' r='100' fill='yellow' opacity='0.5'/><path d='M 240 280 L 240 380' stroke='red' stroke-width='10'/><rect x='150' y='50' width='180' height='100' fill='brown'/><text x='220' y='70' font-size='24'>Earth</text><text x='220' y='200' font-size='24'>Magma</text><text x='220' y='350' font-size='24'>Volcano</text></svg>",
-    "visual_type": "svg",
-    "follow_ups": [
-      "What happens after a volcano erupts?",
-      "Why do volcanoes make the sky look colorful?",
-      "Can people live near a volcano?"
-    ],
-    "tags": [
-      "earth",
-      "volcano",
-      "geology"
-    ],
-    "concept_type": "spatial",
-    "connected_to": [
-      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
-      "4c97a0b7-9013-4442-97cb-8c29a8450b08"
-    ],
-    "depth": 1
   },
   {
     "id": "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
@@ -492,31 +470,78 @@
       "oxygen"
     ],
     "concept_type": "biological",
-    "connected_to": [],
+    "connected_to": [
+      "e0e414b0-148b-481a-a16c-8d4be2e9e4a4",
+      "4003392d-ca66-4584-b905-9a31ea445abf"
+    ],
     "depth": 0
   },
   {
-    "id": "4c97a0b7-9013-4442-97cb-8c29a8450b08",
+    "id": "cde794dd-16f7-4728-a891-9dde805fb5bd",
     "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
-    "question": "How do volcanoes erupt?",
+    "question": "Find out who owns Tata Sons and their ownership structure",
     "asked_by": "agent",
     "date": "2026-05-10",
     "profile_age": 7,
-    "explanation": "Volcanoes erupt when hot melted rock inside the Earth gets too hot and comes out like a big burst of soda from a shaken-up bottle. It's like when you open a soda and the fizz comes out really fast!",
+    "explanation": "Tata Sons is like a big box that owns many smaller boxes, like toys, and these boxes are all the different companies that make up the Tata Group. The box is mostly owned by a group called Tata Trusts, which is like a team that helps people and uses the money from the box to do good things.",
     "visual_code": "",
     "visual_type": "svg",
     "follow_ups": [],
     "tags": [
-      "earth",
-      "lava",
-      "volcano",
-      "geology"
+      "ownership",
+      "companies",
+      "business"
+    ],
+    "concept_type": "other",
+    "connected_to": [],
+    "depth": 0
+  },
+  {
+    "id": "4c962424-7cbb-47bd-882d-a3d3a71d0b90",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "Why do we see colors?",
+    "asked_by": "agent",
+    "date": "2026-05-10",
+    "profile_age": 7,
+    "explanation": "We see colors because light bounces off things, like a ball, and into our eyes. It's like when you shine a flashlight on a toy, and it looks different depending on the color of the toy.",
+    "visual_code": "<img src=\"/output/pol_Why_do_we_see_colors__15180.jpg\" alt=\"Why do we see colors?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" />",
+    "visual_type": "html_interactive",
+    "follow_ups": [],
+    "tags": [
+      "color",
+      "light",
+      "vision"
     ],
     "concept_type": "spatial",
     "connected_to": [
-      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
-      "dffafdd1-10db-4fc5-809b-a3ec0fc49e45"
+      "10e1a3be-e611-4867-a3f6-d75bd23784f0",
+      "e0e414b0-148b-481a-a16c-8d4be2e9e4a4",
+      "4003392d-ca66-4584-b905-9a31ea445abf"
     ],
     "depth": 2
+  },
+  {
+    "id": "4003392d-ca66-4584-b905-9a31ea445abf",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "How does a rainbow form?",
+    "asked_by": "agent",
+    "date": "2026-05-10",
+    "profile_age": 7,
+    "explanation": "A rainbow is like a big, colorful smile in the sky that happens when sunlight passes through tiny drops of water in the air, like when you put a straw in a glass of water and it looks bent. It's like a big, natural prism that separates the light into all the different colors we can see.",
+    "visual_code": "<img src=\"/output/pol_How_does_a_rainbow_form__93827.jpg\" alt=\"How does a rainbow form?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" />",
+    "visual_type": "html_interactive",
+    "follow_ups": [],
+    "tags": [
+      "water",
+      "light",
+      "colors"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "10e1a3be-e611-4867-a3f6-d75bd23784f0",
+      "a63b1fbe-f34e-4be5-962f-0b0a0b7a474f",
+      "4c962424-7cbb-47bd-882d-a3d3a71d0b90"
+    ],
+    "depth": 3
   }
 ]

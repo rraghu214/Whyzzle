@@ -66,10 +66,13 @@ def tool_search_topic(question: str) -> dict:
         "tags":         result.get("tags", []),
         "concept_type": result.get("concept_type", "other"),
         "follow_ups":   result.get("follow_ups", []),
+        "visual_code":  result.get("visual_code", ""),
+        "visual_type":  result.get("visual_type", "svg"),
     }
 
 
-def tool_save_topic(question: str, explanation: str, tags: list, concept_type: str) -> dict:
+def tool_save_topic(question: str, explanation: str, tags: list, concept_type: str,
+                    visual_code: str = "", visual_type: str = "svg") -> dict:
     """MCP Tool 2 — local CRUD: save topic to data/curiosity_map.json."""
     pid    = _active_profile_id()
     result = manage_curiosity_map("add_topic", pid, {
@@ -77,6 +80,8 @@ def tool_save_topic(question: str, explanation: str, tags: list, concept_type: s
         "explanation":  explanation,
         "tags":         tags,
         "concept_type": concept_type,
+        "visual_code":  visual_code,
+        "visual_type":  visual_type,
         "asked_by":     "agent",
     })
     topic = result.get("topic", {})
@@ -112,6 +117,7 @@ def run_agent(user_prompt: str) -> None:
     print(f"  Question    : {search_result['question']}")
     print(f"  Tags        : {search_result['tags']}")
     print(f"  Concept type: {search_result['concept_type']}")
+    print(f"  Visual type : {search_result['visual_type']}")
     print(f"  Explanation : {search_result['explanation'][:200]}…")
 
     # ── Tool 2: save to local file ────────────────────────────────────────────
@@ -121,6 +127,8 @@ def run_agent(user_prompt: str) -> None:
         explanation  = search_result["explanation"],
         tags         = search_result["tags"],
         concept_type = search_result["concept_type"],
+        visual_code  = search_result["visual_code"],
+        visual_type  = search_result["visual_type"],
     )
     print(f"  Saved       : {save_result['saved']}")
     print(f"  Topic ID    : {save_result['topic_id'][:8]}…")

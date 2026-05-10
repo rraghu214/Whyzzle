@@ -41,3 +41,9 @@ desktop.ini
 # Generated output and render frames
 output/
 blender_scripts/frames/
+
+# Temp generated code artifacts
+data/tmp*.py
+
+# Debug dump files written by manim/blender pipelines
+output/debug_*

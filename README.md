@@ -1,20 +1,51 @@
-# 🔍 Whyzzle
+# Whyzzle
 ### *Ask anything. See everything.*
 
-> An AI-powered curiosity coach that turns every question into an instant visual explanation — and grows a personal knowledge map for every person who uses it.
+> An AI-powered curiosity coach that turns every question into an instant visual explanation — and grows a personal knowledge map for everyone who uses it.
 
 ---
 
 ## What is Whyzzle?
 
-Whyzzle is a local MCP-powered app where you (or your child) ask any question — *"Why is the sky blue?", "How do planets orbit?", "What is 6 × 7?"* — and get back:
+Whyzzle is a locally-run app where you (or your child) ask any question — *"Why is the sky blue?", "How do planets orbit?", "What is 6 × 7?"* — and get back:
 
 - **A clear explanation** tuned to the asker's age (a 6-year-old and a 38-year-old get very different answers)
-- **A beautiful custom visual** — SVG diagram or interactive HTML canvas — generated fresh for that exact question
+- **A custom visual** — SVG diagram or interactive HTML canvas — generated fresh for that exact question
 - **Three follow-up questions** to keep curiosity alive
 - **A growing knowledge graph** that connects everything you've ever asked
 
 Every profile has its own private curiosity map. Switch between family members and the entire view — graph, stats, recent history — switches too.
+
+---
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                        Whyzzle                              │
+│                                                             │
+│  ┌─────────────────┐      ┌──────────────────────────────┐  │
+│  │  Prefab UI      │      │  MCP Server (mcp_server.py)  │  │
+│  │  app.py         │      │                              │  │
+│  │  FastAPI+Prefab │      │  Tool 1: search_topic        │  │
+│  │  port 5175      │      │  Tool 2: save_topic          │  │
+│  └────────┬────────┘      │  Tool 3: get_dashboard_url   │  │
+│           │               └──────────────┬───────────────┘  │
+│           │                              │                   │
+│  ┌────────▼──────────────────────────────▼───────────────┐  │
+│  │                    Tools Layer                         │  │
+│  │  profiles.py · curiosity_map.py · search_and_explain  │  │
+│  └───────────────────────────────────────────────────────┘  │
+│                                                             │
+│  ┌────────────────────────────────────────────────────────┐ │
+│  │  data/  (plain JSON, nothing leaves your machine)      │ │
+│  │  profiles.json          curiosity_map.json             │ │
+│  └────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+         ▲
+         │  Claude Desktop connects here via MCP (stdio)
+         │  agent_demo.py calls the same tools directly
+```
 
 ---
 
@@ -24,7 +55,7 @@ Every profile has its own private curiosity map. Switch between family members a
 
 ```
 ┌─────────────────────────────┬──────────────────────────────────────────────────────┐
-│  🔍 Whyzzle                 │                                                      │
+│  Whyzzle                    │                                                      │
 │  Ask anything. See…         │  Why is the sky blue?                                │
 ├─────────────────────────────│                                                      │
 │  PROFILES                   │  #light  #atmosphere  #physics  [spatial]  by child  │
@@ -34,120 +65,33 @@ Every profile has its own private curiosity map. Switch between family members a
 │  What are you curious about?│  tiny air particles. Blue light bounces around much  │
 │  ┌─────────────────────────┐│  more than other colours — like a pinball! That's    │
 │  │ Why is the sky blue?    ││  why when you look up, all you see is blue light      │
-│  │                         ││  bouncing toward your eyes.                           │
-│  └─────────────────────────┘│                                                      │
-│  [Child asks ▾]   [Ask ✨]  │  ┌──────────────────────────────────────────────┐   │
-│                             │  │  ░░░░░░░░░ CUSTOM SVG VISUAL ░░░░░░░░░░░░░   │   │
-├─────────────────────────────│  │                                              │   │
-│  RECENT                     │  │   ☀️  →→ blue rays scatter everywhere →→     │   │
-│  • Why is the sky blue?     │  │                  ↕  ↕  ↕                    │   │
-│  • How do planets orbit?    │  │           🌍 atmosphere layer                │   │
-│  • What is 6 × 7?           │  │                                              │   │
-│  • Why do leaves fall?      │  └──────────────────────────────────────────────┘   │
-│                             │                                                      │
-├─────────────────────────────│  🤔 Curious about…                                   │
-│  STATS                      │  [Why is the sunset red?] [What is UV light?]        │
-│  ┌──────┬──────┬──────┐     │  [How do rainbows form?]                             │
-│  │  14  │  3🔥 │   6  │     │                                                      │
-│  │Quest.│Streak│/week │     │  🔗 Related in your map                              │
-│  └──────┴──────┴──────┘     │  [How do planets orbit?]  [Why is grass green?]      │
+│  └─────────────────────────┘│  bouncing toward your eyes.                           │
+│  [Child asks ▾]   [Ask]     │                                                      │
+│                             │  [SVG visual generated for this question]             │
+├─────────────────────────────│                                                      │
+│  RECENT                     │  Curious about…                                      │
+│  • Why is the sky blue?     │  [Why is the sunset red?] [What is UV light?]        │
+│  • How do planets orbit?    │  [How do rainbows form?]                             │
+│  • What is 6 × 7?           │                                                      │
+│                             │  Related in your map                                 │
+├─────────────────────────────│  [How do planets orbit?]  [Why is grass green?]      │
+│  STATS                      │                                                      │
+│  14 questions  3-day streak │                                                      │
 └─────────────────────────────┴──────────────────────────────────────────────────────┘
 ```
-
----
 
 ### 2 · Knowledge Graph View
 
-```
-┌─────────────────────────────┬──────────────────────────────────────────────────────┐
-│  🔍 Whyzzle                 │  Home  Topic  [ Graph ]  Stats                       │
-│  ...                        ├──────────────────────────────────────────────────────┤
-│                             │  ● child asked   ● parent asked   ● together         │
-│  ●Aarav  ○Dad   [+]         ├──────────────────────────────────────────────────────┤
-│                             │                                                      │
-│  ┌─────────────────────────┐│          ┌─────────────────────────────────────┐    │
-│  │ Ask a question…         ││          │                                     │    │
-│  └─────────────────────────┘│          │     ○ Rainbows?                     │    │
-│  [Child asks] [Ask ✨]       │          │    /                                │    │
-│                             │          │   ●  Sky blue?──────●  Sunsets?     │    │
-│  RECENT                     │          │   │                  \              │    │
-│  • Why is the sky blue?     │          │   │                   ○  UV light?  │    │
-│  • How do planets orbit?    │          │   │                                 │    │
-│  • Why do leaves fall?      │          │   ●  Planets orbit?                 │    │
-│  • What is 6 × 7?           │          │   │                                 │    │
-│                             │          │   ●  Gravity?───────○  Black holes? │    │
-│  STATS                      │          │                                     │    │
-│  ┌──────┬──────┬──────┐     │          │        ○  6 × 7?                    │    │
-│  │  14  │  3🔥 │   6  │     │          │        │                            │    │
-│  │Quest.│Streak│/week │     │          │        ○  Multiplication tables?    │    │
-│  └──────┴──────┴──────┘     │          └─────────────────────────────────────┘    │
-│                             │          ● = larger node has more connections        │
-└─────────────────────────────┴──────────────────────────────────────────────────────┘
-```
+Every topic you ask becomes a node. Topics with shared tags auto-connect. Click any node to jump to that explanation.
 
-> Click any node → jumps straight to that topic's explanation + visual.
+### 3 · Age-Adaptive Explanations
 
----
-
-### 3 · Stats View
-
-```
-┌─────────────────────────────┬──────────────────────────────────────────────────────┐
-│  🔍 Whyzzle                 │  Home  Topic  Graph  [ Stats ]                       │
-│  ...                        ├──────────────────────────────────────────────────────┤
-│  ●Aarav  ○Dad   [+]         │                                                      │
-│                             │  Aarav's Curiosity Stats                             │
-│                             │                                                      │
-│                             │  ┌──────────────┐ ┌──────────────┐ ┌─────────────┐ │
-│                             │  │      14      │ │    3  🔥     │ │      6      │ │
-│                             │  │ Total quest. │ │  Day streak  │ │  This week  │ │
-│                             │  └──────────────┘ └──────────────┘ └─────────────┘ │
-│                             │                                                      │
-│                             │  TOP BRANCH                                          │
-│                             │  🌿 space — 6 questions                              │
-│                             │                                                      │
-│                             │  TOPIC CLOUD                                         │
-│                             │  #space(6)  #light(5)  #physics(4)                   │
-│                             │  #biology(3)  #math(2)  #atmosphere(2)               │
-│                             │  #earth(1)  #gravity(1)                              │
-└─────────────────────────────┴──────────────────────────────────────────────────────┘
-```
-
----
-
-### 4 · Profile Strip & Add Profile Modal
-
-```
-  PROFILES
-  ╔══════╗  ┌──────┐  ┌──────┐  ┌ ─ ─ ┐
-  ║  A   ║  │  D   │  │  P   │    +
-  ╚══════╝  └──────┘  └──────┘  └ ─ ─ ┘
-   Aarav      Dad      Priya     Add
-  (active)
-
-  Clicking Aarav's chip      → his map, his stats, his graph
-  Clicking Dad's chip        → Dad's map, stats, graph (completely separate)
-  Hovering a chip shows  [×] → delete that profile + all its questions
-  Clicking  [+]  opens  ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-                        │             New Profile                            │
-                        │  Name  ┌──────────────────────┐                  │
-                        │        │  Priya               │                  │
-                        │  Age   ┌──────────────────────┐                  │
-                        │        │  10                  │                  │
-                        │                          [Cancel] [Create]       │
-                        └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘
-```
-
----
-
-### 5 · Age-Adaptive Explanations (same question, different profiles)
-
-| Profile | Age | What Whyzzle says for *"Why is the sky blue?"* |
+| Profile | Age | Answer to "Why is the sky blue?" |
 |---|---|---|
-| **Tobi** | 5 | *"Air has tiny invisible helpers that grab blue light and throw it everywhere — so your eyes see blue!"* |
-| **Aarav** | 8 | *"Sunlight is made of all colours mixed together. When it hits the air, the tiny particles scatter blue light much more than red or green light. That scattered blue fills the whole sky."* |
-| **Priya** | 13 | *"Sunlight undergoes Rayleigh scattering in the atmosphere. Shorter wavelengths like blue (≈450 nm) scatter ~10× more than longer red wavelengths (≈700 nm)..."* |
-| **Dad** | 38 | *"Rayleigh scattering causes the preferential scattering of shorter-wavelength visible light. The scattering intensity is inversely proportional to λ⁴, meaning blue light scatters ~9.4× more than red..."* |
+| **Tobi** | 5 | *"Air has tiny invisible helpers that grab blue light and throw it everywhere!"* |
+| **Aarav** | 8 | *"Sunlight hits tiny air particles. Blue bounces around much more than red."* |
+| **Priya** | 13 | *"Rayleigh scattering causes blue light (≈450 nm) to scatter ~10× more than red..."* |
+| **Dad** | 38 | *"Scattering intensity is inversely proportional to λ⁴, meaning blue scatters ~9.4× more..."* |
 
 ---
 
@@ -155,16 +99,15 @@ Every profile has its own private curiosity map. Switch between family members a
 
 | Feature | Detail |
 |---|---|
-| **Multi-profile** | Up to 8 colour-coded profiles, each with their own map |
-| **Age-adaptive answers** | 5 depth tiers: 4–6 · 7–10 · 11–14 · 15–17 · 18+ |
-| **Live web search** | DuckDuckGo instant API → HTML snippet fallback → Claude knowledge |
-| **Custom visuals** | SVG or interactive HTML — generated fresh for every single question |
-| **Curiosity map** | Personal knowledge graph; topics auto-connect by shared tags |
-| **Cross-session memory** | Ask "why rainbows?" and Whyzzle says *"this links to your sky question"* |
-| **Follow-up chips** | Clickable chips auto-ask the next question |
-| **Knowledge graph** | vis-network force graph — click any node to read that topic |
-| **Stats** | Streak tracker, top branch, weekly count, tag cloud |
-| **MCP server** | Full Claude Desktop integration — all 4 tools available to the agent |
+| Multi-profile | Up to 8 colour-coded profiles, each with their own map |
+| Age-adaptive answers | 5 depth tiers: 4–6 · 7–10 · 11–14 · 15–17 · 18+ |
+| Live web search | DuckDuckGo → HTML scrape fallback → LLM knowledge |
+| Custom visuals | SVG or interactive HTML canvas, generated per question |
+| Curiosity map | Personal knowledge graph; topics auto-connect by shared tags |
+| Cross-session memory | "This links to your sky question from last week" |
+| Follow-up chips | Clickable chips auto-ask the next question |
+| Stats | Day streak, top branch, weekly count, tag cloud |
+| MCP server | Full Claude Desktop integration — 3 tools available to the AI agent |
 
 ---
 
@@ -173,33 +116,40 @@ Every profile has its own private curiosity map. Switch between family members a
 ### Prerequisites
 
 - Python 3.10+
-- An [Anthropic API key](https://console.anthropic.com/)
+- [uv](https://docs.astral.sh/uv/) — fast Python package manager (`pip install uv` or see uv docs)
+- A [Groq API key](https://console.groq.com/) (free) — for the LLM waterfall
+- Optionally: [Gemini API key](https://aistudio.google.com/) (free) for fallback
 
 ### 1 · Clone and install
 
 ```bash
 git clone <repo-url>
 cd whyzzle
-pip install -r requirements.txt
+uv sync
 ```
 
-### 2 · Set your API key
+### 2 · Set your API keys
 
 ```bash
-# Copy the example file
-cp .env.example .env
+# Copy the example and fill in your keys
+copy .env.example .env
+```
 
-# Edit .env and paste your key
-ANTHROPIC_API_KEY=sk-ant-your-key-here
+Edit `.env`:
+
+```env
+GROQ_API_KEY=gsk_your_groq_key_here
+GEMINI_API_KEY=AIza_your_gemini_key_here   # optional fallback
+ANTHROPIC_API_KEY=                          # leave blank if using free tiers
 ```
 
 ### 3 · Start the dashboard
 
 ```bash
-python webapp.py
+uv run uvicorn app:fastapi_app --reload --port 5175
 ```
 
-Open **http://localhost:5001** in your browser.
+Open **http://localhost:5175** in your browser.
 
 That's it. No database, no Docker, no build step.
 
@@ -208,25 +158,129 @@ That's it. No database, no Docker, no build step.
 ## First-Time Flow
 
 ```
-1.  Open http://localhost:5001
-         ↓
-2.  Click  [+ Create Profile]
-    → Enter name + age  (e.g. "Aarav", 7)
-         ↓
-3.  Type a question in the sidebar ask-box
-    → e.g. "Why do stars twinkle?"
-         ↓
-4.  Watch the explanation + visual appear in the main panel
-         ↓
-5.  Click a follow-up chip to go deeper
-         ↓
-6.  Click  Graph  tab to see your growing curiosity map
-         ↓
-7.  Add a second profile (e.g. "Dad", 38) and notice
-    how the same question gives a completely different answer
+1. Open http://localhost:5175
+        ↓
+2. Click  [+ Add Profile]
+   → Enter name + age  (e.g. "Aarav", 7)
+        ↓
+3. Type a question in the sidebar ask-box
+   → e.g. "Why do stars twinkle?"
+        ↓
+4. Watch the explanation + visual appear in the main panel
+        ↓
+5. Click a follow-up chip to go deeper
+        ↓
+6. Click  Graph  tab to see your growing curiosity map
+        ↓
+7. Add a second profile (e.g. "Dad", 38) — same question,
+   completely different depth of answer
 ```
 
-> **Tip:** Press **Ctrl + Enter** (or **Cmd + Enter** on Mac) to submit a question without reaching for the mouse.
+---
+
+## MCP Server + Claude Desktop Integration
+
+Whyzzle exposes **3 MCP tools** via `mcp_server.py` that any MCP-compatible AI agent can call:
+
+| Tool | Category | What it does |
+|---|---|---|
+| `search_topic` | Internet | Web search + LLM explanation for a question |
+| `save_topic` | Local CRUD | Save the result to `data/curiosity_map.json` |
+| `get_dashboard_url` | UI | Return the Prefab dashboard URL so the agent can point you there |
+
+### Wiring Claude Desktop (Windows)
+
+> **Note:** The Windows Store version of Claude Desktop uses a virtualized path — the config is NOT at the usual `%APPDATA%\Claude` location.
+
+**Config file location (Windows Store app):**
+```
+C:\Users\<YourName>\AppData\Local\Packages\Claude_pzs8sxrjxfjjc\LocalCache\Roaming\Claude\claude_desktop_config.json
+```
+
+**Config content** — use the full path to `uv.exe` and the `--directory` flag (the Windows Store app does not honour the `cwd` field):
+
+```json
+{
+  "mcpServers": {
+    "whyzzle": {
+      "command": "C:\\path\\to\\your\\uv.exe",
+      "args": [
+        "run",
+        "--directory",
+        "C:\\absolute\\path\\to\\whyzzle",
+        "python",
+        "mcp_server.py"
+      ]
+    }
+  }
+}
+```
+
+Replace `C:\\path\\to\\your\\uv.exe` with the actual path (find it with `where uv` in a terminal) and `C:\\absolute\\path\\to\\whyzzle` with your project folder.
+
+**Wiring Claude Desktop (Mac / standard Windows install):**
+
+Config file: `~/.config/claude/claude_desktop_config.json` (Mac) or `%APPDATA%\Claude\claude_desktop_config.json` (Windows non-Store)
+
+```json
+{
+  "mcpServers": {
+    "whyzzle": {
+      "command": "uv",
+      "args": ["run", "python", "mcp_server.py"],
+      "cwd": "/absolute/path/to/whyzzle"
+    }
+  }
+}
+```
+
+After editing the config, **quit and reopen Claude Desktop**. The whyzzle server should show as connected in Settings → Developer.
+
+**Test prompt for Claude Desktop:**
+```
+Search for "How does a rainbow form?" and explain it, then save it to my curiosity map, then tell me where I can view my dashboard.
+```
+
+---
+
+## Agent Demo (no Claude Desktop required)
+
+`agent_demo.py` shows all 3 MCP tools firing sequentially from Python — no LLM orchestrator needed since the tools call Groq/Gemini internally for the heavy lifting.
+
+```bash
+uv run python agent_demo.py
+# or with a custom question:
+uv run python agent_demo.py "How does a rainbow form?"
+```
+
+Expected output:
+```
+=================================================================
+WHYZZLE MCP AGENT DEMO
+=================================================================
+PROMPT : How does a rainbow form?
+PROFILE: abc12345…
+
+[Step 1] Calling tool: search_topic
+         Searching the web + generating explanation via LLM…
+-----------------------------------------------------------------
+  Question    : How does a rainbow form?
+  Tags        : ['light', 'water', 'refraction', 'weather']
+  Concept type: spatial
+  Explanation : Rainbows form when sunlight enters water droplets…
+
+[Step 2] Calling tool: save_topic
+         Saving result to data/curiosity_map.json…
+-----------------------------------------------------------------
+  Saved       : True
+  Topic ID    : def67890…
+  Connections : 2 related topics linked
+
+[Step 3] Calling tool: get_dashboard_url
+         Fetching the Prefab UI dashboard URL…
+-----------------------------------------------------------------
+  URL         : http://localhost:5175
+```
 
 ---
 
@@ -234,25 +288,31 @@ That's it. No database, no Docker, no build step.
 
 ```
 whyzzle/
-│
-├── webapp.py               ← Flask web server  →  http://localhost:5001
-├── server.py               ← MCP server        →  Claude Desktop integration
+├── app.py                  Main web app — FastAPI + Prefab UI (port 5175)
+├── mcp_server.py           MCP server — 3 tools for Claude Desktop / agents
+├── agent_demo.py           CLI demo — calls all 3 MCP tools from one Python script
+├── server.py               Legacy stub (unused — superseded by mcp_server.py)
 │
 ├── tools/
-│   ├── profiles.py         ← Profile CRUD (profiles.json)
-│   ├── curiosity_map.py    ← Map CRUD + auto-connect + stats (curiosity_map.json)
-│   ├── search_and_explain.py  ← Web search + Claude explanation + visual
-│   └── render_dashboard.py    ← Structured responses for MCP context
+│   ├── profiles.py         Profile CRUD (data/profiles.json)
+│   ├── curiosity_map.py    Knowledge map CRUD + auto-connect + stats
+│   ├── search_and_explain.py  Web search + LLM waterfall + visual generation
+│   ├── image_gen.py        Educational image generation (Gemini → HF → Pollinations)
+│   ├── video_pipeline.py   Video generation (Manim → Blender → CogVideoX)
+│   ├── video_manim.py      Manim-based animated explainers
+│   ├── blender_scene.py    Blender headless 3D rendering
+│   └── video_cogvideo.py   CogVideoX cloud fallback
 │
-├── ui/
-│   └── index.html          ← Full single-page app (no framework, no build step)
+├── blender_scripts/        Blender template Python scripts (orbit, cross_section, growth)
 │
-├── data/                   ← Auto-created on first run
+├── data/                   Auto-created on first run — stays local
 │   ├── profiles.json
 │   └── curiosity_map.json
 │
-├── .env.example            ← Copy to .env, add your API key
-└── requirements.txt
+├── output/                 Generated media cache (auto-created, gitignored)
+├── .env.example            Copy to .env and fill in your API keys
+├── pyproject.toml          Dependencies managed by uv
+└── requirements.txt        Equivalent pip requirements list
 ```
 
 ---
@@ -261,69 +321,45 @@ whyzzle/
 
 ```
 You type a question
-        │
-        ▼
-① manage_curiosity_map("get_related")
+       │
+       ▼
+① curiosity_map.get_related
   → finds topics you already asked with overlapping tags
   → "this connects to your rainbows question from last week"
-        │
-        ▼
+       │
+       ▼
 ② search_and_explain(question, profile_id)
-  → searches DuckDuckGo for accurate web context
-  → reads profile age → picks the right explanation depth
-  → Claude writes the explanation + generates SVG/HTML visual
+  → DuckDuckGo search for grounded context
+  → profile age → picks explanation depth
+  → LLM (Groq → Gemini → Ollama → Claude) writes explanation + SVG/HTML visual
   → produces 3 follow-up questions + concept tags
-        │
-        ▼
-③ manage_curiosity_map("add_topic")
-  → saves everything to curiosity_map.json under this profile
+       │
+       ▼
+③ curiosity_map.add_topic
+  → saves to curiosity_map.json for this profile
   → auto-connects to related topics by tag overlap (bidirectional)
-        │
-        ▼
+       │
+       ▼
 ④ Dashboard updates
   → main panel: explanation + visual + follow-up chips
-  → sidebar: recent list + stats numbers
+  → sidebar: recent list + updated stats
   → graph tab: new node with edges to connected topics
 ```
 
 ---
 
-## Claude Desktop Integration (MCP)
+## LLM Waterfall (free-tier friendly)
 
-Add this to your Claude Desktop config file:
+All heavy AI work goes through a 4-tier waterfall — the app falls through to the next tier only on rate-limit or failure:
 
-**Mac:** `~/.config/claude/claude_desktop_config.json`  
-**Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+| Tier | Provider | Model | Cost |
+|---|---|---|---|
+| 1 | Groq | llama-3.3-70b-versatile | Free (rate limited) |
+| 2 | Gemini | gemini-2.0-flash | Free (rate limited) |
+| 3 | Ollama | local model | Free (requires GPU/CPU locally) |
+| 4 | Claude | claude-sonnet-4-6 | Paid (fallback only) |
 
-```json
-{
-  "mcpServers": {
-    "whyzzle": {
-      "command": "python",
-      "args": ["/absolute/path/to/whyzzle/server.py"],
-      "env": {
-        "ANTHROPIC_API_KEY": "sk-ant-your-key-here"
-      }
-    }
-  }
-}
-```
-
-Once connected, Claude Desktop can call all four tools directly:
-
-| Tool | What it does |
-|---|---|
-| `manage_profiles` | list · create · update · delete · set_active |
-| `search_and_explain` | web search + age-calibrated explanation + custom visual |
-| `manage_curiosity_map` | read · add_topic · get_related · get_stats · update_connections |
-| `render_dashboard` | returns structured view data + link to the browser dashboard |
-
-**Example agent prompt:**
-```
-I'm using Whyzzle. My profile ID is <id>.
-Question: "How do black holes form?"
-Please: search and explain it, save it to my map, then show my updated graph stats.
-```
+Image generation follows a similar cascade: Gemini Flash → HuggingFace FLUX → Pollinations (no key required).
 
 ---
 
@@ -331,31 +367,20 @@ Please: search and explain it, save it to my map, then show my updated graph sta
 
 | Layer | Technology |
 |---|---|
-| MCP server | Python 3.10+, `mcp` SDK |
-| Web server | Flask 3 |
-| Web search | DuckDuckGo instant API · HTML fallback via `httpx` + `beautifulsoup4` |
-| AI | Anthropic `claude-sonnet-4-6` — explanations + visual generation |
+| Web app | FastAPI + Prefab UI |
+| MCP server | FastMCP |
+| Web search | DuckDuckGo instant API · httpx + BeautifulSoup fallback |
+| LLM | Groq (Llama) → Gemini → Ollama → Claude |
+| Image gen | Gemini Flash · HuggingFace FLUX · Pollinations.ai |
+| Video gen | Manim · Blender (headless) · CogVideoX |
 | Data | Plain JSON files — no database required |
-| Frontend | Vanilla HTML / CSS / JavaScript — no framework, no build step |
-| Graph | [vis-network](https://visjs.github.io/vis-network/) (CDN) |
-
----
-
-## Explanation Depth Reference
-
-| Profile age | Style |
-|---|---|
-| **4 – 6** | 1–2 sentences · one concrete analogy · zero jargon |
-| **7 – 10** | 2–3 paragraphs · relatable comparisons · at most one new word |
-| **11 – 14** | 2–3 paragraphs · proper terms with brief definitions · cause-and-effect |
-| **15 – 17** | 3–4 paragraphs · near-adult depth · formal vocabulary |
-| **18 +** | Full explanation · no simplification · domain vocabulary free |
+| Knowledge graph | vis-network (CDN) |
 
 ---
 
 ## Data Storage
 
-All data lives in two JSON files inside `data/`. Nothing leaves your machine.
+All data lives in `data/`. Nothing is sent to external servers except the LLM API calls.
 
 **`data/profiles.json`**
 ```json
@@ -367,7 +392,7 @@ All data lives in two JSON files inside `data/`. Nothing leaves your machine.
 }
 ```
 
-**`data/curiosity_map.json`** — flat list of topics, each tagged with `profile_id`
+**`data/curiosity_map.json`** — flat list of topics per profile
 ```json
 [
   {
@@ -378,61 +403,29 @@ All data lives in two JSON files inside `data/`. Nothing leaves your machine.
     "date": "2026-05-02",
     "profile_age": 7,
     "explanation": "...",
-    "visual_code": "<svg ...>...</svg>",
+    "visual_code": "<svg>...</svg>",
     "visual_type": "svg",
     "follow_ups": ["Why is the sunset red?", "What is UV light?", "How do rainbows form?"],
     "tags": ["light", "atmosphere", "physics"],
     "concept_type": "spatial",
-    "connected_to": ["topic-id-1", "topic-id-2"],
-    "depth": 2
+    "connected_to": ["topic-id-1"],
+    "depth": 1
   }
 ]
 ```
 
-Profiles never see each other's topics — every map read/write filters strictly by `profile_id`.
-
 ---
 
-## Visual Types
+## Explanation Depth Reference
 
-Claude decides the best visual for each question automatically:
-
-| Question pattern | Visual Whyzzle generates |
+| Profile age | Style |
 |---|---|
-| Physics / optics | SVG diagram with light rays, labels, annotations |
-| Orbital / motion | SVG with CSS animation — objects in motion |
-| Timeline / growth | SVG sequential strip: step 1 → step 2 → step 3 |
-| Comparison | SVG side-by-side panel (e.g. Earth vs Mars) |
-| Math concepts | SVG dot grid, number line, or animated proof |
-| Calculus | Interactive HTML canvas — draggable point, live tangent |
-| Biology / anatomy | SVG cross-section or labelled illustration |
-| Photo-needed fallback | `related_search` string returned for manual lookup |
+| 4 – 6 | 1–2 sentences · one concrete analogy · zero jargon |
+| 7 – 10 | 2–3 paragraphs · relatable comparisons · at most one new word |
+| 11 – 14 | 2–3 paragraphs · proper terms with brief definitions · cause-and-effect |
+| 15 – 17 | 3–4 paragraphs · near-adult depth · formal vocabulary |
+| 18 + | Full explanation · no simplification · domain vocabulary free |
 
 ---
 
-## Requirements
-
-```
-anthropic>=0.50.0
-httpx>=0.27.0
-beautifulsoup4>=4.12.0
-flask>=3.0.0
-mcp>=1.0.0
-python-dotenv>=1.0.0
-```
-
----
-
-## Keyboard Shortcuts
-
-| Shortcut | Action |
-|---|---|
-| `Ctrl + Enter` | Submit question (from ask box) |
-| `Cmd + Enter` | Submit question (Mac) |
-
----
-
-*Built by Raghu · EAG v4 · 2026-05-02*
-
-
-![alt text](helpers/image.png)
+*Built by Raghu · May 2026*
