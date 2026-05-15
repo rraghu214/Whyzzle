@@ -5,7 +5,7 @@
 
 ---
 
-## Session-5: Planning & Reasoning with Language Models
+## Planning & Reasoning with Language Models
 
 Whyzzle now includes a full **structured reasoning engine** that proves, at every step, that the LLM is following prompt-engineering best practices.
 
@@ -18,7 +18,9 @@ Whyzzle now includes a full **structured reasoning engine** that proves, at ever
 | Execution planner (tool selection) | `reasoning/planner.py` |
 | 7-check heuristic verifier | `reasoning/verifier.py` |
 | Live reasoning sidebar (right panel) | `app.py` — right Column |
-| Chain of Thought expand button | `app.py` — right sidebar |
+| Chain of Thought pop-out window (draggable, resizable) | `app.py` — right sidebar |
+| Right sidebar drag-to-resize (220–700 px) | `app.py` — JS in `_AVATAR_HTML` |
+| Audio widget minimize + drag-to-reposition | `app.py` — `_AVATAR_HTML` |
 | Prompt capture + raw response capture | `tools/search_and_explain.py` |
 
 ### Right sidebar — live reasoning panel
@@ -29,19 +31,22 @@ While a question is being processed, the right sidebar shows all 9 pipeline stag
 - **Confidence badge** — e.g. `95%` (computed from 7 verification checks)
 - **Pipeline stages** — each with a status icon (✅ / ❌ / ⚠️) and detail
 - **Verification checks** — 7 heuristic checks on the response quality
-- **Chain of Thought button** — expands to show the actual prompt sent to the LLM and the raw LLM response
+- **Chain of Thought button** — opens a draggable, resizable pop-out window showing prompt structure and raw LLM response
+- **Progressive stage reveal** — stages 1–4 tick off individually as they complete; stage 5 stays spinning during web search + LLM call; stages 6–9 complete when the response arrives
 
 ### Chain of Thought — prompt qualification
 
-Click **"🔍 Chain of Thought"** in the right sidebar to expand and see:
+Click **"🔍 Chain of Thought ↗"** in the right sidebar to open a floating pop-out window (draggable by title bar, resizable from any corner). The window shows:
 
-1. **PROMPT EVALUATION** — proof that every Session-5 prompt standard is met (all 8 criteria show `OK`)
-2. **PROMPT SENT TO LLM** — the actual prompt string that was sent, including the reasoning framework preamble
-3. **LLM RESPONSE** — the first 800 characters of the raw LLM response
+1. **PROMPT COMPONENTS** — badges summarising the key dimensions of the prompt (reasoning type, age tier, web context, output schema)
+2. **FRAMEWORK INJECTED INTO PROMPT** — the 8 explicit reasoning steps that were inserted into the prompt before the LLM saw the question
+3. **PROMPT CRITERIA MET** — 8 checklist items confirming every prompt-engineering standard is satisfied
+4. **LLM OUTPUT — PARSED EXPLANATION** — the human-readable explanation extracted from the LLM's JSON response (what the child sees)
+5. **RAW PROMPT AND RESPONSE** — toggle to reveal the exact prompt string sent to the LLM and the first 800 characters of the raw JSON it returned
 
 ### How the prompt qualifies the test output
 
-The LLM prompt (`tools/search_and_explain.py`) is structured so that every response satisfies all 9 Session-5 evaluation criteria:
+The LLM prompt (`tools/search_and_explain.py`) is structured so that every response satisfies all 9  evaluation criteria:
 
 | Criterion | How the prompt enforces it |
 |---|---|
@@ -122,15 +127,15 @@ Every profile has its own private curiosity map. Switch between family members a
 │  │  port 5175      │      │  Tool 2: save_topic          │  │
 │  └────────┬────────┘      │  Tool 3: get_dashboard_url   │  │
 │           │               └──────────────┬───────────────┘  │
-│           │                              │                   │
+│           │                              │                  │
 │  ┌────────▼──────────────────────────────▼───────────────┐  │
-│  │              Reasoning Engine (Session-5)              │  │
+│  │              Reasoning Engine ( Part-2 )              │  │
 │  │  classifier.py → planner.py → engine.py → verifier.py │  │
-│  │  9-stage pipeline · reasoning type · confidence score  │  │
+│  │  9-stage pipeline · reasoning type · confidence score │  │
 │  └────────────────────────┬──────────────────────────────┘  │
 │                           │                                 │
 │  ┌────────────────────────▼──────────────────────────────┐  │
-│  │                    Tools Layer                         │  │
+│  │                    Tools Layer                        │  │
 │  │  profiles.py · curiosity_map.py · search_and_explain  │  │
 │  └───────────────────────────────────────────────────────┘  │
 │                                                             │
@@ -179,45 +184,42 @@ Every profile has its own private curiosity map. Switch between family members a
 │                  │                                      │  ✅ question echoed       │
 │                  │                                      │  ✅ web context found     │
 │                  │                                      │                          │
-│                  │                                      │  [🔍 Chain of Thought]   │
+│                  │                                      │  [🔍 Chain of Thought ↗] │
+│                  │                                      │  (pop-out floating win.) │
 └──────────────────┴─────────────────────────────────────┴──────────────────────────┘
 ```
 
-### 2 · Chain of Thought Expanded
+### 2 · Chain of Thought Pop-out Window
 
-Click **"🔍 Chain of Thought"** to expand and see exactly what was sent to the LLM and what it returned:
+Click **"🔍 Chain of Thought ↗"** to open the floating window (drag by title bar, resize from any corner):
 
 ```
-┌──────────────────────────────────────────────────┐
-│  PROMPT EVALUATION                               │
-│  OK  Explicit Reasoning                          │
-│  OK  Structured Output                           │
-│  OK  Tool Separation                             │
-│  OK  Conversation Loop                           │
-│  OK  Instructional Framing                       │
-│  OK  Internal Self-Checks                        │
-│  OK  Reasoning Type Aware                        │
-│  OK  Error Fallbacks                             │
-│                                                  │
-│  PROMPT SENT TO LLM                              │
-│  ┌──────────────────────────────────────────┐   │
-│  │ ## REASONING FRAMEWORK                   │   │
-│  │ REASONING_TYPE: comparison               │   │
-│  │ Step 1: Understand the question type ... │   │
-│  │ ## USER CONTEXT                          │   │
-│  │ ## WEB CONTEXT                           │   │
-│  │ ## TASKS                                 │   │
-│  │ ## SELF-CHECK                            │   │
-│  └──────────────────────────────────────────┘   │
-│                                                  │
-│  LLM RESPONSE                                    │
-│  ┌──────────────────────────────────────────┐   │
-│  │ {"explanation": "Speed measures how      │   │
-│  │  fast you move, while velocity also      │   │
-│  │  includes direction...", "tags": [...]}  │   │
-│  └──────────────────────────────────────────┘   │
-│  [▲ Collapse]                                    │
-└──────────────────────────────────────────────────┘
+          ╔══════════════════════════════════════════════════════╗
+          ║  🔍 Chain of Thought            [drag me]  [×]      ║
+          ╠══════════════════════════════════════════════════════╣
+          ║  PROMPT COMPONENTS                                   ║
+          ║  [causal] [age:7] [web-grounded] [json-schema]      ║
+          ║                                                      ║
+          ║  FRAMEWORK INJECTED INTO PROMPT                      ║
+          ║  1. Identify the question category                   ║
+          ║  2. Recall prior context …                           ║
+          ║  3. Break into sub-questions …  (8 steps total)      ║
+          ║                                                      ║
+          ║  PROMPT CRITERIA MET                                 ║
+          ║  ✅ Explicit Reasoning   ✅ Structured Output         ║
+          ║  ✅ Tool Separation      ✅ Conversation Loop         ║
+          ║  ✅ Instructional Frame  ✅ Internal Self-Checks      ║
+          ║  ✅ Reasoning Type Aware ✅ Error Fallbacks           ║
+          ║                                                      ║
+          ║  LLM OUTPUT — PARSED EXPLANATION                     ║
+          ║  ┌──────────────────────────────────────────────┐   ║
+          ║  │ In autumn, trees stop making chlorophyll.    │   ║
+          ║  │ The green fades and hidden orange, red and   │   ║
+          ║  │ yellow pigments are revealed …               │   ║
+          ║  └──────────────────────────────────────────────┘   ║
+          ║                                                      ║
+          ║  [▼ Show Raw Prompt & Response]                      ║
+          ╚══════════════════════════════════════════════════════╝
 ```
 
 ### 2 · Knowledge Graph View
@@ -432,7 +434,7 @@ whyzzle/
 ├── mcp_server.py           MCP server — 3 tools for Claude Desktop / agents
 ├── agent_demo.py           CLI demo — calls all 3 MCP tools from one Python script
 │
-├── reasoning/              Session-5: Structured reasoning engine
+├── reasoning/              Part-2: Structured reasoning engine
 │   ├── __init__.py
 │   ├── engine.py           9-stage pipeline orchestrator
 │   ├── classifier.py       Keyword-based reasoning type classifier (no LLM call)
@@ -504,7 +506,7 @@ You type a question
        ▼
 ⑥ Dashboard updates
   → main panel: explanation + visual + follow-up chips
-  → right sidebar: 9-stage pipeline trace + verification checks + CoT
+  → right sidebar: 9-stage pipeline trace (progressive) + verification checks + CoT pop-out
   → left sidebar: recent list + updated stats
   → graph tab: new node with edges to connected topics
 ```
