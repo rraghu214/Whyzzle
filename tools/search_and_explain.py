@@ -616,13 +616,25 @@ def search_and_explain(question: str, profile_id: str, asked_by: str = "child") 
         else "No web context available — rely on your own knowledge."
     )
 
-    # Full prompt — explanation + metadata only; visual is generated in a dedicated call below
-    prompt = f"""You are Whyzzle, a curiosity coach.
-A user aged {age} asked: "{question}"
+    # Full prompt — includes explicit reasoning framework for Session-5 compliance
+    prompt = f"""You are Whyzzle, a structured reasoning AI assistant for curious learners.
 
-{context_block}
+REASONING FRAMEWORK — follow ALL steps explicitly:
+1. Understand the user goal: what is "{question}" really asking?
+2. Identify the reasoning type (causal, educational, comparative, mathematical, sequential, etc.)
+3. Break the task into clear substeps before answering
+4. Use the web context provided below for factual grounding — avoid inventing facts
+5. Verify your intermediate reasoning: are there contradictions or gaps?
+6. Check for hallucination risk — only state what you are confident about
+7. Self-check your answer: is it complete, accurate, and age-appropriate?
+8. Generate a structured JSON response as specified below
 
-Tasks:
+USER CONTEXT:
+- Learner age: {age} years
+- Age guidance: {age_instr}
+- {context_block}
+
+TASKS — reason through each one step-by-step:
 1. EXPLANATION — {age_instr}
 2. FOLLOW-UPS — 3 natural follow-up questions the user might ask next.
 3. TAGS — 2-5 lowercase concept tags (e.g. ["light", "atmosphere", "physics"]).
@@ -634,6 +646,12 @@ Tasks:
    comparative  → comparison or contrast: mammals vs. reptiles, democracy vs. monarchy
    other        → everything else: history, art, language, culture
    IMPORTANT: DNA, cells, proteins → biological (not spatial). Orbits, volcanoes → spatial.
+
+SELF-CHECK before responding:
+- Does the explanation directly answer "{question}"?
+- Is it factually consistent with the web context?
+- Is the concept_type correct?
+- Are follow-ups genuinely related and interesting?
 
 Respond ONLY with a valid JSON object — no markdown fences, no text outside the JSON.
 
@@ -672,6 +690,10 @@ DNA/cells/proteins → biological. Orbits/volcanoes → spatial."""
     raw    = _call_llm(prompt, prompt_lite=prompt_lite)
     logger.info("LLM response received, extracting JSON...")
     result = _extract_json(raw)
+
+    # Expose prompt and raw response for reasoning trace / Chain of Thought viewer
+    result["_prompt_used"]       = prompt[:2500]
+    result["_llm_response_raw"]  = raw[:1000]
 
     concept   = result.get("concept_type", "other")
     tags_list = result.get("tags", [])

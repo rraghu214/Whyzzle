@@ -49,5 +49,5 @@ data/tmp*.py
 output/debug_*
 
 linkedin.txt
-youtube-narration.txt
+youtube-narration*.txt
 CODEBASE_EXPLAINER.md

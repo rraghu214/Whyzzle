@@ -96,12 +96,18 @@ def run_reasoning_pipeline(
     fallback_strategy = ""
     has_web_context = False
 
+    prompt_used      = ""
+    llm_response_raw = ""
+
     try:
         from tools.search_and_explain import search_and_explain
         result = search_and_explain(question, profile_id, asked_by)
 
+        # Extract prompt/response captured by search_and_explain for CoT viewer
+        prompt_used      = result.pop("_prompt_used", "")
+        llm_response_raw = result.pop("_llm_response_raw", "")
+
         # Detect whether the search function actually got web context
-        # (search_and_explain logs it; we infer from explanation quality)
         has_web_context = len(result.get("explanation", "")) > 200
 
         tool_results.append({
@@ -227,6 +233,10 @@ def run_reasoning_pipeline(
         "fallback_strategy":   fallback_strategy,
         "pipeline_stages":     stages,
         "elapsed_seconds":     elapsed,
+
+        # Chain of Thought — the actual prompt sent to the LLM + raw response
+        "prompt_used":          prompt_used,
+        "llm_response_summary": llm_response_raw[:800] if llm_response_raw else "",
     }
 
     result["reasoning_trace"] = reasoning_trace

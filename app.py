@@ -27,7 +27,7 @@ from prefab_ui.components import (
     Column, Combobox, ComboboxOption, Embed, ForEach,
     H2, H3, If, Else, Input, ITEM, Loader, Markdown, Mermaid,
     Metric, Muted, Page, Pages, Row,
-    Separator, Svg, Text, Textarea, Video, Rx, RESULT,
+    Separator, Small, Svg, Text, Textarea, Video, Rx, RESULT,
 )
 from prefab_ui.actions import AppendState, Fetch, SetState, ShowToast
 
@@ -108,6 +108,8 @@ def _load_init_state() -> dict:
         "rendering_3d":        False,
         "render_error":        "",
         "selected_topic_id":   "",
+        "show_cot":            False,
+        "show_raw_prompt":     False,
     }
 
 
@@ -547,115 +549,6 @@ with PrefabApp(
                                         ],
                                     )
 
-                        # ── Reasoning Trace Panel ─────────────────────────────
-                        with If("current_topic.reasoning_trace"):
-                            Separator(css_class="my-4 border-purple-100")
-
-                            # Header row: title + confidence badge
-                            with Row(css_class="items-center gap-3 mb-3 flex-wrap"):
-                                H3("🧠 Reasoning Trace",
-                                   css_class="font-bold text-purple-700")
-                                Badge(
-                                    Rx("current_topic.reasoning_trace.reasoning_type"),
-                                    css_class=(
-                                        "bg-purple-100 text-purple-700 "
-                                        "border-purple-200 capitalize"
-                                    ),
-                                )
-                                Badge(
-                                    Rx("current_topic.reasoning_trace.confidence_pct"),
-                                    css_class=(
-                                        "bg-teal-100 text-teal-700 "
-                                        "border-teal-200"
-                                    ),
-                                )
-                                Muted(
-                                    Rx("current_topic.reasoning_trace.reasoning_desc"),
-                                    css_class="text-xs italic",
-                                )
-
-                            # Metrics row
-                            with Row(css_class="gap-3 mb-4 flex-wrap"):
-                                with Card(css_class=(
-                                    "flex-1 min-w-28 border-purple-100 bg-purple-50/40"
-                                )):
-                                    with CardContent(css_class="pt-3 pb-3"):
-                                        Metric(
-                                            label="Reasoning Type",
-                                            value=Rx("current_topic.reasoning_trace.reasoning_type"),
-                                        )
-                                with Card(css_class=(
-                                    "flex-1 min-w-28 border-teal-100 bg-teal-50/40"
-                                )):
-                                    with CardContent(css_class="pt-3 pb-3"):
-                                        Metric(
-                                            label="Confidence",
-                                            value=Rx("current_topic.reasoning_trace.confidence_pct"),
-                                        )
-                                with Card(css_class=(
-                                    "flex-1 min-w-28 border-orange-100 bg-orange-50/40"
-                                )):
-                                    with CardContent(css_class="pt-3 pb-3"):
-                                        Metric(
-                                            label="Tools Used",
-                                            value=Rx("current_topic.reasoning_trace.confidence_label"),
-                                        )
-
-                            # Pipeline stages
-                            with Card(css_class="mb-3 border-purple-100"):
-                                with CardHeader(css_class="pb-1"):
-                                    CardTitle("📋 Pipeline Stages")
-                                with CardContent(css_class="pt-2 pb-2"):
-                                    with ForEach(
-                                        "current_topic.reasoning_trace.pipeline_stages"
-                                    ):
-                                        with Row(css_class=(
-                                            "items-start gap-2 py-1.5 "
-                                            "border-b border-purple-50 last:border-0"
-                                        )):
-                                            Text(
-                                                content=ITEM["status_icon"],
-                                                css_class="text-sm shrink-0 mt-0.5",
-                                            )
-                                            with Column(css_class="gap-0"):
-                                                Text(
-                                                    content=ITEM["name"],
-                                                    css_class="text-sm font-semibold text-purple-800",
-                                                )
-                                                Muted(
-                                                    ITEM["detail"],
-                                                    css_class="text-xs",
-                                                )
-
-                            # Verification checks
-                            with Card(css_class="border-teal-100"):
-                                with CardHeader(css_class="pb-1"):
-                                    CardTitle("✅ Verification Checks")
-                                with CardContent(css_class="pt-2 pb-2"):
-                                    with ForEach(
-                                        "current_topic.reasoning_trace.verification_checks"
-                                    ):
-                                        with Row(css_class=(
-                                            "items-start gap-2 py-1.5 "
-                                            "border-b border-teal-50 last:border-0"
-                                        )):
-                                            Text(
-                                                content=ITEM["check_icon"],
-                                                css_class="text-sm shrink-0 mt-0.5",
-                                            )
-                                            with Column(css_class="gap-0"):
-                                                Text(
-                                                    content=ITEM["check"],
-                                                    css_class=(
-                                                        "text-sm font-semibold "
-                                                        "text-teal-800 capitalize"
-                                                    ),
-                                                )
-                                                Muted(
-                                                    ITEM["note"],
-                                                    css_class="text-xs",
-                                                )
-
                     with Else():
                         with Card(css_class="border-dashed border-purple-200 bg-purple-50/40 mt-8"):
                             with CardContent(
@@ -743,6 +636,143 @@ with PrefabApp(
                                     css_class="bg-purple-100 text-purple-700 border-purple-200",
                                 )
 
+        # ══════════════════════════════════════════════════════════════════════
+        # RIGHT SIDEBAR — Live Reasoning Panel
+        # ══════════════════════════════════════════════════════════════════════
+        with Column(
+            css_class=(
+                "wz-rsidebar w-72 shrink-0 min-h-screen border-l border-purple-100 "
+                "bg-white/70 backdrop-blur flex flex-col shadow-sm"
+            )
+        ):
+            with Column(
+                css_class=(
+                    "p-4 gap-2 flex flex-col overflow-y-auto "
+                    "sticky top-0 max-h-screen"
+                )
+            ):
+                # ── Header ────────────────────────────────────────────────────
+                with Row(css_class="items-center gap-2 mb-1"):
+                    H3("🧠 Reasoning",
+                       css_class="font-extrabold text-purple-700 text-base tracking-tight")
+                Separator(css_class="border-purple-100")
+
+                # ── While asking: animated placeholder stages ─────────────────
+                with If("asking"):
+                    Muted("Thinking step by step…",
+                          css_class="text-xs mb-2 italic text-purple-500")
+                    _LOADING_STAGES = [
+                        "Understanding Query",
+                        "Classifying Reasoning",
+                        "Creating Execution Plan",
+                        "Selecting Tools",
+                        "Gathering Information",
+                        "Verifying Results",
+                        "Generating Response",
+                        "Self-Check",
+                        "Assembling Response",
+                    ]
+                    for _sn in _LOADING_STAGES:
+                        with Row(css_class="items-center gap-2 py-1"):
+                            Loader()
+                            Text(_sn, css_class="text-xs text-slate-500")
+
+                # ── Trace panel (shown when a topic with trace is active) ──────
+                with If("current_topic.reasoning_trace"):
+                    # Type + confidence badges
+                    with Row(css_class="flex-wrap gap-1.5 mb-1 mt-1"):
+                        Badge(
+                            Rx("current_topic.reasoning_trace.reasoning_type"),
+                            css_class=(
+                                "bg-purple-100 text-purple-700 "
+                                "border-purple-200 capitalize text-xs"
+                            ),
+                        )
+                        Badge(
+                            Rx("current_topic.reasoning_trace.confidence_pct"),
+                            css_class="bg-teal-100 text-teal-700 border-teal-200 text-xs",
+                        )
+                    Muted(
+                        Rx("current_topic.reasoning_trace.reasoning_desc"),
+                        css_class="text-xs italic mb-2",
+                    )
+
+                    # Pipeline stages ─────────────────────────────────────────
+                    Small("PIPELINE",
+                          css_class="font-bold text-purple-500 tracking-widest text-xs")
+                    with ForEach("current_topic.reasoning_trace.pipeline_stages"):
+                        with Row(css_class=(
+                            "items-start gap-1.5 py-1 "
+                            "border-b border-purple-50 last:border-0"
+                        )):
+                            Text(content=ITEM["status_icon"],
+                                 css_class="text-xs shrink-0 mt-0.5")
+                            with Column(css_class="gap-0 min-w-0"):
+                                Text(content=ITEM["name"],
+                                     css_class="text-xs font-semibold text-purple-800 leading-tight")
+                                Muted(ITEM["detail"],
+                                      css_class="text-xs leading-tight truncate")
+
+                    Separator(css_class="border-purple-100 my-2")
+
+                    # Verification checks ─────────────────────────────────────
+                    Small("VERIFICATION",
+                          css_class="font-bold text-teal-500 tracking-widest text-xs")
+                    with ForEach("current_topic.reasoning_trace.verification_checks"):
+                        with Row(css_class="items-start gap-1.5 py-0.5"):
+                            Text(content=ITEM["check_icon"], css_class="text-xs shrink-0")
+                            Text(content=ITEM["check"],
+                                 css_class="text-xs text-slate-600 capitalize")
+
+                    Separator(css_class="border-purple-100 my-2")
+
+                    # ── Chain of Thought — pop-out window ────────────────────
+                    Button(
+                        "🔍 Chain of Thought ↗",
+                        size="sm",
+                        variant="outline",
+                        css_class=(
+                            "w-full text-xs border-purple-200 "
+                            "text-purple-700 hover:bg-purple-50"
+                        ),
+                        on_click=SetState("show_cot", True),
+                    )
+
+                    # Sentinel: JS watches for this to appear → opens window
+                    with If("show_cot"):
+                        Small("", css_class="wz-cot-sentinel")
+                        # Hidden button JS clicks to reset Prefab state on close
+                        Button(
+                            "×",
+                            on_click=SetState("show_cot", False),
+                            css_class=(
+                                "wz-cot-close-trigger opacity-0 absolute "
+                                "w-0 h-0 overflow-hidden pointer-events-none"
+                            ),
+                        )
+
+                    # Hidden data feeds — Prefab keeps these reactive
+                    Text(Rx("current_topic.reasoning_trace.reasoning_type"),
+                         css_class="wz-d-type hidden")
+                    Text(Rx("current_topic.reasoning_trace.confidence_pct"),
+                         css_class="wz-d-conf hidden")
+                    Text(Rx("current_topic.reasoning_trace.reasoning_desc"),
+                         css_class="wz-d-desc hidden")
+                    Text(Rx("current_topic.reasoning_trace.prompt_used"),
+                         css_class="wz-d-prompt hidden")
+                    Text(Rx("current_topic.reasoning_trace.llm_response_summary"),
+                         css_class="wz-d-resp hidden")
+                    Text(Rx("current_topic.explanation"),
+                         css_class="wz-d-expl hidden")
+
+                # ── Empty state ───────────────────────────────────────────────
+                with If(Rx("asking") == False):
+                    with If(Rx("current_topic") == None):
+                        Muted(
+                            "Ask a question to see the live reasoning panel.",
+                            css_class="text-xs italic mt-2",
+                        )
+
 # Render once at startup — bundled mode inlines all JS so no CDN is needed
 _html = _prefab.html(renderer_mode="bundled")
 
@@ -807,16 +837,38 @@ _AVATAR_HTML = """
   transition:background .2s;color:#6366f1;
 }
 .wz-btn:hover{background:#ede9fe}
+/* ── topbar (drag handle + minimize) ── */
+#wz-topbar{
+  width:100%;display:flex;justify-content:flex-end;gap:3px;
+  margin-bottom:2px;cursor:grab;
+}
+#wz-topbar:active{cursor:grabbing}
+#wz-min{
+  width:20px;height:18px;border-radius:5px;border:1px solid #e0e7ff;
+  background:#f5f3ff;cursor:pointer;font-size:13px;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  color:#7c3aed;padding:0;flex-shrink:0;
+}
+#wz-min:hover{background:#ede9fe}
+/* ── minimized state ── */
+#wz-panel.minimized{padding:6px 8px;width:auto;gap:4px}
+#wz-panel.minimized #wz-body{display:none}
+#wz-panel.minimized #wz-bubble{width:42px;height:42px;font-size:24px}
 </style>
 
 <div id="wz-panel">
+  <div id="wz-topbar">
+    <button id="wz-min" title="Minimize / Restore">─</button>
+  </div>
   <div id="wz-bubble" title="Click to speak / stop">🦄</div>
-  <div id="wz-name">Sparkle</div>
-  <div id="wz-status"></div>
-  <div class="wz-avs" id="wz-avs"></div>
-  <div class="wz-ctrl">
-    <button class="wz-btn" id="wz-play" title="Play">&#9654;</button>
-    <button class="wz-btn" id="wz-stop" title="Stop">&#9632;</button>
+  <div id="wz-body">
+    <div id="wz-name">Sparkle</div>
+    <div id="wz-status"></div>
+    <div class="wz-avs" id="wz-avs"></div>
+    <div class="wz-ctrl">
+      <button class="wz-btn" id="wz-play" title="Play">&#9654;</button>
+      <button class="wz-btn" id="wz-stop" title="Stop">&#9632;</button>
+    </div>
   </div>
 </div>
 
@@ -944,6 +996,423 @@ _AVATAR_HTML = """
     },900);
   });
   obs.observe(document.body,{childList:true,subtree:true});
+
+  /* ── Progressive stage reveal ──────────────────────────────────
+     Stages 1-4 are pure Python (<5ms each). Stage 5 is web search
+     + LLM (~5-20s). Stages 6-9 are fast again.
+     While the backend is synchronous (returns only on full completion),
+     we know stages 1-4 are done almost immediately, so we mark them
+     done progressively in the UI — this is honest, not fabricated.
+     Stage 5 stays spinning until Prefab gets the real response.     */
+  (function(){
+    const FAST=['Understanding Query','Classifying Reasoning',
+                'Creating Execution Plan','Selecting Tools'];
+    let active=false, timers=[];
+
+    function markDone(name){
+      const sidebar=document.querySelector('.wz-rsidebar');
+      if(!sidebar) return;
+      // Find the text leaf with this exact name
+      const nameEl=[...sidebar.querySelectorAll('*')].find(
+        el=>el.childElementCount===0&&el.textContent.trim()===name
+      );
+      if(!nameEl) return;
+      // Walk up to the flex row (first ancestor with >1 child element)
+      let row=nameEl.parentElement;
+      for(let i=0;i<4;i++){
+        if(!row) return;
+        if(row.childElementCount>=2) break;
+        row=row.parentElement;
+      }
+      if(!row) return;
+      // Loader() is the first child; replace its content with a checkmark
+      const loader=row.firstElementChild;
+      if(loader&&loader!==nameEl&&!loader.dataset.wzDone){
+        loader.dataset.wzDone='1';
+        loader.innerHTML='✅';
+        loader.style.cssText='font-size:11px;flex-shrink:0;line-height:1;animation:none';
+      }
+    }
+
+    function start(){
+      FAST.forEach((name,i)=>{
+        timers.push(setTimeout(()=>markDone(name),(i+1)*320));
+      });
+    }
+    function stop(){ timers.forEach(clearTimeout); timers=[]; active=false; }
+
+    // Detect asking=True via "Thinking step by step…" sentinel
+    const obs=new MutationObserver(()=>{
+      const sidebar=document.querySelector('.wz-rsidebar');
+      if(!sidebar) return;
+      const thinking=[...sidebar.querySelectorAll('*')].find(
+        el=>el.childElementCount===0&&el.textContent.trim().startsWith('Thinking step')
+      );
+      if(thinking&&!active){ active=true; start(); }
+      else if(!thinking&&active){ stop(); }
+    });
+    obs.observe(document.body,{childList:true,subtree:true});
+  })();
+
+  /* ── Right sidebar: drag-resize ────────────────────────────────
+     A 6-px invisible strip on the LEFT edge of .wz-rsidebar.
+     Turns purple on hover to signal it's draggable.               */
+  (function(){
+    function setup(sb){
+      if(sb.dataset.wzSbReady) return;
+      sb.dataset.wzSbReady='1';
+      sb.style.position='relative';
+
+      const h=document.createElement('div');
+      h.id='wz-sb-handle';
+      h.style.cssText='position:absolute;left:0;top:0;width:6px;height:100%;'+
+        'cursor:col-resize;z-index:500;border-left:3px solid transparent;'+
+        'transition:border-color .15s;box-sizing:border-box';
+      sb.prepend(h);
+
+      let drag=false,sx=0,sw=0;
+      h.addEventListener('mouseenter',()=>{ if(!drag) h.style.borderLeftColor='#a78bfa'; });
+      h.addEventListener('mouseleave',()=>{ if(!drag) h.style.borderLeftColor='transparent'; });
+      h.addEventListener('mousedown',e=>{
+        drag=true; sx=e.clientX; sw=sb.offsetWidth;
+        document.body.style.cursor='col-resize';
+        document.body.style.userSelect='none';
+        e.preventDefault();
+      });
+      document.addEventListener('mousemove',e=>{
+        if(!drag) return;
+        const w=Math.max(220,Math.min(700,sw-(e.clientX-sx)));
+        sb.style.width=w+'px'; sb.style.minWidth=w+'px'; sb.style.flexShrink='0';
+      });
+      document.addEventListener('mouseup',()=>{
+        if(drag){
+          drag=false;
+          document.body.style.cursor='';
+          document.body.style.userSelect='';
+          h.style.borderLeftColor='transparent';
+          localStorage.setItem('wz_sb_w',sb.offsetWidth);
+        }
+      });
+      // restore saved width
+      const saved=parseInt(localStorage.getItem('wz_sb_w')||'0',10);
+      if(saved>=220){ sb.style.width=saved+'px'; sb.style.minWidth=saved+'px'; sb.style.flexShrink='0'; }
+    }
+
+    // try immediately, then watch for Prefab to render the sidebar
+    const existing=document.querySelector('.wz-rsidebar');
+    if(existing) setup(existing);
+    const sbObs=new MutationObserver(()=>{
+      const el=document.querySelector('.wz-rsidebar');
+      if(el) setup(el);
+    });
+    sbObs.observe(document.body,{childList:true,subtree:true});
+  })();
+
+  /* ── Chain of Thought: floating pop-out window ──────────────────
+     Opens when Prefab state show_cot=True (detected via sentinel).
+     Draggable title bar. position:fixed + resize:both = reliable
+     native resize that works regardless of flex layout.           */
+  (function(){
+    const STEPS=[
+      'Understand user goal',
+      'Identify reasoning type',
+      'Break into substeps',
+      'Ground with web context',
+      'Verify intermediate reasoning',
+      'Check hallucination risk',
+      'Self-check: complete + age-right?',
+      'Generate structured JSON',
+    ];
+    const CRITERIA=[
+      ['Explicit Reasoning',    '8 reasoning steps injected into prompt'],
+      ['Structured Output',     'JSON schema with fixed keys enforced'],
+      ['Tool Separation',       'web search → LLM explain → verifier'],
+      ['Conversation Loop',     'follow-up chips re-enter the pipeline'],
+      ['Instructional Framing', 'age + role context in USER CONTEXT block'],
+      ['Internal Self-Checks',  'SELF-CHECK block at end of prompt'],
+      ['Reasoning Type Aware',  'type detected pre-call, injected as REASONING_TYPE'],
+      ['Error Fallbacks',       '4-tier LLM waterfall + graceful error response'],
+    ];
+
+    function get(cls){
+      return (document.querySelector('.'+cls)||{}).textContent?.trim()||'';
+    }
+    function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function badge(txt,bg,clr){
+      return `<span style="display:inline-block;padding:2px 9px;border-radius:20px;
+        font-size:11px;font-weight:600;background:${bg};color:${clr};
+        border:1px solid ${clr}44;margin:2px 3px 2px 0">${txt}</span>`;
+    }
+    function sec(label,clr){
+      return `<div style="font-size:10px;font-weight:800;letter-spacing:.09em;
+        color:${clr};margin:16px 0 6px;text-transform:uppercase;
+        border-bottom:1px solid ${clr}33;padding-bottom:4px">${label}</div>`;
+    }
+
+    function buildHTML(){
+      const type=get('wz-d-type')||'—';
+      const conf=get('wz-d-conf')||'—';
+      const desc=get('wz-d-desc')||'';
+      const prompt=get('wz-d-prompt')||'';
+      const resp=get('wz-d-resp')||'';
+      const expl=get('wz-d-expl')||'';
+
+      const steps=STEPS.map((s,i)=>
+        `<div style="display:flex;gap:8px;padding:3px 0;align-items:flex-start">
+          <b style="color:#a78bfa;font-size:12px;min-width:18px">${i+1}</b>
+          <span style="font-size:12px;color:#4b5563;line-height:1.5">${s}</span>
+        </div>`).join('');
+
+      const criteria=CRITERIA.map(([n,w])=>
+        `<div style="display:flex;gap:8px;padding:5px 0;border-bottom:1px solid #f3f4f6;align-items:flex-start">
+          <span style="color:#10b981;font-weight:800;font-size:13px;flex-shrink:0">✓</span>
+          <div>
+            <div style="font-size:12px;font-weight:700;color:#1f2937">${n}</div>
+            <div style="font-size:11px;color:#9ca3af;margin-top:1px">${w}</div>
+          </div>
+        </div>`).join('');
+
+      return `
+        <div style="font-size:12px;color:#6b7280;font-style:italic;margin-bottom:4px">${desc}</div>
+
+        ${sec('Prompt Components','#7c3aed')}
+        <div>
+          ${badge(type,'#ede9fe','#7c3aed')}
+          ${badge('🌐 web searched','#dbeafe','#1d4ed8')}
+          ${badge('📋 json output','#ffedd5','#c2410c')}
+          ${badge('👶 age-adaptive','#d1fae5','#065f46')}
+          ${badge('✓ '+conf+' confidence','#f0fdf4','#166534')}
+        </div>
+
+        ${sec('Framework Injected Into Prompt','#7c3aed')}
+        <div style="background:#faf5ff;border-radius:8px;padding:10px 12px">${steps}</div>
+
+        ${sec('Prompt Criteria Met','#0d9488')}
+        <div style="background:#f9fafb;border-radius:8px;padding:6px 10px">${criteria}</div>
+
+        ${sec('LLM Output — Parsed Explanation','#059669')}
+        <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;
+          padding:10px 12px;font-size:12px;color:#1f2937;line-height:1.7;
+          min-height:60px;max-height:180px;overflow-y:auto;
+          resize:vertical;box-sizing:border-box">
+          ${expl||'<span style="color:#9ca3af">No explanation captured yet</span>'}
+        </div>
+
+        ${sec('Raw Prompt Sent to LLM','#d97706')}
+        <button onclick="
+          var b=document.getElementById('wz-rpb');
+          var open=b.style.display!=='none';
+          b.style.display=open?'none':'block';
+          this.textContent=open?'📋 View raw prompt ▾':'📋 Hide raw prompt ▲'
+        " style="background:#fff7ed;border:1px solid #fed7aa;border-radius:7px;
+          padding:5px 12px;cursor:pointer;font-size:11px;color:#92400e;
+          margin-bottom:6px;font-weight:600">📋 View raw prompt ▾</button>
+        <div id="wz-rpb" style="display:none;background:#fff7ed;border:1px solid #fed7aa;
+          border-radius:8px;padding:10px 12px;font-family:monospace;font-size:11px;
+          white-space:pre-wrap;word-break:break-all;line-height:1.6;color:#44403c;
+          min-height:60px;max-height:260px;overflow-y:auto;
+          resize:vertical;box-sizing:border-box">${esc(prompt)||'No prompt captured'}</div>
+
+        ${resp?`
+          ${sec('Raw LLM Response','#2563eb')}
+          <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;
+            padding:10px 12px;font-family:monospace;font-size:11px;white-space:pre-wrap;
+            word-break:break-all;line-height:1.6;color:#1e3a5f;
+            min-height:60px;max-height:200px;overflow-y:auto;
+            resize:vertical;box-sizing:border-box">${esc(resp)}</div>`:''}
+      `;
+    }
+
+    function openWin(){
+      if(document.getElementById('wz-cot-win')) return;
+
+      const win=document.createElement('div');
+      win.id='wz-cot-win';
+      win.style.cssText=[
+        'position:fixed','top:60px','left:50%','transform:translateX(-50%)',
+        'width:520px','height:600px','min-width:320px','min-height:220px',
+        'background:#fff','z-index:9997',
+        'border:2px solid #ddd6fe','border-radius:16px',
+        'box-shadow:0 24px 60px rgba(99,102,241,.3),0 4px 16px rgba(0,0,0,.08)',
+        'display:flex','flex-direction:column',
+        'resize:both','overflow:hidden',
+        'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif',
+      ].join(';');
+
+      // ── Title bar ─────────────────────────────────────────────────────────
+      const bar=document.createElement('div');
+      bar.id='wz-cot-bar';
+      bar.style.cssText=[
+        'display:flex','align-items:center','justify-content:space-between',
+        'padding:10px 14px',
+        'background:linear-gradient(135deg,#f5f3ff 0%,#ede9fe 100%)',
+        'border-bottom:1px solid #ddd6fe','border-radius:14px 14px 0 0',
+        'cursor:grab','flex-shrink:0','user-select:none',
+      ].join(';');
+      bar.innerHTML=`
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:16px">🧠</span>
+          <span style="font-size:13px;font-weight:800;color:#7c3aed">Chain of Thought</span>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center">
+          <button id="wz-cot-ref" title="Refresh content" style="
+            background:#f5f3ff;border:1px solid #ddd6fe;border-radius:6px;
+            width:26px;height:26px;cursor:pointer;color:#7c3aed;font-size:14px;
+            display:flex;align-items:center;justify-content:center;padding:0;
+            line-height:1">↻</button>
+          <button id="wz-cot-x" title="Close" style="
+            background:#f5f3ff;border:1px solid #ddd6fe;border-radius:6px;
+            width:26px;height:26px;cursor:pointer;color:#7c3aed;font-size:16px;
+            display:flex;align-items:center;justify-content:center;padding:0;
+            line-height:1">✕</button>
+        </div>`;
+
+      // ── Scrollable body ────────────────────────────────────────────────────
+      const body=document.createElement('div');
+      body.id='wz-cot-body';
+      body.style.cssText='flex:1;overflow-y:auto;padding:14px 16px;';
+      body.innerHTML=buildHTML();
+
+      win.appendChild(bar);
+      win.appendChild(body);
+      document.body.appendChild(win);
+
+      // Restore saved position/size
+      try{
+        const p=JSON.parse(localStorage.getItem('wz_cot_geom')||'null');
+        if(p){
+          win.style.transform='none';
+          if(p.l) win.style.left=p.l;
+          if(p.t) win.style.top=p.t;
+          if(p.w) win.style.width=p.w;
+          if(p.h) win.style.height=p.h;
+        }
+      }catch(e){}
+
+      function saveGeom(){
+        try{
+          const r=win.getBoundingClientRect();
+          localStorage.setItem('wz_cot_geom',JSON.stringify({
+            l:win.style.left||r.left+'px', t:win.style.top||r.top+'px',
+            w:win.offsetWidth+'px', h:win.offsetHeight+'px',
+          }));
+        }catch(e){}
+      }
+
+      document.getElementById('wz-cot-ref').onclick=()=>{ body.innerHTML=buildHTML(); };
+      document.getElementById('wz-cot-x').onclick=closeWin;
+
+      // Drag the title bar
+      let drag=false,ox=0,oy=0;
+      bar.addEventListener('mousedown',e=>{
+        if(e.target.closest('button')) return;
+        drag=true;
+        const r=win.getBoundingClientRect();
+        win.style.transform='none';
+        win.style.left=r.left+'px'; win.style.top=r.top+'px';
+        ox=e.clientX-r.left; oy=e.clientY-r.top;
+        bar.style.cursor='grabbing'; e.preventDefault();
+      });
+      document.addEventListener('mousemove',e=>{
+        if(!drag) return;
+        win.style.left=Math.max(0,Math.min(e.clientX-ox,window.innerWidth-win.offsetWidth))+'px';
+        win.style.top =Math.max(0,Math.min(e.clientY-oy,window.innerHeight-win.offsetHeight))+'px';
+      });
+      document.addEventListener('mouseup',()=>{
+        if(drag){ drag=false; bar.style.cursor='grab'; saveGeom(); }
+      });
+
+      // Save geometry when user finishes resizing (mouseup on document)
+      win.addEventListener('mouseup', saveGeom);
+    }
+
+    function closeWin(){
+      const win=document.getElementById('wz-cot-win');
+      if(win){
+        try{
+          const r=win.getBoundingClientRect();
+          localStorage.setItem('wz_cot_geom',JSON.stringify({
+            l:win.style.left||r.left+'px', t:win.style.top||r.top+'px',
+            w:win.offsetWidth+'px', h:win.offsetHeight+'px',
+          }));
+        }catch(e){}
+        win.remove();
+      }
+      // Reset Prefab show_cot state via hidden trigger button
+      const btn=document.querySelector('.wz-cot-close-trigger');
+      if(btn){ const b=btn.tagName==='BUTTON'?btn:btn.querySelector('button'); if(b) b.click(); }
+    }
+
+    // Watch for sentinel appearing/disappearing
+    const obs=new MutationObserver(()=>{
+      const sentinel=document.querySelector('.wz-cot-sentinel');
+      const winOpen=!!document.getElementById('wz-cot-win');
+      if(sentinel&&!winOpen) openWin();
+      else if(!sentinel&&winOpen) document.getElementById('wz-cot-win')?.remove();
+    });
+    obs.observe(document.body,{childList:true,subtree:true});
+  })();
+
+  /* ── Minimize / Restore ─────────────────────────────────────── */
+  const panel   = document.getElementById('wz-panel');
+  const minBtn  = document.getElementById('wz-min');
+  let minimized = localStorage.getItem('wz_min')==='1';
+  function applyMinimized(){
+    panel.classList.toggle('minimized', minimized);
+    minBtn.textContent = minimized ? '+' : '─';
+    minBtn.title       = minimized ? 'Restore' : 'Minimize';
+  }
+  applyMinimized();
+  minBtn.onclick = e => {
+    e.stopPropagation();
+    minimized = !minimized;
+    localStorage.setItem('wz_min', minimized?'1':'0');
+    applyMinimized();
+  };
+
+  /* ── Drag to move ───────────────────────────────────────────── */
+  const topbar = document.getElementById('wz-topbar');
+  let dragging=false, dragOX=0, dragOY=0;
+
+  function startDrag(e){
+    if(e.target===minBtn) return;     // let minimize button click through
+    dragging=true;
+    // Convert from bottom/right anchoring to top/left before first drag
+    const r=panel.getBoundingClientRect();
+    panel.style.bottom='auto'; panel.style.right='auto';
+    panel.style.top =r.top +'px';
+    panel.style.left=r.left+'px';
+    dragOX=e.clientX-r.left;
+    dragOY=e.clientY-r.top;
+    document.body.style.userSelect='none';
+  }
+  topbar.addEventListener('mousedown', startDrag);
+  document.addEventListener('mousemove', e=>{
+    if(!dragging) return;
+    let nx=e.clientX-dragOX, ny=e.clientY-dragOY;
+    // Clamp inside viewport
+    nx=Math.max(0,Math.min(nx,window.innerWidth -panel.offsetWidth));
+    ny=Math.max(0,Math.min(ny,window.innerHeight-panel.offsetHeight));
+    panel.style.left=nx+'px'; panel.style.top=ny+'px';
+  });
+  document.addEventListener('mouseup',()=>{
+    if(dragging){
+      dragging=false;
+      document.body.style.userSelect='';
+      // Persist position
+      localStorage.setItem('wz_pos',JSON.stringify({
+        left:panel.style.left, top:panel.style.top
+      }));
+    }
+  });
+  // Restore saved position
+  try{
+    const pos=JSON.parse(localStorage.getItem('wz_pos')||'null');
+    if(pos&&pos.left&&pos.top){
+      panel.style.bottom='auto'; panel.style.right='auto';
+      panel.style.left=pos.left; panel.style.top=pos.top;
+    }
+  }catch(e){}
 
   refreshUI();
 })();

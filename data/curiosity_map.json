@@ -298,7 +298,8 @@
       "521a3eea-afff-4be7-87fd-908719358f3c",
       "4c97a0b7-9013-4442-97cb-8c29a8450b08",
       "6f4f0db6-38ff-41be-9261-4cc36640748c",
-      "9c61e4d4-84fd-45ce-8229-424b0d679bbb"
+      "9c61e4d4-84fd-45ce-8229-424b0d679bbb",
+      "b1821a62-3a61-427f-93bf-00149377ac07"
     ],
     "depth": 4
   },
@@ -326,7 +327,8 @@
     "connected_to": [
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
       "b14732ad-0695-4039-b948-1ff505536c53",
-      "521a3eea-afff-4be7-87fd-908719358f3c"
+      "521a3eea-afff-4be7-87fd-908719358f3c",
+      "b1821a62-3a61-427f-93bf-00149377ac07"
     ],
     "depth": 3
   },
@@ -354,7 +356,8 @@
     "connected_to": [
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
       "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
-      "521a3eea-afff-4be7-87fd-908719358f3c"
+      "521a3eea-afff-4be7-87fd-908719358f3c",
+      "b1821a62-3a61-427f-93bf-00149377ac07"
     ],
     "depth": 3
   },
@@ -382,7 +385,8 @@
     "connected_to": [
       "dede36c9-2e55-4ecf-9c49-a5daed92b840",
       "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
-      "b14732ad-0695-4039-b948-1ff505536c53"
+      "b14732ad-0695-4039-b948-1ff505536c53",
+      "b1821a62-3a61-427f-93bf-00149377ac07"
     ],
     "depth": 3
   },
@@ -458,7 +462,9 @@
       "seasons"
     ],
     "concept_type": "biological",
-    "connected_to": [],
+    "connected_to": [
+      "27a702f6-3810-4a93-aef1-3c4b8972e3ea"
+    ],
     "depth": 0
   },
   {
@@ -835,7 +841,9 @@
       "motion"
     ],
     "concept_type": "spatial",
-    "connected_to": [],
+    "connected_to": [
+      "b1821a62-3a61-427f-93bf-00149377ac07"
+    ],
     "depth": 0,
     "reasoning_trace": {
       "explicit_reasoning": true,
@@ -846,18 +854,20 @@
       "internal_self_checks": true,
       "reasoning_type_awareness": true,
       "fallbacks": false,
-      "overall_clarity": "Structured arithmetic reasoning with high confidence (95%) and verification.",
+      "overall_clarity": "Structured comparison reasoning with high confidence (95%) and verification.",
       "user_goal": "What is the difference between speed and velocity?",
-      "reasoning_type": "arithmetic",
-      "reasoning_desc": "Numerical calculation or quantitative reasoning",
+      "reasoning_type": "comparison",
+      "reasoning_desc": "Comparing two or more concepts",
       "execution_plan": {
         "required_tools": [
           "web_search",
-          "llm_explain"
+          "llm_explain",
+          "image_gen"
         ],
         "execution_order": [
           "web_search",
-          "llm_explain"
+          "llm_explain",
+          "image_gen"
         ],
         "steps": [
           {
@@ -872,14 +882,14 @@
             "phase": "Reasoning",
             "action": "classify_type",
             "tool": "reasoning_classifier",
-            "description": "Identified reasoning type: arithmetic"
+            "description": "Identified reasoning type: comparison"
           },
           {
             "step": 3,
             "phase": "Planning",
             "action": "select_tools",
             "tool": "planner",
-            "description": "Tools selected: web_search, llm_explain"
+            "description": "Tools selected: web_search, llm_explain, image_gen"
           },
           {
             "step": 4,
@@ -897,20 +907,27 @@
           },
           {
             "step": 6,
+            "phase": "Execution",
+            "action": "generate_visual",
+            "tool": "image_gen -> svg_generator -> template_svg",
+            "description": "Generate educational visual (AI image \u2192 SVG \u2192 template fallback)"
+          },
+          {
+            "step": 7,
             "phase": "Verification",
             "action": "verify_output",
             "tool": "verifier",
             "description": "Check factual consistency, completeness, and hallucination risk"
           },
           {
-            "step": 7,
+            "step": 8,
             "phase": "Verification",
             "action": "self_check",
             "tool": "self_checker",
             "description": "Compute confidence score and flag uncertainty if needed"
           },
           {
-            "step": 8,
+            "step": 9,
             "phase": "Response",
             "action": "synthesize",
             "tool": "response_builder",
@@ -920,13 +937,14 @@
       },
       "tools_selected": [
         "web_search",
-        "llm_explain"
+        "llm_explain",
+        "image_gen"
       ],
       "tool_results": [
         {
           "tool": "search_and_explain",
           "status": "success",
-          "detail": "explanation=269 chars, visual_type=html_interactive, tags=['motion', 'speed', 'velocity', 'physics']"
+          "detail": "explanation=266 chars, visual_type=html_interactive, tags=['physics', 'motion', 'speed']"
         }
       ],
       "verification_checks": [
@@ -964,7 +982,7 @@
           "check": "tags",
           "passed": true,
           "check_icon": "\u2705",
-          "note": "Concept tags: motion, speed, velocity, physics"
+          "note": "Concept tags: physics, motion, speed"
         },
         {
           "check": "web_grounded",
@@ -990,25 +1008,25 @@
           "name": "Classifying Reasoning",
           "status": "done",
           "status_icon": "\u2705",
-          "detail": "type=arithmetic \u2014 Numerical calculation or quantitative reasoning"
+          "detail": "type=comparison \u2014 Comparing two or more concepts"
         },
         {
           "name": "Creating Execution Plan",
           "status": "done",
           "status_icon": "\u2705",
-          "detail": "8 steps, tools=['web_search', 'llm_explain']"
+          "detail": "9 steps, tools=['web_search', 'llm_explain', 'image_gen']"
         },
         {
           "name": "Selecting Tools",
           "status": "done",
           "status_icon": "\u2705",
-          "detail": "execution_order=['web_search', 'llm_explain']"
+          "detail": "execution_order=['web_search', 'llm_explain', 'image_gen']"
         },
         {
           "name": "Gathering Information",
           "status": "done",
           "status_icon": "\u2705",
-          "detail": "explanation=269 chars, visual_type=html_interactive, tags=['motion', 'speed', 'velocity', 'physics']"
+          "detail": "explanation=266 chars, visual_type=html_interactive, tags=['physics', 'motion', 'speed']"
         },
         {
           "name": "Verifying Results",
@@ -1020,7 +1038,7 @@
           "name": "Generating Response",
           "status": "done",
           "status_icon": "\u2705",
-          "detail": "269 char explanation"
+          "detail": "266 char explanation"
         },
         {
           "name": "Self-Check",
@@ -1032,10 +1050,12 @@
           "name": "Assembling Response",
           "status": "done",
           "status_icon": "\u2705",
-          "detail": "pipeline completed in 9.94s"
+          "detail": "pipeline completed in 5.04s"
         }
       ],
-      "elapsed_seconds": 9.94
+      "elapsed_seconds": 5.04,
+      "prompt_used": "You are Whyzzle, a structured reasoning AI assistant for curious learners.\n\nREASONING FRAMEWORK \u2014 follow ALL steps explicitly:\n1. Understand the user goal: what is \"What is the difference between speed and velocity?\" really asking?\n2. Identify the reasoning type (causal, educational, comparative, mathematical, sequential, etc.)\n3. Break the task into clear substeps before answering\n4. Use the web context provided below for factual grounding \u2014 avoid inventing facts\n5. Verify your intermediate reasoning: are there contradictions or gaps?\n6. Check for hallucination risk \u2014 only state what you are confident about\n7. Self-check your answer: is it complete, accurate, and age-appropriate?\n8. Generate a structured JSON response as specified below\n\nUSER CONTEXT:\n- Learner age: 4 years\n- Age guidance: Write 1-2 sentences using the simplest possible words. Use one concrete real-world analogy (like comparing to a toy or food). Absolutely no jargon.\n- Web context (use for factual accuracy, rewrite in your own words):\nWhen describing the motion of objects in terms of distance, time, and direction, physicists use the basic quantities of speed and velocity . Similarities Between Speed and Velocity The similarities between Speed and Velocity are mentioned below: The SI unit for both speed and velocity is a meter per second (ms-1). The dimension formula for speed and velocity is [LT-1]. Both speed and velocity have magnitudes Conclusion From the above article, we conclude that speed is the ratio of distance to time and velocity is the ratio of ... The Main Idea Speed (v) and velocity (v \u2192 or v) are similar concepts, and as a result, the terms are often confused and interchanged incorrectly in everyday conversation. The key difference between them is that velocity is a vector quantity that describes both how fast and in which direction an object is moving, while speed is a scalar quantity that describes only how fast an object is ... Speed , being a scalar quantity, is the rate at which an object covers distance. The average speed is the distance (a scalar quantity) per time ratio. Speed is ignorant of direction. On the other hand, velocity is a vector quantity; it is a direction-aware quantity. The average velocity is the displacement (a vector quantity) per time ratio. Velocity vs speed : speed is scalar, velocity is vector. Definitions, worked examples, and why the distinction matters in mechanics and circular motion.\n\nTASKS \u2014 reason through each one step-by-step:\n1. EXPLA",
+      "llm_response_summary": "{\n  \"explanation\": \"Speed is like how fast you can eat a cookie, but velocity is like how fast you can eat a cookie and which way you're moving while eating it. It's like running with a toy car, speed is how fast the car goes, but velocity is how fast and in which direction it's going.\",\n  \"follow_ups\": [\"What happens if I throw a ball and it changes direction?\", \"Is velocity faster than speed?\", \"Can you give me an example of something that has speed but not velocity?\"],\n  \"tags\": [\"physics\", \"motion\", \"speed\"],\n  \"concept_type\": \"spatial\",\n  \"related_search\": \"\"\n}"
     }
   },
   {
@@ -1273,6 +1293,722 @@
         }
       ],
       "elapsed_seconds": 6.55
+    }
+  },
+  {
+    "id": "b1821a62-3a61-427f-93bf-00149377ac07",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "How does a rocket travel so fast ?",
+    "asked_by": "child",
+    "date": "2026-05-16",
+    "profile_age": 4,
+    "explanation": "A rocket travels very fast like a super-speedy toy car, but instead of wheels, it uses special fuel to make it go up, up, and away into space. It gets faster and faster as it goes higher and higher.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_How_does_a_rocket_travel_so_fast___89661.jpg\" alt=\"How does a rocket travel so fast ?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What makes the rocket's special fuel so powerful?",
+      "How high can a rocket really go?",
+      "What does a rocket do when it gets into space?"
+    ],
+    "tags": [
+      "speed",
+      "rocket",
+      "space"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+      "0878e08c-723e-46b3-9c0a-5d3a3ff2f091",
+      "b14732ad-0695-4039-b948-1ff505536c53",
+      "521a3eea-afff-4be7-87fd-908719358f3c",
+      "169d7954-8a62-4721-9be8-470f2fd5259b"
+    ],
+    "depth": 5,
+    "reasoning_trace": {
+      "explicit_reasoning": true,
+      "structured_output": true,
+      "tool_separation": true,
+      "conversation_loop": true,
+      "instructional_framing": true,
+      "internal_self_checks": true,
+      "reasoning_type_awareness": true,
+      "fallbacks": true,
+      "overall_clarity": "Structured exploratory reasoning with medium confidence (64%) and verification.",
+      "user_goal": "How does a rocket travel so fast ?",
+      "reasoning_type": "exploratory",
+      "reasoning_desc": "Open-ended curiosity question",
+      "execution_plan": {
+        "required_tools": [
+          "web_search",
+          "llm_explain",
+          "image_gen"
+        ],
+        "execution_order": [
+          "web_search",
+          "llm_explain",
+          "image_gen"
+        ],
+        "steps": [
+          {
+            "step": 1,
+            "phase": "Reasoning",
+            "action": "understand_intent",
+            "tool": "intent_parser",
+            "description": "Parse and understand: \"How does a rocket travel so fast ?\""
+          },
+          {
+            "step": 2,
+            "phase": "Reasoning",
+            "action": "classify_type",
+            "tool": "reasoning_classifier",
+            "description": "Identified reasoning type: exploratory"
+          },
+          {
+            "step": 3,
+            "phase": "Planning",
+            "action": "select_tools",
+            "tool": "planner",
+            "description": "Tools selected: web_search, llm_explain, image_gen"
+          },
+          {
+            "step": 4,
+            "phase": "Execution",
+            "action": "web_search",
+            "tool": "web_search",
+            "description": "Fetch factual context from DuckDuckGo (keyless)"
+          },
+          {
+            "step": 5,
+            "phase": "Execution",
+            "action": "llm_explain",
+            "tool": "llm_explain",
+            "description": "Generate age-appropriate explanation via LLM waterfall"
+          },
+          {
+            "step": 6,
+            "phase": "Execution",
+            "action": "generate_visual",
+            "tool": "image_gen -> svg_generator -> template_svg",
+            "description": "Generate educational visual (AI image \u2192 SVG \u2192 template fallback)"
+          },
+          {
+            "step": 7,
+            "phase": "Verification",
+            "action": "verify_output",
+            "tool": "verifier",
+            "description": "Check factual consistency, completeness, and hallucination risk"
+          },
+          {
+            "step": 8,
+            "phase": "Verification",
+            "action": "self_check",
+            "tool": "self_checker",
+            "description": "Compute confidence score and flag uncertainty if needed"
+          },
+          {
+            "step": 9,
+            "phase": "Response",
+            "action": "synthesize",
+            "tool": "response_builder",
+            "description": "Assemble structured final response with reasoning trace"
+          }
+        ]
+      },
+      "tools_selected": [
+        "web_search",
+        "llm_explain",
+        "image_gen"
+      ],
+      "tool_results": [
+        {
+          "tool": "search_and_explain",
+          "status": "success",
+          "detail": "explanation=198 chars, visual_type=html_interactive, tags=['space', 'rocket', 'speed']"
+        }
+      ],
+      "verification_checks": [
+        {
+          "check": "length",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Explanation is substantive"
+        },
+        {
+          "check": "relevance",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Explanation covers question topic (50% word overlap)"
+        },
+        {
+          "check": "hallucination_risk",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "No AI-refusal markers detected"
+        },
+        {
+          "check": "completeness",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Contains 2 sentences \u2014 looks complete"
+        },
+        {
+          "check": "follow_ups",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "3 follow-up question(s) generated"
+        },
+        {
+          "check": "tags",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Concept tags: space, rocket, speed"
+        },
+        {
+          "check": "web_grounded",
+          "passed": false,
+          "check_icon": "\u274c",
+          "note": "No web context \u2014 answer from LLM training knowledge only"
+        }
+      ],
+      "verification_passed": 6,
+      "verification_total": 7,
+      "confidence": 0.64,
+      "confidence_label": "medium",
+      "confidence_pct": "64%",
+      "fallback_strategy": "No web context \u2014 answer based on LLM training knowledge",
+      "pipeline_stages": [
+        {
+          "name": "Understanding Query",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "\"How does a rocket travel so fast ?\""
+        },
+        {
+          "name": "Classifying Reasoning",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "type=exploratory \u2014 Open-ended curiosity question"
+        },
+        {
+          "name": "Creating Execution Plan",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "9 steps, tools=['web_search', 'llm_explain', 'image_gen']"
+        },
+        {
+          "name": "Selecting Tools",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "execution_order=['web_search', 'llm_explain', 'image_gen']"
+        },
+        {
+          "name": "Gathering Information",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "explanation=198 chars, visual_type=html_interactive, tags=['space', 'rocket', 'speed']"
+        },
+        {
+          "name": "Verifying Results",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "6/7 checks passed, confidence=64%"
+        },
+        {
+          "name": "Generating Response",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "198 char explanation"
+        },
+        {
+          "name": "Self-Check",
+          "status": "warning",
+          "status_icon": "\u26a0\ufe0f",
+          "detail": "Medium confidence (64%) \u2014 answer is usable but verify important facts independently"
+        },
+        {
+          "name": "Assembling Response",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "pipeline completed in 20.95s"
+        }
+      ],
+      "elapsed_seconds": 20.95,
+      "prompt_used": "You are Whyzzle, a structured reasoning AI assistant for curious learners.\n\nREASONING FRAMEWORK \u2014 follow ALL steps explicitly:\n1. Understand the user goal: what is \"How does a rocket travel so fast ?\" really asking?\n2. Identify the reasoning type (causal, educational, comparative, mathematical, sequential, etc.)\n3. Break the task into clear substeps before answering\n4. Use the web context provided below for factual grounding \u2014 avoid inventing facts\n5. Verify your intermediate reasoning: are there contradictions or gaps?\n6. Check for hallucination risk \u2014 only state what you are confident about\n7. Self-check your answer: is it complete, accurate, and age-appropriate?\n8. Generate a structured JSON response as specified below\n\nUSER CONTEXT:\n- Learner age: 4 years\n- Age guidance: Write 1-2 sentences using the simplest possible words. Use one concrete real-world analogy (like comparing to a toy or food). Absolutely no jargon.\n- Web context (use for factual accuracy, rewrite in your own words):\nHow Fast Does a Rocket Travel is a question that captures the imagination of anyone fascinated by space and science. The answer depends on the phase of the rocket's journey and the type of mission it's on. At launch, rockets begin relatively slowly but accelerate rapidly as they ascend through the atmosphere. An unbalanced force must be exerted for a rocket to lift off from a launch pad or for a craft in space to change speed or direction (first law). The amount of thrust (force) produced by a rocket engine will be determined by the mass of rocket fuel that is burned and how fast the gas escapes the rocket (second law). How fast can a rocket go? The speeds of rockets is normally measured in meters or kilometers per second (m/s, km/s or kps). Rockets have to go very fast to leave Earth and get into space. Here are a few examples of how fast rockets travel : To get to low Earth orbit: 7.8 km/s (28,100 km/h; 17,400 mph). How fast does a rocket have to travel to get into space? This really depends on what you mean by \"into space.\" If you just want to get into orbit around the Earth, you need to reach speeds of at least 4.9 miles per second, or about 17,600 miles per hour. After an orbital rocket is launched, it seems to rise very slowly from its launchpad, but in minutes, it is traveling at hypersonic speeds, raising the question of how fast rockets must travel to reach orbit or go beyond. An orbital rocket must reach a velocity of approximately 28 000 km/h or 17 500 mph to ac",
+      "llm_response_summary": "{\n  \"explanation\": \"A rocket travels very fast like a super-speedy toy car, but instead of wheels, it uses special fuel to make it go up, up, and away into space. It gets faster and faster as it goes higher and higher.\",\n  \"follow_ups\": [\"What makes the rocket's special fuel so powerful?\", \"How high can a rocket really go?\", \"What does a rocket do when it gets into space?\"],\n  \"tags\": [\"space\", \"rocket\", \"speed\"],\n  \"concept_type\": \"spatial\",\n  \"related_search\": \"\"\n}"
+    }
+  },
+  {
+    "id": "9bcfe596-3fcf-4d8a-a88a-57131f8e3f9f",
+    "profile_id": "7e3cdbc3-f29c-4144-973f-1dfc657104d1",
+    "question": "How does a rocket travel so fast ?",
+    "asked_by": "child",
+    "date": "2026-05-16",
+    "profile_age": 10,
+    "explanation": "Imagine you're on a train, and it starts moving really slowly. But as it picks up speed, it gets faster and faster. That's kind of like what happens with a rocket. When a rocket launches, it starts slowly, but as it goes up into the air, it gets faster and faster. This is because the rocket is using a special kind of force called 'thrust' to push itself upwards. The thrust is like a strong wind that comes out of the back of the rocket and makes it go up. As the rocket gets higher and higher, the air gets thinner, and the rocket can go even faster. Let's introduce a new word: 'hypersonic'. This means really, really fast - much faster than a car or a plane. Rockets can travel at hypersonic speeds, which is why they can get all the way into space. To get into space, a rocket has to travel at least 17,600 miles per hour. That's like going around the whole Earth more than once in just one hour.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_How_does_a_rocket_travel_so_fast___89661.jpg\" alt=\"How does a rocket travel so fast ?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What makes a rocket's thrust so strong?",
+      "How do rockets get into different orbits?",
+      "What's the fastest speed a rocket has ever traveled?"
+    ],
+    "tags": [
+      "physics",
+      "space",
+      "speed"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [],
+    "depth": 0,
+    "reasoning_trace": {
+      "explicit_reasoning": true,
+      "structured_output": true,
+      "tool_separation": true,
+      "conversation_loop": true,
+      "instructional_framing": true,
+      "internal_self_checks": true,
+      "reasoning_type_awareness": true,
+      "fallbacks": false,
+      "overall_clarity": "Structured exploratory reasoning with high confidence (100%) and verification.",
+      "user_goal": "How does a rocket travel so fast ?",
+      "reasoning_type": "exploratory",
+      "reasoning_desc": "Open-ended curiosity question",
+      "execution_plan": {
+        "required_tools": [
+          "web_search",
+          "llm_explain",
+          "image_gen"
+        ],
+        "execution_order": [
+          "web_search",
+          "llm_explain",
+          "image_gen"
+        ],
+        "steps": [
+          {
+            "step": 1,
+            "phase": "Reasoning",
+            "action": "understand_intent",
+            "tool": "intent_parser",
+            "description": "Parse and understand: \"How does a rocket travel so fast ?\""
+          },
+          {
+            "step": 2,
+            "phase": "Reasoning",
+            "action": "classify_type",
+            "tool": "reasoning_classifier",
+            "description": "Identified reasoning type: exploratory"
+          },
+          {
+            "step": 3,
+            "phase": "Planning",
+            "action": "select_tools",
+            "tool": "planner",
+            "description": "Tools selected: web_search, llm_explain, image_gen"
+          },
+          {
+            "step": 4,
+            "phase": "Execution",
+            "action": "web_search",
+            "tool": "web_search",
+            "description": "Fetch factual context from DuckDuckGo (keyless)"
+          },
+          {
+            "step": 5,
+            "phase": "Execution",
+            "action": "llm_explain",
+            "tool": "llm_explain",
+            "description": "Generate age-appropriate explanation via LLM waterfall"
+          },
+          {
+            "step": 6,
+            "phase": "Execution",
+            "action": "generate_visual",
+            "tool": "image_gen -> svg_generator -> template_svg",
+            "description": "Generate educational visual (AI image \u2192 SVG \u2192 template fallback)"
+          },
+          {
+            "step": 7,
+            "phase": "Verification",
+            "action": "verify_output",
+            "tool": "verifier",
+            "description": "Check factual consistency, completeness, and hallucination risk"
+          },
+          {
+            "step": 8,
+            "phase": "Verification",
+            "action": "self_check",
+            "tool": "self_checker",
+            "description": "Compute confidence score and flag uncertainty if needed"
+          },
+          {
+            "step": 9,
+            "phase": "Response",
+            "action": "synthesize",
+            "tool": "response_builder",
+            "description": "Assemble structured final response with reasoning trace"
+          }
+        ]
+      },
+      "tools_selected": [
+        "web_search",
+        "llm_explain",
+        "image_gen"
+      ],
+      "tool_results": [
+        {
+          "tool": "search_and_explain",
+          "status": "success",
+          "detail": "explanation=902 chars, visual_type=html_interactive, tags=['physics', 'space', 'speed']"
+        }
+      ],
+      "verification_checks": [
+        {
+          "check": "length",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Explanation is substantive"
+        },
+        {
+          "check": "relevance",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Explanation covers question topic (75% word overlap)"
+        },
+        {
+          "check": "hallucination_risk",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "No AI-refusal markers detected"
+        },
+        {
+          "check": "completeness",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Contains 12 sentences \u2014 looks complete"
+        },
+        {
+          "check": "follow_ups",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "3 follow-up question(s) generated"
+        },
+        {
+          "check": "tags",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Concept tags: physics, space, speed"
+        },
+        {
+          "check": "web_grounded",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Answer grounded in web search results"
+        }
+      ],
+      "verification_passed": 7,
+      "verification_total": 7,
+      "confidence": 1.0,
+      "confidence_label": "high",
+      "confidence_pct": "100%",
+      "fallback_strategy": "",
+      "pipeline_stages": [
+        {
+          "name": "Understanding Query",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "\"How does a rocket travel so fast ?\""
+        },
+        {
+          "name": "Classifying Reasoning",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "type=exploratory \u2014 Open-ended curiosity question"
+        },
+        {
+          "name": "Creating Execution Plan",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "9 steps, tools=['web_search', 'llm_explain', 'image_gen']"
+        },
+        {
+          "name": "Selecting Tools",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "execution_order=['web_search', 'llm_explain', 'image_gen']"
+        },
+        {
+          "name": "Gathering Information",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "explanation=902 chars, visual_type=html_interactive, tags=['physics', 'space', 'speed']"
+        },
+        {
+          "name": "Verifying Results",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "7/7 checks passed, confidence=100%"
+        },
+        {
+          "name": "Generating Response",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "902 char explanation"
+        },
+        {
+          "name": "Self-Check",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "High confidence (100%) \u2014 response approved"
+        },
+        {
+          "name": "Assembling Response",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "pipeline completed in 4.37s"
+        }
+      ],
+      "elapsed_seconds": 4.37,
+      "prompt_used": "You are Whyzzle, a structured reasoning AI assistant for curious learners.\n\nREASONING FRAMEWORK \u2014 follow ALL steps explicitly:\n1. Understand the user goal: what is \"How does a rocket travel so fast ?\" really asking?\n2. Identify the reasoning type (causal, educational, comparative, mathematical, sequential, etc.)\n3. Break the task into clear substeps before answering\n4. Use the web context provided below for factual grounding \u2014 avoid inventing facts\n5. Verify your intermediate reasoning: are there contradictions or gaps?\n6. Check for hallucination risk \u2014 only state what you are confident about\n7. Self-check your answer: is it complete, accurate, and age-appropriate?\n8. Generate a structured JSON response as specified below\n\nUSER CONTEXT:\n- Learner age: 10 years\n- Age guidance: Write 2-3 short paragraphs. Use relatable comparisons a kid would enjoy. Introduce at most one new word, and explain it immediately.\n- Web context (use for factual accuracy, rewrite in your own words):\nHow Fast Does a Rocket Travel is a question that captures the imagination of anyone fascinated by space and science. The answer depends on the phase of the rocket's journey and the type of mission it's on. At launch, rockets begin relatively slowly but accelerate rapidly as they ascend through the atmosphere. An unbalanced force must be exerted for a rocket to lift off from a launch pad or for a craft in space to change speed or direction (first law). The amount of thrust (force) produced by a rocket engine will be determined by the mass of rocket fuel that is burned and how fast the gas escapes the rocket (second law). How fast can a rocket go? The speeds of rockets is normally measured in meters or kilometers per second (m/s, km/s or kps). Rockets have to go very fast to leave Earth and get into space. Here are a few examples of how fast rockets travel : To get to low Earth orbit: 7.8 km/s (28,100 km/h; 17,400 mph). How fast does a rocket have to travel to get into space? This really depends on what you mean by \"into space.\" If you just want to get into orbit around the Earth, you need to reach speeds of at least 4.9 miles per second, or about 17,600 miles per hour. After an orbital rocket is launched, it seems to rise very slowly from its launchpad, but in minutes, it is traveling at hypersonic speeds, raising the question of how fast rockets must travel to reach orbit or go beyond. An orbital rocket must reach a velocity of approximately 28 000 km/h or 17 500 mph to achieve Low Eart",
+      "llm_response_summary": "{\n  \"explanation\": \"Imagine you're on a train, and it starts moving really slowly. But as it picks up speed, it gets faster and faster. That's kind of like what happens with a rocket. When a rocket launches, it starts slowly, but as it goes up into the air, it gets faster and faster. This is because the rocket is using a special kind of force called 'thrust' to push itself upwards. The thrust is like a strong wind that comes out of the back of the rocket and makes it go up. As the rocket gets higher and higher, the air gets thinner, and the rocket can go even faster. Let's introduce a new word: 'hypersonic'. This means really, really fast - much faster than a car or a plane. Rockets can travel at hypersonic speeds, which is why they can get all the way into space. To get into space, a rock"
+    }
+  },
+  {
+    "id": "27a702f6-3810-4a93-aef1-3c4b8972e3ea",
+    "profile_id": "7e3cdbc3-f29c-4144-973f-1dfc657104d1",
+    "question": "Why do leaves change colour in autumn?",
+    "asked_by": "child",
+    "date": "2026-05-16",
+    "profile_age": 10,
+    "explanation": "Leaves change color in autumn because the days start getting shorter and there's less sunlight. This is like a signal for the leaf to prepare for winter and stop making a special helper called chlorophyll. Chlorophyll is what makes leaves look green, and it helps them turn sunlight into food for the tree. When the leaf stops making chlorophyll, the green color starts to fade, and other colors like red, orange, and yellow become visible. It's like the leaf is revealing its true colors, which were hidden by the green. Imagine you're wearing a green shirt, and underneath you have a yellow or red shirt. When you take off the green shirt, the other colors show up. That's kind of what's happening with the leaves.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_Why_do_leaves_change_colour_in_autumn__5549.jpg\" alt=\"Why do leaves change colour in autumn?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What happens to the leaves after they change color?",
+      "Why do different trees have different colored leaves?",
+      "Do all trees change color in autumn?"
+    ],
+    "tags": [
+      "seasons",
+      "plants",
+      "light"
+    ],
+    "concept_type": "biological",
+    "connected_to": [
+      "8fd58710-a790-4b5c-80fb-77fac569772a"
+    ],
+    "depth": 1,
+    "reasoning_trace": {
+      "explicit_reasoning": true,
+      "structured_output": true,
+      "tool_separation": true,
+      "conversation_loop": true,
+      "instructional_framing": true,
+      "internal_self_checks": true,
+      "reasoning_type_awareness": true,
+      "fallbacks": false,
+      "overall_clarity": "Structured causal reasoning with high confidence (100%) and verification.",
+      "user_goal": "Why do leaves change colour in autumn?",
+      "reasoning_type": "causal",
+      "reasoning_desc": "Understanding cause-and-effect relationships",
+      "execution_plan": {
+        "required_tools": [
+          "web_search",
+          "llm_explain",
+          "image_gen"
+        ],
+        "execution_order": [
+          "web_search",
+          "llm_explain",
+          "image_gen"
+        ],
+        "steps": [
+          {
+            "step": 1,
+            "phase": "Reasoning",
+            "action": "understand_intent",
+            "tool": "intent_parser",
+            "description": "Parse and understand: \"Why do leaves change colour in autumn?\""
+          },
+          {
+            "step": 2,
+            "phase": "Reasoning",
+            "action": "classify_type",
+            "tool": "reasoning_classifier",
+            "description": "Identified reasoning type: causal"
+          },
+          {
+            "step": 3,
+            "phase": "Planning",
+            "action": "select_tools",
+            "tool": "planner",
+            "description": "Tools selected: web_search, llm_explain, image_gen"
+          },
+          {
+            "step": 4,
+            "phase": "Execution",
+            "action": "web_search",
+            "tool": "web_search",
+            "description": "Fetch factual context from DuckDuckGo (keyless)"
+          },
+          {
+            "step": 5,
+            "phase": "Execution",
+            "action": "llm_explain",
+            "tool": "llm_explain",
+            "description": "Generate age-appropriate explanation via LLM waterfall"
+          },
+          {
+            "step": 6,
+            "phase": "Execution",
+            "action": "generate_visual",
+            "tool": "image_gen -> svg_generator -> template_svg",
+            "description": "Generate educational visual (AI image \u2192 SVG \u2192 template fallback)"
+          },
+          {
+            "step": 7,
+            "phase": "Verification",
+            "action": "verify_output",
+            "tool": "verifier",
+            "description": "Check factual consistency, completeness, and hallucination risk"
+          },
+          {
+            "step": 8,
+            "phase": "Verification",
+            "action": "self_check",
+            "tool": "self_checker",
+            "description": "Compute confidence score and flag uncertainty if needed"
+          },
+          {
+            "step": 9,
+            "phase": "Response",
+            "action": "synthesize",
+            "tool": "response_builder",
+            "description": "Assemble structured final response with reasoning trace"
+          }
+        ]
+      },
+      "tools_selected": [
+        "web_search",
+        "llm_explain",
+        "image_gen"
+      ],
+      "tool_results": [
+        {
+          "tool": "search_and_explain",
+          "status": "success",
+          "detail": "explanation=716 chars, visual_type=html_interactive, tags=['light', 'plants', 'seasons']"
+        }
+      ],
+      "verification_checks": [
+        {
+          "check": "length",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Explanation is substantive"
+        },
+        {
+          "check": "relevance",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Explanation covers question topic (50% word overlap)"
+        },
+        {
+          "check": "hallucination_risk",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "No AI-refusal markers detected"
+        },
+        {
+          "check": "completeness",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Contains 8 sentences \u2014 looks complete"
+        },
+        {
+          "check": "follow_ups",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "3 follow-up question(s) generated"
+        },
+        {
+          "check": "tags",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Concept tags: light, plants, seasons"
+        },
+        {
+          "check": "web_grounded",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Answer grounded in web search results"
+        }
+      ],
+      "verification_passed": 7,
+      "verification_total": 7,
+      "confidence": 1.0,
+      "confidence_label": "high",
+      "confidence_pct": "100%",
+      "fallback_strategy": "",
+      "pipeline_stages": [
+        {
+          "name": "Understanding Query",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "\"Why do leaves change colour in autumn?\""
+        },
+        {
+          "name": "Classifying Reasoning",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "type=causal \u2014 Understanding cause-and-effect relationships"
+        },
+        {
+          "name": "Creating Execution Plan",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "9 steps, tools=['web_search', 'llm_explain', 'image_gen']"
+        },
+        {
+          "name": "Selecting Tools",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "execution_order=['web_search', 'llm_explain', 'image_gen']"
+        },
+        {
+          "name": "Gathering Information",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "explanation=716 chars, visual_type=html_interactive, tags=['light', 'plants', 'seasons']"
+        },
+        {
+          "name": "Verifying Results",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "7/7 checks passed, confidence=100%"
+        },
+        {
+          "name": "Generating Response",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "716 char explanation"
+        },
+        {
+          "name": "Self-Check",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "High confidence (100%) \u2014 response approved"
+        },
+        {
+          "name": "Assembling Response",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "pipeline completed in 30.13s"
+        }
+      ],
+      "elapsed_seconds": 30.13,
+      "prompt_used": "You are Whyzzle, a structured reasoning AI assistant for curious learners.\n\nREASONING FRAMEWORK \u2014 follow ALL steps explicitly:\n1. Understand the user goal: what is \"Why do leaves change colour in autumn?\" really asking?\n2. Identify the reasoning type (causal, educational, comparative, mathematical, sequential, etc.)\n3. Break the task into clear substeps before answering\n4. Use the web context provided below for factual grounding \u2014 avoid inventing facts\n5. Verify your intermediate reasoning: are there contradictions or gaps?\n6. Check for hallucination risk \u2014 only state what you are confident about\n7. Self-check your answer: is it complete, accurate, and age-appropriate?\n8. Generate a structured JSON response as specified below\n\nUSER CONTEXT:\n- Learner age: 10 years\n- Age guidance: Write 2-3 short paragraphs. Use relatable comparisons a kid would enjoy. Introduce at most one new word, and explain it immediately.\n- Web context (use for factual accuracy, rewrite in your own words):\nWhy Do Leaves Change Colors in the Fall? Every leaf speaks bliss to me / Fluttering from the autumn tree. Melissa Petruzzello (she/her) is Assistant Managing Editor and covers plants, algae, fungi, insects, spiders, renewable energy and environmental engineering. She also handles certain topics in Christianity,... Frederic Edwin Church, \" Autumn Woods,\" ca. 1870, Cooper Hewitt, Smithsonian Design Museum, gift of Louis P. Church Autumnal leaves in vibrant hues are a beautiful part of the season, but those leaves are also a vital part of keeping trees alive. Trees that have leaves that change color in fall ... As summer fades into fall, the days start getting shorter and there is less sunlight. This is a signal for the leaf to prepare for winter and to stop making chlorophyll. Once this happens, the green color starts to fade and the reds, oranges, and yellows become visible. Learn why leaves change color in the fall and see the chemistry of the pigment molecules responsible for different leaf colors. Why do leaves change color in the fall? From vivid reds to golden yellows, the science behind autumn's colors reveals how weather, tree species and chemistry combine to create the seasonal ...\n\nTASKS \u2014 reason through each one step-by-step:\n1. EXPLANATION \u2014 Write 2-3 short paragraphs. Use relatable comparisons a kid would enjoy. Introduce at most one new word, and explain it immediately.\n2. FOLLOW-UPS \u2014 3 natural follow-up questions the user might ask next.\n3. TAGS \u2014 2-5 lowercase concept",
+      "llm_response_summary": "{\n  \"explanation\": \"Leaves change color in autumn because the days start getting shorter and there's less sunlight. This is like a signal for the leaf to prepare for winter and stop making a special helper called chlorophyll. Chlorophyll is what makes leaves look green, and it helps them turn sunlight into food for the tree. When the leaf stops making chlorophyll, the green color starts to fade, and other colors like red, orange, and yellow become visible. It's like the leaf is revealing its true colors, which were hidden by the green. Imagine you're wearing a green shirt, and underneath you have a yellow or red shirt. When you take off the green shirt, the other colors show up. That's kind of what's happening with the leaves.\",\n  \"follow_ups\": [\"What happens to the leaves after they chang"
     }
   }
 ]

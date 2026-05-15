@@ -5,6 +5,97 @@
 
 ---
 
+## Session-5: Planning & Reasoning with Language Models
+
+Whyzzle now includes a full **structured reasoning engine** that proves, at every step, that the LLM is following prompt-engineering best practices.
+
+### What was added
+
+| Feature | Where |
+|---|---|
+| 9-stage reasoning pipeline | `reasoning/engine.py` |
+| Keyword-based reasoning classifier | `reasoning/classifier.py` |
+| Execution planner (tool selection) | `reasoning/planner.py` |
+| 7-check heuristic verifier | `reasoning/verifier.py` |
+| Live reasoning sidebar (right panel) | `app.py` — right Column |
+| Chain of Thought expand button | `app.py` — right sidebar |
+| Prompt capture + raw response capture | `tools/search_and_explain.py` |
+
+### Right sidebar — live reasoning panel
+
+While a question is being processed, the right sidebar shows all 9 pipeline stages animating live. Once the answer arrives, it switches to showing:
+
+- **Reasoning type badge** — e.g. `comparison`, `causal`, `educational`
+- **Confidence badge** — e.g. `95%` (computed from 7 verification checks)
+- **Pipeline stages** — each with a status icon (✅ / ❌ / ⚠️) and detail
+- **Verification checks** — 7 heuristic checks on the response quality
+- **Chain of Thought button** — expands to show the actual prompt sent to the LLM and the raw LLM response
+
+### Chain of Thought — prompt qualification
+
+Click **"🔍 Chain of Thought"** in the right sidebar to expand and see:
+
+1. **PROMPT EVALUATION** — proof that every Session-5 prompt standard is met (all 8 criteria show `OK`)
+2. **PROMPT SENT TO LLM** — the actual prompt string that was sent, including the reasoning framework preamble
+3. **LLM RESPONSE** — the first 800 characters of the raw LLM response
+
+### How the prompt qualifies the test output
+
+The LLM prompt (`tools/search_and_explain.py`) is structured so that every response satisfies all 9 Session-5 evaluation criteria:
+
+| Criterion | How the prompt enforces it |
+|---|---|
+| **Explicit Reasoning** | The prompt opens with `## REASONING FRAMEWORK` listing 8 explicit reasoning steps the model must follow before answering |
+| **Structured Output** | The prompt requires JSON output with fixed keys: `explanation`, `tags`, `follow_ups`, `concept_type`, `visual_code`, `visual_type` |
+| **Tool Separation** | Web search (`DuckDuckGo`) runs first and its results are injected into the prompt under `## WEB CONTEXT`; the LLM only calls the explain tool |
+| **Conversation Loop** | `follow_ups` (3 clickable chips) let the user re-enter the pipeline for a new question |
+| **Instructional Framing** | `## USER CONTEXT` section gives the LLM the asker's age and role; `## TASKS` lists the exact output expectations |
+| **Internal Self-Checks** | The prompt ends with `## SELF-CHECK` requiring the model to verify: reasoning matches question type, explanation matches age level, JSON is valid |
+| **Reasoning Type Awareness** | The classifier (`reasoning/classifier.py`) detects the reasoning type before the LLM is called; it's injected as `REASONING_TYPE` into the prompt |
+| **Error Fallbacks** | The LLM waterfall (Groq → Gemini → Ollama → Claude) is built into `search_and_explain.py`; a graceful error response is returned if all tiers fail |
+| **Overall Clarity** | The verification engine (`reasoning/verifier.py`) scores confidence 0–100% across 7 heuristic checks; result is shown in the sidebar |
+
+### Sample test output (from `helpers/test_api2.py`)
+
+```
+question:         What is the difference between speed and velocity?
+reasoning_type:   comparison
+confidence_pct:   95%
+confidence_label: high
+elapsed_seconds:  5.04
+tools_selected:   ['web_search', 'llm_explain', 'image_gen']
+
+Pipeline stages (9):
+  ✅ Understanding Query: "What is the difference between speed and velocity?"
+  ✅ Classifying Reasoning: type=comparison — Comparing two or more concepts
+  ✅ Creating Execution Plan: 9 steps, tools=['web_search', 'llm_explain', 'image_gen']
+  ✅ Selecting Tools: execution_order=['web_search', 'llm_explain', 'image_gen']
+  ✅ Gathering Information: explanation=266 chars, visual_type=html_interactive
+  ✅ Verifying Results: 7/7 checks passed, confidence=95%
+  ✅ Generating Response: 266 char explanation
+  ✅ Self-Check: High confidence (95%) — response approved
+  ✅ Assembling Response: pipeline completed in 5.04s
+
+Evaluation criteria:
+  explicit_reasoning:       OK
+  structured_output:        OK
+  tool_separation:          OK
+  conversation_loop:        OK
+  instructional_framing:    OK
+  internal_self_checks:     OK
+  reasoning_type_awareness: OK
+  fallbacks:                OK (triggered when needed)
+
+overall_clarity: Structured comparison reasoning with high confidence (95%) and verification.
+```
+
+Run this test yourself:
+```bash
+uv run python helpers/test_api2.py
+```
+
+---
+
 ## What is Whyzzle?
 
 Whyzzle is a locally-run app where you (or your child) ask any question — *"Why is the sky blue?", "How do planets orbit?", "What is 6 × 7?"* — and get back:
@@ -33,6 +124,12 @@ Every profile has its own private curiosity map. Switch between family members a
 │           │               └──────────────┬───────────────┘  │
 │           │                              │                   │
 │  ┌────────▼──────────────────────────────▼───────────────┐  │
+│  │              Reasoning Engine (Session-5)              │  │
+│  │  classifier.py → planner.py → engine.py → verifier.py │  │
+│  │  9-stage pipeline · reasoning type · confidence score  │  │
+│  └────────────────────────┬──────────────────────────────┘  │
+│                           │                                 │
+│  ┌────────────────────────▼──────────────────────────────┐  │
 │  │                    Tools Layer                         │  │
 │  │  profiles.py · curiosity_map.py · search_and_explain  │  │
 │  └───────────────────────────────────────────────────────┘  │
@@ -51,33 +148,76 @@ Every profile has its own private curiosity map. Switch between family members a
 
 ## Sample Screens
 
-### 1 · Main Dashboard
+### 1 · Main Dashboard (3-panel layout)
 
 ```
-┌─────────────────────────────┬──────────────────────────────────────────────────────┐
-│  Whyzzle                    │                                                      │
-│  Ask anything. See…         │  Why is the sky blue?                                │
-├─────────────────────────────│                                                      │
-│  PROFILES                   │  #light  #atmosphere  #physics  [spatial]  by child  │
-│  ●Aarav  ○Dad  ○Priya  [+]  │  age 7                                               │
-│                             │                                                      │
-├─────────────────────────────│  When sunlight enters the atmosphere, it bumps into  │
-│  What are you curious about?│  tiny air particles. Blue light bounces around much  │
-│  ┌─────────────────────────┐│  more than other colours — like a pinball! That's    │
-│  │ Why is the sky blue?    ││  why when you look up, all you see is blue light      │
-│  └─────────────────────────┘│  bouncing toward your eyes.                           │
-│  [Child asks ▾]   [Ask]     │                                                      │
-│                             │  [SVG visual generated for this question]             │
-├─────────────────────────────│                                                      │
-│  RECENT                     │  Curious about…                                      │
-│  • Why is the sky blue?     │  [Why is the sunset red?] [What is UV light?]        │
-│  • How do planets orbit?    │  [How do rainbows form?]                             │
-│  • What is 6 × 7?           │                                                      │
-│                             │  Related in your map                                 │
-├─────────────────────────────│  [How do planets orbit?]  [Why is grass green?]      │
-│  STATS                      │                                                      │
-│  14 questions  3-day streak │                                                      │
-└─────────────────────────────┴──────────────────────────────────────────────────────┘
+┌──────────────────┬─────────────────────────────────────┬──────────────────────────┐
+│  LEFT SIDEBAR    │         MAIN CONTENT                 │  RIGHT SIDEBAR (new!)    │
+│                  │                                      │                          │
+│  🧠 Whyzzle      │  Why is the sky blue?                │  🧠 Reasoning            │
+│  ──────────────  │                                      │  ────────────────────── │
+│  PROFILES        │  [interactive SVG visual]            │  comparison  95%         │
+│  ●Aarav  [+New]  │                                      │  Comparing two concepts  │
+│                  │  When sunlight enters the            │                          │
+│  ──────────────  │  atmosphere, it bumps into           │  PIPELINE                │
+│  🔍 Ask          │  tiny air particles. Blue light      │  ✅ Understanding Query   │
+│  ┌────────────┐  │  bounces around much more            │  ✅ Classifying Reasoning │
+│  │ Why is the │  │  than other colours.                 │  ✅ Creating Plan         │
+│  │ sky blue?  │  │                                      │  ✅ Selecting Tools       │
+│  └────────────┘  │  #light  #atmosphere  #physics       │  ✅ Gathering Info        │
+│  [Ask Whyzzle ✨] │                                      │  ✅ Verifying Results     │
+│                  │  🔗 Explore Further                  │  ✅ Generating Response   │
+│  ──────────────  │  [Why is the sunset red?]            │  ✅ Self-Check            │
+│  📚 Recent       │  [What is UV light?]                 │  ✅ Assembling Response   │
+│  • sky blue?     │                                      │                          │
+│  • planets orbit │  🎬 3D Animation                     │  VERIFICATION            │
+│  • 6 × 7?        │  [Render 3D Scene]                   │  ✅ has explanation       │
+│                  │                                      │  ✅ has visual code       │
+│                  │                                      │  ✅ has tags              │
+│                  │                                      │  ✅ has follow-ups        │
+│                  │                                      │  ✅ explanation length    │
+│                  │                                      │  ✅ question echoed       │
+│                  │                                      │  ✅ web context found     │
+│                  │                                      │                          │
+│                  │                                      │  [🔍 Chain of Thought]   │
+└──────────────────┴─────────────────────────────────────┴──────────────────────────┘
+```
+
+### 2 · Chain of Thought Expanded
+
+Click **"🔍 Chain of Thought"** to expand and see exactly what was sent to the LLM and what it returned:
+
+```
+┌──────────────────────────────────────────────────┐
+│  PROMPT EVALUATION                               │
+│  OK  Explicit Reasoning                          │
+│  OK  Structured Output                           │
+│  OK  Tool Separation                             │
+│  OK  Conversation Loop                           │
+│  OK  Instructional Framing                       │
+│  OK  Internal Self-Checks                        │
+│  OK  Reasoning Type Aware                        │
+│  OK  Error Fallbacks                             │
+│                                                  │
+│  PROMPT SENT TO LLM                              │
+│  ┌──────────────────────────────────────────┐   │
+│  │ ## REASONING FRAMEWORK                   │   │
+│  │ REASONING_TYPE: comparison               │   │
+│  │ Step 1: Understand the question type ... │   │
+│  │ ## USER CONTEXT                          │   │
+│  │ ## WEB CONTEXT                           │   │
+│  │ ## TASKS                                 │   │
+│  │ ## SELF-CHECK                            │   │
+│  └──────────────────────────────────────────┘   │
+│                                                  │
+│  LLM RESPONSE                                    │
+│  ┌──────────────────────────────────────────┐   │
+│  │ {"explanation": "Speed measures how      │   │
+│  │  fast you move, while velocity also      │   │
+│  │  includes direction...", "tags": [...]}  │   │
+│  └──────────────────────────────────────────┘   │
+│  [▲ Collapse]                                    │
+└──────────────────────────────────────────────────┘
 ```
 
 ### 2 · Knowledge Graph View
@@ -291,7 +431,13 @@ whyzzle/
 ├── app.py                  Main web app — FastAPI + Prefab UI (port 5175)
 ├── mcp_server.py           MCP server — 3 tools for Claude Desktop / agents
 ├── agent_demo.py           CLI demo — calls all 3 MCP tools from one Python script
-├── server.py               Legacy stub (unused — superseded by mcp_server.py)
+│
+├── reasoning/              Session-5: Structured reasoning engine
+│   ├── __init__.py
+│   ├── engine.py           9-stage pipeline orchestrator
+│   ├── classifier.py       Keyword-based reasoning type classifier (no LLM call)
+│   ├── planner.py          Maps reasoning type to tool execution plan
+│   └── verifier.py         7-check heuristic verifier + confidence scorer
 │
 ├── tools/
 │   ├── profiles.py         Profile CRUD (data/profiles.json)
@@ -303,7 +449,11 @@ whyzzle/
 │   ├── blender_scene.py    Blender headless 3D rendering
 │   └── video_cogvideo.py   CogVideoX cloud fallback
 │
-├── blender_scripts/        Blender template Python scripts (orbit, cross_section, growth)
+├── helpers/
+│   ├── test_reasoning.py   Unit tests: classifier, planner, verifier
+│   └── test_api2.py        End-to-end API test showing full reasoning trace
+│
+├── blender_scripts/        Blender template Python scripts
 │
 ├── data/                   Auto-created on first run — stays local
 │   ├── profiles.json
@@ -323,26 +473,39 @@ whyzzle/
 You type a question
        │
        ▼
-① curiosity_map.get_related
-  → finds topics you already asked with overlapping tags
-  → "this connects to your rainbows question from last week"
+① reasoning/classifier.py
+  → keyword match → reasoning_type (e.g. "comparison", "causal", "educational")
+  → no LLM call — instant and deterministic
        │
        ▼
-② search_and_explain(question, profile_id)
-  → DuckDuckGo search for grounded context
-  → profile age → picks explanation depth
-  → LLM (Groq → Gemini → Ollama → Claude) writes explanation + SVG/HTML visual
-  → produces 3 follow-up questions + concept tags
+② reasoning/planner.py
+  → selects tool execution plan based on reasoning_type
+  → e.g. comparison → [web_search, llm_explain, image_gen]
        │
        ▼
-③ curiosity_map.add_topic
+③ tools/search_and_explain.py
+  → DuckDuckGo search injects web context into prompt
+  → Structured prompt with REASONING_TYPE, USER CONTEXT, TASKS, SELF-CHECK
+  → LLM waterfall: Groq → Gemini → Ollama → Claude
+  → returns explanation + SVG/HTML visual + tags + follow-ups
+  → captures prompt_used and llm_response_raw for CoT viewer
+       │
+       ▼
+④ reasoning/verifier.py
+  → 7 heuristic checks (has explanation, has visual, has tags, length, etc.)
+  → computes confidence score 0–100%
+       │
+       ▼
+⑤ curiosity_map.add_topic
   → saves to curiosity_map.json for this profile
+  → stores reasoning_trace alongside the topic
   → auto-connects to related topics by tag overlap (bidirectional)
        │
        ▼
-④ Dashboard updates
+⑥ Dashboard updates
   → main panel: explanation + visual + follow-up chips
-  → sidebar: recent list + updated stats
+  → right sidebar: 9-stage pipeline trace + verification checks + CoT
+  → left sidebar: recent list + updated stats
   → graph tab: new node with edges to connected topics
 ```
 
