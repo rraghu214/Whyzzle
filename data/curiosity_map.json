@@ -28,7 +28,217 @@
       "4003392d-ca66-4584-b905-9a31ea445abf",
       "a4f99b5a-f8c4-4699-9155-0670feb28168"
     ],
-    "depth": 0
+    "depth": 0,
+    "reasoning_trace": {
+      "explicit_reasoning": true,
+      "structured_output": true,
+      "tool_separation": true,
+      "conversation_loop": true,
+      "instructional_framing": true,
+      "internal_self_checks": true,
+      "reasoning_type_awareness": true,
+      "fallbacks": false,
+      "overall_clarity": "Structured causal reasoning with high confidence (91%) and verification.",
+      "user_goal": "Why is the sky blue?",
+      "reasoning_type": "causal",
+      "reasoning_desc": "Understanding cause-and-effect relationships",
+      "execution_plan": {
+        "required_tools": [
+          "web_search",
+          "llm_explain",
+          "image_gen"
+        ],
+        "execution_order": [
+          "web_search",
+          "llm_explain",
+          "image_gen"
+        ],
+        "steps": [
+          {
+            "step": 1,
+            "phase": "Reasoning",
+            "action": "understand_intent",
+            "tool": "intent_parser",
+            "description": "Parse and understand: \"Why is the sky blue?\""
+          },
+          {
+            "step": 2,
+            "phase": "Reasoning",
+            "action": "classify_type",
+            "tool": "reasoning_classifier",
+            "description": "Identified reasoning type: causal"
+          },
+          {
+            "step": 3,
+            "phase": "Planning",
+            "action": "select_tools",
+            "tool": "planner",
+            "description": "Tools selected: web_search, llm_explain, image_gen"
+          },
+          {
+            "step": 4,
+            "phase": "Execution",
+            "action": "web_search",
+            "tool": "web_search",
+            "description": "Fetch factual context from DuckDuckGo (keyless)"
+          },
+          {
+            "step": 5,
+            "phase": "Execution",
+            "action": "llm_explain",
+            "tool": "llm_explain",
+            "description": "Generate age-appropriate explanation via LLM waterfall"
+          },
+          {
+            "step": 6,
+            "phase": "Execution",
+            "action": "generate_visual",
+            "tool": "image_gen -> svg_generator -> template_svg",
+            "description": "Generate educational visual (AI image \u2192 SVG \u2192 template fallback)"
+          },
+          {
+            "step": 7,
+            "phase": "Verification",
+            "action": "verify_output",
+            "tool": "verifier",
+            "description": "Check factual consistency, completeness, and hallucination risk"
+          },
+          {
+            "step": 8,
+            "phase": "Verification",
+            "action": "self_check",
+            "tool": "self_checker",
+            "description": "Compute confidence score and flag uncertainty if needed"
+          },
+          {
+            "step": 9,
+            "phase": "Response",
+            "action": "synthesize",
+            "tool": "response_builder",
+            "description": "Assemble structured final response with reasoning trace"
+          }
+        ]
+      },
+      "tools_selected": [
+        "web_search",
+        "llm_explain",
+        "image_gen"
+      ],
+      "tool_results": [
+        {
+          "tool": "search_and_explain",
+          "status": "success",
+          "detail": "explanation=236 chars, visual_type=html_interactive, tags=['light', 'atmosphere', 'color']"
+        }
+      ],
+      "verification_checks": [
+        {
+          "check": "length",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Explanation is substantive"
+        },
+        {
+          "check": "relevance",
+          "passed": false,
+          "check_icon": "\u274c",
+          "note": "Explanation may not address the question directly"
+        },
+        {
+          "check": "hallucination_risk",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "No AI-refusal markers detected"
+        },
+        {
+          "check": "completeness",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Contains 2 sentences \u2014 looks complete"
+        },
+        {
+          "check": "follow_ups",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "3 follow-up question(s) generated"
+        },
+        {
+          "check": "tags",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Concept tags: light, atmosphere, color"
+        },
+        {
+          "check": "web_grounded",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Answer grounded in web search results"
+        }
+      ],
+      "verification_passed": 6,
+      "verification_total": 7,
+      "confidence": 0.91,
+      "confidence_label": "high",
+      "confidence_pct": "91%",
+      "fallback_strategy": "",
+      "pipeline_stages": [
+        {
+          "name": "Understanding Query",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "\"Why is the sky blue?\""
+        },
+        {
+          "name": "Classifying Reasoning",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "type=causal \u2014 Understanding cause-and-effect relationships"
+        },
+        {
+          "name": "Creating Execution Plan",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "9 steps, tools=['web_search', 'llm_explain', 'image_gen']"
+        },
+        {
+          "name": "Selecting Tools",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "execution_order=['web_search', 'llm_explain', 'image_gen']"
+        },
+        {
+          "name": "Gathering Information",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "explanation=236 chars, visual_type=html_interactive, tags=['light', 'atmosphere', 'color']"
+        },
+        {
+          "name": "Verifying Results",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "6/7 checks passed, confidence=91%"
+        },
+        {
+          "name": "Generating Response",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "236 char explanation"
+        },
+        {
+          "name": "Self-Check",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "High confidence (91%) \u2014 response approved"
+        },
+        {
+          "name": "Assembling Response",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "pipeline completed in 5.18s"
+        }
+      ],
+      "elapsed_seconds": 5.18
+    }
   },
   {
     "id": "8fae4384-6013-408e-a6cb-92d05c0086ab",
@@ -55,7 +265,8 @@
     "concept_type": "sequential",
     "connected_to": [
       "94b05ae1-3fed-4726-a987-f82fd2625777",
-      "5a1e633a-b175-4b44-88f6-b44feca2ce7a"
+      "5a1e633a-b175-4b44-88f6-b44feca2ce7a",
+      "4a4e9418-7e56-49e8-a56a-e8734553fc12"
     ],
     "depth": 1
   },
@@ -397,7 +608,8 @@
     ],
     "concept_type": "biological",
     "connected_to": [
-      "8fae4384-6013-408e-a6cb-92d05c0086ab"
+      "8fae4384-6013-408e-a6cb-92d05c0086ab",
+      "4a4e9418-7e56-49e8-a56a-e8734553fc12"
     ],
     "depth": 1
   },
@@ -600,5 +812,467 @@
     "concept_type": "spatial",
     "connected_to": [],
     "depth": 0
+  },
+  {
+    "id": "169d7954-8a62-4721-9be8-470f2fd5259b",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "What is the difference between speed and velocity?",
+    "asked_by": "child",
+    "date": "2026-05-15",
+    "profile_age": 4,
+    "explanation": "Speed is like how fast you can run around a playground, and velocity is like running in a specific direction, like from the slide to the swings. It's like eating a cookie, speed is how fast you eat it, and velocity is how fast you eat it while moving to the next table.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_What_is_the_difference_between_speed_and_64019.jpg\" alt=\"What is the difference between speed and velocity?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What happens if I change direction while running?",
+      "Is velocity always faster than speed?",
+      "Can I have speed without velocity?"
+    ],
+    "tags": [
+      "speed",
+      "velocity",
+      "physics",
+      "motion"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [],
+    "depth": 0,
+    "reasoning_trace": {
+      "explicit_reasoning": true,
+      "structured_output": true,
+      "tool_separation": true,
+      "conversation_loop": true,
+      "instructional_framing": true,
+      "internal_self_checks": true,
+      "reasoning_type_awareness": true,
+      "fallbacks": false,
+      "overall_clarity": "Structured arithmetic reasoning with high confidence (95%) and verification.",
+      "user_goal": "What is the difference between speed and velocity?",
+      "reasoning_type": "arithmetic",
+      "reasoning_desc": "Numerical calculation or quantitative reasoning",
+      "execution_plan": {
+        "required_tools": [
+          "web_search",
+          "llm_explain"
+        ],
+        "execution_order": [
+          "web_search",
+          "llm_explain"
+        ],
+        "steps": [
+          {
+            "step": 1,
+            "phase": "Reasoning",
+            "action": "understand_intent",
+            "tool": "intent_parser",
+            "description": "Parse and understand: \"What is the difference between speed and velocity?\""
+          },
+          {
+            "step": 2,
+            "phase": "Reasoning",
+            "action": "classify_type",
+            "tool": "reasoning_classifier",
+            "description": "Identified reasoning type: arithmetic"
+          },
+          {
+            "step": 3,
+            "phase": "Planning",
+            "action": "select_tools",
+            "tool": "planner",
+            "description": "Tools selected: web_search, llm_explain"
+          },
+          {
+            "step": 4,
+            "phase": "Execution",
+            "action": "web_search",
+            "tool": "web_search",
+            "description": "Fetch factual context from DuckDuckGo (keyless)"
+          },
+          {
+            "step": 5,
+            "phase": "Execution",
+            "action": "llm_explain",
+            "tool": "llm_explain",
+            "description": "Generate age-appropriate explanation via LLM waterfall"
+          },
+          {
+            "step": 6,
+            "phase": "Verification",
+            "action": "verify_output",
+            "tool": "verifier",
+            "description": "Check factual consistency, completeness, and hallucination risk"
+          },
+          {
+            "step": 7,
+            "phase": "Verification",
+            "action": "self_check",
+            "tool": "self_checker",
+            "description": "Compute confidence score and flag uncertainty if needed"
+          },
+          {
+            "step": 8,
+            "phase": "Response",
+            "action": "synthesize",
+            "tool": "response_builder",
+            "description": "Assemble structured final response with reasoning trace"
+          }
+        ]
+      },
+      "tools_selected": [
+        "web_search",
+        "llm_explain"
+      ],
+      "tool_results": [
+        {
+          "tool": "search_and_explain",
+          "status": "success",
+          "detail": "explanation=269 chars, visual_type=html_interactive, tags=['motion', 'speed', 'velocity', 'physics']"
+        }
+      ],
+      "verification_checks": [
+        {
+          "check": "length",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Explanation is substantive"
+        },
+        {
+          "check": "relevance",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Explanation covers question topic (20% word overlap)"
+        },
+        {
+          "check": "hallucination_risk",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "No AI-refusal markers detected"
+        },
+        {
+          "check": "completeness",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Contains 2 sentences \u2014 looks complete"
+        },
+        {
+          "check": "follow_ups",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "3 follow-up question(s) generated"
+        },
+        {
+          "check": "tags",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Concept tags: motion, speed, velocity, physics"
+        },
+        {
+          "check": "web_grounded",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Answer grounded in web search results"
+        }
+      ],
+      "verification_passed": 7,
+      "verification_total": 7,
+      "confidence": 0.95,
+      "confidence_label": "high",
+      "confidence_pct": "95%",
+      "fallback_strategy": "",
+      "pipeline_stages": [
+        {
+          "name": "Understanding Query",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "\"What is the difference between speed and velocity?\""
+        },
+        {
+          "name": "Classifying Reasoning",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "type=arithmetic \u2014 Numerical calculation or quantitative reasoning"
+        },
+        {
+          "name": "Creating Execution Plan",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "8 steps, tools=['web_search', 'llm_explain']"
+        },
+        {
+          "name": "Selecting Tools",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "execution_order=['web_search', 'llm_explain']"
+        },
+        {
+          "name": "Gathering Information",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "explanation=269 chars, visual_type=html_interactive, tags=['motion', 'speed', 'velocity', 'physics']"
+        },
+        {
+          "name": "Verifying Results",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "7/7 checks passed, confidence=95%"
+        },
+        {
+          "name": "Generating Response",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "269 char explanation"
+        },
+        {
+          "name": "Self-Check",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "High confidence (95%) \u2014 response approved"
+        },
+        {
+          "name": "Assembling Response",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "pipeline completed in 9.94s"
+        }
+      ],
+      "elapsed_seconds": 9.94
+    }
+  },
+  {
+    "id": "4a4e9418-7e56-49e8-a56a-e8734553fc12",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "Why are coconut trees so tall?",
+    "asked_by": "child",
+    "date": "2026-05-15",
+    "profile_age": 4,
+    "explanation": "Coconut trees can grow very tall, like a big pencil that reaches the sky, because they need to get lots of sunlight to grow. Some coconut trees can grow as tall as a big building, but others stay shorter like a small house.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_Why_are_coconut_trees_so_tall__90407.jpg\" alt=\"Why are coconut trees so tall?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "Why do coconut trees need sunlight?",
+      "What do coconut trees use to grow so tall?",
+      "Can I grow a coconut tree in my backyard?"
+    ],
+    "tags": [
+      "plants",
+      "tropical",
+      "growth"
+    ],
+    "concept_type": "biological",
+    "connected_to": [
+      "8fae4384-6013-408e-a6cb-92d05c0086ab",
+      "5a1e633a-b175-4b44-88f6-b44feca2ce7a"
+    ],
+    "depth": 2,
+    "reasoning_trace": {
+      "explicit_reasoning": true,
+      "structured_output": true,
+      "tool_separation": true,
+      "conversation_loop": true,
+      "instructional_framing": true,
+      "internal_self_checks": true,
+      "reasoning_type_awareness": true,
+      "fallbacks": false,
+      "overall_clarity": "Structured causal reasoning with high confidence (95%) and verification.",
+      "user_goal": "Why are coconut trees so tall?",
+      "reasoning_type": "causal",
+      "reasoning_desc": "Understanding cause-and-effect relationships",
+      "execution_plan": {
+        "required_tools": [
+          "web_search",
+          "llm_explain",
+          "image_gen"
+        ],
+        "execution_order": [
+          "web_search",
+          "llm_explain",
+          "image_gen"
+        ],
+        "steps": [
+          {
+            "step": 1,
+            "phase": "Reasoning",
+            "action": "understand_intent",
+            "tool": "intent_parser",
+            "description": "Parse and understand: \"Why are coconut trees so tall?\""
+          },
+          {
+            "step": 2,
+            "phase": "Reasoning",
+            "action": "classify_type",
+            "tool": "reasoning_classifier",
+            "description": "Identified reasoning type: causal"
+          },
+          {
+            "step": 3,
+            "phase": "Planning",
+            "action": "select_tools",
+            "tool": "planner",
+            "description": "Tools selected: web_search, llm_explain, image_gen"
+          },
+          {
+            "step": 4,
+            "phase": "Execution",
+            "action": "web_search",
+            "tool": "web_search",
+            "description": "Fetch factual context from DuckDuckGo (keyless)"
+          },
+          {
+            "step": 5,
+            "phase": "Execution",
+            "action": "llm_explain",
+            "tool": "llm_explain",
+            "description": "Generate age-appropriate explanation via LLM waterfall"
+          },
+          {
+            "step": 6,
+            "phase": "Execution",
+            "action": "generate_visual",
+            "tool": "image_gen -> svg_generator -> template_svg",
+            "description": "Generate educational visual (AI image \u2192 SVG \u2192 template fallback)"
+          },
+          {
+            "step": 7,
+            "phase": "Verification",
+            "action": "verify_output",
+            "tool": "verifier",
+            "description": "Check factual consistency, completeness, and hallucination risk"
+          },
+          {
+            "step": 8,
+            "phase": "Verification",
+            "action": "self_check",
+            "tool": "self_checker",
+            "description": "Compute confidence score and flag uncertainty if needed"
+          },
+          {
+            "step": 9,
+            "phase": "Response",
+            "action": "synthesize",
+            "tool": "response_builder",
+            "description": "Assemble structured final response with reasoning trace"
+          }
+        ]
+      },
+      "tools_selected": [
+        "web_search",
+        "llm_explain",
+        "image_gen"
+      ],
+      "tool_results": [
+        {
+          "tool": "search_and_explain",
+          "status": "success",
+          "detail": "explanation=223 chars, visual_type=html_interactive, tags=['plants', 'growth', 'tropical']"
+        }
+      ],
+      "verification_checks": [
+        {
+          "check": "length",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Explanation is substantive"
+        },
+        {
+          "check": "relevance",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Explanation covers question topic (67% word overlap)"
+        },
+        {
+          "check": "hallucination_risk",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "No AI-refusal markers detected"
+        },
+        {
+          "check": "completeness",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Contains 2 sentences \u2014 looks complete"
+        },
+        {
+          "check": "follow_ups",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "3 follow-up question(s) generated"
+        },
+        {
+          "check": "tags",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Concept tags: plants, growth, tropical"
+        },
+        {
+          "check": "web_grounded",
+          "passed": true,
+          "check_icon": "\u2705",
+          "note": "Answer grounded in web search results"
+        }
+      ],
+      "verification_passed": 7,
+      "verification_total": 7,
+      "confidence": 0.95,
+      "confidence_label": "high",
+      "confidence_pct": "95%",
+      "fallback_strategy": "",
+      "pipeline_stages": [
+        {
+          "name": "Understanding Query",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "\"Why are coconut trees so tall?\""
+        },
+        {
+          "name": "Classifying Reasoning",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "type=causal \u2014 Understanding cause-and-effect relationships"
+        },
+        {
+          "name": "Creating Execution Plan",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "9 steps, tools=['web_search', 'llm_explain', 'image_gen']"
+        },
+        {
+          "name": "Selecting Tools",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "execution_order=['web_search', 'llm_explain', 'image_gen']"
+        },
+        {
+          "name": "Gathering Information",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "explanation=223 chars, visual_type=html_interactive, tags=['plants', 'growth', 'tropical']"
+        },
+        {
+          "name": "Verifying Results",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "7/7 checks passed, confidence=95%"
+        },
+        {
+          "name": "Generating Response",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "223 char explanation"
+        },
+        {
+          "name": "Self-Check",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "High confidence (95%) \u2014 response approved"
+        },
+        {
+          "name": "Assembling Response",
+          "status": "done",
+          "status_icon": "\u2705",
+          "detail": "pipeline completed in 6.55s"
+        }
+      ],
+      "elapsed_seconds": 6.55
+    }
   }
 ]

@@ -31,10 +31,10 @@ from prefab_ui.components import (
 )
 from prefab_ui.actions import AppendState, Fetch, SetState, ShowToast
 
-from tools.search_and_explain import search_and_explain
 from tools.curiosity_map import manage_curiosity_map
 from tools.profiles import manage_profiles
 from tools.video_pipeline import generate_video
+from reasoning.engine import run_reasoning_pipeline
 
 # ── FastAPI app ───────────────────────────────────────────────────────────────
 
@@ -547,6 +547,115 @@ with PrefabApp(
                                         ],
                                     )
 
+                        # ── Reasoning Trace Panel ─────────────────────────────
+                        with If("current_topic.reasoning_trace"):
+                            Separator(css_class="my-4 border-purple-100")
+
+                            # Header row: title + confidence badge
+                            with Row(css_class="items-center gap-3 mb-3 flex-wrap"):
+                                H3("🧠 Reasoning Trace",
+                                   css_class="font-bold text-purple-700")
+                                Badge(
+                                    Rx("current_topic.reasoning_trace.reasoning_type"),
+                                    css_class=(
+                                        "bg-purple-100 text-purple-700 "
+                                        "border-purple-200 capitalize"
+                                    ),
+                                )
+                                Badge(
+                                    Rx("current_topic.reasoning_trace.confidence_pct"),
+                                    css_class=(
+                                        "bg-teal-100 text-teal-700 "
+                                        "border-teal-200"
+                                    ),
+                                )
+                                Muted(
+                                    Rx("current_topic.reasoning_trace.reasoning_desc"),
+                                    css_class="text-xs italic",
+                                )
+
+                            # Metrics row
+                            with Row(css_class="gap-3 mb-4 flex-wrap"):
+                                with Card(css_class=(
+                                    "flex-1 min-w-28 border-purple-100 bg-purple-50/40"
+                                )):
+                                    with CardContent(css_class="pt-3 pb-3"):
+                                        Metric(
+                                            label="Reasoning Type",
+                                            value=Rx("current_topic.reasoning_trace.reasoning_type"),
+                                        )
+                                with Card(css_class=(
+                                    "flex-1 min-w-28 border-teal-100 bg-teal-50/40"
+                                )):
+                                    with CardContent(css_class="pt-3 pb-3"):
+                                        Metric(
+                                            label="Confidence",
+                                            value=Rx("current_topic.reasoning_trace.confidence_pct"),
+                                        )
+                                with Card(css_class=(
+                                    "flex-1 min-w-28 border-orange-100 bg-orange-50/40"
+                                )):
+                                    with CardContent(css_class="pt-3 pb-3"):
+                                        Metric(
+                                            label="Tools Used",
+                                            value=Rx("current_topic.reasoning_trace.confidence_label"),
+                                        )
+
+                            # Pipeline stages
+                            with Card(css_class="mb-3 border-purple-100"):
+                                with CardHeader(css_class="pb-1"):
+                                    CardTitle("📋 Pipeline Stages")
+                                with CardContent(css_class="pt-2 pb-2"):
+                                    with ForEach(
+                                        "current_topic.reasoning_trace.pipeline_stages"
+                                    ):
+                                        with Row(css_class=(
+                                            "items-start gap-2 py-1.5 "
+                                            "border-b border-purple-50 last:border-0"
+                                        )):
+                                            Text(
+                                                content=ITEM["status_icon"],
+                                                css_class="text-sm shrink-0 mt-0.5",
+                                            )
+                                            with Column(css_class="gap-0"):
+                                                Text(
+                                                    content=ITEM["name"],
+                                                    css_class="text-sm font-semibold text-purple-800",
+                                                )
+                                                Muted(
+                                                    ITEM["detail"],
+                                                    css_class="text-xs",
+                                                )
+
+                            # Verification checks
+                            with Card(css_class="border-teal-100"):
+                                with CardHeader(css_class="pb-1"):
+                                    CardTitle("✅ Verification Checks")
+                                with CardContent(css_class="pt-2 pb-2"):
+                                    with ForEach(
+                                        "current_topic.reasoning_trace.verification_checks"
+                                    ):
+                                        with Row(css_class=(
+                                            "items-start gap-2 py-1.5 "
+                                            "border-b border-teal-50 last:border-0"
+                                        )):
+                                            Text(
+                                                content=ITEM["check_icon"],
+                                                css_class="text-sm shrink-0 mt-0.5",
+                                            )
+                                            with Column(css_class="gap-0"):
+                                                Text(
+                                                    content=ITEM["check"],
+                                                    css_class=(
+                                                        "text-sm font-semibold "
+                                                        "text-teal-800 capitalize"
+                                                    ),
+                                                )
+                                                Muted(
+                                                    ITEM["note"],
+                                                    css_class="text-xs",
+                                                )
+
                     with Else():
                         with Card(css_class="border-dashed border-purple-200 bg-purple-50/40 mt-8"):
                             with CardContent(
@@ -1010,8 +1119,10 @@ async def api_ask(body: AskRequest):
         '/api/ask "%s" (profile=%s)', question[:80], active_id[:8]
     )
 
+    # Run the full structured reasoning pipeline (classifier → planner →
+    # search+explain → verifier → confidence scorer → trace assembler)
     result = await asyncio.to_thread(
-        search_and_explain, question, active_id, body.asked_by
+        run_reasoning_pipeline, question, active_id, body.asked_by
     )
 
     # Wrap bare HTML fragments in a complete document for Embed

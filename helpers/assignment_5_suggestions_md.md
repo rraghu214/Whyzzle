@@ -16,7 +16,7 @@ This markdown is intended for:
 
 The purpose is to convert Whyzzle into a:
 
-# “Structured Planning & Reasoning AI System”
+# "Structured Planning & Reasoning AI System"
 
 that satisfies all Session-5 assignment expectations.
 
@@ -46,281 +46,71 @@ The assignment IS asking for:
 
 The PDF topic is:
 
-# “Planning and Reasoning with Language Models”
+# "Planning and Reasoning with Language Models"
 
 This means the project MUST visibly demonstrate:
 
-| Concept | Must Be Visible? | Why |
+| Concept | Must Be Visible? | Status |
 |---|---|---|
-| Step-by-step reasoning | YES | Core session theme |
-| Structured planning | YES | Main assignment expectation |
-| Tool orchestration | YES | Agentic workflow |
-| Explicit reasoning stages | YES | Prompt engineering quality |
-| Self-verification | YES | Reliability |
-| Multi-turn interaction | YES | Conversational reasoning |
-| Reasoning-aware outputs | YES | Advanced prompting |
-| Error handling | YES | Robustness |
-| Structured outputs | YES | Validation & evaluation |
+| Step-by-step reasoning | YES | ✅ DONE — engine.py stages 1–9 |
+| Structured planning | YES | ✅ DONE — planner.py execution plan |
+| Tool orchestration | YES | ✅ DONE — engine wraps all tools |
+| Explicit reasoning stages | YES | ✅ DONE — pipeline_stages in trace |
+| Self-verification | YES | ✅ DONE — verifier.py 7 checks |
+| Multi-turn interaction | YES | ✅ DONE — follow_ups re-trigger ask |
+| Reasoning-aware outputs | YES | ✅ DONE — classifier.py + trace |
+| Error handling | YES | ✅ DONE — graceful fallbacks in engine |
+| Structured outputs | YES | ✅ DONE — reasoning_trace JSON schema |
 
 ---
 
 # 3. Required Assignment-Level Features
 
-The following MUST be clearly visible in the implementation.
+## A. Explicit Reasoning Pipeline ✅ DONE
+`reasoning/engine.py` — 9 explicit stages logged and stored in reasoning_trace.pipeline_stages
+
+## B. Structured JSON Output ✅ DONE
+Every topic now includes `reasoning_trace` with the full schema (see engine.py)
+
+## C. Reasoning Type Detection ✅ DONE
+`reasoning/classifier.py` — 10 types classified by keyword rules (fast, deterministic)
+
+## D. Tool Separation ✅ DONE
+`reasoning/engine.py` — phases: Reasoning → Planning → Execution → Verification → Response
+
+## E. Self Verification ✅ DONE
+`reasoning/verifier.py` — 7 heuristic checks: length, relevance, hallucination, completeness, follow_ups, tags, web_grounded
+
+## F. Error Handling / Fallbacks ✅ DONE
+`reasoning/engine.py` — try/except around search_and_explain with graceful error topic
+
+## G. Multi-Turn Conversation Support ✅ DONE
+Follow-up questions click → SetState("question") → triggers new ask cycle
+
+## H. Instructional Framing ✅ DONE
+Structured pipeline prompt templates embedded in search_and_explain.py
 
 ---
 
-# A. Explicit Reasoning Pipeline
-
-The system must visibly reason in stages.
-
-## Required Flow
-
-```text
-1. Understand User Intent
-2. Identify Reasoning Type
-3. Create Execution Plan
-4. Select Required Tools
-5. Execute Steps
-6. Verify Intermediate Results
-7. Generate Final Answer
-8. Perform Self-Check
-9. Return Structured Response
-```
-
----
-
-# B. Structured JSON Output
-
-Every major AI response should internally follow a structure like:
-
-```json
-{
-  "user_goal": "",
-  "reasoning_type": "",
-  "execution_plan": [],
-  "tools_selected": [],
-  "tool_results": [],
-  "verification_steps": [],
-  "confidence_level": "",
-  "final_response": ""
-}
-```
-
-This is VERY important for Session-5 evaluation.
-
----
-
-# C. Reasoning Type Detection
-
-The system should classify the reasoning category.
-
-## Supported Types
-
-```text
-- arithmetic
-- logical
-- causal
-- research
-- planning
-- comparison
-- educational
-- visual
-- exploratory
-- multi-step
-```
-
----
-
-# D. Tool Separation
-
-Reasoning and tool execution must be separated.
-
-## Correct Structure
-
-```text
-[Reasoning Phase]
-Determine what needs to be done.
-
-[Planning Phase]
-Select tools and order of execution.
-
-[Execution Phase]
-Run tools.
-
-[Verification Phase]
-Validate outputs.
-
-[Response Phase]
-Generate final explanation.
-```
-
----
-
-# E. Self Verification
-
-The system MUST verify outputs before finalizing.
-
-## Required Checks
-
-```text
-- factual consistency
-- hallucination risk
-- missing steps
-- contradictory statements
-- logical consistency
-- incomplete reasoning
-```
-
----
-
-# F. Error Handling / Fallbacks
-
-The system must gracefully handle failures.
-
-## Examples
-
-```text
-If web search fails:
-- fallback to local KB
-
-If image generation fails:
-- continue with textual explanation
-
-If confidence is low:
-- explicitly say uncertainty exists
-```
-
----
-
-# G. Multi-Turn Conversation Support
-
-The system should:
-- remember previous reasoning
-- continue workflows
-- refine outputs iteratively
-
-## Example
-
-```text
-User:
-Explain black holes.
-
-System:
-Provides beginner explanation.
-
-User:
-Now explain mathematically.
-
-System:
-Continues from previous context.
-```
-
----
-
-# H. Instructional Framing
-
-The AI should provide:
-- structured explanations
-- guided workflows
-- predictable formatting
-
----
-
-# 4. Session-5 Evaluation Criteria That MUST Be Demonstrated
-
-The assignment rules evaluate prompts using the following criteria:
-
----
-
-# 1. Explicit Reasoning Instructions
-
-Must include instructions like:
-
-```text
-Think step-by-step.
-Analyze before answering.
-Explain intermediate reasoning.
-```
-
----
-
-# 2. Structured Output Format
-
-Must produce:
-
-- JSON
-- numbered steps
-- function-call style outputs
-- predictable formatting
-
----
-
-# 3. Separation of Reasoning and Tools
-
-Must distinguish:
-- reasoning
-- planning
-- tool usage
-- verification
-
----
-
-# 4. Conversation Loop Support
-
-Must support:
-- follow-up questions
-- iterative refinement
-- contextual continuation
-
----
-
-# 5. Instructional Framing
-
-Must define:
-- output structure
-- response style
-- expected formatting
-
----
-
-# 6. Internal Self Checks
-
-Must verify:
-- consistency
-- correctness
-- completeness
-
----
-
-# 7. Reasoning Type Awareness
-
-Must identify:
-- what type of reasoning is being performed
-
----
-
-# 8. Error Handling / Fallbacks
-
-Must define:
-- uncertainty handling
-- fallback behaviors
-- failure responses
-
----
-
-# 9. Overall Robustness
-
-Must reduce:
-- hallucination
-- drift
-- inconsistent outputs
+# 4. Session-5 Evaluation Criteria — Status
+
+| Evaluator Check | Required | Status | Location |
+|---|---|---|---|
+| explicit_reasoning | YES | ✅ | engine.py stages |
+| structured_output | YES | ✅ | reasoning_trace JSON |
+| tool_separation | YES | ✅ | engine.py phases |
+| conversation_loop | YES | ✅ | follow_up → ask |
+| instructional_framing | YES | ✅ | search_and_explain prompt |
+| internal_self_checks | YES | ✅ | verifier.py |
+| reasoning_type_awareness | YES | ✅ | classifier.py |
+| fallbacks | YES | ✅ | engine.py try/except |
+| overall_clarity | YES | ✅ | confidence_label + pct |
 
 ---
 
 # 5. Whyzzle Extension Requirements
 
-Whyzzle already has:
+Whyzzle already had:
 - MCP support
 - tool orchestration
 - visual generation
@@ -328,421 +118,85 @@ Whyzzle already has:
 - local file operations
 - knowledge graph concepts
 
-The assignment requires Whyzzle to evolve into:
-
-# “A Structured Multi-Agent Reasoning System”
-
----
-
-# 6. REQUIRED Features To Add to Whyzzle
+Session-5 adds:
+- `reasoning/` module (classifier + planner + verifier + engine)
+- reasoning_trace stored with every topic
+- Reasoning Trace Panel in the UI
 
 ---
 
-# Feature 1 — Reasoning Pipeline UI
+# 6. REQUIRED Features — Implementation Status
 
-Add a visible pipeline:
+| Feature | Status | File |
+|---|---|---|
+| Feature 1 — Reasoning Pipeline UI | ✅ DONE | app.py topic page panel |
+| Feature 2 — Structured Reasoning Engine | ✅ DONE | reasoning/engine.py |
+| Feature 3 — Reasoning Type Classifier | ✅ DONE | reasoning/classifier.py |
+| Feature 4 — Tool Planning Layer | ✅ DONE | reasoning/planner.py |
+| Feature 5 — Self Verification Layer | ✅ DONE | reasoning/verifier.py |
+| Feature 6 — Confidence Score | ✅ DONE | verifier.py calculate_confidence() |
+| Feature 7 — Multi-Step Prompt Templates | ✅ DONE | engine.py + search_and_explain |
+| Feature 8 — Fallback Strategies | ✅ DONE | engine.py try/except + verifier |
+| Feature 9 — Reasoning Trace Viewer | ✅ DONE | app.py Reasoning Trace Panel |
+| Feature 10 — Submission Demo Flow | ✅ READY | all pipeline visible in UI |
 
-```text
-🧠 Understanding Query
-📋 Creating Plan
-🛠 Selecting Tools
-🔍 Gathering Information
-✅ Verifying Results
-🎨 Generating Visuals
-📦 Preparing Final Response
+---
+
+# 7. Technical Architecture (Implemented in Python)
+
 ```
+/reasoning
+  __init__.py
+  classifier.py    — keyword-based reasoning type classifier (10 types)
+  planner.py       — tool planning layer (required_tools + steps)
+  verifier.py      — 7 heuristic checks + confidence score (0.0–1.0)
+  engine.py        — 9-stage orchestration pipeline
 
-This is one of the MOST important features.
+/tools (existing, unchanged logic)
+  search_and_explain.py  — web search + LLM waterfall + visual gen
+  curiosity_map.py       — knowledge graph + reasoning_trace storage
+  profiles.py
+  video_pipeline.py
 
----
-
-# Feature 2 — Structured Reasoning Engine
-
-Create a reasoning controller that manages:
-
-```text
-- planning
-- tool sequencing
-- memory
-- verification
-- final synthesis
-```
-
-Suggested module:
-
-```text
-reasoning-engine/
-```
-
----
-
-# Feature 3 — Reasoning Type Classifier
-
-Add classifier logic:
-
-```ts
-type ReasoningType =
-  | "logical"
-  | "causal"
-  | "research"
-  | "comparison"
-  | "educational"
-  | "visual"
-  | "planning"
-  | "multi-step";
+app.py  — FastAPI + Prefab UI
+  /api/ask  — now calls run_reasoning_pipeline() instead of search_and_explain()
+  topic page — new Reasoning Trace Panel (stages + verification checks)
 ```
 
 ---
 
-# Feature 4 — Tool Planning Layer
+# 8. Reasoning Trace JSON Schema (DONE)
 
-Before executing tools:
-
-Generate a plan like:
-
+Every topic now stores:
 ```json
 {
-  "required_tools": [
-    "web_search",
-    "image_generator",
-    "knowledge_graph"
-  ],
-  "execution_order": [
-    "web_search",
-    "knowledge_graph",
-    "image_generator"
-  ]
+  "reasoning_trace": {
+    "explicit_reasoning": true,
+    "structured_output": true,
+    "tool_separation": true,
+    "conversation_loop": true,
+    "instructional_framing": true,
+    "internal_self_checks": true,
+    "reasoning_type_awareness": true,
+    "fallbacks": true,
+    "overall_clarity": "Structured educational reasoning with high confidence (87%)",
+
+    "user_goal": "Why is the sky blue?",
+    "reasoning_type": "causal",
+    "reasoning_desc": "Understanding cause-and-effect relationships",
+    "execution_plan": { "required_tools": [...], "steps": [...] },
+    "tools_selected": ["web_search", "llm_explain", "image_gen"],
+    "tool_results": [...],
+    "verification_checks": [...],
+    "confidence": 0.87,
+    "confidence_label": "high",
+    "confidence_pct": "87%",
+    "fallback_strategy": "",
+    "pipeline_stages": [...],
+    "elapsed_seconds": 4.21
+  }
 }
 ```
-
----
-
-# Feature 5 — Self Verification Layer
-
-Add a verification stage:
-
-```text
-- validate reasoning
-- verify factual consistency
-- detect hallucination risk
-- confidence scoring
-```
-
----
-
-# Feature 6 — Confidence Score
-
-Every response should include:
-
-```json
-{
-  "confidence": 0.91
-}
-```
-
-Based on:
-- number of tool confirmations
-- consistency
-- source reliability
-
----
-
-# Feature 7 — Multi-Step Prompt Templates
-
-Add prompts like:
-
-```text
-1. Understand the problem
-2. Break into smaller steps
-3. Decide required tools
-4. Execute carefully
-5. Verify results
-6. Generate final response
-```
-
----
-
-# Feature 8 — Fallback Strategies
-
-Required fallback examples:
-
-```text
-If search unavailable:
-→ use local KB
-
-If visual generation unavailable:
-→ provide textual visualization
-
-If confidence low:
-→ explicitly mention uncertainty
-```
-
----
-
-# Feature 9 — Reasoning Trace Viewer
-
-Allow users to inspect:
-
-```text
-- reasoning type
-- planning
-- tools used
-- intermediate outputs
-- verification status
-```
-
-This strongly aligns with assignment expectations.
-
----
-
-# Feature 10 — Submission Demonstration Flow
-
-The final demo MUST clearly show:
-
-## Example Demo Flow
-
-```text
-1. User asks complex question
-2. System identifies reasoning type
-3. System creates execution plan
-4. System selects tools
-5. System executes tools
-6. System verifies outputs
-7. System generates visuals
-8. System returns structured response
-9. User asks follow-up
-10. System continues reasoning chain
-```
-
----
-
-# 7. Recommended Technical Architecture
-
-## Suggested Modules
-
-```text
-/src
-  /reasoning
-    planner.ts
-    verifier.ts
-    reasoning-types.ts
-    confidence.ts
-
-  /tools
-    web-search.ts
-    image-generator.ts
-    local-files.ts
-
-  /memory
-    context-manager.ts
-
-  /ui
-    reasoning-panel.tsx
-```
-
----
-
-# 8. Suggested Prompt Template
-
-This prompt template is EXTREMELY IMPORTANT.
-
-The assignment evaluator itself checks whether the prompt satisfies:
-
-- explicit reasoning
-- structured outputs
-- tool separation
-- conversation support
-- self checks
-- reasoning awareness
-- fallbacks
-- robustness
-
-The implementation MUST therefore explicitly contain all of these.
-
----
-
-## REQUIRED Master Prompt Structure
-
-```text
-You are a structured reasoning AI assistant.
-
-Follow these steps strictly:
-
-1. Understand the user goal
-2. Identify the reasoning type
-3. Break the task into substeps
-4. Create an execution plan
-5. Select required tools
-6. Execute steps carefully
-7. Verify intermediate outputs
-8. Detect contradictions or hallucinations
-9. Perform self-checks
-10. Generate structured final output
-11. Provide confidence score
-12. If uncertain, explicitly mention limitations
-13. If a tool fails, use fallback strategies
-
-Separate:
-- reasoning
-- planning
-- execution
-- verification
-- final response
-
-Support multi-turn continuation using previous context.
-
-Always explain intermediate reasoning.
-```
-
----
-
-# 9. REQUIRED Structured JSON Response Format
-
-The assignment evaluator explicitly checks whether outputs are structured and machine-readable.
-
-The system MUST therefore support outputs using the following structure:
-
-```json
-{
-  "explicit_reasoning": true,
-  "structured_output": true,
-  "tool_separation": true,
-  "conversation_loop": true,
-  "instructional_framing": true,
-  "internal_self_checks": true,
-  "reasoning_type_awareness": true,
-  "fallbacks": true,
-  "overall_clarity": "Clear structured reasoning with verification and fallback support."
-}
-```
-
----
-
-# 10. REQUIRED Internal Reasoning JSON Schema
-
-The actual reasoning engine inside Whyzzle should internally maintain a richer JSON structure like:
-
-```json
-{
-  "user_goal": "",
-  "reasoning_type": "",
-  "execution_plan": [],
-  "tools_selected": [],
-  "tool_results": [],
-  "verification_steps": [],
-  "fallback_strategy": "",
-  "confidence_level": 0.0,
-  "final_response": ""
-}
-```
-
----
-
-# 11. Assignment Evaluator Mapping
-
-The evaluator prompt checks the following:
-
-| Evaluator Check | Must Exist in Whyzzle |
-|---|---|
-| explicit_reasoning | Step-by-step reasoning pipeline |
-| structured_output | JSON response formats |
-| tool_separation | Separate planning/execution/verification |
-| conversation_loop | Multi-turn continuation |
-| instructional_framing | Strict response templates |
-| internal_self_checks | Verification layer |
-| reasoning_type_awareness | Reasoning classifier |
-| fallbacks | Failure handling logic |
-| overall_clarity | Predictable structured outputs |
-
----
-
-# 12. What MUST Be Clearly Visible in README
-
-The README should explicitly mention:
-
-## A. Planning
-
-```text
-Whyzzle performs structured planning before execution.
-```
-
----
-
-## B. Multi-Step Reasoning
-
-```text
-Whyzzle breaks complex tasks into reasoning stages.
-```
-
----
-
-## C. Tool Orchestration
-
-```text
-Whyzzle dynamically selects and orchestrates tools.
-```
-
----
-
-## D. Verification
-
-```text
-Whyzzle performs self-verification before final responses.
-```
-
----
-
-## E. Reasoning Awareness
-
-```text
-Whyzzle identifies reasoning types for each task.
-```
-
----
-
-## F. Fallback Handling
-
-```text
-Whyzzle gracefully handles uncertainty and tool failures.
-```
-
----
-
-# 13. Recommended Submission Positioning
-
-The project should be presented as:
-
-# “Whyzzle — A Multi-Agent Planning and Reasoning System”
-
-NOT:
-- chatbot
-- summarizer
-- AI wrapper
-
-BUT:
-- reasoning engine
-- planning system
-- intelligent orchestration framework
-- visual learning AI
-
----
-
-# 14. Important Notes for Claude Code
-
-## Priority Order
-
-### Highest Priority
-- reasoning pipeline
-- planning visibility
-- verification layer
-- structured outputs
-
-### Medium Priority
-- UI polish
-- animations
-
-### Lower Priority
-- advanced styling
 
 ---
 
@@ -750,39 +204,42 @@ BUT:
 
 ## MUST HAVE
 
-| Requirement | Mandatory |
-|---|---|
-| Explicit reasoning | YES |
-| Planning pipeline | YES |
-| Structured outputs | YES |
-| Tool orchestration | YES |
-| Self verification | YES |
-| Reasoning types | YES |
-| Error handling | YES |
-| Multi-turn support | YES |
-| README explanation | YES |
-| Demo video | YES |
+| Requirement | Mandatory | Status |
+|---|---|---|
+| Explicit reasoning | YES | ✅ DONE |
+| Planning pipeline | YES | ✅ DONE |
+| Structured outputs | YES | ✅ DONE |
+| Tool orchestration | YES | ✅ DONE |
+| Self verification | YES | ✅ DONE |
+| Reasoning types | YES | ✅ DONE |
+| Error handling | YES | ✅ DONE |
+| Multi-turn support | YES | ✅ DONE |
+| README explanation | YES | ⏳ TODO |
+| Demo video | YES | ⏳ TODO |
 
 ---
 
 # Final Summary
 
-The assignment is fundamentally testing:
+The Session-5 implementation adds a full structured reasoning layer to Whyzzle:
 
 ```text
-Can you design an AI system that:
-- reasons explicitly
-- plans before acting
-- uses tools intelligently
-- verifies itself
-- handles uncertainty
-- supports iterative workflows
-- exposes structured reasoning
+reasoning/engine.py orchestrates 9 pipeline stages:
+  1. Understand User Intent
+  2. Classify Reasoning Type   ← reasoning/classifier.py
+  3. Create Execution Plan     ← reasoning/planner.py
+  4. Select Required Tools     ← planner output
+  5. Execute Steps             ← tools/search_and_explain.py
+  6. Verify Results            ← reasoning/verifier.py
+  7. Generate Final Answer     ← LLM output
+  8. Self-Check                ← confidence scoring
+  9. Assemble Structured Response ← reasoning_trace attached to topic
 ```
 
-Whyzzle already has a strong foundation.
-
-The Session-5 implementation should focus on:
-
-# “Making the reasoning process explicit, structured, and verifiable.”
-
+Every response now:
+- Identifies reasoning type (10 categories)
+- Shows 9 pipeline stages with status
+- Runs 7 verification checks
+- Computes confidence score (0–100%)
+- Handles failures with graceful fallbacks
+- Stores everything in reasoning_trace for inspection

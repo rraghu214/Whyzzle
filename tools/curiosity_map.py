@@ -68,8 +68,12 @@ def manage_curiosity_map(action: str, profile_id: str, payload: dict | None = No
         norm_q = _normalize(question)
         for existing_topic in profile_topics:
             if _normalize(existing_topic.get("question", "")) == norm_q:
-                logger.info("Duplicate question detected — skipping save, returning existing id=%s",
+                logger.info("Duplicate question detected — updating reasoning_trace, id=%s",
                             existing_topic["id"][:8])
+                # Refresh reasoning_trace so the UI always shows the latest run
+                if payload.get("reasoning_trace"):
+                    existing_topic["reasoning_trace"] = payload["reasoning_trace"]
+                    _write_map(all_topics)
                 return {"topic": existing_topic, "connected_count": len(existing_topic.get("connected_to", []))}
 
 
@@ -104,6 +108,7 @@ def manage_curiosity_map(action: str, profile_id: str, payload: dict | None = No
             "concept_type": payload.get("concept_type", "other"),
             "connected_to": connected,
             "depth": len(connected),
+            "reasoning_trace": payload.get("reasoning_trace", None),
         }
         all_topics.append(new_topic)
         _write_map(all_topics)
