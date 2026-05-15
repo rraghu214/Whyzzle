@@ -25,7 +25,8 @@
     "connected_to": [
       "e0e414b0-148b-481a-a16c-8d4be2e9e4a4",
       "4c962424-7cbb-47bd-882d-a3d3a71d0b90",
-      "4003392d-ca66-4584-b905-9a31ea445abf"
+      "4003392d-ca66-4584-b905-9a31ea445abf",
+      "a4f99b5a-f8c4-4699-9155-0670feb28168"
     ],
     "depth": 0
   },
@@ -85,7 +86,8 @@
       "b14732ad-0695-4039-b948-1ff505536c53",
       "521a3eea-afff-4be7-87fd-908719358f3c",
       "4c97a0b7-9013-4442-97cb-8c29a8450b08",
-      "6f4f0db6-38ff-41be-9261-4cc36640748c"
+      "6f4f0db6-38ff-41be-9261-4cc36640748c",
+      "9c61e4d4-84fd-45ce-8229-424b0d679bbb"
     ],
     "depth": 4
   },
@@ -472,7 +474,9 @@
     "concept_type": "biological",
     "connected_to": [
       "e0e414b0-148b-481a-a16c-8d4be2e9e4a4",
-      "4003392d-ca66-4584-b905-9a31ea445abf"
+      "4003392d-ca66-4584-b905-9a31ea445abf",
+      "a4f99b5a-f8c4-4699-9155-0670feb28168",
+      "9c61e4d4-84fd-45ce-8229-424b0d679bbb"
     ],
     "depth": 0
   },
@@ -540,8 +544,61 @@
     "connected_to": [
       "10e1a3be-e611-4867-a3f6-d75bd23784f0",
       "a63b1fbe-f34e-4be5-962f-0b0a0b7a474f",
-      "4c962424-7cbb-47bd-882d-a3d3a71d0b90"
+      "4c962424-7cbb-47bd-882d-a3d3a71d0b90",
+      "a4f99b5a-f8c4-4699-9155-0670feb28168",
+      "9c61e4d4-84fd-45ce-8229-424b0d679bbb"
     ],
     "depth": 3
+  },
+  {
+    "id": "9c61e4d4-84fd-45ce-8229-424b0d679bbb",
+    "profile_id": "710b1429-f02e-437e-b11c-c51e10137748",
+    "question": "Where does rain come from?",
+    "asked_by": "child",
+    "date": "2026-05-10",
+    "profile_age": 4,
+    "explanation": "Rain comes from the sea, where the sun heats up the water and it turns into a special kind of air that rises up and forms clouds, like when you breathe on a cold window and it fogs up. When the clouds get too heavy with water, it falls back down to the earth as rain.",
+    "visual_code": "<!doctype html><html><body style='margin:0;padding:0;background:#EEF2FF;display:flex;align-items:center;justify-content:center;height:100vh'><img src=\"/output/pol_Where_does_rain_come_from__21189.jpg\" alt=\"Where does rain come from?\" style=\"width:100%;max-width:600px;border-radius:14px;display:block;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.12)\" /></body></html>",
+    "visual_type": "html_interactive",
+    "follow_ups": [
+      "What makes snow?",
+      "Why do we need rain?",
+      "Where does the rain go after it falls?"
+    ],
+    "tags": [
+      "sun",
+      "water",
+      "earth",
+      "clouds"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [
+      "dede36c9-2e55-4ecf-9c49-a5daed92b840",
+      "a63b1fbe-f34e-4be5-962f-0b0a0b7a474f",
+      "4003392d-ca66-4584-b905-9a31ea445abf"
+    ],
+    "depth": 3
+  },
+  {
+    "id": "68c0e52a-5598-4794-b454-c9c060771425",
+    "profile_id": "7e3cdbc3-f29c-4144-973f-1dfc657104d1",
+    "question": "How do volcanoes erupt?",
+    "asked_by": "agent",
+    "date": "2026-05-10",
+    "profile_age": 7,
+    "explanation": "Imagine you're heating up a pot of water on the stove. As the water gets hotter, it starts to move around and rise up. This is kind of like what happens inside the Earth. The heat from the Earth's core makes the melted rock, called magma, move upwards. It's like a big bubble rising up through the water. When the magma gets too close to the surface, it erupts out of the ground as lava, ash, and gas. Let's introduce a new word: 'magma'. Magma is like a special kind of melted rock that's underneath the Earth's surface. It's hot and liquid, and it can move around and rise up to the surface. When it comes out of the volcano, it's called lava. Volcanoes are like big conduits for the magma to come out, and they can be shaped like cones or mountains.",
+    "visual_code": "",
+    "visual_type": "svg",
+    "follow_ups": [],
+    "tags": [
+      "earth",
+      "magma",
+      "geology",
+      "volcanoes",
+      "lava"
+    ],
+    "concept_type": "spatial",
+    "connected_to": [],
+    "depth": 0
   }
 ]
